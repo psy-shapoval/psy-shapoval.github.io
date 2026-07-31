@@ -196,7 +196,7 @@ img {
   width: 42%;
   font-family: 'Caveat', cursive;
   font-weight: 400;
-  font-size: 9vw;
+  font-size: 9.75vw;
   line-height: 1.05;
   color: #536d40;
 }
@@ -205,7 +205,7 @@ img {
   display: block;
   width: 58%;
   height: auto;
-  margin-top: -0.8vw;
+  margin-top: -1.2vw;
   fill: #536d40;
   stroke: #536d40;
   stroke-width: 1;
@@ -218,7 +218,7 @@ img {
   left: 9.3%;
   top: 17.0%;
   font-family: 'Manrope', var(--font-main);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 10.5vw;
   line-height: 1;
   letter-spacing: -0.005em;
@@ -230,8 +230,8 @@ img {
 .hero__descr {
   left: 9.3%;
   top: 26.2%;
-  font-family: 'Manrope', var(--font-main);
-  font-weight: 400;
+  font-family: 'Montserrat Alternates', var(--font-main);
+  font-weight: 500;
   font-size: 4.4vw;
   line-height: 1.28;
   color: #3f4038;
@@ -241,8 +241,8 @@ img {
 
 .hero__rule {
   left: 9.3%;
-  top: 40.0%;
-  width: 14%;
+  top: 39.6%;
+  width: 15.5%;
 }
 
 .hero__rule svg {
@@ -251,11 +251,11 @@ img {
   height: auto;
   fill: #8a9678;
   stroke: #8a9678;
-  stroke-width: 0.4;
+  stroke-width: 0.5;
   stroke-linejoin: round;
 }
 
-/* кнопка */
+/* кнопка: розмір задається текстом + відступами */
 
 .hero__btn {
   left: 8.6%;
@@ -263,12 +263,12 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 2vw;
-  padding: 3.5vw 4.6vw;
+  padding: 3.6vw 4.6vw;
   border-radius: 999px;
   background-color: #5f7c46;
   color: var(--color-white);
   font-family: 'Manrope', var(--font-main);
-  font-size: 3.1vw;
+  font-size: 2.9vw;
   font-weight: 500;
   line-height: 1.2;
   white-space: nowrap;
@@ -289,7 +289,7 @@ img {
   flex: none;
 }
 
-/* стрілка + «Відповідаю особисто» */
+/* стрілка + «в особисті» */
 
 .hero__note {
   left: 9.3%;
@@ -297,8 +297,8 @@ img {
   display: flex;
   align-items: flex-end;
   gap: 1.6vw;
-  font-family: 'Manrope', var(--font-main);
-  font-weight: 400;
+  font-family: 'Montserrat Alternates', var(--font-main);
+  font-weight: 500;
   color: #565a4b;
   font-size: 2.9vw;
   line-height: 1.2;
@@ -333,39 +333,41 @@ img {
 
   .hero__swash {
     width: 54%;
-    margin-top: -0.35vw;
+    margin-top: -0.5vw;
     stroke-width: 0.5;
   }
 
   .hero__title {
     left: 10.2%;
     top: 28.2%;
-    font-size: 5.8vw;
+    font-size: 4.95vw;
   }
 
   .hero__descr {
     left: 10.2%;
     top: 43.5%;
-    font-size: 2vw;
+    font-weight: 400;
+    font-size: 1.6vw;
     line-height: 1.3;
   }
 
   .hero__rule {
     left: 10.2%;
     top: 63.5%;
-    width: 4.8%;
+    width: 4.95%;
   }
 
   .hero__rule svg {
-    stroke-width: 0.2;
+    stroke-width: 1;
   }
 
   .hero__btn {
     left: 10.2%;
     top: 70.0%;
     gap: 0.9vw;
-    padding: 1.42vw 2.8vw;
-    font-size: 1.25vw;
+    padding: 1.45vw 2.8vw;
+    font-size: 1.2vw;
+    font-weight: 300;
     box-shadow: 0 0.45vw 1.1vw -0.4vw rgba(28, 45, 25, 0.35);
   }
 
@@ -378,7 +380,7 @@ img {
     left: 10.6%;
     top: 84.3%;
     gap: 0.7vw;
-    font-size: 0.95vw;
+    font-size: 1vw;
   }
 
   .hero__note svg {
@@ -988,8 +990,8 @@ img {
   <section class="hero">
 
     <p class="hero__el hero__hi">Привіт!
-      <svg class="hero__swash" viewBox="0 0 200 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M4 11.4 C 44 5.4, 116 3.2, 196 5.6 L 196 6.4 C 116 4.4, 44 6.6, 4 12.2 Z"/>
+      <svg class="hero__swash" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M4 15.0 C 50 10.6, 130 5.4, 196 2.1 L 196 3.1 C 130 6.6, 50 12.2, 4 16.3 Z"/>
       </svg>
     </p>
 
@@ -998,14 +1000,14 @@ img {
     <p class="hero__el hero__descr">Допомагаю вийти<br>з депресії та перестати<br>«заїдати» емоції</p>
 
     <span class="hero__el hero__rule">
-      <svg viewBox="0 0 120 11" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M3 5.8 C 28 3.0, 72 2.2, 117 3.2 L 117 5.8 C 72 4.8, 28 5.6, 3 8.4 Z"/>
+      <svg viewBox="0 0 120 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3 10.0 C 30 7.6, 75 4.8, 117 2.6 L 117 3.9 C 75 6.1, 30 8.9, 3 11.4 Z"/>
       </svg>
     </span>
 
     <a class="hero__el hero__btn" href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">
       <svg viewBox="2 3 20 18" xmlns="http://www.w3.org/2000/svg"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
-      <span>Почати розмову</span>
+      <span>Написати мені</span>
     </a>
 
     <div class="hero__el hero__note">
@@ -1014,7 +1016,7 @@ img {
         <path d="M13 4 C 10.6 6.2, 8.8 8.6, 7.5 11.6"/>
         <path d="M13 4 C 14.4 7.2, 15.1 10.2, 15.3 13.8"/>
       </svg>
-      <span>Відповідаю особисто</span>
+      <span>в особисті</span>
     </div>
 
   </section>
@@ -1295,11 +1297,10 @@ img {
   </script>
 
 <!-- ============ ПАНЕЛЬ ПІДБОРУ — ТИМЧАСОВА ============
-       Керує шрифтом, жирністю та кеглем п'яти написів першого екрана.
+       Керує шрифтом, жирністю, кеглем п'яти написів і відступами кнопки.
        Значення зберігаються окремо для мобільної та десктопної версій.
-       Кнопка «Показати CSS» видає готовий код для вставки.
-       Коли підбереш — видали цей блок цілком (до закриваючого коментаря)
-       і встав отриманий CSS у секцію HERO. -->
+       «Показати CSS» видає готовий код для вставки в секцію HERO.
+       Коли підбереш — видали цей блок цілком до закриваючого коментаря. -->
 
   <style>
   #fp {
@@ -1313,7 +1314,6 @@ img {
   #fp.hidden { width: auto; max-height: none; padding: 8px 12px; overflow: visible; }
   #fp.hidden .fp-body { display: none; }
   .fp-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .fp-top b { font-size: 13px; }
   #fpToggle, .fp-btn {
     border: none; background: #5f7c46; color: #fff; border-radius: 6px;
     padding: 5px 10px; cursor: pointer; font-size: 12px; font-family: inherit;
@@ -1341,7 +1341,8 @@ img {
   .fp-size input[type=range] { width: 100%; }
   .fp-px { font-size: 11px; opacity: .65; font-variant-numeric: tabular-nums; }
   .fp-warn { font-size: 11px; color: #8f3320; }
-  #fpOut { width: 100%; height: 190px; margin-top: 8px; font-family: ui-monospace, monospace;
+  .fp-sub { font-size: 11px; opacity: .55; margin-top: 10px; border-top: 1px dashed #dfe4d7; padding-top: 8px; }
+  #fpOut { width: 100%; height: 200px; margin-top: 8px; font-family: ui-monospace, monospace;
            font-size: 11px; border: 1px solid #cbd2c2; border-radius: 8px; padding: 8px; display: none; }
   </style>
 
@@ -1368,7 +1369,7 @@ img {
   <script>
   (function () {
 
-    /* доступні жирності кожної родини — щоб у списку не було мертвих варіантів */
+    /* реально доступні жирності кожної родини */
     var FONTS = {
       'Manrope':              [200,300,400,500,600,700,800],
       'Montserrat':           [100,200,300,400,500,600,700,800,900],
@@ -1392,25 +1393,24 @@ img {
       { k:'hi',    sel:'.hero__hi',    name:'«Привіт!»' },
       { k:'title', sel:'.hero__title', name:'«Я МИКОЛА»' },
       { k:'descr', sel:'.hero__descr', name:'«Допомагаю…»' },
-      { k:'btn',   sel:'.hero__btn',   name:'Кнопка «Почати розмову»' },
-      { k:'note',  sel:'.hero__note',  name:'«Відповідаю особисто»' }
+      { k:'btn',   sel:'.hero__btn',   name:'Кнопка «Написати мені»' },
+      { k:'note',  sel:'.hero__note',  name:'«в особисті»' }
     ];
 
-    /* стартові значення = те, що зараз у CSS */
     var DEF = {
       mobile: {
-        hi:    { f:'Caveat',  w:400, s:9.00 },
-        title: { f:'Manrope', w:700, s:10.50 },
-        descr: { f:'Manrope', w:400, s:4.40 },
-        btn:   { f:'Manrope', w:500, s:3.10 },
-        note:  { f:'Manrope', w:400, s:2.90 }
+        hi:    { f:'Caveat',                w:400, s:9.75 },
+        title: { f:'Manrope',               w:600, s:10.50 },
+        descr: { f:'Montserrat Alternates', w:500, s:4.40 },
+        btn:   { f:'Manrope',               w:500, s:2.90, py:3.60, px:4.60 },
+        note:  { f:'Montserrat Alternates', w:500, s:2.90 }
       },
       desktop: {
-        hi:    { f:'Caveat',  w:400, s:4.30 },
-        title: { f:'Manrope', w:700, s:5.80 },
-        descr: { f:'Manrope', w:400, s:2.00 },
-        btn:   { f:'Manrope', w:500, s:1.25 },
-        note:  { f:'Manrope', w:400, s:0.95 }
+        hi:    { f:'Caveat',                w:400, s:4.30 },
+        title: { f:'Manrope',               w:600, s:4.95 },
+        descr: { f:'Montserrat Alternates', w:400, s:1.60 },
+        btn:   { f:'Manrope',               w:300, s:1.20, py:1.45, px:2.80 },
+        note:  { f:'Montserrat Alternates', w:500, s:1.00 }
       }
     };
 
@@ -1424,8 +1424,6 @@ img {
     var hint = document.getElementById('fpHint');
     var out = document.getElementById('fpOut');
 
-    /* ---------- побудова інтерфейсу ---------- */
-
     function fontOptions(cur) {
       return Object.keys(FONTS).map(function (f) {
         return '<option value="' + f + '"' + (f === cur ? ' selected' : '') + '>' + f + '</option>';
@@ -1438,23 +1436,34 @@ img {
       }).join('');
     }
 
+    function sizeRow(label, attr, val, min, max) {
+      return '<div class="fp-row"><span>' + label + '</span>' +
+        '<div class="fp-size">' +
+          '<input type="range" data-a="r_' + attr + '" min="' + min + '" max="' + max + '" step="0.05" value="' + val + '">' +
+          '<input type="number" data-a="' + attr + '" min="0" max="40" step="0.05" value="' + val.toFixed(2) + '">' +
+        '</div>' +
+        '<span class="fp-px" data-a="px_' + attr + '"></span></div>';
+    }
+
     function build() {
       groupsBox.innerHTML = ITEMS.map(function (it, i) {
         var v = state[mode][it.k];
-        return '<details class="fp-g"' + (i === 0 ? ' open' : '') + ' data-k="' + it.k + '">' +
+        var html = '<details class="fp-g"' + (i === 0 ? ' open' : '') + ' data-k="' + it.k + '">' +
           '<summary>' + it.name + '</summary>' +
           '<div class="fp-row"><span>шрифт</span>' +
             '<select data-a="f">' + fontOptions(v.f) + '</select></div>' +
           '<div class="fp-row"><span>жирність</span>' +
             '<select data-a="w">' + weightOptions(v.f, v.w) + '</select>' +
             '<span class="fp-warn" data-a="warn"></span></div>' +
-          '<div class="fp-row"><span>розмір, vw</span>' +
-            '<div class="fp-size">' +
-              '<input type="range" data-a="range" min="0.4" max="16" step="0.05" value="' + v.s + '">' +
-              '<input type="number" data-a="s" min="0.2" max="30" step="0.05" value="' + v.s.toFixed(2) + '">' +
-            '</div>' +
-            '<span class="fp-px" data-a="px"></span></div>' +
-        '</details>';
+          sizeRow('розмір тексту, vw', 's', v.s, 0.4, 16);
+
+        if (it.k === 'btn') {
+          html += sizeRow('відступ згори і знизу, vw', 'py', v.py, 0, 10) +
+                  sizeRow('відступ ліворуч і праворуч, vw', 'px', v.px, 0, 16) +
+                  '<div class="fp-sub">Висота і ширина кнопки рахуються самі: ' +
+                  'текст плюс ці відступи. <span data-a="box"></span></div>';
+        }
+        return html + '</details>';
       }).join('');
       wire();
       apply();
@@ -1465,8 +1474,6 @@ img {
         var g = groupsBox.querySelector('[data-k="' + it.k + '"]');
         var fSel = g.querySelector('[data-a="f"]');
         var wSel = g.querySelector('[data-a="w"]');
-        var rng  = g.querySelector('[data-a="range"]');
-        var num  = g.querySelector('[data-a="s"]');
 
         fSel.addEventListener('change', function () {
           var v = state[mode][it.k];
@@ -1484,26 +1491,32 @@ img {
           state[mode][it.k].w = Number(this.value); apply();
         });
 
-        rng.addEventListener('input', function () {
-          state[mode][it.k].s = Number(this.value);
-          num.value = Number(this.value).toFixed(2); apply();
-        });
-
-        num.addEventListener('input', function () {
-          var val = Number(this.value);
-          if (!isFinite(val) || val <= 0) return;
-          state[mode][it.k].s = val; rng.value = val; apply();
+        ['s', 'py', 'px'].forEach(function (attr) {
+          var num = g.querySelector('[data-a="' + attr + '"]');
+          var rng = g.querySelector('[data-a="r_' + attr + '"]');
+          if (!num || !rng) return;
+          rng.addEventListener('input', function () {
+            state[mode][it.k][attr] = Number(this.value);
+            num.value = Number(this.value).toFixed(2); apply();
+          });
+          num.addEventListener('input', function () {
+            var val = Number(this.value);
+            if (!isFinite(val) || val < 0) return;
+            state[mode][it.k][attr] = val; rng.value = val; apply();
+          });
         });
       });
     }
 
-    /* ---------- застосування ---------- */
-
     function rules(m) {
       return ITEMS.map(function (it) {
         var v = state[m][it.k];
-        return '  ' + it.sel + ' { font-family: \'' + v.f + '\', sans-serif; font-weight: ' +
-               v.w + '; font-size: ' + Number(v.s).toFixed(2) + 'vw; }';
+        var css = '  ' + it.sel + ' { font-family: \'' + v.f + '\', sans-serif; font-weight: ' +
+                  v.w + '; font-size: ' + Number(v.s).toFixed(2) + 'vw;';
+        if (it.k === 'btn') {
+          css += ' padding: ' + Number(v.py).toFixed(2) + 'vw ' + Number(v.px).toFixed(2) + 'vw;';
+        }
+        return css + ' }';
       }).join('\n');
     }
 
@@ -1513,24 +1526,34 @@ img {
         '@media (min-width: 900px) {\n' + rules('desktop') + '\n}';
 
       var vw = document.documentElement.clientWidth / 100;
+
       ITEMS.forEach(function (it) {
         var g = groupsBox.querySelector('[data-k="' + it.k + '"]');
         var v = state[mode][it.k];
-        g.querySelector('[data-a="px"]').textContent =
-          '≈ ' + Math.round(v.s * vw) + ' px при поточній ширині вікна';
+
+        ['s', 'py', 'px'].forEach(function (attr) {
+          var el = g.querySelector('[data-a="px_' + attr + '"]');
+          if (el && v[attr] !== undefined) el.textContent = '≈ ' + Math.round(v[attr] * vw) + ' px';
+        });
+
         var warn = g.querySelector('[data-a="warn"]');
         var ok = false;
         try { ok = document.fonts.check(v.w + ' 16px "' + v.f + '"', 'Привіт'); } catch (e) { ok = true; }
         warn.textContent = ok ? '' : 'кирилиця не знайдена';
       });
 
+      var btnEl = document.querySelector('.hero__btn');
+      var box = groupsBox.querySelector('[data-a="box"]');
+      if (btnEl && box) {
+        var r = btnEl.getBoundingClientRect();
+        box.textContent = 'Зараз: ' + Math.round(r.width) + ' × ' + Math.round(r.height) + ' px.';
+      }
+
       hint.textContent = (mode === 'desktop')
         ? 'Редагуєш ДЕСКТОПНУ версію (вікно від 900 px). Звузь вікно, щоб побачити мобільну.'
         : 'Редагуєш МОБІЛЬНУ версію (вікно до 900 px). Розтягни вікно, щоб побачити десктопну.';
       out.value = styleTag.textContent;
     }
-
-    /* ---------- перемикачі ---------- */
 
     document.querySelectorAll('.fp-mode button').forEach(function (b) {
       b.addEventListener('click', function () {
