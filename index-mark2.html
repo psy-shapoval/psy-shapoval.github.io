@@ -9,26 +9,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200..1000&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Manrope лежить локально у fonts/, але лише 400-800.
+       Кнопці на десктопі потрібна вага 300 - тягнемо тільки її. -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
 
   <style>
 @font-face {
@@ -263,12 +248,12 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 2vw;
-  padding: 3.6vw 4.6vw;
+  padding: 3.60vw 4.60vw;
   border-radius: 999px;
   background-color: #5f7c46;
   color: var(--color-white);
   font-family: 'Manrope', var(--font-main);
-  font-size: 2.9vw;
+  font-size: 4.30vw;
   font-weight: 500;
   line-height: 1.2;
   white-space: nowrap;
@@ -300,7 +285,7 @@ img {
   font-family: 'Montserrat Alternates', var(--font-main);
   font-weight: 500;
   color: #565a4b;
-  font-size: 2.9vw;
+  font-size: 3.55vw;
   line-height: 1.2;
 }
 
@@ -365,8 +350,8 @@ img {
     left: 10.2%;
     top: 70.0%;
     gap: 0.9vw;
-    padding: 1.45vw 2.8vw;
-    font-size: 1.2vw;
+    padding: 0.95vw 1.90vw;
+    font-size: 1.45vw;
     font-weight: 300;
     box-shadow: 0 0.45vw 1.1vw -0.4vw rgba(28, 45, 25, 0.35);
   }
@@ -380,7 +365,7 @@ img {
     left: 10.6%;
     top: 84.3%;
     gap: 0.7vw;
-    font-size: 1vw;
+    font-size: 1.35vw;
   }
 
   .hero__note svg {
@@ -1296,303 +1281,6 @@ img {
   })();
   </script>
 
-<!-- ============ ПАНЕЛЬ ПІДБОРУ — ТИМЧАСОВА ============
-       Керує шрифтом, жирністю, кеглем п'яти написів і відступами кнопки.
-       Значення зберігаються окремо для мобільної та десктопної версій.
-       «Показати CSS» видає готовий код для вставки в секцію HERO.
-       Коли підбереш — видали цей блок цілком до закриваючого коментаря. -->
-
-  <style>
-  #fp {
-    position: fixed; right: 14px; top: 14px; z-index: 9999;
-    width: 300px; max-height: 94vh; overflow-y: auto;
-    background: rgba(255,255,255,.97); border-radius: 12px;
-    padding: 12px 14px 16px;
-    box-shadow: 0 12px 34px -10px rgba(30,40,25,.55);
-    font-family: system-ui, -apple-system, sans-serif; font-size: 13px; color: #3f4038;
-  }
-  #fp.hidden { width: auto; max-height: none; padding: 8px 12px; overflow: visible; }
-  #fp.hidden .fp-body { display: none; }
-  .fp-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  #fpToggle, .fp-btn {
-    border: none; background: #5f7c46; color: #fff; border-radius: 6px;
-    padding: 5px 10px; cursor: pointer; font-size: 12px; font-family: inherit;
-  }
-  .fp-btn.sec { background: #7d8a6e; }
-  .fp-mode { display: flex; gap: 6px; margin: 10px 0 4px; }
-  .fp-mode button {
-    flex: 1; border: 1px solid #cbd2c2; background: #fff; color: #5c6553;
-    border-radius: 6px; padding: 5px; cursor: pointer; font-size: 12px; font-family: inherit;
-  }
-  .fp-mode button.on { background: #5f7c46; color: #fff; border-color: #5f7c46; }
-  .fp-hint { font-size: 11px; opacity: .65; line-height: 1.35; margin-bottom: 8px; }
-  details.fp-g { border-top: 1px solid #e6eade; padding: 8px 0 4px; }
-  details.fp-g summary { cursor: pointer; font-weight: 600; list-style: none; padding: 2px 0; }
-  details.fp-g summary::-webkit-details-marker { display: none; }
-  details.fp-g summary::before { content: '▸ '; opacity: .5; }
-  details.fp-g[open] summary::before { content: '▾ '; }
-  .fp-row { display: grid; gap: 3px; margin: 7px 0; }
-  .fp-row > span { font-size: 11px; opacity: .7; }
-  .fp-g select, .fp-g input[type=number] {
-    width: 100%; padding: 4px 6px; border-radius: 6px;
-    border: 1px solid #cbd2c2; font-size: 13px; font-family: inherit; background: #fff;
-  }
-  .fp-size { display: grid; grid-template-columns: 1fr 74px; gap: 6px; align-items: center; }
-  .fp-size input[type=range] { width: 100%; }
-  .fp-px { font-size: 11px; opacity: .65; font-variant-numeric: tabular-nums; }
-  .fp-warn { font-size: 11px; color: #8f3320; }
-  .fp-sub { font-size: 11px; opacity: .55; margin-top: 10px; border-top: 1px dashed #dfe4d7; padding-top: 8px; }
-  #fpOut { width: 100%; height: 200px; margin-top: 8px; font-family: ui-monospace, monospace;
-           font-size: 11px; border: 1px solid #cbd2c2; border-radius: 8px; padding: 8px; display: none; }
-  </style>
-
-  <div id="fp">
-    <div class="fp-top">
-      <b>Підбір шрифтів</b>
-      <button id="fpToggle" type="button">згорнути</button>
-    </div>
-    <div class="fp-body">
-      <div class="fp-mode">
-        <button type="button" data-mode="mobile">мобільна</button>
-        <button type="button" data-mode="desktop">десктоп</button>
-      </div>
-      <div class="fp-hint" id="fpHint"></div>
-      <div id="fpGroups"></div>
-      <div style="display:flex;gap:6px;margin-top:12px">
-        <button class="fp-btn" id="fpShow" type="button">Показати CSS</button>
-        <button class="fp-btn sec" id="fpReset" type="button">Скинути</button>
-      </div>
-      <textarea id="fpOut" readonly></textarea>
-    </div>
-  </div>
-
-  <script>
-  (function () {
-
-    /* реально доступні жирності кожної родини */
-    var FONTS = {
-      'Manrope':              [200,300,400,500,600,700,800],
-      'Montserrat':           [100,200,300,400,500,600,700,800,900],
-      'Montserrat Alternates':[100,200,300,400,500,600,700,800,900],
-      'Onest':                [100,200,300,400,500,600,700,800,900],
-      'Inter':                [100,200,300,400,500,600,700,800,900],
-      'Jost':                 [100,200,300,400,500,600,700,800,900],
-      'Public Sans':          [100,200,300,400,500,600,700,800,900],
-      'Nunito Sans':          [200,300,400,500,600,700,800,900,1000],
-      'Open Sans':            [300,400,500,600,700,800],
-      'Golos Text':           [400,500,600,700,800,900],
-      'Caveat':               [400,500,600,700],
-      'Caveat Brush':         [400],
-      'Marck Script':         [400],
-      'Bad Script':           [400],
-      'Neucha':               [400],
-      'Pacifico':             [400]
-    };
-
-    var ITEMS = [
-      { k:'hi',    sel:'.hero__hi',    name:'«Привіт!»' },
-      { k:'title', sel:'.hero__title', name:'«Я МИКОЛА»' },
-      { k:'descr', sel:'.hero__descr', name:'«Допомагаю…»' },
-      { k:'btn',   sel:'.hero__btn',   name:'Кнопка «ПИШІТЬ СЮДИ»' },
-      { k:'note',  sel:'.hero__note',  name:'«мій telegram»' }
-    ];
-
-    var DEF = {
-      mobile: {
-        hi:    { f:'Caveat',                w:400, s:9.75 },
-        title: { f:'Manrope',               w:600, s:10.50 },
-        descr: { f:'Montserrat Alternates', w:500, s:4.40 },
-        btn:   { f:'Manrope',               w:500, s:2.90, py:3.60, px:4.60 },
-        note:  { f:'Montserrat Alternates', w:500, s:2.90 }
-      },
-      desktop: {
-        hi:    { f:'Caveat',                w:400, s:4.30 },
-        title: { f:'Manrope',               w:600, s:4.95 },
-        descr: { f:'Montserrat Alternates', w:400, s:1.60 },
-        btn:   { f:'Manrope',               w:300, s:1.20, py:1.45, px:2.80 },
-        note:  { f:'Montserrat Alternates', w:500, s:1.00 }
-      }
-    };
-
-    var state = JSON.parse(JSON.stringify(DEF));
-    var mode = window.innerWidth >= 900 ? 'desktop' : 'mobile';
-
-    var styleTag = document.createElement('style');
-    document.head.appendChild(styleTag);
-
-    var groupsBox = document.getElementById('fpGroups');
-    var hint = document.getElementById('fpHint');
-    var out = document.getElementById('fpOut');
-
-    function fontOptions(cur) {
-      return Object.keys(FONTS).map(function (f) {
-        return '<option value="' + f + '"' + (f === cur ? ' selected' : '') + '>' + f + '</option>';
-      }).join('');
-    }
-
-    function weightOptions(font, cur) {
-      return FONTS[font].map(function (w) {
-        return '<option value="' + w + '"' + (w == cur ? ' selected' : '') + '>' + w + '</option>';
-      }).join('');
-    }
-
-    function sizeRow(label, attr, val, min, max) {
-      return '<div class="fp-row"><span>' + label + '</span>' +
-        '<div class="fp-size">' +
-          '<input type="range" data-a="r_' + attr + '" min="' + min + '" max="' + max + '" step="0.05" value="' + val + '">' +
-          '<input type="number" data-a="' + attr + '" min="0" max="40" step="0.05" value="' + val.toFixed(2) + '">' +
-        '</div>' +
-        '<span class="fp-px" data-a="px_' + attr + '"></span></div>';
-    }
-
-    function build() {
-      groupsBox.innerHTML = ITEMS.map(function (it, i) {
-        var v = state[mode][it.k];
-        var html = '<details class="fp-g"' + (i === 0 ? ' open' : '') + ' data-k="' + it.k + '">' +
-          '<summary>' + it.name + '</summary>' +
-          '<div class="fp-row"><span>шрифт</span>' +
-            '<select data-a="f">' + fontOptions(v.f) + '</select></div>' +
-          '<div class="fp-row"><span>жирність</span>' +
-            '<select data-a="w">' + weightOptions(v.f, v.w) + '</select>' +
-            '<span class="fp-warn" data-a="warn"></span></div>' +
-          sizeRow('розмір тексту, vw', 's', v.s, 0.4, 16);
-
-        if (it.k === 'btn') {
-          html += sizeRow('відступ згори і знизу, vw', 'py', v.py, 0, 10) +
-                  sizeRow('відступ ліворуч і праворуч, vw', 'px', v.px, 0, 16) +
-                  '<div class="fp-sub">Висота і ширина кнопки рахуються самі: ' +
-                  'текст плюс ці відступи. <span data-a="box"></span></div>';
-        }
-        return html + '</details>';
-      }).join('');
-      wire();
-      apply();
-    }
-
-    function wire() {
-      ITEMS.forEach(function (it) {
-        var g = groupsBox.querySelector('[data-k="' + it.k + '"]');
-        var fSel = g.querySelector('[data-a="f"]');
-        var wSel = g.querySelector('[data-a="w"]');
-
-        fSel.addEventListener('change', function () {
-          var v = state[mode][it.k];
-          v.f = this.value;
-          if (FONTS[v.f].indexOf(Number(v.w)) === -1) {
-            v.w = FONTS[v.f].reduce(function (a, b) {
-              return Math.abs(b - v.w) < Math.abs(a - v.w) ? b : a;
-            });
-          }
-          wSel.innerHTML = weightOptions(v.f, v.w);
-          apply();
-        });
-
-        wSel.addEventListener('change', function () {
-          state[mode][it.k].w = Number(this.value); apply();
-        });
-
-        ['s', 'py', 'px'].forEach(function (attr) {
-          var num = g.querySelector('[data-a="' + attr + '"]');
-          var rng = g.querySelector('[data-a="r_' + attr + '"]');
-          if (!num || !rng) return;
-          rng.addEventListener('input', function () {
-            state[mode][it.k][attr] = Number(this.value);
-            num.value = Number(this.value).toFixed(2); apply();
-          });
-          num.addEventListener('input', function () {
-            var val = Number(this.value);
-            if (!isFinite(val) || val < 0) return;
-            state[mode][it.k][attr] = val; rng.value = val; apply();
-          });
-        });
-      });
-    }
-
-    function rules(m) {
-      return ITEMS.map(function (it) {
-        var v = state[m][it.k];
-        var css = '  ' + it.sel + ' { font-family: \'' + v.f + '\', sans-serif; font-weight: ' +
-                  v.w + '; font-size: ' + Number(v.s).toFixed(2) + 'vw;';
-        if (it.k === 'btn') {
-          css += ' padding: ' + Number(v.py).toFixed(2) + 'vw ' + Number(v.px).toFixed(2) + 'vw;';
-        }
-        return css + ' }';
-      }).join('\n');
-    }
-
-    function apply() {
-      styleTag.textContent =
-        '@media (max-width: 899.98px) {\n' + rules('mobile') + '\n}\n' +
-        '@media (min-width: 900px) {\n' + rules('desktop') + '\n}';
-
-      var vw = document.documentElement.clientWidth / 100;
-
-      ITEMS.forEach(function (it) {
-        var g = groupsBox.querySelector('[data-k="' + it.k + '"]');
-        var v = state[mode][it.k];
-
-        ['s', 'py', 'px'].forEach(function (attr) {
-          var el = g.querySelector('[data-a="px_' + attr + '"]');
-          if (el && v[attr] !== undefined) el.textContent = '≈ ' + Math.round(v[attr] * vw) + ' px';
-        });
-
-        var warn = g.querySelector('[data-a="warn"]');
-        var ok = false;
-        try { ok = document.fonts.check(v.w + ' 16px "' + v.f + '"', 'Привіт'); } catch (e) { ok = true; }
-        warn.textContent = ok ? '' : 'кирилиця не знайдена';
-      });
-
-      var btnEl = document.querySelector('.hero__btn');
-      var box = groupsBox.querySelector('[data-a="box"]');
-      if (btnEl && box) {
-        var r = btnEl.getBoundingClientRect();
-        box.textContent = 'Зараз: ' + Math.round(r.width) + ' × ' + Math.round(r.height) + ' px.';
-      }
-
-      hint.textContent = (mode === 'desktop')
-        ? 'Редагуєш ДЕСКТОПНУ версію (вікно від 900 px). Звузь вікно, щоб побачити мобільну.'
-        : 'Редагуєш МОБІЛЬНУ версію (вікно до 900 px). Розтягни вікно, щоб побачити десктопну.';
-      out.value = styleTag.textContent;
-    }
-
-    document.querySelectorAll('.fp-mode button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        mode = this.dataset.mode;
-        document.querySelectorAll('.fp-mode button').forEach(function (x) {
-          x.classList.toggle('on', x.dataset.mode === mode);
-        });
-        build();
-      });
-    });
-
-    document.getElementById('fpShow').addEventListener('click', function () {
-      out.style.display = out.style.display === 'block' ? 'none' : 'block';
-      this.textContent = out.style.display === 'block' ? 'Сховати CSS' : 'Показати CSS';
-      if (out.style.display === 'block') { out.select(); }
-    });
-
-    document.getElementById('fpReset').addEventListener('click', function () {
-      state = JSON.parse(JSON.stringify(DEF)); build();
-    });
-
-    var fp = document.getElementById('fp'), tg = document.getElementById('fpToggle');
-    tg.addEventListener('click', function () {
-      fp.classList.toggle('hidden');
-      tg.textContent = fp.classList.contains('hidden') ? 'шрифти' : 'згорнути';
-    });
-
-    window.addEventListener('resize', apply);
-
-    document.querySelectorAll('.fp-mode button').forEach(function (x) {
-      x.classList.toggle('on', x.dataset.mode === mode);
-    });
-
-    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(build); }
-    build();
-  })();
-  </script>
-
-  <!-- ============ КІНЕЦЬ ПАНЕЛІ ============ -->
 
 </body>
 </html>
