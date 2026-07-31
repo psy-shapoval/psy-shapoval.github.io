@@ -9,11 +9,22 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500&display=swap" rel="stylesheet">
-  <!-- Manrope лежить локально у fonts/, але лише 400-800.
-       Кнопці на десктопі потрібна вага 300 - тягнемо тільки її. -->
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200..1000&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
 @font-face {
@@ -192,9 +203,7 @@ img {
   height: auto;
   margin-top: -1.2vw;
   fill: #536d40;
-  stroke: #536d40;
-  stroke-width: 1;
-  stroke-linejoin: round;
+  stroke: none;
 }
 
 /* «Я МИКОЛА» */
@@ -226,7 +235,7 @@ img {
 
 .hero__rule {
   left: 9.3%;
-  top: 39.6%;
+  top: 38.0%;
   width: 15.5%;
 }
 
@@ -235,16 +244,14 @@ img {
   width: 100%;
   height: auto;
   fill: #8a9678;
-  stroke: #8a9678;
-  stroke-width: 0.5;
-  stroke-linejoin: round;
+  stroke: none;
 }
 
 /* кнопка: розмір задається текстом + відступами */
 
 .hero__btn {
   left: 8.6%;
-  top: 44.2%;
+  top: 42.2%;
   display: inline-flex;
   align-items: center;
   gap: 2vw;
@@ -278,7 +285,7 @@ img {
 
 .hero__note {
   left: 9.3%;
-  top: 52.2%;
+  top: 50.8%;
   display: flex;
   align-items: flex-end;
   gap: 1.6vw;
@@ -290,13 +297,15 @@ img {
 }
 
 .hero__note svg {
-  width: 2.5vw;
-  height: 7.4vw;
+  width: 2.8vw;
+  height: auto;
+  margin-bottom: 0.33em;
   flex: none;
   fill: none;
   stroke: #565a4b;
   stroke-width: 2;
   stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* ---------- ДЕСКТОП ---------- */
@@ -319,7 +328,6 @@ img {
   .hero__swash {
     width: 54%;
     margin-top: -0.5vw;
-    stroke-width: 0.5;
   }
 
   .hero__title {
@@ -338,17 +346,15 @@ img {
 
   .hero__rule {
     left: 10.2%;
-    top: 63.5%;
+    top: 60.5%;
     width: 4.95%;
   }
 
-  .hero__rule svg {
-    stroke-width: 1;
-  }
+
 
   .hero__btn {
     left: 10.2%;
-    top: 70.0%;
+    top: 66.7%;
     gap: 0.9vw;
     padding: 0.95vw 1.90vw;
     font-size: 1.45vw;
@@ -363,15 +369,15 @@ img {
 
   .hero__note {
     left: 10.6%;
-    top: 84.3%;
+    top: 77.7%;
     gap: 0.7vw;
     font-size: 1.35vw;
   }
 
   .hero__note svg {
-    width: 0.92vw;
-    height: 2.95vw;
-    stroke-width: 2.4;
+    width: 1.1vw;
+    height: auto;
+    stroke-width: 2;
   }
 }
 
@@ -488,6 +494,42 @@ img {
 
 .about-intro__descr em {
   font-style: italic;
+}
+
+/* ============ ДРУГИЙ ЕКРАН ============ */
+
+.screen2 {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.screen2 .section-title {
+  font-family: var(--s2-title-f, 'Manrope'), sans-serif;
+  font-weight: var(--s2-title-w, 800);
+  font-size: var(--s2-title-s, 26px);
+}
+
+.screen2 .reasons__list {
+  margin-top: 40px;
+}
+
+.screen2 .reasons__title {
+  font-family: var(--s2-name-f, 'Manrope'), sans-serif;
+  font-weight: var(--s2-name-w, 600);
+  font-size: var(--s2-name-s, 18px);
+}
+
+.screen2 .reasons__descr {
+  font-family: var(--s2-text-f, 'Manrope'), sans-serif;
+  font-weight: var(--s2-text-w, 400);
+  font-size: var(--s2-text-s, 17px);
+}
+
+@media (min-width: 900px) {
+  .screen2 { padding: 90px 0; }
+  .screen2 .section-title { font-size: var(--s2-title-s, 44px); }
+  .screen2 .reasons__title { font-size: var(--s2-name-s, 26px); }
+  .screen2 .reasons__descr { font-size: var(--s2-text-s, 17px); }
 }
 
 /* ============ "Про мене" ============ */
@@ -975,8 +1017,8 @@ img {
   <section class="hero">
 
     <p class="hero__el hero__hi">Привіт!
-      <svg class="hero__swash" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M4 15.0 C 50 10.6, 130 5.4, 196 2.1 L 196 3.1 C 130 6.6, 50 12.2, 4 16.3 Z"/>
+      <svg class="hero__swash" viewBox="0 0 200 16.7" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0.08 15.51 L7.23 14.88 L14.46 13.77 L21.58 12.57 L28.92 11.55 L35.90 9.94 L49.28 8.81 L56.38 8.22 L63.49 7.49 L70.63 6.80 L77.79 6.16 L84.92 5.44 L92.04 4.94 L99.16 4.48 L106.33 4.03 L113.44 3.45 L120.56 3.17 L127.72 2.80 L134.87 2.46 L141.99 2.16 L149.11 2.09 L156.25 2.09 L163.39 2.09 L170.52 2.05 L177.66 2.10 L184.81 2.19 L191.96 2.34 L199.09 2.48 L199.99 2.51 L200.01 1.27 L199.12 1.26 L191.97 1.22 L184.83 1.06 L177.69 0.81 L170.55 0.52 L163.39 0.31 L156.25 0.31 L149.11 0.31 L141.94 0.28 L134.78 0.58 L127.63 0.92 L120.51 1.14 L113.35 1.45 L106.17 1.82 L99.06 2.30 L91.89 2.82 L84.73 3.42 L77.57 4.11 L70.44 4.74 L63.29 5.41 L56.12 6.08 L48.94 6.77 L35.53 7.98 L28.22 9.60 L21.28 10.62 L14.11 11.89 L7.05 12.99 L-0.08 13.67 Z"/>
       </svg>
     </p>
 
@@ -985,8 +1027,8 @@ img {
     <p class="hero__el hero__descr">Допомагаю вийти<br>з депресії та перестати<br>«заїдати» емоції</p>
 
     <span class="hero__el hero__rule">
-      <svg viewBox="0 0 120 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M3 10.0 C 30 7.6, 75 4.8, 117 2.6 L 117 3.9 C 75 6.1, 30 8.9, 3 11.4 Z"/>
+      <svg viewBox="0 -0.6 120 10.6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0.01 8.58 L3.70 8.47 L7.33 8.26 L10.95 8.08 L14.66 7.84 L18.30 7.51 L21.94 7.19 L25.57 6.84 L29.16 6.56 L32.84 6.25 L36.48 5.88 L40.07 5.56 L43.69 5.41 L47.39 5.17 L51.03 4.82 L54.66 4.48 L58.24 4.25 L61.88 4.08 L65.51 3.84 L69.17 3.61 L72.78 3.38 L76.42 3.19 L80.05 3.01 L83.69 2.84 L87.33 2.67 L90.96 2.49 L94.57 2.38 L98.18 2.37 L101.82 2.41 L105.45 2.41 L109.09 2.41 L112.73 2.41 L116.36 2.41 L120.00 2.41 L120.00 -0.01 L116.36 -0.01 L112.73 -0.01 L109.09 -0.01 L105.45 -0.01 L101.82 -0.01 L98.18 0.03 L94.52 0.08 L90.85 0.20 L87.22 0.37 L83.58 0.54 L79.95 0.72 L76.31 0.89 L72.67 1.04 L69.01 1.27 L65.40 1.50 L61.76 1.61 L58.12 1.79 L54.43 2.02 L50.79 2.37 L47.16 2.71 L43.58 2.99 L39.93 3.19 L36.25 3.51 L32.61 3.83 L29.02 4.10 L25.34 4.39 L21.70 4.73 L18.07 5.10 L14.43 5.47 L10.87 5.71 L7.21 5.84 L3.57 6.05 L-0.01 6.16 Z"/>
       </svg>
     </span>
 
@@ -996,36 +1038,38 @@ img {
     </a>
 
     <div class="hero__el hero__note">
-      <svg viewBox="0 0 22 62" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M13 4 C 8 12, 5.2 21, 5.6 32 C 6 43, 11 52.5, 19 59"/>
-        <path d="M13 4 C 10.6 6.2, 8.8 8.6, 7.5 11.6"/>
-        <path d="M13 4 C 14.4 7.2, 15.1 10.2, 15.3 13.8"/>
+      <svg viewBox="-1.2 -1.2 24.4 59.4" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8.6 0.6 C 6.4 3.6, 5.2 6.2, 4.4 9.4 C 3.2 14, 2 19, 1.3 24.5 C 0.7 29.5, 1.1 34, 2.3 38.4 C 3.6 43, 6.2 47.4, 10.3 51.4 C 13.2 54.2, 16.2 55.9, 19 56.8"/>
+        <path d="M8.6 0.6 C 6.2 2.2, 3.6 3.9, 0.7 5.6"/>
+        <path d="M8.6 0.6 C 9.6 3.4, 10.2 6.6, 10.5 11.4"/>
       </svg>
       <span>мій telegram</span>
     </div>
 
   </section>
 
-  <div style="display: none;">
-  <!-- ДО МЕНЕ ЗВЕРТАЮТЬСЯ КОЛИ -->
-  <section class="intro-q">
+  <!-- ДРУГИЙ ЕКРАН: ДО МЕНЕ ЗВЕРТАЮТЬСЯ, КОЛИ… -->
+  <section class="screen2">
     <div class="container narrow-960 text-center">
       <h2 class="section-title">До мене звертаються, коли…</h2>
     </div>
-  </section>
-
-  <!-- ПРИЧИНИ -->
-  <section class="reasons">
     <div class="container narrow-960">
       <ul class="reasons__list">
         <li class="reasons__item">
           <span class="reasons__bullet"></span>
           <div>
             <div class="reasons__title">ТРИВОЖНО-ДЕПРЕСИВНИЙ РОЗЛАД</div>
-            <div class="reasons__descr">Панічні атаки, головний біль напруги, СПК, ВСД та ін.<br><strong>Психотерапія глибинних психологічних причин.</strong></strong></div>
+            <div class="reasons__descr">Панічні атаки, головний біль напруги, СПК, ВСД та ін.<br><strong>Психотерапія глибинних психологічних причин.</strong></div>
           </div>
         </li>
-         <li class="reasons__item">
+        <li class="reasons__item">
+          <span class="reasons__bullet"></span>
+          <div>
+            <div class="reasons__title">БІЛЬ У СТОСУНКАХ</div>
+            <div class="reasons__descr">Аб'юз, ревнощі, зрада, емоційні гойдалки, ігнор, розставання.<br><strong>Допомагаю пережити кризу та повернути віру в себе.</strong></div>
+          </div>
+        </li>
+        <li class="reasons__item">
           <span class="reasons__bullet"></span>
           <div>
             <div class="reasons__title">ПЕРЕЇДАННЯ ТА ЗРИВИ</div>
@@ -1035,29 +1079,11 @@ img {
         <li class="reasons__item">
           <span class="reasons__bullet"></span>
           <div>
-            <div class="reasons__title">БІЛЬ У СТОСУНКАХ</div>
-            <div class="reasons__descr">З партнером, батьками, колегами, дітьми.<br><strong>Допомагаю пережити кризу та повернути віру в себе.</strong></div>
-          </div>
-        </li>  
-       
-           <li class="reasons__item">
-          <span class="reasons__bullet"></span>
-          <div>
             <div class="reasons__title">та інші запити.</div>
-            <div class="reasons__descr">Напишіть, що вас турбує — я відповім чи працюю з таким.</strong></div>
+            <div class="reasons__descr">Напишіть, що вас турбує — я відповім чи працюю з таким.</div>
           </div>
-        </li>  
-        </ul>
-    </div>
-  </section>
-</div>
-  <!-- ПРИВІТ Я МИКОЛА -->
-  <section class="about-intro">
-    <div class="container narrow-960">
-      <h2 class="about-intro__title">ПРИВІТ! Я МИКОЛА,</h2>
-      <div class="about-intro__descr">
-        психолог, працюю у підході <br><strong>клієнтоцентрованої та експірієнтальної психотерапії.</strong> За потреби — з елементами КПТ
-      </div>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -1281,6 +1307,188 @@ img {
   })();
   </script>
 
+
+<!-- ========== ПАНЕЛЬ ДРУГОГО ЕКРАНА — ТИМЧАСОВА ==========
+       Керує трьома групами тексту в блоці «До мене звертаються, коли…».
+       Розміри тут у пікселях (як і решта сторінки нижче першого екрана).
+       «Показати CSS» видає готовий код. Коли підбереш — видали цей блок. -->
+
+  <style>
+  #s2p {
+    position: fixed; left: 14px; bottom: 14px; z-index: 9999;
+    width: 290px; max-height: 88vh; overflow-y: auto;
+    background: rgba(255,255,255,.97); border-radius: 12px; padding: 12px 14px 16px;
+    box-shadow: 0 12px 34px -10px rgba(30,40,25,.55);
+    font-family: system-ui, -apple-system, sans-serif; font-size: 13px; color: #3f4038;
+  }
+  #s2p.hidden { width: auto; max-height: none; padding: 8px 12px; overflow: visible; }
+  #s2p.hidden .s2-body { display: none; }
+  .s2-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  #s2Toggle, .s2-btn { border: none; background: #107B57; color: #fff; border-radius: 6px;
+                       padding: 5px 10px; cursor: pointer; font-size: 12px; font-family: inherit; }
+  .s2-btn.sec { background: #7d8a6e; }
+  .s2-mode { display: flex; gap: 6px; margin: 10px 0 4px; }
+  .s2-mode button { flex: 1; border: 1px solid #cbd2c2; background: #fff; color: #5c6553;
+                    border-radius: 6px; padding: 5px; cursor: pointer; font-size: 12px; font-family: inherit; }
+  .s2-mode button.on { background: #107B57; color: #fff; border-color: #107B57; }
+  .s2-hint { font-size: 11px; opacity: .65; line-height: 1.35; margin-bottom: 8px; }
+  details.s2-g { border-top: 1px solid #e6eade; padding: 8px 0 4px; }
+  details.s2-g summary { cursor: pointer; font-weight: 600; list-style: none; padding: 2px 0; }
+  details.s2-g summary::-webkit-details-marker { display: none; }
+  details.s2-g summary::before { content: '▸ '; opacity: .5; }
+  details.s2-g[open] summary::before { content: '▾ '; }
+  .s2-row { display: grid; gap: 3px; margin: 7px 0; }
+  .s2-row > span { font-size: 11px; opacity: .7; }
+  .s2-g select, .s2-g input[type=number] { width: 100%; padding: 4px 6px; border-radius: 6px;
+    border: 1px solid #cbd2c2; font-size: 13px; font-family: inherit; background: #fff; }
+  .s2-size { display: grid; grid-template-columns: 1fr 70px; gap: 6px; align-items: center; }
+  .s2-warn { font-size: 11px; color: #8f3320; }
+  #s2Out { width: 100%; height: 170px; margin-top: 8px; font-family: ui-monospace, monospace;
+           font-size: 11px; border: 1px solid #cbd2c2; border-radius: 8px; padding: 8px; display: none; }
+  </style>
+
+  <div id="s2p">
+    <div class="s2-top"><b>Другий екран</b><button id="s2Toggle" type="button">згорнути</button></div>
+    <div class="s2-body">
+      <div class="s2-mode">
+        <button type="button" data-mode="mobile">мобільна</button>
+        <button type="button" data-mode="desktop">десктоп</button>
+      </div>
+      <div class="s2-hint" id="s2Hint"></div>
+      <div id="s2Groups"></div>
+      <div style="display:flex;gap:6px;margin-top:12px">
+        <button class="s2-btn" id="s2Show" type="button">Показати CSS</button>
+        <button class="s2-btn sec" id="s2Reset" type="button">Скинути</button>
+      </div>
+      <textarea id="s2Out" readonly></textarea>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var FONTS = {
+      'Manrope':[200,300,400,500,600,700,800],
+      'Montserrat':[100,200,300,400,500,600,700,800,900],
+      'Montserrat Alternates':[100,200,300,400,500,600,700,800,900],
+      'Onest':[100,200,300,400,500,600,700,800,900],
+      'Inter':[100,200,300,400,500,600,700,800,900],
+      'Jost':[100,200,300,400,500,600,700,800,900],
+      'Public Sans':[100,200,300,400,500,600,700,800,900],
+      'Nunito Sans':[200,300,400,500,600,700,800,900,1000],
+      'Open Sans':[300,400,500,600,700,800],
+      'Golos Text':[400,500,600,700,800,900],
+      'Caveat':[400,500,600,700],
+      'Caveat Brush':[400],'Marck Script':[400],'Bad Script':[400],'Neucha':[400],'Pacifico':[400]
+    };
+
+    var ITEMS = [
+      { k:'title', sel:'.screen2 .section-title',  name:'Заголовок «До мене звертаються…»' },
+      { k:'name',  sel:'.screen2 .reasons__title', name:'Назва запиту (зелена)' },
+      { k:'text',  sel:'.screen2 .reasons__descr', name:'Опис під назвою' }
+    ];
+
+    var DEF = {
+      mobile:  { title:{f:'Manrope',w:800,s:26}, name:{f:'Manrope',w:600,s:18}, text:{f:'Manrope',w:400,s:17} },
+      desktop: { title:{f:'Manrope',w:800,s:44}, name:{f:'Manrope',w:600,s:26}, text:{f:'Manrope',w:400,s:17} }
+    };
+
+    var state = JSON.parse(JSON.stringify(DEF));
+    var mode = window.innerWidth >= 900 ? 'desktop' : 'mobile';
+    var styleTag = document.createElement('style'); document.head.appendChild(styleTag);
+    var box = document.getElementById('s2Groups'), hint = document.getElementById('s2Hint'), out = document.getElementById('s2Out');
+
+    function fOpts(c){ return Object.keys(FONTS).map(function(f){
+      return '<option value="'+f+'"'+(f===c?' selected':'')+'>'+f+'</option>'; }).join(''); }
+    function wOpts(f,c){ return FONTS[f].map(function(w){
+      return '<option value="'+w+'"'+(w==c?' selected':'')+'>'+w+'</option>'; }).join(''); }
+
+    function build() {
+      box.innerHTML = ITEMS.map(function (it, i) {
+        var v = state[mode][it.k];
+        return '<details class="s2-g"'+(i===0?' open':'')+' data-k="'+it.k+'">'+
+          '<summary>'+it.name+'</summary>'+
+          '<div class="s2-row"><span>шрифт</span><select data-a="f">'+fOpts(v.f)+'</select></div>'+
+          '<div class="s2-row"><span>жирність</span><select data-a="w">'+wOpts(v.f,v.w)+'</select>'+
+            '<span class="s2-warn" data-a="warn"></span></div>'+
+          '<div class="s2-row"><span>розмір, px</span><div class="s2-size">'+
+            '<input type="range" data-a="r" min="10" max="80" step="1" value="'+v.s+'">'+
+            '<input type="number" data-a="s" min="8" max="120" step="1" value="'+v.s+'"></div></div>'+
+        '</details>';
+      }).join('');
+      wire(); apply();
+    }
+
+    function wire() {
+      ITEMS.forEach(function (it) {
+        var g = box.querySelector('[data-k="'+it.k+'"]');
+        var fs = g.querySelector('[data-a="f"]'), ws = g.querySelector('[data-a="w"]');
+        var rn = g.querySelector('[data-a="r"]'), nm = g.querySelector('[data-a="s"]');
+        fs.addEventListener('change', function () {
+          var v = state[mode][it.k]; v.f = this.value;
+          if (FONTS[v.f].indexOf(Number(v.w)) === -1)
+            v.w = FONTS[v.f].reduce(function(a,b){ return Math.abs(b-v.w)<Math.abs(a-v.w)?b:a; });
+          ws.innerHTML = wOpts(v.f, v.w); apply();
+        });
+        ws.addEventListener('change', function(){ state[mode][it.k].w = Number(this.value); apply(); });
+        rn.addEventListener('input', function(){ state[mode][it.k].s = Number(this.value); nm.value = this.value; apply(); });
+        nm.addEventListener('input', function(){
+          var v = Number(this.value); if(!isFinite(v)||v<=0) return;
+          state[mode][it.k].s = v; rn.value = v; apply();
+        });
+      });
+    }
+
+    function rules(m) {
+      return ITEMS.map(function (it) {
+        var v = state[m][it.k];
+        return '  ' + it.sel + ' { font-family: \'' + v.f + '\', sans-serif; font-weight: ' +
+               v.w + '; font-size: ' + v.s + 'px; }';
+      }).join('\n');
+    }
+
+    function apply() {
+      styleTag.textContent =
+        '@media (max-width: 899.98px) {\n' + rules('mobile') + '\n}\n' +
+        '@media (min-width: 900px) {\n' + rules('desktop') + '\n}';
+      ITEMS.forEach(function (it) {
+        var g = box.querySelector('[data-k="'+it.k+'"]'), v = state[mode][it.k];
+        var ok = false;
+        try { ok = document.fonts.check(v.w + ' 16px "' + v.f + '"', 'Привіт'); } catch (e) { ok = true; }
+        g.querySelector('[data-a="warn"]').textContent = ok ? '' : 'кирилиця не знайдена';
+      });
+      hint.textContent = (mode === 'desktop')
+        ? 'Редагуєш ДЕСКТОПНУ версію (вікно від 900 px).'
+        : 'Редагуєш МОБІЛЬНУ версію (вікно до 900 px).';
+      out.value = styleTag.textContent;
+    }
+
+    document.querySelectorAll('.s2-mode button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        mode = this.dataset.mode;
+        document.querySelectorAll('.s2-mode button').forEach(function(x){ x.classList.toggle('on', x.dataset.mode===mode); });
+        build();
+      });
+      b.classList.toggle('on', b.dataset.mode === mode);
+    });
+    document.getElementById('s2Show').addEventListener('click', function () {
+      out.style.display = out.style.display === 'block' ? 'none' : 'block';
+      this.textContent = out.style.display === 'block' ? 'Сховати CSS' : 'Показати CSS';
+      if (out.style.display === 'block') out.select();
+    });
+    document.getElementById('s2Reset').addEventListener('click', function () {
+      state = JSON.parse(JSON.stringify(DEF)); build();
+    });
+    var pn = document.getElementById('s2p'), tg = document.getElementById('s2Toggle');
+    tg.addEventListener('click', function () {
+      pn.classList.toggle('hidden');
+      tg.textContent = pn.classList.contains('hidden') ? 'екран 2' : 'згорнути';
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+    build();
+  })();
+  </script>
+
+  <!-- ========== КІНЕЦЬ ПАНЕЛІ ДРУГОГО ЕКРАНА ========== -->
 
 </body>
 </html>
