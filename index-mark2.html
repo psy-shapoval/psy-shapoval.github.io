@@ -13,7 +13,22 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Onest:wght@300;400;500&family=Nunito+Sans:wght@300;400;500&family=Golos+Text:wght@400;500&family=Open+Sans:wght@300;400;500&family=Inter:wght@300;400;500&family=Jost:wght@300;400;500&family=Public+Sans:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200..1000&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
 @font-face {
@@ -62,10 +77,6 @@
   --color-accent-hover: #3f8bd1;
   --color-green: #3e5b49;      /* колір ціни / акцентних крапок */
   --color-white: #ffffff;
-
-  --font-script: 'Caveat';
-  --font-body: 'Manrope';
-  --body-weight: 400;
 
   --font-main: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
@@ -158,8 +169,7 @@ img {
 
 /* ============ HERO ============ */
 /* Мобільна версія — базові правила, десктоп — у медіазапиті нижче.
-   Позиції у % від секції (прив'язані до фону), кеглі у vw —
-   перший екран масштабується цілком, як єдина картинка. */
+   Позиції у % від секції (прив'язані до фону), кеглі у vw. */
 
 .hero {
   position: relative;
@@ -178,13 +188,13 @@ img {
   margin: 0;
 }
 
-/* «Привіт!» + мальований розчерк */
+/* «Привіт!» + розчерк */
 
 .hero__hi {
   left: 11.6%;
   top: 8.0%;
-  width: 40%;
-  font-family: var(--font-script), cursive;
+  width: 42%;
+  font-family: 'Caveat', cursive;
   font-weight: 400;
   font-size: 9vw;
   line-height: 1.05;
@@ -193,13 +203,13 @@ img {
 
 .hero__swash {
   display: block;
-  width: 72%;
+  width: 58%;
   height: auto;
-  margin-top: -0.6vw;
-  fill: none;
+  margin-top: -0.8vw;
+  fill: #536d40;
   stroke: #536d40;
-  stroke-width: 4;
-  stroke-linecap: round;
+  stroke-width: 1;
+  stroke-linejoin: round;
 }
 
 /* «Я МИКОЛА» */
@@ -207,7 +217,7 @@ img {
 .hero__title {
   left: 9.3%;
   top: 17.0%;
-  font-family: var(--font-main);
+  font-family: 'Manrope', var(--font-main);
   font-weight: 700;
   font-size: 10.5vw;
   line-height: 1;
@@ -220,14 +230,14 @@ img {
 .hero__descr {
   left: 9.3%;
   top: 26.2%;
-  font-family: var(--font-body), var(--font-main);
-  font-weight: var(--body-weight, 400);
+  font-family: 'Manrope', var(--font-main);
+  font-weight: 400;
   font-size: 4.4vw;
   line-height: 1.28;
   color: #3f4038;
 }
 
-/* мальована риска над кнопкою */
+/* риска над кнопкою */
 
 .hero__rule {
   left: 9.3%;
@@ -239,10 +249,10 @@ img {
   display: block;
   width: 100%;
   height: auto;
-  fill: none;
+  fill: #8a9678;
   stroke: #8a9678;
-  stroke-width: 3;
-  stroke-linecap: round;
+  stroke-width: 0.4;
+  stroke-linejoin: round;
 }
 
 /* кнопка */
@@ -257,7 +267,7 @@ img {
   border-radius: 999px;
   background-color: #5f7c46;
   color: var(--color-white);
-  font-family: var(--font-body), var(--font-main);
+  font-family: 'Manrope', var(--font-main);
   font-size: 3.1vw;
   font-weight: 500;
   line-height: 1.2;
@@ -279,30 +289,29 @@ img {
   flex: none;
 }
 
-/* мальована стрілка + «Відповідаю особисто» */
+/* стрілка + «Відповідаю особисто» */
 
 .hero__note {
-  left: 9.0%;
-  top: 52.4%;
+  left: 9.3%;
+  top: 52.2%;
   display: flex;
   align-items: flex-end;
-  gap: 1.2vw;
-  font-family: var(--font-body), var(--font-main);
-  font-weight: var(--body-weight, 400);
+  gap: 1.6vw;
+  font-family: 'Manrope', var(--font-main);
+  font-weight: 400;
   color: #565a4b;
   font-size: 2.9vw;
   line-height: 1.2;
 }
 
 .hero__note svg {
-  width: 4vw;
-  height: 6.2vw;
+  width: 2.5vw;
+  height: 7.4vw;
   flex: none;
   fill: none;
   stroke: #565a4b;
-  stroke-width: 2.4;
+  stroke-width: 2;
   stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 /* ---------- ДЕСКТОП ---------- */
@@ -318,13 +327,14 @@ img {
   .hero__hi {
     left: 10.3%;
     top: 11.8%;
-    width: 20%;
+    width: 21%;
     font-size: 4.3vw;
   }
 
   .hero__swash {
-    margin-top: -0.3vw;
-    stroke-width: 4.5;
+    width: 54%;
+    margin-top: -0.35vw;
+    stroke-width: 0.5;
   }
 
   .hero__title {
@@ -343,11 +353,11 @@ img {
   .hero__rule {
     left: 10.2%;
     top: 63.5%;
-    width: 5%;
+    width: 4.8%;
   }
 
   .hero__rule svg {
-    stroke-width: 3.5;
+    stroke-width: 0.2;
   }
 
   .hero__btn {
@@ -366,15 +376,15 @@ img {
 
   .hero__note {
     left: 10.6%;
-    top: 84.5%;
-    gap: 0.6vw;
+    top: 84.3%;
+    gap: 0.7vw;
     font-size: 0.95vw;
   }
 
   .hero__note svg {
-    width: 1.6vw;
-    height: 2.5vw;
-    stroke-width: 2.6;
+    width: 0.92vw;
+    height: 2.95vw;
+    stroke-width: 2.4;
   }
 }
 
@@ -978,8 +988,8 @@ img {
   <section class="hero">
 
     <p class="hero__el hero__hi">Привіт!
-      <svg class="hero__swash" viewBox="0 0 200 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M5 15 C 38 6.5, 96 4, 142 6.5 C 164 7.8, 182 10, 196 12.5"/>
+      <svg class="hero__swash" viewBox="0 0 200 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M4 11.4 C 44 5.4, 116 3.2, 196 5.6 L 196 6.4 C 116 4.4, 44 6.6, 4 12.2 Z"/>
       </svg>
     </p>
 
@@ -988,8 +998,8 @@ img {
     <p class="hero__el hero__descr">Допомагаю вийти<br>з депресії та перестати<br>«заїдати» емоції</p>
 
     <span class="hero__el hero__rule">
-      <svg viewBox="0 0 120 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M3 8.5 C 26 4.6, 66 3.2, 98 4.4 C 106 4.7, 112 5.3, 117 6.1"/>
+      <svg viewBox="0 0 120 11" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3 5.8 C 28 3.0, 72 2.2, 117 3.2 L 117 5.8 C 72 4.8, 28 5.6, 3 8.4 Z"/>
       </svg>
     </span>
 
@@ -999,10 +1009,10 @@ img {
     </a>
 
     <div class="hero__el hero__note">
-      <svg viewBox="0 0 44 66" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M35 64 C 34.5 47, 30 30, 20 16 C 17 11.8, 14 8.6, 11 6"/>
-        <path d="M11 6 C 15.5 9.4, 20 11.6, 25 12.8"/>
-        <path d="M11 6 C 11.4 12, 12 17.4, 13.4 22.6"/>
+      <svg viewBox="0 0 22 62" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M13 4 C 8 12, 5.2 21, 5.6 32 C 6 43, 11 52.5, 19 59"/>
+        <path d="M13 4 C 10.6 6.2, 8.8 8.6, 7.5 11.6"/>
+        <path d="M13 4 C 14.4 7.2, 15.1 10.2, 15.3 13.8"/>
       </svg>
       <span>Відповідаю особисто</span>
     </div>
@@ -1284,101 +1294,282 @@ img {
   })();
   </script>
 
-
-  <!-- ========== ПАНЕЛЬ ПІДБОРУ ШРИФТУ ТЕКСТУ — ТИМЧАСОВА ==========
-       Керує текстом «Допомагаю…», «Відповідаю особисто» і написом на кнопці.
-       Коли обереш: 1) впиши значення в --font-body і --body-weight у :root,
-       2) прибери зайві родини з <link> у <head>,
-       3) видали цей блок до закриваючого коментаря. -->
+<!-- ============ ПАНЕЛЬ ПІДБОРУ — ТИМЧАСОВА ============
+       Керує шрифтом, жирністю та кеглем п'яти написів першого екрана.
+       Значення зберігаються окремо для мобільної та десктопної версій.
+       Кнопка «Показати CSS» видає готовий код для вставки.
+       Коли підбереш — видали цей блок цілком (до закриваючого коментаря)
+       і встав отриманий CSS у секцію HERO. -->
 
   <style>
   #fp {
-    position: fixed; right: 16px; top: 16px; z-index: 999;
-    background: rgba(255,255,255,.96); border-radius: 12px; padding: 14px 16px;
-    box-shadow: 0 10px 30px -10px rgba(30,40,25,.5);
-    font-family: system-ui, sans-serif; font-size: 13px; color: #3f4038;
-    display: grid; gap: 10px; width: 235px;
+    position: fixed; right: 14px; top: 14px; z-index: 9999;
+    width: 300px; max-height: 94vh; overflow-y: auto;
+    background: rgba(255,255,255,.97); border-radius: 12px;
+    padding: 12px 14px 16px;
+    box-shadow: 0 12px 34px -10px rgba(30,40,25,.55);
+    font-family: system-ui, -apple-system, sans-serif; font-size: 13px; color: #3f4038;
   }
-  #fp.hidden > *:not(#fpToggle) { display: none; }
-  #fp.hidden { width: auto; padding: 8px 12px; }
-  #fp label { display: grid; gap: 4px; }
-  #fp select { width: 100%; padding: 5px; border-radius: 6px; border: 1px solid #cbd2c2; font-size: 13px; }
-  #fpToggle { justify-self: end; border: none; background: #5f7c46; color: #fff;
-              border-radius: 6px; padding: 4px 9px; cursor: pointer; font-size: 12px; }
-  #fpBadge { font-size: 12px; padding: 3px 8px; border-radius: 20px; justify-self: start; }
-  #fpPrev { font-size: 15px; line-height: 1.35; color: #3f4038; border-top: 1px solid #e4e8dd; padding-top: 8px; }
-  #fpNote { font-size: 11px; opacity: .6; line-height: 1.3; }
+  #fp.hidden { width: auto; max-height: none; padding: 8px 12px; overflow: visible; }
+  #fp.hidden .fp-body { display: none; }
+  .fp-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .fp-top b { font-size: 13px; }
+  #fpToggle, .fp-btn {
+    border: none; background: #5f7c46; color: #fff; border-radius: 6px;
+    padding: 5px 10px; cursor: pointer; font-size: 12px; font-family: inherit;
+  }
+  .fp-btn.sec { background: #7d8a6e; }
+  .fp-mode { display: flex; gap: 6px; margin: 10px 0 4px; }
+  .fp-mode button {
+    flex: 1; border: 1px solid #cbd2c2; background: #fff; color: #5c6553;
+    border-radius: 6px; padding: 5px; cursor: pointer; font-size: 12px; font-family: inherit;
+  }
+  .fp-mode button.on { background: #5f7c46; color: #fff; border-color: #5f7c46; }
+  .fp-hint { font-size: 11px; opacity: .65; line-height: 1.35; margin-bottom: 8px; }
+  details.fp-g { border-top: 1px solid #e6eade; padding: 8px 0 4px; }
+  details.fp-g summary { cursor: pointer; font-weight: 600; list-style: none; padding: 2px 0; }
+  details.fp-g summary::-webkit-details-marker { display: none; }
+  details.fp-g summary::before { content: '▸ '; opacity: .5; }
+  details.fp-g[open] summary::before { content: '▾ '; }
+  .fp-row { display: grid; gap: 3px; margin: 7px 0; }
+  .fp-row > span { font-size: 11px; opacity: .7; }
+  .fp-g select, .fp-g input[type=number] {
+    width: 100%; padding: 4px 6px; border-radius: 6px;
+    border: 1px solid #cbd2c2; font-size: 13px; font-family: inherit; background: #fff;
+  }
+  .fp-size { display: grid; grid-template-columns: 1fr 74px; gap: 6px; align-items: center; }
+  .fp-size input[type=range] { width: 100%; }
+  .fp-px { font-size: 11px; opacity: .65; font-variant-numeric: tabular-nums; }
+  .fp-warn { font-size: 11px; color: #8f3320; }
+  #fpOut { width: 100%; height: 190px; margin-top: 8px; font-family: ui-monospace, monospace;
+           font-size: 11px; border: 1px solid #cbd2c2; border-radius: 8px; padding: 8px; display: none; }
   </style>
 
   <div id="fp">
-    <button id="fpToggle" type="button">згорнути</button>
-    <label>Шрифт тексту
-      <select id="fpFont">
-        <option value="Manrope">Manrope (зараз)</option>
-        <option value="Onest">Onest</option>
-        <option value="Nunito Sans">Nunito Sans</option>
-        <option value="Golos Text">Golos Text</option>
-        <option value="Open Sans">Open Sans</option>
-        <option value="Inter">Inter</option>
-        <option value="Jost">Jost</option>
-        <option value="Public Sans">Public Sans</option>
-        <option value="Montserrat">Montserrat</option>
-      </select>
-    </label>
-    <label>Жирність
-      <select id="fpWeight">
-        <option value="300">300 — light</option>
-        <option value="400" selected>400 — regular</option>
-        <option value="500">500 — medium</option>
-      </select>
-    </label>
-    <span id="fpBadge">перевіряю…</span>
-    <div id="fpPrev">Допомагаю вийти<br>з депресії та перестати<br>«заїдати» емоції</div>
-    <div id="fpNote">Manrope лежить локально тільки від 400 — на 300 браузер підставить 400.</div>
+    <div class="fp-top">
+      <b>Підбір шрифтів</b>
+      <button id="fpToggle" type="button">згорнути</button>
+    </div>
+    <div class="fp-body">
+      <div class="fp-mode">
+        <button type="button" data-mode="mobile">мобільна</button>
+        <button type="button" data-mode="desktop">десктоп</button>
+      </div>
+      <div class="fp-hint" id="fpHint"></div>
+      <div id="fpGroups"></div>
+      <div style="display:flex;gap:6px;margin-top:12px">
+        <button class="fp-btn" id="fpShow" type="button">Показати CSS</button>
+        <button class="fp-btn sec" id="fpReset" type="button">Скинути</button>
+      </div>
+      <textarea id="fpOut" readonly></textarea>
+    </div>
   </div>
 
   <script>
   (function () {
-    var root = document.documentElement;
-    var sel = document.getElementById('fpFont');
-    var wt = document.getElementById('fpWeight');
-    var prev = document.getElementById('fpPrev');
-    var badge = document.getElementById('fpBadge');
-    var fp = document.getElementById('fp');
-    var toggle = document.getElementById('fpToggle');
 
-    function check(name) {
-      var ok = false;
-      try { ok = document.fonts.check('16px "' + name + '"', 'Допомагаю'); } catch (e) { }
-      badge.textContent = ok ? 'кирилиця є' : 'кирилиці немає';
-      badge.style.background = ok ? '#d7ecd9' : '#f6ded9';
-      badge.style.color = ok ? '#24603a' : '#8f3320';
+    /* доступні жирності кожної родини — щоб у списку не було мертвих варіантів */
+    var FONTS = {
+      'Manrope':              [200,300,400,500,600,700,800],
+      'Montserrat':           [100,200,300,400,500,600,700,800,900],
+      'Montserrat Alternates':[100,200,300,400,500,600,700,800,900],
+      'Onest':                [100,200,300,400,500,600,700,800,900],
+      'Inter':                [100,200,300,400,500,600,700,800,900],
+      'Jost':                 [100,200,300,400,500,600,700,800,900],
+      'Public Sans':          [100,200,300,400,500,600,700,800,900],
+      'Nunito Sans':          [200,300,400,500,600,700,800,900,1000],
+      'Open Sans':            [300,400,500,600,700,800],
+      'Golos Text':           [400,500,600,700,800,900],
+      'Caveat':               [400,500,600,700],
+      'Caveat Brush':         [400],
+      'Marck Script':         [400],
+      'Bad Script':           [400],
+      'Neucha':               [400],
+      'Pacifico':             [400]
+    };
+
+    var ITEMS = [
+      { k:'hi',    sel:'.hero__hi',    name:'«Привіт!»' },
+      { k:'title', sel:'.hero__title', name:'«Я МИКОЛА»' },
+      { k:'descr', sel:'.hero__descr', name:'«Допомагаю…»' },
+      { k:'btn',   sel:'.hero__btn',   name:'Кнопка «Почати розмову»' },
+      { k:'note',  sel:'.hero__note',  name:'«Відповідаю особисто»' }
+    ];
+
+    /* стартові значення = те, що зараз у CSS */
+    var DEF = {
+      mobile: {
+        hi:    { f:'Caveat',  w:400, s:9.00 },
+        title: { f:'Manrope', w:700, s:10.50 },
+        descr: { f:'Manrope', w:400, s:4.40 },
+        btn:   { f:'Manrope', w:500, s:3.10 },
+        note:  { f:'Manrope', w:400, s:2.90 }
+      },
+      desktop: {
+        hi:    { f:'Caveat',  w:400, s:4.30 },
+        title: { f:'Manrope', w:700, s:5.80 },
+        descr: { f:'Manrope', w:400, s:2.00 },
+        btn:   { f:'Manrope', w:500, s:1.25 },
+        note:  { f:'Manrope', w:400, s:0.95 }
+      }
+    };
+
+    var state = JSON.parse(JSON.stringify(DEF));
+    var mode = window.innerWidth >= 900 ? 'desktop' : 'mobile';
+
+    var styleTag = document.createElement('style');
+    document.head.appendChild(styleTag);
+
+    var groupsBox = document.getElementById('fpGroups');
+    var hint = document.getElementById('fpHint');
+    var out = document.getElementById('fpOut');
+
+    /* ---------- побудова інтерфейсу ---------- */
+
+    function fontOptions(cur) {
+      return Object.keys(FONTS).map(function (f) {
+        return '<option value="' + f + '"' + (f === cur ? ' selected' : '') + '>' + f + '</option>';
+      }).join('');
+    }
+
+    function weightOptions(font, cur) {
+      return FONTS[font].map(function (w) {
+        return '<option value="' + w + '"' + (w == cur ? ' selected' : '') + '>' + w + '</option>';
+      }).join('');
+    }
+
+    function build() {
+      groupsBox.innerHTML = ITEMS.map(function (it, i) {
+        var v = state[mode][it.k];
+        return '<details class="fp-g"' + (i === 0 ? ' open' : '') + ' data-k="' + it.k + '">' +
+          '<summary>' + it.name + '</summary>' +
+          '<div class="fp-row"><span>шрифт</span>' +
+            '<select data-a="f">' + fontOptions(v.f) + '</select></div>' +
+          '<div class="fp-row"><span>жирність</span>' +
+            '<select data-a="w">' + weightOptions(v.f, v.w) + '</select>' +
+            '<span class="fp-warn" data-a="warn"></span></div>' +
+          '<div class="fp-row"><span>розмір, vw</span>' +
+            '<div class="fp-size">' +
+              '<input type="range" data-a="range" min="0.4" max="16" step="0.05" value="' + v.s + '">' +
+              '<input type="number" data-a="s" min="0.2" max="30" step="0.05" value="' + v.s.toFixed(2) + '">' +
+            '</div>' +
+            '<span class="fp-px" data-a="px"></span></div>' +
+        '</details>';
+      }).join('');
+      wire();
+      apply();
+    }
+
+    function wire() {
+      ITEMS.forEach(function (it) {
+        var g = groupsBox.querySelector('[data-k="' + it.k + '"]');
+        var fSel = g.querySelector('[data-a="f"]');
+        var wSel = g.querySelector('[data-a="w"]');
+        var rng  = g.querySelector('[data-a="range"]');
+        var num  = g.querySelector('[data-a="s"]');
+
+        fSel.addEventListener('change', function () {
+          var v = state[mode][it.k];
+          v.f = this.value;
+          if (FONTS[v.f].indexOf(Number(v.w)) === -1) {
+            v.w = FONTS[v.f].reduce(function (a, b) {
+              return Math.abs(b - v.w) < Math.abs(a - v.w) ? b : a;
+            });
+          }
+          wSel.innerHTML = weightOptions(v.f, v.w);
+          apply();
+        });
+
+        wSel.addEventListener('change', function () {
+          state[mode][it.k].w = Number(this.value); apply();
+        });
+
+        rng.addEventListener('input', function () {
+          state[mode][it.k].s = Number(this.value);
+          num.value = Number(this.value).toFixed(2); apply();
+        });
+
+        num.addEventListener('input', function () {
+          var val = Number(this.value);
+          if (!isFinite(val) || val <= 0) return;
+          state[mode][it.k].s = val; rng.value = val; apply();
+        });
+      });
+    }
+
+    /* ---------- застосування ---------- */
+
+    function rules(m) {
+      return ITEMS.map(function (it) {
+        var v = state[m][it.k];
+        return '  ' + it.sel + ' { font-family: \'' + v.f + '\', sans-serif; font-weight: ' +
+               v.w + '; font-size: ' + Number(v.s).toFixed(2) + 'vw; }';
+      }).join('\n');
     }
 
     function apply() {
-      var f = sel.value, w = wt.value;
-      root.style.setProperty('--font-body', "'" + f + "'");
-      root.style.setProperty('--body-weight', w);
-      prev.style.fontFamily = "'" + f + "', sans-serif";
-      prev.style.fontWeight = w;
-      if (document.fonts && document.fonts.load) {
-        document.fonts.load(w + ' 16px "' + f + '"', 'Допомагаю').then(function () { check(f); });
-      } else { check(f); }
+      styleTag.textContent =
+        '@media (max-width: 899.98px) {\n' + rules('mobile') + '\n}\n' +
+        '@media (min-width: 900px) {\n' + rules('desktop') + '\n}';
+
+      var vw = document.documentElement.clientWidth / 100;
+      ITEMS.forEach(function (it) {
+        var g = groupsBox.querySelector('[data-k="' + it.k + '"]');
+        var v = state[mode][it.k];
+        g.querySelector('[data-a="px"]').textContent =
+          '≈ ' + Math.round(v.s * vw) + ' px при поточній ширині вікна';
+        var warn = g.querySelector('[data-a="warn"]');
+        var ok = false;
+        try { ok = document.fonts.check(v.w + ' 16px "' + v.f + '"', 'Привіт'); } catch (e) { ok = true; }
+        warn.textContent = ok ? '' : 'кирилиця не знайдена';
+      });
+
+      hint.textContent = (mode === 'desktop')
+        ? 'Редагуєш ДЕСКТОПНУ версію (вікно від 900 px). Звузь вікно, щоб побачити мобільну.'
+        : 'Редагуєш МОБІЛЬНУ версію (вікно до 900 px). Розтягни вікно, щоб побачити десктопну.';
+      out.value = styleTag.textContent;
     }
 
-    sel.addEventListener('change', apply);
-    wt.addEventListener('change', apply);
-    toggle.addEventListener('click', function () {
-      fp.classList.toggle('hidden');
-      toggle.textContent = fp.classList.contains('hidden') ? 'шрифт' : 'згорнути';
+    /* ---------- перемикачі ---------- */
+
+    document.querySelectorAll('.fp-mode button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        mode = this.dataset.mode;
+        document.querySelectorAll('.fp-mode button').forEach(function (x) {
+          x.classList.toggle('on', x.dataset.mode === mode);
+        });
+        build();
+      });
     });
 
-    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(apply); }
-    else { window.addEventListener('load', apply); }
+    document.getElementById('fpShow').addEventListener('click', function () {
+      out.style.display = out.style.display === 'block' ? 'none' : 'block';
+      this.textContent = out.style.display === 'block' ? 'Сховати CSS' : 'Показати CSS';
+      if (out.style.display === 'block') { out.select(); }
+    });
+
+    document.getElementById('fpReset').addEventListener('click', function () {
+      state = JSON.parse(JSON.stringify(DEF)); build();
+    });
+
+    var fp = document.getElementById('fp'), tg = document.getElementById('fpToggle');
+    tg.addEventListener('click', function () {
+      fp.classList.toggle('hidden');
+      tg.textContent = fp.classList.contains('hidden') ? 'шрифти' : 'згорнути';
+    });
+
+    window.addEventListener('resize', apply);
+
+    document.querySelectorAll('.fp-mode button').forEach(function (x) {
+      x.classList.toggle('on', x.dataset.mode === mode);
+    });
+
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(build); }
+    build();
   })();
   </script>
 
-  <!-- ========== КІНЕЦЬ ПАНЕЛІ ========== -->
+  <!-- ============ КІНЕЦЬ ПАНЕЛІ ============ -->
 
 </body>
 </html>
