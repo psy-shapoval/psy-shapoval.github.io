@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Manrope лежить локально у fonts/, але лише 400-800.
        Вага 300 потрібна кнопці й дрібним підписам - тягнемо тільки її. -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
@@ -226,7 +226,7 @@ img {
 
 .hero__rule {
   left: 9.3%;
-  top: 38.0%;
+  top: 35.5%;
   width: 15.5%;
 }
 
@@ -242,7 +242,7 @@ img {
 
 .hero__btn {
   left: 8.6%;
-  top: 42.2%;
+  top: 39.6%;
   display: inline-flex;
   align-items: center;
   gap: 2vw;
@@ -276,7 +276,7 @@ img {
 
 .hero__note {
   left: 9.3%;
-  top: 50.8%;
+  top: 48.2%;
   display: flex;
   align-items: flex-end;
   gap: 1.6vw;
@@ -290,7 +290,7 @@ img {
 .hero__note svg {
   width: 2.8vw;
   height: auto;
-  margin-bottom: 0.33em;
+  margin-bottom: 0.55em;
   flex: none;
   fill: none;
   stroke: var(--color-note);
@@ -337,7 +337,7 @@ img {
 
   .hero__rule {
     left: 10.2%;
-    top: 60.5%;
+    top: 57.0%;
     width: 4.95%;
   }
 
@@ -345,7 +345,7 @@ img {
 
   .hero__btn {
     left: 10.2%;
-    top: 66.7%;
+    top: 61.7%;
     gap: 0.9vw;
     padding: 0.95vw 1.90vw;
     font-size: 1.45vw;
@@ -360,7 +360,7 @@ img {
 
   .hero__note {
     left: 10.6%;
-    top: 77.7%;
+    top: 72.7%;
     gap: 0.7vw;
     font-size: 20px;
   }
@@ -633,7 +633,7 @@ img {
   color: var(--color-body);
   font-size: 18px;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
   opacity: 0.7;
   margin-top: 8px;
 }
@@ -770,7 +770,7 @@ img {
 .reviews__hint {
   font-family: 'Manrope', sans-serif;
   color: var(--color-body);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 18px;
   font-style: italic;
   text-align: center;
@@ -985,6 +985,20 @@ img {
   background-color: var(--color-sage);
   padding: 60px 0 60px;
   text-align: center;
+}
+
+.final-cta__head {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 900px) {
+  .final-cta__head { font-size: 26px; }
 }
 
 .final-cta__descr {
@@ -1227,7 +1241,7 @@ img {
   <!-- ВАРТІСТЬ + CTA -->
   <section class="final-cta">
     <div class="container narrow-960">
-      <p class="final-cta__descr" style="margin-bottom: 40px;">Щоб дізнатися вартість, <br>записатися та з <br>будь-якими питаннями</p>
+      <p class="final-cta__head">Щоб дізнатися вартість, <br>записатися та з <br>будь-якими питаннями</p>
       <a class="btn-tg" href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">
         <span>ПИШІТЬ СЮДИ</span>
         <span class="btn-tg__icon"><svg viewBox="2 3 20 18" xmlns="http://www.w3.org/2000/svg" fill="white"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></span>
@@ -1336,6 +1350,148 @@ img {
   </script>
 
 
+
+<!-- ========== ПАНЕЛЬ: НАЗВИ ВІДГУКІВ — ТИМЧАСОВА ==========
+       Керує жирністю та кольором заголовків у каруселі відгуків
+       («Тривожність, кордони з чоловіками» та інші).
+       «Показати CSS» видає готовий код. Коли підбереш — видали цей блок. -->
+
+  <style>
+  #rvp {
+    position: fixed; right: 14px; bottom: 14px; z-index: 9999;
+    width: 268px; max-height: 90vh; overflow-y: auto;
+    background: rgba(255,255,255,.97); border-radius: 12px; padding: 12px 14px 16px;
+    box-shadow: 0 12px 34px -10px rgba(30,40,25,.55);
+    font-family: system-ui, -apple-system, sans-serif; font-size: 13px; color: #3f4038;
+  }
+  #rvp.hidden { width: auto; max-height: none; padding: 8px 12px; overflow: visible; }
+  #rvp.hidden .rv-body { display: none; }
+  .rv-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  #rvToggle, .rv-btn { border: none; background: #5f7c46; color: #fff; border-radius: 6px;
+                       padding: 5px 10px; cursor: pointer; font-size: 12px; font-family: inherit; }
+  .rv-btn.sec { background: #7d8a6e; }
+  .rv-lbl { font-size: 11px; opacity: .7; margin: 12px 0 4px; }
+  #rvWeight { width: 100%; padding: 5px 6px; border-radius: 6px; border: 1px solid #cbd2c2;
+              font-size: 13px; font-family: inherit; background: #fff; }
+  .rv-group { margin-top: 10px; }
+  .rv-group > b { font-size: 11px; font-weight: 600; opacity: .55; text-transform: uppercase; letter-spacing: .04em; }
+  .rv-sw { display: flex; gap: 6px; margin-top: 5px; }
+  .rv-sw button {
+    flex: 1; height: 34px; border-radius: 7px; cursor: pointer;
+    border: 2px solid transparent; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
+  }
+  .rv-sw button.on { border-color: #1c2d1d; box-shadow: inset 0 0 0 1px #fff; }
+  .rv-prev {
+    margin-top: 14px; border-top: 1px solid #e6eade; padding-top: 10px;
+    font-family: 'Montserrat Alternates', sans-serif; line-height: 1.3; font-size: 18px;
+  }
+  .rv-cur { font-size: 11px; opacity: .6; margin-top: 6px; font-variant-numeric: tabular-nums; }
+  #rvOut { width: 100%; height: 92px; margin-top: 8px; font-family: ui-monospace, monospace;
+           font-size: 11px; border: 1px solid #cbd2c2; border-radius: 8px; padding: 8px; display: none; }
+  </style>
+
+  <div id="rvp">
+    <div class="rv-top"><b>Назви відгуків</b><button id="rvToggle" type="button">згорнути</button></div>
+    <div class="rv-body">
+
+      <div class="rv-lbl">жирність</div>
+      <select id="rvWeight">
+        <option value="300">300 — light</option>
+        <option value="400">400 — regular</option>
+        <option value="500">500 — medium</option>
+        <option value="600">600 — semibold</option>
+        <option value="700" selected>700 — bold</option>
+        <option value="800">800 — extrabold</option>
+        <option value="900">900 — black</option>
+      </select>
+
+      <div class="rv-group" id="rvColors"></div>
+
+      <div class="rv-prev" id="rvPrev">Тривожність, кордони з чоловіками</div>
+      <div class="rv-cur" id="rvCur"></div>
+
+      <div style="display:flex;gap:6px;margin-top:12px">
+        <button class="rv-btn" id="rvShow" type="button">Показати CSS</button>
+        <button class="rv-btn sec" id="rvReset" type="button">Скинути</button>
+      </div>
+      <textarea id="rvOut" readonly></textarea>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var GROUPS = [
+      { title: 'чорний / темно-сірий', colors: [
+        { v:'#141414', n:'майже чорний' },
+        { v:'#333333', n:'темно-сірий' },
+        { v:'#565656', n:'сірий' } ] },
+      { title: 'коричневий (гама відгуків)', colors: [
+        { v:'#4a3a2c', n:'темний горіх' },
+        { v:'#6c5448', n:'какао' },
+        { v:'#8a6f52', n:'світлий беж' } ] },
+      { title: 'зелений (з кнопки)', colors: [
+        { v:'#5f7c46', n:'зелений кнопки' } ] }
+    ];
+
+    var DEF = { w: 700, c: '#352a22' };
+    var st = { w: DEF.w, c: DEF.c };
+
+    var tag = document.createElement('style'); document.head.appendChild(tag);
+    var box = document.getElementById('rvColors');
+    var prev = document.getElementById('rvPrev');
+    var cur = document.getElementById('rvCur');
+    var out = document.getElementById('rvOut');
+    var wSel = document.getElementById('rvWeight');
+
+    box.innerHTML = GROUPS.map(function (g) {
+      return '<div class="rv-group"><b>' + g.title + '</b><div class="rv-sw">' +
+        g.colors.map(function (c) {
+          return '<button type="button" data-c="' + c.v + '" title="' + c.n + ' ' + c.v +
+                 '" style="background:' + c.v + '"></button>';
+        }).join('') + '</div></div>';
+    }).join('');
+
+    function apply() {
+      tag.textContent = '.reviews__caption strong { font-weight: ' + st.w +
+                        '; color: ' + st.c + '; }';
+      prev.style.fontWeight = st.w;
+      prev.style.color = st.c;
+      var name = '';
+      GROUPS.forEach(function (g) { g.colors.forEach(function (c) {
+        if (c.v.toLowerCase() === st.c.toLowerCase()) name = c.n; }); });
+      cur.textContent = 'жирність ' + st.w + ' · ' + st.c + (name ? ' (' + name + ')' : ' (початковий)');
+      box.querySelectorAll('button').forEach(function (b) {
+        b.classList.toggle('on', b.dataset.c.toLowerCase() === st.c.toLowerCase());
+      });
+      out.value = tag.textContent;
+    }
+
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-c]');
+      if (!b) return;
+      st.c = b.dataset.c; apply();
+    });
+    wSel.addEventListener('change', function () { st.w = Number(this.value); apply(); });
+
+    document.getElementById('rvShow').addEventListener('click', function () {
+      out.style.display = out.style.display === 'block' ? 'none' : 'block';
+      this.textContent = out.style.display === 'block' ? 'Сховати CSS' : 'Показати CSS';
+      if (out.style.display === 'block') out.select();
+    });
+    document.getElementById('rvReset').addEventListener('click', function () {
+      st = { w: DEF.w, c: DEF.c }; wSel.value = DEF.w; apply();
+    });
+    var pn = document.getElementById('rvp'), tg = document.getElementById('rvToggle');
+    tg.addEventListener('click', function () {
+      pn.classList.toggle('hidden');
+      tg.textContent = pn.classList.contains('hidden') ? 'відгуки' : 'згорнути';
+    });
+
+    apply();
+  })();
+  </script>
+
+  <!-- ========== КІНЕЦЬ ПАНЕЛІ НАЗВ ВІДГУКІВ ========== -->
 
 </body>
 </html>
