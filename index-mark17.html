@@ -1035,27 +1035,19 @@ img {
 /* ============ Посилання на тести ============ */
 
 .test-links {
-  margin-top: 44px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(90, 82, 71, 0.18);
-}
-
-.test-links__title {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: var(--color-body);
-  opacity: 0.85;
-  margin-bottom: 16px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
 }
 
 .test-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: 6px 5px;
-  padding: 13px 26px;
+  padding: 14px 22px;
   border-radius: 999px;
   border: 1.5px solid var(--color-accent);
   background: transparent;
@@ -1063,6 +1055,8 @@ img {
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
   font-size: 17px;
+  line-height: 1.25;
+  text-align: center;
   text-decoration: none;
   transition: background-color .2s ease-in-out, color .2s ease-in-out, transform .2s ease-in-out;
 }
@@ -1082,6 +1076,17 @@ img {
   background-color: var(--color-accent);
   color: var(--color-white);
   transform: translateY(-2px);
+}
+
+/* на десктопі — в рядок, по вмісту */
+@media (min-width: 900px) {
+  .test-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .test-link { padding: 13px 26px; }
 }
 
 /* ============ Соцмережі (футер) ============ */
@@ -1123,6 +1128,28 @@ img {
 
 .social-footer__link:hover {
   background-color: #d9e0d2;
+}
+
+.social-footer__sign {
+  margin-top: 30px;
+}
+
+.social-footer__name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-sage);
+}
+
+.social-footer__nick {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--color-sage);
+  opacity: 0.75;
+  margin-top: 2px;
 }
 
   </style>
@@ -1327,7 +1354,6 @@ img {
       <p class="final-cta__descr" style="margin-top: 40px; margin-bottom: 0;">Якщо конкретного запиту немає — теж <br>пишіть. З'ясуємо його разом.</p>
 
       <div class="test-links">
-        <div class="test-links__title">Можна почати з короткого тесту:</div>
         <a class="test-link" href="test-phq9.html">
           <span>Пройти тест на депресію</span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
@@ -1353,6 +1379,10 @@ img {
         <li><a class="social-footer__link" href="https://www.facebook.com/psy.shapoval" target="_blank" rel="noopener">Facebook</a></li>
         <li><a class="social-footer__link" href="https://www.tiktok.com/@psy.shapoval" target="_blank" rel="noopener">TikTok</a></li>
       </ul>
+      <div class="social-footer__sign">
+        <div class="social-footer__name">Психолог Микола Шаповал</div>
+        <div class="social-footer__nick">@psy.shapoval</div>
+      </div>
     </div>
   </footer>
 
