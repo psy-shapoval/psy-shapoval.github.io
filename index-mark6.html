@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Manrope лежить локально у fonts/, але лише 400-800.
        Вага 300 потрібна кнопці й дрібним підписам - тягнемо тільки її. -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
@@ -293,8 +293,8 @@ img {
   margin-bottom: 0.33em;
   flex: none;
   fill: none;
-  stroke: #565a4b;
-  stroke-width: 2;
+  stroke: var(--color-note);
+  stroke-width: 1.2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -368,7 +368,7 @@ img {
   .hero__note svg {
     width: 1.1vw;
     height: auto;
-    stroke-width: 2;
+    stroke-width: 1.2;
   }
 }
 
@@ -529,11 +529,22 @@ img {
 
 .about-bio {
   background-color: var(--color-cream);
-  padding: 60px 0 0;
+  padding: 60px 0;
 }
 
 .about-bio__head {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
   margin-bottom: 20px;
+}
+
+.about-bio__lead {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.about-bio__kpt {
+  text-align: center;
 }
 
 .about-bio__method {
@@ -618,10 +629,11 @@ img {
 
 .about-bio__edu-label {
   text-align: center;
+  font-family: 'Manrope', sans-serif;
   color: var(--color-body);
-  font-size: 14px;
+  font-size: 18px;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 300;
   opacity: 0.7;
   margin-top: 8px;
 }
@@ -670,8 +682,10 @@ img {
 }
 
 .reviews__subtitle {
+  font-family: 'Manrope', sans-serif;
   color: var(--color-body);
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 20px;
   line-height: 1.5;
   text-align: center;
   opacity: 0.75;
@@ -735,8 +749,10 @@ img {
 }
 
 .reviews__caption {
+  font-family: 'Manrope', sans-serif;
   color: var(--color-body);
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 16px;
   line-height: 1.35;
   text-align: center;
   margin-top: 10px;
@@ -744,15 +760,18 @@ img {
 
 .reviews__caption strong {
   display: block;
+  font-family: 'Montserrat Alternates', sans-serif;
   color: var(--color-dark);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 18px;
   margin-bottom: 2px;
 }
 
 .reviews__hint {
+  font-family: 'Manrope', sans-serif;
   color: var(--color-body);
-  font-size: 14px;
+  font-weight: 300;
+  font-size: 18px;
   font-style: italic;
   text-align: center;
   opacity: 0.6;
@@ -1103,17 +1122,17 @@ img {
         <div class="about-bio__gallery-item" style="background-image:url('images/Психолог Микола Шаповал. Тренінги по стосунках.webp');"></div>
         <div class="about-bio__gallery-item" style="background-image:url('images/Психолог Микола Шаповал. Тренінги з особистісного зростання.webp');"></div>
       </div>
+
+      <p class="body-text about-bio__lead">Згодом я прийшов й зараз працюю у напрямку, який виявився найбільш ефективним:</p>
+
+      <p class="about-bio__method">клієнтоцентрована та експірієнтальна психотерапія.</p>
+
+      <p class="body-text about-bio__kpt">При потребі — з елементами КПТ.</p>
     </div>
   </section>
 
   <section class="about-bio__cont">
     <div class="container narrow-960">
-      <p class="body-text">Згодом я прийшов й зараз працюю у напрямку, який виявився найбільш ефективним:</p>
-
-      <p class="about-bio__method">клієнтоцентрована та експериментальна психотерапія</p>
-
-      <p class="body-text">При потребі — з елементами КПТ.</p>
-
       <div class="about-bio__edu-outer">
         <div class="about-bio__edu-side"></div>
         <div class="about-bio__edu-center">
