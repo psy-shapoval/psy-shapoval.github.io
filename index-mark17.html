@@ -1032,332 +1032,57 @@ img {
   color: var(--color-dark);
 }
 
-/* ============ ТЕСТУВАННЯ ============ */
+/* ============ Посилання на тести ============ */
 
-.tests {
-  background-color: var(--color-cream);
-  padding: 60px 0;
+.test-links {
+  margin-top: 44px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(90, 82, 71, 0.18);
 }
 
-.tests__intro {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.5;
-  color: var(--color-body);
-  text-align: center;
-  margin: 16px auto 0;
-  max-width: 640px;
-}
-
-/* --- аркуш паперу --- */
-
-.sheet {
-  position: relative;
-  background: #fffdf8;
-  border-radius: 4px;
-  padding: 34px 22px 28px;
-  margin-top: 40px;
-  box-shadow:
-    0 1px 2px rgba(60, 50, 35, 0.10),
-    0 10px 28px -12px rgba(60, 50, 35, 0.30);
-}
-
-/* тонка «складка» збоку, щоб читалося як аркуш */
-.sheet::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  border-radius: 4px 0 0 4px;
-  background: linear-gradient(180deg, #e4dccb, #cdc4b0);
-}
-
-@media (min-width: 900px) {
-  .sheet { padding: 46px 54px 38px; margin-top: 50px; }
-}
-
-.sheet__title {
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 1.3;
-  color: var(--color-heading-green);
-  text-align: center;
-}
-
-@media (min-width: 900px) {
-  .sheet__title { font-size: 26px; }
-}
-
-.sheet__rule {
-  height: 1px;
-  background: #e6dfd0;
-  margin: 22px 0;
-  border: 0;
-}
-
-.sheet__subtitle {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--color-dark);
-  margin-bottom: 8px;
-}
-
-.sheet__instr {
+.test-links__title {
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.5;
   color: var(--color-body);
+  opacity: 0.85;
+  margin-bottom: 16px;
 }
 
-.sheet__src {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--color-body);
-  opacity: 0.65;
-  margin-top: 22px;
-  text-align: center;
-}
-
-/* --- питання --- */
-
-.q {
-  padding: 18px 0 14px;
-  border-top: 1px solid #efe9dc;
-}
-
-.q:first-of-type { border-top: 0; }
-
-.q__text {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.4;
-  color: var(--color-dark);
-  margin-bottom: 14px;
-}
-
-.q__text b {
-  font-weight: 600;
-  color: var(--color-heading-green);
-  margin-right: 4px;
-}
-
-/* варіанти: чотири колонки в один ряд */
-
-.q__opts {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
-}
-
-.opt {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 2px 6px;
-  border-radius: 8px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color .15s ease-in-out;
-}
-
-.opt:hover { background: #f5f1e6; }
-
-.opt input {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.opt__dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid #bcb7a6;
-  background: #fff;
-  flex: none;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
-
-.opt:hover .opt__dot { border-color: #93a67e; }
-
-.opt input:checked + .opt__dot {
-  border-color: var(--color-accent);
-  box-shadow: inset 0 0 0 4px var(--color-accent);
-}
-
-.opt input:focus-visible + .opt__dot {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-}
-
-.opt__lbl {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 1.25;
-  color: var(--color-body);
-}
-
-@media (min-width: 900px) {
-  .opt__lbl { font-size: 15px; }
-  .q__text { font-size: 19px; }
-}
-
-/* --- підвал аркуша --- */
-
-.sheet__foot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 14px;
-  margin-top: 26px;
-  padding-top: 22px;
-  border-top: 1px solid #efe9dc;
-}
-
-.sheet__btn {
+.test-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 13px 30px;
-  border: 0;
-  border-radius: 999px;
-  background-color: var(--color-accent);
-  color: var(--color-white);
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: 17px;
-  cursor: pointer;
-  flex: none;
-  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
-}
-
-.sheet__btn:hover {
-  background-color: var(--color-accent-hover);
-  transform: translateY(-2px);
-}
-
-.sheet__privacy {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--color-body);
-  opacity: 0.8;
-  flex: 1 1 220px;
-}
-
-/* --- результат --- */
-
-.result {
-  display: none;
-  margin-top: 24px;
-  padding: 22px 20px;
-  border-radius: 10px;
-  background: #f2f0e6;
-  border: 1px solid #e3ddcc;
-}
-
-.result.is-open { display: block; }
-
-.result__score {
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1.3;
-  color: var(--color-heading-green);
-  margin-bottom: 10px;
-}
-
-.result__text {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.5;
-  color: var(--color-body);
-}
-
-.result__note {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 300;
-  font-size: 15px;
-  line-height: 1.45;
-  color: var(--color-body);
-  opacity: 0.8;
-  margin-top: 14px;
-}
-
-.result__warn {
-  margin-top: 16px;
-  padding: 16px 18px;
-  border-radius: 8px;
-  background: #fbf4ee;
-  border-left: 4px solid #b4744e;
-}
-
-.result__warn p {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 1.5;
-  color: #5a4436;
-}
-
-.result__warn ul {
-  list-style: none;
-  margin: 10px 0 0;
-  padding: 0;
-  font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #5a4436;
-}
-
-.result__warn a { color: #8a4f2c; }
-
-.result__cta {
-  display: inline-flex;
-  align-items: center;
   gap: 10px;
-  margin-top: 18px;
-  padding: 12px 26px;
+  margin: 6px 5px;
+  padding: 13px 26px;
   border-radius: 999px;
-  background-color: var(--color-accent);
-  color: var(--color-white);
+  border: 1.5px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 17px;
   text-decoration: none;
-  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out, transform .2s ease-in-out;
 }
 
-.result__cta:hover {
-  background-color: var(--color-accent-hover);
+.test-link svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.test-link:hover {
+  background-color: var(--color-accent);
+  color: var(--color-white);
   transform: translateY(-2px);
 }
-
-.sheet__err {
-  display: none;
-  font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: #9b4a2f;
-  margin-top: 12px;
-}
-
-.sheet__err.is-open { display: block; }
 
 /* ============ Соцмережі (футер) ============ */
 
@@ -1600,60 +1325,22 @@ img {
         <span class="btn-tg__icon"><svg viewBox="2 3 20 18" xmlns="http://www.w3.org/2000/svg" fill="white"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></span>
       </a>
       <p class="final-cta__descr" style="margin-top: 40px; margin-bottom: 0;">Якщо конкретного запиту немає — теж <br>пишіть. З'ясуємо його разом.</p>
-    </div>
-  </section>
 
-  <!-- ТЕСТУВАННЯ -->
-  <section class="tests">
-    <div class="container narrow-960 text-center">
-      <h2 class="section-title">Тестування</h2>
-      <p class="tests__intro">Два коротких опитувальники, якими користуються у клінічній практиці. Вони не ставлять діагноз, але допомагають побачити, наскільки виражений стан зараз.</p>
-    </div>
-
-    <div class="container narrow-960">
-
-      <!-- PHQ-9 -->
-      <div class="sheet">
-        <h3 class="sheet__title">Опитувальник з депресії<br>PHQ-9</h3>
-        <hr class="sheet__rule">
-
-        <div class="sheet__subtitle">Інструкція</div>
-        <p class="sheet__instr">Прочитайте твердження нижче й оцініть, як часто <span class="w600">протягом останніх двох тижнів</span> Вас турбували будь-які з перерахованих проблем. Оберіть один варіант у кожному рядку, після чого натисніть «Обробити».</p>
-        <hr class="sheet__rule">
-
-        <div id="phq9-q"></div>
-
-        <div class="sheet__foot">
-          <button class="sheet__btn" id="phq9-btn" type="button">Обробити</button>
-          <div class="sheet__privacy">Підрахунок відбувається у Вашому браузері. Сайт нічого не збирає, не передає й не зберігає — відповіді зникнуть, щойно Ви закриєте сторінку.</div>
-        </div>
-        <div class="sheet__err" id="phq9-err"></div>
-        <div class="result" id="phq9-res"></div>
-
-        <p class="sheet__src">PHQ-9 — Patient Health Questionnaire.<br>Автори: Robert L. Spitzer, Janet B. W. Williams, Kurt Kroenke.</p>
+      <div class="test-links">
+        <div class="test-links__title">Можна почати з короткого тесту:</div>
+        <a class="test-link" href="test-phq9.html">
+          <span>Пройти тест на депресію</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a class="test-link" href="test-gad7.html">
+          <span>Пройти тест на тривогу</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a class="test-link" href="test-debq.html">
+          <span>Пройти тест на стилі харчової поведінки</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
       </div>
-
-      <!-- GAD-7 -->
-      <div class="sheet">
-        <h3 class="sheet__title">Опитувальник з генералізованої тривоги<br>GAD-7</h3>
-        <hr class="sheet__rule">
-
-        <div class="sheet__subtitle">Інструкція</div>
-        <p class="sheet__instr">Прочитайте твердження нижче й оцініть, як часто <span class="w600">за останні два тижні</span> Вас турбували наступні проблеми. Оберіть один варіант у кожному рядку, після чого натисніть «Обробити».</p>
-        <hr class="sheet__rule">
-
-        <div id="gad7-q"></div>
-
-        <div class="sheet__foot">
-          <button class="sheet__btn" id="gad7-btn" type="button">Обробити</button>
-          <div class="sheet__privacy">Підрахунок відбувається у Вашому браузері. Сайт нічого не збирає, не передає й не зберігає — відповіді зникнуть, щойно Ви закриєте сторінку.</div>
-        </div>
-        <div class="sheet__err" id="gad7-err"></div>
-        <div class="result" id="gad7-res"></div>
-
-        <p class="sheet__src">GAD-7 — Generalized Anxiety Disorder scale.<br>Автори: Robert L. Spitzer, Kurt Kroenke, Janet B. W. Williams, Bernd Löwe.</p>
-      </div>
-
     </div>
   </section>
 
@@ -1759,150 +1446,6 @@ img {
 
 
 
-  <script>
-  (function () {
-
-    var OPTS = ['ніколи', 'декілька днів', 'більшу половину часу', 'майже щодня'];
-
-    var PHQ = {
-      id: 'phq9',
-      max: 27,
-      q: [
-        'Зниження інтересу або відчуття задоволення від виконання справ',
-        'Поганий настрій, відчуття пригнічення або безнадії',
-        'Труднощі із засинанням, поверхневий сон або, навпаки, надмірна сонливість',
-        'Відчуття втоми або зниження енергії',
-        'Поганий апетит або переїдання',
-        'Негативне відчуття щодо себе: або Ви почувалися невдахою, або ж розчаровувались у собі, або думали, що підвели родину',
-        'Труднощі з концентрацією уваги, наприклад, при читанні або перегляді телепередач',
-        'Сповільненість рухів і мовлення, яку помічають оточуючі. Або, навпаки, надмірна і непритаманна Вам метушливість і активність',
-        'Думки, що було б краще, якби Ви померли, або думки про те, щоб заподіяти собі шкоду'
-      ],
-      bands: [
-        [0, 4,  'Мінімальні прояви', 'Показник у межах, які зазвичай не свідчать про депресивний розлад. Це не виключає окремих важких періодів — просто зараз загальна картина спокійна.'],
-        [5, 9,  'Легкі прояви', 'Такий рівень часто описують як субклінічний: симптоми присутні, але зазвичай суттєво не порушують повсякденне життя. Варто поспостерігати за собою протягом кількох тижнів.'],
-        [10, 14, 'Помірні прояви', 'Показник, з якого зазвичай рекомендують звернутися до фахівця. На цьому рівні симптоми вже помітно впливають на роботу, стосунки та самопочуття.'],
-        [15, 19, 'Помірно тяжкі прояви', 'Рівень, який потребує професійної допомоги. Самостійно впоратися на цьому етапі буває складно — і це не питання волі чи характеру.'],
-        [20, 27, 'Тяжкі прояви', 'Високий показник. Тут важливо не відкладати звернення до психотерапевта або лікаря-психіатра.']
-      ]
-    };
-
-    var GAD = {
-      id: 'gad7',
-      max: 21,
-      q: [
-        'Ви нервували, відчували тривогу або були дуже напружені',
-        'Ви не могли зупинити або контролювати своє хвилювання',
-        'Ви занадто хвилювались через різні речі',
-        'Вам було важко розслабитись',
-        'Ви були настільки неспокійні, що Вам було важко всидіти на одному місці',
-        'Вам було легко дошкулити або роздратувати',
-        'Ви відчували страх, неначе щось жахливе може статися'
-      ],
-      bands: [
-        [0, 4,  'Мінімальні прояви', 'Рівень тривоги в межах звичайного. Окреме хвилювання перед важливими подіями — нормальна реакція, а не розлад.'],
-        [5, 9,  'Легкі прояви', 'Тривога присутня, але зазвичай не порушує суттєво повсякденне життя. Має сенс поспостерігати, у яких ситуаціях вона зростає.'],
-        [10, 14, 'Помірні прояви', 'Показник, з якого зазвичай рекомендують звернутися до фахівця. Тривога на цьому рівні вже забирає багато сил і звужує коло того, що людина собі дозволяє.'],
-        [15, 21, 'Виражені прояви', 'Високий рівень тривоги. Тут варто не відкладати звернення до психотерапевта або лікаря.']
-      ]
-    };
-
-    var CRISIS =
-      '<div class="result__warn">' +
-        '<p>Ви відзначили, що Вас турбували думки про смерть або про те, щоб заподіяти собі шкоду. ' +
-        'Такі думки бувають у багатьох людей і не означають, що з Вами щось не так — але залишатися з ними наодинці не варто. ' +
-        'Будь ласка, поговоріть про це з кимось: із близькою людиною, зі мною або зі спеціалістом кризової лінії. ' +
-        'Ці лінії безкоштовні та анонімні:</p>' +
-        '<ul>' +
-          '<li><a href="tel:7333">7333</a> — Lifeline Ukraine, лінія запобігання самогубствам</li>' +
-          '<li><a href="tel:0800100102">0 800 100 102</a> — лінія Національної психологічної асоціації</li>' +
-          '<li><a href="tel:116123">116 123</a> — лінія «Ла Страда-Україна»</li>' +
-          '<li><a href="tel:0800211444">0 800 211 444</a> — лінія емоційної підтримки МОМ</li>' +
-        '</ul>' +
-        '<p style="margin-top:12px">Якщо Ви відчуваєте, що можете зашкодити собі просто зараз — телефонуйте <a href="tel:103">103</a>.</p>' +
-      '</div>';
-
-    var CTA = '<a class="result__cta" href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">Написати мені</a>';
-
-    /* ---------- побудова аркуша ---------- */
-
-    function build(test) {
-      var box = document.getElementById(test.id + '-q');
-      if (!box) return;
-      box.innerHTML = test.q.map(function (text, i) {
-        var opts = OPTS.map(function (label, v) {
-          return '<label class="opt">' +
-                   '<input type="radio" name="' + test.id + '-' + i + '" value="' + v + '">' +
-                   '<span class="opt__dot"></span>' +
-                   '<span class="opt__lbl">' + label + '</span>' +
-                 '</label>';
-        }).join('');
-        return '<div class="q">' +
-                 '<div class="q__text"><b>' + (i + 1) + '.</b>' + text + '</div>' +
-                 '<div class="q__opts">' + opts + '</div>' +
-               '</div>';
-      }).join('');
-    }
-
-    /* ---------- обробка ---------- */
-
-    function score(test) {
-      var total = 0, missing = 0, item9 = 0;
-      for (var i = 0; i < test.q.length; i++) {
-        var sel = document.querySelector('input[name="' + test.id + '-' + i + '"]:checked');
-        if (!sel) { missing++; continue; }
-        var v = Number(sel.value);
-        total += v;
-        if (test.id === 'phq9' && i === 8) item9 = v;
-      }
-      return { total: total, missing: missing, item9: item9 };
-    }
-
-    function band(test, total) {
-      for (var i = 0; i < test.bands.length; i++) {
-        if (total >= test.bands[i][0] && total <= test.bands[i][1]) return test.bands[i];
-      }
-      return test.bands[test.bands.length - 1];
-    }
-
-    function process(test) {
-      var err = document.getElementById(test.id + '-err');
-      var res = document.getElementById(test.id + '-res');
-      var s = score(test);
-
-      if (s.missing > 0) {
-        err.textContent = 'Залишилося відповісти на ' + s.missing +
-          (s.missing === 1 ? ' питання.' : (s.missing < 5 ? ' питання.' : ' питань.'));
-        err.classList.add('is-open');
-        res.classList.remove('is-open');
-        return;
-      }
-      err.classList.remove('is-open');
-
-      var b = band(test, s.total);
-      var html =
-        '<div class="result__score">' + s.total + ' з ' + test.max + ' балів — ' + b[2] + '</div>' +
-        '<div class="result__text">' + b[3] + '</div>';
-
-      if (test.id === 'phq9' && s.item9 > 0) html += CRISIS;
-      if (s.total >= 10) html += CTA;
-
-      html += '<div class="result__note">Це скринінговий опитувальник, а не діагноз. ' +
-              'Він показує, наскільки виражені прояви за останні два тижні, і не замінює консультації фахівця.<br>' +
-              'Результат ніде не зберігається — якщо хочете лишити його собі, зробіть скріншот цього екрана.</div>';
-
-      res.innerHTML = html;
-      res.classList.add('is-open');
-      res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    [PHQ, GAD].forEach(function (test) {
-      build(test);
-      var btn = document.getElementById(test.id + '-btn');
-      if (btn) btn.addEventListener('click', function () { process(test); });
-    });
-  })();
-  </script>
 
 </body>
 </html>

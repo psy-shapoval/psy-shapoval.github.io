@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест на стилі харчової поведінки DEBQ — Микола Шаповал</title>
+  <meta name="description" content="Голландський опитувальник харчової поведінки DEBQ: обмежувальний, емоційний та екстернальний стилі. Підрахунок у браузері, нічого не зберігається.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23e7ece0%22/><text x=%2250%22 y=%2268%22 font-size=%2255%22 font-family=%22Arial%22 font-weight=%22800%22 fill=%22%23352a22%22 text-anchor=%22middle%22>М</text></svg>" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-800-normal.woff2') format('woff2');
+}
+
+
+:root {
+  --color-dark: #352a22;       /* основний темний текст / темний фон футера */
+  --color-body: #5c5247;       /* колір тексту параграфів */
+  --color-cream: #ece5da;      /* фон секцій - бежевий з першого екрана */
+  --color-sage: #d7d4c0;       /* фон секцій - оливковий з першого екрана */
+  --color-accent: #5f7c46;     /* колір кнопок - зелений, як на першому екрані */
+  --color-accent-hover: #51693b;
+  --color-heading-green: #5f7c46;  /* зелені заголовки запитів */
+  --color-note: #565a4b;           /* дрібні підписи */
+  --color-green: #3e5b49;      /* колір ціни / акцентних крапок */
+  --color-white: #ffffff;
+
+  --font-main: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --container-max: 1200px;
+  --radius-btn: 30px;
+  --radius-card: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-body);
+  line-height: 1.4;
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.narrow-960 { max-width: 960px; margin-left: auto; margin-right: auto; }
+.narrow-760 { max-width: 760px; margin-left: auto; margin-right: auto; }
+.narrow-560 { max-width: 560px; margin-left: auto; margin-right: auto; }
+
+.text-center { text-align: center; }
+
+.section {
+  position: relative;
+}
+
+/* ============ Кнопка "ПИШІТЬ СЮДИ" ============ */
+
+.btn-tg {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background-color: var(--color-accent);
+  color: var(--color-white) !important;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 14px 28px;
+  border-radius: var(--radius-btn);
+  border: none;
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+  white-space: normal;
+}
+
+.btn-tg:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-tg .btn-tg__icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.btn-tg .btn-tg__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============ Заголовки секцій (загальні) ============ */
+
+.section-title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .section-title { font-size: 44px; }
+}
+
+.body-text {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* ============ "До мене звертаються коли…" ============ */
+
+.intro-q {
+  background-color: var(--color-cream);
+  padding: 60px 0 0;
+}
+
+/* ============ Картки причин (508) ============ */
+
+.reasons {
+  background-color: var(--color-cream);
+  padding: 0 0 60px;
+}
+
+.reasons__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.reasons__item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.reasons__bullet {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 10px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+}
+
+.reasons__title {
+  color: #107B57;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+@media (min-width: 900px) {
+  .reasons__title { font-size: 26px; }
+}
+
+.reasons__descr {
+  color: var(--color-body);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.reasons__descr strong {
+  color: inherit;
+  font-weight: 500;
+}
+
+/* ============ "Привіт! Я Микола" ============ */
+
+.about-intro {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.about-intro__title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 900px) {
+  .about-intro__title { font-size: 34px; }
+}
+
+.about-intro__descr {
+  color: var(--color-body);
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.about-intro__descr strong {
+  color: #333;
+}
+
+.about-intro__descr em {
+  font-style: italic;
+}
+
+/* ============ Насиченість тексту (утиліти) ============ */
+/* Підсвічують окремі слова, не змінюючи шрифт і розмір.
+   Використання: <span class="w500">слово</span>
+   Manrope у папці fonts/ має 400-800; 300 підвантажується з Google. */
+
+.w300 { font-weight: 300; }
+.w400 { font-weight: 400; }
+.w500 { font-weight: 500; }
+.w600 { font-weight: 600; }
+.w700 { font-weight: 700; }
+.w800 { font-weight: 800; }
+
+/* ============ ТЕСТУВАННЯ ============ */
+
+.tests {
+  background-color: var(--color-cream);
+  padding: 60px 0;
+}
+
+.tests__intro {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-body);
+  text-align: center;
+  margin: 16px auto 0;
+  max-width: 640px;
+}
+
+/* --- аркуш паперу --- */
+
+.sheet {
+  position: relative;
+  background: #fffdf8;
+  border-radius: 4px;
+  padding: 34px 22px 28px;
+  margin-top: 40px;
+  box-shadow:
+    0 1px 2px rgba(60, 50, 35, 0.10),
+    0 10px 28px -12px rgba(60, 50, 35, 0.30);
+}
+
+/* тонка «складка» збоку, щоб читалося як аркуш */
+.sheet::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 4px 0 0 4px;
+  background: linear-gradient(180deg, #e4dccb, #cdc4b0);
+}
+
+@media (min-width: 900px) {
+  .sheet { padding: 46px 54px 38px; margin-top: 50px; }
+}
+
+.sheet__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .sheet__title { font-size: 26px; }
+}
+
+.sheet__rule {
+  height: 1px;
+  background: #e6dfd0;
+  margin: 22px 0;
+  border: 0;
+}
+
+.sheet__subtitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-dark);
+  margin-bottom: 8px;
+}
+
+.sheet__instr {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+.sheet__src {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-body);
+  opacity: 0.65;
+  margin-top: 22px;
+  text-align: center;
+}
+
+/* --- питання --- */
+
+.q {
+  padding: 18px 0 14px;
+  border-top: 1px solid #efe9dc;
+}
+
+.q:first-of-type { border-top: 0; }
+
+.q__text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-dark);
+  margin-bottom: 14px;
+}
+
+.q__text b {
+  font-weight: 600;
+  color: var(--color-heading-green);
+  margin-right: 4px;
+}
+
+/* варіанти: чотири колонки в один ряд */
+
+.q__opts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.opt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 2px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color .15s ease-in-out;
+}
+
+.opt:hover { background: #f5f1e6; }
+
+.opt input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.opt__dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #bcb7a6;
+  background: #fff;
+  flex: none;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.opt:hover .opt__dot { border-color: #93a67e; }
+
+.opt input:checked + .opt__dot {
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-accent);
+}
+
+.opt input:focus-visible + .opt__dot {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.opt__lbl {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(--color-body);
+}
+
+@media (min-width: 900px) {
+  .opt__lbl { font-size: 15px; }
+  .q__text { font-size: 19px; }
+}
+
+/* --- підвал аркуша --- */
+
+.sheet__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid #efe9dc;
+}
+
+.sheet__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 30px;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  cursor: pointer;
+  flex: none;
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+}
+
+.sheet__btn:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.sheet__privacy {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-body);
+  opacity: 0.8;
+  flex: 1 1 220px;
+}
+
+/* --- результат --- */
+
+.result {
+  display: none;
+  margin-top: 24px;
+  padding: 22px 20px;
+  border-radius: 10px;
+  background: #f2f0e6;
+  border: 1px solid #e3ddcc;
+}
+
+.result.is-open { display: block; }
+
+.result__score {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  margin-bottom: 10px;
+}
+
+.result__text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+.result__note {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-body);
+  opacity: 0.8;
+  margin-top: 14px;
+}
+
+.result__warn {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border-radius: 8px;
+  background: #fbf4ee;
+  border-left: 4px solid #b4744e;
+}
+
+.result__warn p {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #5a4436;
+}
+
+.result__warn ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5a4436;
+}
+
+.result__warn a { color: #8a4f2c; }
+
+.sheet__err {
+  display: none;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #9b4a2f;
+  margin-top: 12px;
+}
+
+.sheet__err.is-open { display: block; }
+
+
+
+/* --- п'ять варіантів відповіді --- */
+
+.q__opts--5 {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+}
+
+.q__opts--5 .opt__lbl { font-size: 12px; }
+
+@media (min-width: 900px) {
+  .q__opts--5 { gap: 4px; }
+  .q__opts--5 .opt__lbl { font-size: 14px; }
+}
+
+/* --- шкали в результаті --- */
+
+.scale__legend {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-body);
+  opacity: 0.8;
+  margin-bottom: 18px;
+}
+
+.scale {
+  padding: 16px 0;
+  border-top: 1px solid #e3ddcc;
+}
+
+.scale__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.scale__name {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--color-dark);
+}
+
+.scale__val {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.scale__val span { font-weight: 300; opacity: 0.8; }
+
+.scale__bar {
+  position: relative;
+  height: 8px;
+  border-radius: 6px;
+  background: #e2ddcf;
+  overflow: hidden;
+}
+
+.scale__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 6px;
+  background: #8fa878;
+}
+
+.scale--high .scale__fill { background: #b4744e; }
+
+.scale__norm {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  background: rgba(53, 42, 34, 0.55);
+}
+
+.scale__about {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-body);
+  opacity: 0.85;
+  margin-top: 10px;
+}
+
+.scale__text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--color-body);
+  margin-top: 6px;
+}
+
+.result__soft {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 8px;
+  background: #f7f3ea;
+  border-left: 4px solid #8fa878;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+/* ============ Шапка сторінки тесту ============ */
+
+.test-head {
+  background-color: var(--color-cream);
+  padding: 26px 0 0;
+}
+
+.test-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--color-body);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity .2s ease-in-out;
+}
+
+.test-back:hover { opacity: 1; }
+
+.test-back svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ============ Запис на консультацію ============ */
+
+.book {
+  background-color: var(--color-cream);
+  padding: 10px 0 70px;
+  text-align: center;
+}
+
+.book__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  margin-bottom: 22px;
+}
+
+@media (min-width: 900px) {
+  .book__title { font-size: 26px; }
+}
+
+.book__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 34px;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px -8px rgba(28, 45, 25, 0.4);
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+}
+
+.book__btn:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.book__btn svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+
+/* ============ Соцмережі (футер) ============ */
+
+.social-footer {
+  background-color: var(--color-dark);
+  padding: 60px 0 60px;
+  text-align: center;
+}
+
+.social-footer__title {
+  color: var(--color-sage);
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+.social-footer__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+}
+
+.social-footer__link {
+  display: inline-block;
+  background-color: var(--color-sage);
+  color: var(--color-dark);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 16px;
+  border-radius: var(--radius-btn);
+  transition: background-color .2s ease-in-out;
+  white-space: nowrap;
+}
+
+.social-footer__link:hover {
+  background-color: #d9e0d2;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="test-head">
+    <div class="container narrow-960">
+      <a class="test-back" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        <span>На головну</span>
+      </a>
+    </div>
+  </div>
+
+  <section class="tests" style="padding-top: 30px; padding-bottom: 20px;">
+    <div class="container narrow-960">
+      <div class="sheet">
+        <h3 class="sheet__title">Голландський опитувальник<br>харчової поведінки — DEBQ</h3>
+        <hr class="sheet__rule">
+
+        <div class="sheet__subtitle">Інструкція</div>
+        <p class="sheet__instr">Нижче — 33 твердження про те, як Ви поводитеся з їжею. Оберіть у кожному рядку той варіант, який <span class="w600">найчастіше відповідає Вашому звичному життю</span>, а не тому, як Вам хотілося б. Тут немає правильних чи неправильних відповідей — опитувальник описує стиль, а не оцінює Вас. Після заповнення натисніть «Обробити».</p>
+        <hr class="sheet__rule">
+
+        <div id="debq-q"></div>
+
+        <div class="sheet__foot">
+          <button class="sheet__btn" id="debq-btn" type="button">Обробити</button>
+          <div class="sheet__privacy">Підрахунок відбувається у Вашому браузері. Сайт нічого не збирає, не передає й не зберігає — відповіді зникнуть, щойно Ви закриєте сторінку.</div>
+        </div>
+        <div class="sheet__err" id="debq-err"></div>
+        <div class="result" id="debq-res"></div>
+
+        <p class="sheet__src">DEBQ — Dutch Eating Behaviour Questionnaire.<br>Авторка: Tatjana van Strien (у співавторстві з Jan Frijters, Gerard Bergers, Peter Defares).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="book">
+    <div class="container narrow-960">
+      <h2 class="book__title">Записатися на консультацію</h2>
+      <a class="book__btn" href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">
+        <svg viewBox="2 3 20 18" xmlns="http://www.w3.org/2000/svg"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span>ПИШІТЬ СЮДИ</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- СОЦМЕРЕЖІ -->
+  <footer class="social-footer">
+    <div class="container">
+      <div class="social-footer__title">Мої соціальні мережі:</div>
+      <ul class="social-footer__list">
+        <li><a class="social-footer__link" href="https://www.instagram.com/psy.shapoval/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a class="social-footer__link" href="https://www.facebook.com/psy.shapoval" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a class="social-footer__link" href="https://www.tiktok.com/@psy.shapoval" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+
+    var OPTS = ['ніколи', 'рідко', 'іноді', 'часто', 'дуже часто'];
+
+    var Q = [
+      'Якщо Ваша вага починає збільшуватися, чи їсте Ви менше, ніж зазвичай?',
+      'Чи намагаєтеся Ви їсти менше, ніж Вам хотілося б, під час звичайного прийому їжі?',
+      'Чи часто Ви відмовляєтеся від їжі та напоїв через занепокоєння щодо своєї ваги?',
+      'Чи ретельно Ви контролюєте кількість з\u2019їденого?',
+      'Чи обираєте Ви їжу свідомо, щоб схуднути?',
+      'Якщо Ви переїли, чи будете наступного дня їсти менше?',
+      'Чи намагаєтеся Ви їсти менше, щоб не набрати вагу?',
+      'Чи часто Ви намагаєтеся не їсти між звичайними прийомами їжі, бо стежите за вагою?',
+      'Чи часто Ви намагаєтеся не їсти ввечері, бо стежите за вагою?',
+      'Чи має для Вас значення Ваша вага під час їжі?',
+
+      'Чи виникає у Вас бажання їсти, коли Ви роздратовані?',
+      'Чи виникає у Вас бажання їсти, коли Вам нічого робити?',
+      'Чи виникає у Вас бажання їсти, коли Ви пригнічені або зневірені?',
+      'Чи виникає у Вас бажання їсти, коли Вам самотньо?',
+      'Чи виникає у Вас бажання їсти, коли Вас хтось підвів?',
+      'Чи виникає у Вас бажання їсти, коли щось стає на Вашому шляху, порушуються плани або щось не вдається?',
+      'Чи виникає у Вас бажання їсти, коли Ви передчуваєте якусь неприємність?',
+      'Чи виникає у Вас бажання їсти, коли Ви стривожені, занепокоєні або напружені?',
+      'Чи виникає у Вас бажання їсти, коли «все не так», «усе валиться з рук»?',
+      'Чи виникає у Вас бажання їсти, коли Ви налякані?',
+      'Чи виникає у Вас бажання їсти, коли Ви розчаровані, коли зруйновані Ваші надії?',
+      'Чи виникає у Вас бажання їсти, коли Ви схвильовані або засмучені?',
+      'Чи виникає у Вас бажання їсти, коли Вам нудно, Ви втомлені або неспокійні?',
+
+      'Чи їсте Ви більше, ніж зазвичай, коли їжа смачна?',
+      'Якщо їжа має гарний вигляд і приємний запах, чи їсте Ви більше, ніж зазвичай?',
+      'Якщо Ви бачите смачну їжу й відчуваєте її запах, чи їсте Ви більше, ніж зазвичай?',
+      'Якщо у Вас є щось смачне, чи з\u2019їдаєте Ви це одразу?',
+      'Коли Ви проходите повз пекарню чи кондитерську, чи виникає бажання купити щось смачне?',
+      'Коли Ви проходите повз кафе або закусочну, чи виникає бажання купити щось смачне?',
+      'Якщо Ви бачите, як їдять інші, чи з\u2019являється у Вас бажання їсти?',
+      'Чи можете Ви зупинитися, якщо їсте щось смачне?',
+      'Чи їсте Ви більше, ніж зазвичай, у компанії?',
+      'Коли Ви готуєте їжу, чи часто її куштуєте?'
+    ];
+
+    /* 31-ше питання сформульоване «навпаки», тому його бал перевертається */
+    var REVERSE = [30];
+
+    var SCALES = [
+      {
+        name: 'Обмежувальна',
+        from: 0, to: 9, norm: 2.4,
+        about: 'Схильність свідомо стримувати себе в їжі, рахувати й контролювати з\u2019їдене.',
+        low:  'Ви майже не обмежуєте себе свідомо. Їжа радше не є полем контролю та боротьби.',
+        mid:  'Помірний рівень самообмеження — приблизно як у більшості людей.',
+        high: 'Виражене самообмеження. Парадокс у тому, що жорсткий контроль рідко тримається довго: чим суворіші правила, тим імовірніший зрив, а за ним — провина й нове коло обмежень.'
+      },
+      {
+        name: 'Емоційна',
+        from: 10, to: 22, norm: 1.8,
+        about: 'Схильність їсти у відповідь на емоції, а не на фізичний голод.',
+        low:  'Емоції майже не керують Вашим апетитом — Ви їсте радше тоді, коли справді голодні.',
+        mid:  'Іноді емоції впливають на апетит. Це звичайна річ і сама собою не є проблемою.',
+        high: 'Їжа часто стає способом упоратися з почуттями. Це не слабкість характеру: так психіка шукає швидкого полегшення там, де бракує інших способів себе заспокоїти.'
+      },
+      {
+        name: 'Екстернальна',
+        from: 23, to: 32, norm: 2.7,
+        about: 'Реакція на зовнішні сигнали: вигляд, запах, доступність їжі, компанія.',
+        low:  'Зовнішні спокуси майже не збивають Вас із власного відчуття голоду.',
+        mid:  'Звичайна чутливість до вигляду й запаху їжі — приблизно як у більшості людей.',
+        high: 'Ви сильно реагуєте на зовнішні сигнали: побачив, відчув запах — з\u2019явився апетит, незалежно від того, чи є голод.'
+      }
+    ];
+
+    var TOL = 0.3;
+
+    function build() {
+      var box = document.getElementById('debq-q');
+      box.innerHTML = Q.map(function (text, i) {
+        var opts = OPTS.map(function (label, v) {
+          return '<label class="opt">' +
+                   '<input type="radio" name="debq-' + i + '" value="' + (v + 1) + '">' +
+                   '<span class="opt__dot"></span>' +
+                   '<span class="opt__lbl">' + label + '</span>' +
+                 '</label>';
+        }).join('');
+        return '<div class="q">' +
+                 '<div class="q__text"><b>' + (i + 1) + '.</b>' + text + '</div>' +
+                 '<div class="q__opts q__opts--5">' + opts + '</div>' +
+               '</div>';
+      }).join('');
+    }
+
+    function process() {
+      var err = document.getElementById('debq-err');
+      var res = document.getElementById('debq-res');
+
+      var vals = [], missing = 0;
+      for (var i = 0; i < Q.length; i++) {
+        var sel = document.querySelector('input[name="debq-' + i + '"]:checked');
+        if (!sel) { missing++; vals.push(null); continue; }
+        var v = Number(sel.value);
+        if (REVERSE.indexOf(i) !== -1) v = 6 - v;
+        vals.push(v);
+      }
+
+      if (missing > 0) {
+        err.textContent = 'Залишилося відповісти на ' + missing +
+          (missing === 1 ? ' питання.' : (missing < 5 ? ' питання.' : ' питань.'));
+        err.classList.add('is-open');
+        res.classList.remove('is-open');
+        return;
+      }
+      err.classList.remove('is-open');
+
+      var html = '', anyHigh = false;
+
+      SCALES.forEach(function (sc) {
+        var sum = 0, n = 0;
+        for (var i = sc.from; i <= sc.to; i++) { sum += vals[i]; n++; }
+        var avg = sum / n;
+        var level, cls, text;
+        if (avg < sc.norm - TOL)      { level = 'нижче середнього'; cls = 'low';  text = sc.low; }
+        else if (avg <= sc.norm + TOL){ level = 'у межах середнього'; cls = 'mid'; text = sc.mid; }
+        else                          { level = 'вище середнього'; cls = 'high'; anyHigh = true; text = sc.high; }
+
+        var pct = Math.max(0, Math.min(100, (avg - 1) / 4 * 100));
+        var normPct = (sc.norm - 1) / 4 * 100;
+
+        html +=
+          '<div class="scale scale--' + cls + '">' +
+            '<div class="scale__head">' +
+              '<span class="scale__name">' + sc.name + '</span>' +
+              '<span class="scale__val">' + avg.toFixed(2) + ' <span>· ' + level + '</span></span>' +
+            '</div>' +
+            '<div class="scale__bar">' +
+              '<span class="scale__fill" style="width:' + pct.toFixed(1) + '%"></span>' +
+              '<span class="scale__norm" style="left:' + normPct.toFixed(1) + '%"></span>' +
+            '</div>' +
+            '<div class="scale__about">' + sc.about + '</div>' +
+            '<div class="scale__text">' + text + '</div>' +
+          '</div>';
+      });
+
+      html = '<div class="result__score">Ваші стилі харчової поведінки</div>' +
+             '<div class="scale__legend">Риска на смузі — середнє значення, з яким порівнюють результат ' +
+             '(обмежувальна 2,4 · емоційна 1,8 · екстернальна 2,7).</div>' + html;
+
+      if (anyHigh) {
+        html += '<div class="result__soft">Підвищений показник — це не діагноз і не вирок. ' +
+                'Це опис звички, яка колись сформувалася не просто так і з якою можна працювати. ' +
+                'Якщо стосунки з їжею забирають багато сил або приносять сором — про це варто поговорити з фахівцем.</div>';
+      }
+
+      html += '<div class="result__note">Це скринінговий опитувальник, а не діагноз. ' +
+              'Він описує стилі харчової поведінки й не оцінює ані Вашу вагу, ані те, що і скільки Ви їсте.<br>' +
+              'Результат ніде не зберігається — якщо хочете лишити його собі, зробіть скріншот цього екрана.</div>';
+
+      res.innerHTML = html;
+      res.classList.add('is-open');
+      res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    build();
+    document.getElementById('debq-btn').addEventListener('click', process);
+  })();
+  </script>
+</body>
+</html>

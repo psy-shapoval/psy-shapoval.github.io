@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест на тривогу GAD-7 — Микола Шаповал</title>
+  <meta name="description" content="Опитувальник GAD-7: скринінг тривожних проявів за останні два тижні. Підрахунок у браузері, нічого не зберігається.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23e7ece0%22/><text x=%2250%22 y=%2268%22 font-size=%2255%22 font-family=%22Arial%22 font-weight=%22800%22 fill=%22%23352a22%22 text-anchor=%22middle%22>М</text></svg>" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-800-normal.woff2') format('woff2');
+}
+
+
+:root {
+  --color-dark: #352a22;       /* основний темний текст / темний фон футера */
+  --color-body: #5c5247;       /* колір тексту параграфів */
+  --color-cream: #ece5da;      /* фон секцій - бежевий з першого екрана */
+  --color-sage: #d7d4c0;       /* фон секцій - оливковий з першого екрана */
+  --color-accent: #5f7c46;     /* колір кнопок - зелений, як на першому екрані */
+  --color-accent-hover: #51693b;
+  --color-heading-green: #5f7c46;  /* зелені заголовки запитів */
+  --color-note: #565a4b;           /* дрібні підписи */
+  --color-green: #3e5b49;      /* колір ціни / акцентних крапок */
+  --color-white: #ffffff;
+
+  --font-main: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --container-max: 1200px;
+  --radius-btn: 30px;
+  --radius-card: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-body);
+  line-height: 1.4;
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.narrow-960 { max-width: 960px; margin-left: auto; margin-right: auto; }
+.narrow-760 { max-width: 760px; margin-left: auto; margin-right: auto; }
+.narrow-560 { max-width: 560px; margin-left: auto; margin-right: auto; }
+
+.text-center { text-align: center; }
+
+.section {
+  position: relative;
+}
+
+/* ============ Кнопка "ПИШІТЬ СЮДИ" ============ */
+
+.btn-tg {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background-color: var(--color-accent);
+  color: var(--color-white) !important;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 14px 28px;
+  border-radius: var(--radius-btn);
+  border: none;
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+  white-space: normal;
+}
+
+.btn-tg:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-tg .btn-tg__icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.btn-tg .btn-tg__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============ Заголовки секцій (загальні) ============ */
+
+.section-title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .section-title { font-size: 44px; }
+}
+
+.body-text {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* ============ "До мене звертаються коли…" ============ */
+
+.intro-q {
+  background-color: var(--color-cream);
+  padding: 60px 0 0;
+}
+
+/* ============ Картки причин (508) ============ */
+
+.reasons {
+  background-color: var(--color-cream);
+  padding: 0 0 60px;
+}
+
+.reasons__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.reasons__item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.reasons__bullet {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 10px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+}
+
+.reasons__title {
+  color: #107B57;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+@media (min-width: 900px) {
+  .reasons__title { font-size: 26px; }
+}
+
+.reasons__descr {
+  color: var(--color-body);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.reasons__descr strong {
+  color: inherit;
+  font-weight: 500;
+}
+
+/* ============ "Привіт! Я Микола" ============ */
+
+.about-intro {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.about-intro__title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 900px) {
+  .about-intro__title { font-size: 34px; }
+}
+
+.about-intro__descr {
+  color: var(--color-body);
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.about-intro__descr strong {
+  color: #333;
+}
+
+.about-intro__descr em {
+  font-style: italic;
+}
+
+/* ============ Насиченість тексту (утиліти) ============ */
+/* Підсвічують окремі слова, не змінюючи шрифт і розмір.
+   Використання: <span class="w500">слово</span>
+   Manrope у папці fonts/ має 400-800; 300 підвантажується з Google. */
+
+.w300 { font-weight: 300; }
+.w400 { font-weight: 400; }
+.w500 { font-weight: 500; }
+.w600 { font-weight: 600; }
+.w700 { font-weight: 700; }
+.w800 { font-weight: 800; }
+
+/* ============ ТЕСТУВАННЯ ============ */
+
+.tests {
+  background-color: var(--color-cream);
+  padding: 60px 0;
+}
+
+.tests__intro {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-body);
+  text-align: center;
+  margin: 16px auto 0;
+  max-width: 640px;
+}
+
+/* --- аркуш паперу --- */
+
+.sheet {
+  position: relative;
+  background: #fffdf8;
+  border-radius: 4px;
+  padding: 34px 22px 28px;
+  margin-top: 40px;
+  box-shadow:
+    0 1px 2px rgba(60, 50, 35, 0.10),
+    0 10px 28px -12px rgba(60, 50, 35, 0.30);
+}
+
+/* тонка «складка» збоку, щоб читалося як аркуш */
+.sheet::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 4px 0 0 4px;
+  background: linear-gradient(180deg, #e4dccb, #cdc4b0);
+}
+
+@media (min-width: 900px) {
+  .sheet { padding: 46px 54px 38px; margin-top: 50px; }
+}
+
+.sheet__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .sheet__title { font-size: 26px; }
+}
+
+.sheet__rule {
+  height: 1px;
+  background: #e6dfd0;
+  margin: 22px 0;
+  border: 0;
+}
+
+.sheet__subtitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-dark);
+  margin-bottom: 8px;
+}
+
+.sheet__instr {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+.sheet__src {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-body);
+  opacity: 0.65;
+  margin-top: 22px;
+  text-align: center;
+}
+
+/* --- питання --- */
+
+.q {
+  padding: 18px 0 14px;
+  border-top: 1px solid #efe9dc;
+}
+
+.q:first-of-type { border-top: 0; }
+
+.q__text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-dark);
+  margin-bottom: 14px;
+}
+
+.q__text b {
+  font-weight: 600;
+  color: var(--color-heading-green);
+  margin-right: 4px;
+}
+
+/* варіанти: чотири колонки в один ряд */
+
+.q__opts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.opt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 2px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color .15s ease-in-out;
+}
+
+.opt:hover { background: #f5f1e6; }
+
+.opt input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.opt__dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #bcb7a6;
+  background: #fff;
+  flex: none;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.opt:hover .opt__dot { border-color: #93a67e; }
+
+.opt input:checked + .opt__dot {
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-accent);
+}
+
+.opt input:focus-visible + .opt__dot {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.opt__lbl {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(--color-body);
+}
+
+@media (min-width: 900px) {
+  .opt__lbl { font-size: 15px; }
+  .q__text { font-size: 19px; }
+}
+
+/* --- підвал аркуша --- */
+
+.sheet__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid #efe9dc;
+}
+
+.sheet__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 30px;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  cursor: pointer;
+  flex: none;
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+}
+
+.sheet__btn:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.sheet__privacy {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-body);
+  opacity: 0.8;
+  flex: 1 1 220px;
+}
+
+/* --- результат --- */
+
+.result {
+  display: none;
+  margin-top: 24px;
+  padding: 22px 20px;
+  border-radius: 10px;
+  background: #f2f0e6;
+  border: 1px solid #e3ddcc;
+}
+
+.result.is-open { display: block; }
+
+.result__score {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  margin-bottom: 10px;
+}
+
+.result__text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+.result__note {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-body);
+  opacity: 0.8;
+  margin-top: 14px;
+}
+
+.result__warn {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border-radius: 8px;
+  background: #fbf4ee;
+  border-left: 4px solid #b4744e;
+}
+
+.result__warn p {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #5a4436;
+}
+
+.result__warn ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5a4436;
+}
+
+.result__warn a { color: #8a4f2c; }
+
+.sheet__err {
+  display: none;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #9b4a2f;
+  margin-top: 12px;
+}
+
+.sheet__err.is-open { display: block; }
+
+
+/* ============ Шапка сторінки тесту ============ */
+
+.test-head {
+  background-color: var(--color-cream);
+  padding: 26px 0 0;
+}
+
+.test-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--color-body);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity .2s ease-in-out;
+}
+
+.test-back:hover { opacity: 1; }
+
+.test-back svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ============ Запис на консультацію ============ */
+
+.book {
+  background-color: var(--color-cream);
+  padding: 10px 0 70px;
+  text-align: center;
+}
+
+.book__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  margin-bottom: 22px;
+}
+
+@media (min-width: 900px) {
+  .book__title { font-size: 26px; }
+}
+
+.book__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 34px;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px -8px rgba(28, 45, 25, 0.4);
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+}
+
+.book__btn:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.book__btn svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+
+/* ============ Соцмережі (футер) ============ */
+
+.social-footer {
+  background-color: var(--color-dark);
+  padding: 60px 0 60px;
+  text-align: center;
+}
+
+.social-footer__title {
+  color: var(--color-sage);
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+.social-footer__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+}
+
+.social-footer__link {
+  display: inline-block;
+  background-color: var(--color-sage);
+  color: var(--color-dark);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 16px;
+  border-radius: var(--radius-btn);
+  transition: background-color .2s ease-in-out;
+  white-space: nowrap;
+}
+
+.social-footer__link:hover {
+  background-color: #d9e0d2;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="test-head">
+    <div class="container narrow-960">
+      <a class="test-back" href="index.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        <span>На головну</span>
+      </a>
+    </div>
+  </div>
+
+  <section class="tests" style="padding-top: 30px; padding-bottom: 20px;">
+    <div class="container narrow-960">
+      <div class="sheet">
+        <h3 class="sheet__title">Опитувальник з генералізованої тривоги<br>GAD-7</h3>
+        <hr class="sheet__rule">
+
+        <div class="sheet__subtitle">Інструкція</div>
+        <p class="sheet__instr">Прочитайте твердження нижче й оцініть, як часто <span class="w600">за останні два тижні</span> Вас турбували наступні проблеми. Оберіть один варіант у кожному рядку, після чого натисніть «Обробити».</p>
+        <hr class="sheet__rule">
+
+        <div id="gad7-q"></div>
+
+        <div class="sheet__foot">
+          <button class="sheet__btn" id="gad7-btn" type="button">Обробити</button>
+          <div class="sheet__privacy">Підрахунок відбувається у Вашому браузері. Сайт нічого не збирає, не передає й не зберігає — відповіді зникнуть, щойно Ви закриєте сторінку.</div>
+        </div>
+        <div class="sheet__err" id="gad7-err"></div>
+        <div class="result" id="gad7-res"></div>
+
+        <p class="sheet__src">GAD-7 — Generalized Anxiety Disorder scale.<br>Автори: Robert L. Spitzer, Kurt Kroenke, Janet B. W. Williams, Bernd Löwe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="book">
+    <div class="container narrow-960">
+      <h2 class="book__title">Записатися на консультацію</h2>
+      <a class="book__btn" href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">
+        <svg viewBox="2 3 20 18" xmlns="http://www.w3.org/2000/svg"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span>ПИШІТЬ СЮДИ</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- СОЦМЕРЕЖІ -->
+  <footer class="social-footer">
+    <div class="container">
+      <div class="social-footer__title">Мої соціальні мережі:</div>
+      <ul class="social-footer__list">
+        <li><a class="social-footer__link" href="https://www.instagram.com/psy.shapoval/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a class="social-footer__link" href="https://www.facebook.com/psy.shapoval" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a class="social-footer__link" href="https://www.tiktok.com/@psy.shapoval" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+
+    var OPTS = ['ніколи', 'декілька днів', 'більшу половину часу', 'майже щодня'];
+
+    var PHQ = {
+      id: 'phq9',
+      max: 27,
+      q: [
+        'Зниження інтересу або відчуття задоволення від виконання справ',
+        'Поганий настрій, відчуття пригнічення або безнадії',
+        'Труднощі із засинанням, поверхневий сон або, навпаки, надмірна сонливість',
+        'Відчуття втоми або зниження енергії',
+        'Поганий апетит або переїдання',
+        'Негативне відчуття щодо себе: або Ви почувалися невдахою, або ж розчаровувались у собі, або думали, що підвели родину',
+        'Труднощі з концентрацією уваги, наприклад, при читанні або перегляді телепередач',
+        'Сповільненість рухів і мовлення, яку помічають оточуючі. Або, навпаки, надмірна і непритаманна Вам метушливість і активність',
+        'Думки, що було б краще, якби Ви померли, або думки про те, щоб заподіяти собі шкоду'
+      ],
+      bands: [
+        [0, 4,  'Мінімальні прояви', 'Показник у межах, які зазвичай не свідчать про депресивний розлад. Це не виключає окремих важких періодів — просто зараз загальна картина спокійна.'],
+        [5, 9,  'Легкі прояви', 'Такий рівень часто описують як субклінічний: симптоми присутні, але зазвичай суттєво не порушують повсякденне життя. Варто поспостерігати за собою протягом кількох тижнів.'],
+        [10, 14, 'Помірні прояви', 'Показник, з якого зазвичай рекомендують звернутися до фахівця. На цьому рівні симптоми вже помітно впливають на роботу, стосунки та самопочуття.'],
+        [15, 19, 'Помірно тяжкі прояви', 'Рівень, який потребує професійної допомоги. Самостійно впоратися на цьому етапі буває складно — і це не питання волі чи характеру.'],
+        [20, 27, 'Тяжкі прояви', 'Високий показник. Тут важливо не відкладати звернення до психотерапевта або лікаря-психіатра.']
+      ]
+    };
+
+    var GAD = {
+      id: 'gad7',
+      max: 21,
+      q: [
+        'Ви нервували, відчували тривогу або були дуже напружені',
+        'Ви не могли зупинити або контролювати своє хвилювання',
+        'Ви занадто хвилювались через різні речі',
+        'Вам було важко розслабитись',
+        'Ви були настільки неспокійні, що Вам було важко всидіти на одному місці',
+        'Вам було легко дошкулити або роздратувати',
+        'Ви відчували страх, неначе щось жахливе може статися'
+      ],
+      bands: [
+        [0, 4,  'Мінімальні прояви', 'Рівень тривоги в межах звичайного. Окреме хвилювання перед важливими подіями — нормальна реакція, а не розлад.'],
+        [5, 9,  'Легкі прояви', 'Тривога присутня, але зазвичай не порушує суттєво повсякденне життя. Має сенс поспостерігати, у яких ситуаціях вона зростає.'],
+        [10, 14, 'Помірні прояви', 'Показник, з якого зазвичай рекомендують звернутися до фахівця. Тривога на цьому рівні вже забирає багато сил і звужує коло того, що людина собі дозволяє.'],
+        [15, 21, 'Виражені прояви', 'Високий рівень тривоги. Тут варто не відкладати звернення до психотерапевта або лікаря.']
+      ]
+    };
+
+    var CRISIS =
+      '<div class="result__warn">' +
+        '<p>Ви відзначили, що Вас турбували думки про смерть або про те, щоб заподіяти собі шкоду. ' +
+        'Такі думки бувають у багатьох людей і не означають, що з Вами щось не так — але залишатися з ними наодинці не варто. ' +
+        'Будь ласка, поговоріть про це з кимось: із близькою людиною, зі мною або зі спеціалістом кризової лінії. ' +
+        'Ці лінії безкоштовні та анонімні:</p>' +
+        '<ul>' +
+          '<li><a href="tel:7333">7333</a> — Lifeline Ukraine, лінія запобігання самогубствам</li>' +
+          '<li><a href="tel:0800100102">0 800 100 102</a> — лінія Національної психологічної асоціації</li>' +
+          '<li><a href="tel:116123">116 123</a> — лінія «Ла Страда-Україна»</li>' +
+          '<li><a href="tel:0800211444">0 800 211 444</a> — лінія емоційної підтримки МОМ</li>' +
+        '</ul>' +
+        '<p style="margin-top:12px">Якщо Ви відчуваєте, що можете зашкодити собі просто зараз — телефонуйте <a href="tel:103">103</a>.</p>' +
+      '</div>';
+
+    /* ---------- побудова аркуша ---------- */
+
+    function build(test) {
+      var box = document.getElementById(test.id + '-q');
+      if (!box) return;
+      box.innerHTML = test.q.map(function (text, i) {
+        var opts = OPTS.map(function (label, v) {
+          return '<label class="opt">' +
+                   '<input type="radio" name="' + test.id + '-' + i + '" value="' + v + '">' +
+                   '<span class="opt__dot"></span>' +
+                   '<span class="opt__lbl">' + label + '</span>' +
+                 '</label>';
+        }).join('');
+        return '<div class="q">' +
+                 '<div class="q__text"><b>' + (i + 1) + '.</b>' + text + '</div>' +
+                 '<div class="q__opts">' + opts + '</div>' +
+               '</div>';
+      }).join('');
+    }
+
+    /* ---------- обробка ---------- */
+
+    function score(test) {
+      var total = 0, missing = 0, item9 = 0;
+      for (var i = 0; i < test.q.length; i++) {
+        var sel = document.querySelector('input[name="' + test.id + '-' + i + '"]:checked');
+        if (!sel) { missing++; continue; }
+        var v = Number(sel.value);
+        total += v;
+        if (test.id === 'phq9' && i === 8) item9 = v;
+      }
+      return { total: total, missing: missing, item9: item9 };
+    }
+
+    function band(test, total) {
+      for (var i = 0; i < test.bands.length; i++) {
+        if (total >= test.bands[i][0] && total <= test.bands[i][1]) return test.bands[i];
+      }
+      return test.bands[test.bands.length - 1];
+    }
+
+    function process(test) {
+      var err = document.getElementById(test.id + '-err');
+      var res = document.getElementById(test.id + '-res');
+      var s = score(test);
+
+      if (s.missing > 0) {
+        err.textContent = 'Залишилося відповісти на ' + s.missing +
+          (s.missing === 1 ? ' питання.' : (s.missing < 5 ? ' питання.' : ' питань.'));
+        err.classList.add('is-open');
+        res.classList.remove('is-open');
+        return;
+      }
+      err.classList.remove('is-open');
+
+      var b = band(test, s.total);
+      var html =
+        '<div class="result__score">' + s.total + ' з ' + test.max + ' балів — ' + b[2] + '</div>' +
+        '<div class="result__text">' + b[3] + '</div>';
+
+      if (test.id === 'phq9' && s.item9 > 0) html += CRISIS;
+
+      html += '<div class="result__note">Це скринінговий опитувальник, а не діагноз. ' +
+              'Він показує, наскільки виражені прояви за останні два тижні, і не замінює консультації фахівця.<br>' +
+              'Результат ніде не зберігається — якщо хочете лишити його собі, зробіть скріншот цього екрана.</div>';
+
+      res.innerHTML = html;
+      res.classList.add('is-open');
+      res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    [GAD].forEach(function (test) {
+      build(test);
+      var btn = document.getElementById(test.id + '-btn');
+      if (btn) btn.addEventListener('click', function () { process(test); });
+    });
+  })();
+  </script>
+</body>
+</html>
