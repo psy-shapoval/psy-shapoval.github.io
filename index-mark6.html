@@ -452,7 +452,8 @@ img {
 }
 
 .reasons__descr strong {
-  color: #6b6b6b;
+  color: inherit;
+  font-weight: 500;
 }
 
 /* ============ "Привіт! Я Микола" ============ */
@@ -488,6 +489,18 @@ img {
 .about-intro__descr em {
   font-style: italic;
 }
+
+/* ============ Насиченість тексту (утиліти) ============ */
+/* Підсвічують окремі слова, не змінюючи шрифт і розмір.
+   Використання: <span class="w500">слово</span>
+   Manrope у папці fonts/ має 400-800; 300 підвантажується з Google. */
+
+.w300 { font-weight: 300; }
+.w400 { font-weight: 400; }
+.w500 { font-weight: 500; }
+.w600 { font-weight: 600; }
+.w700 { font-weight: 700; }
+.w800 { font-weight: 800; }
 
 /* ============ ДРУГИЙ ЕКРАН ============ */
 
@@ -765,6 +778,11 @@ img {
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 2px;
+}
+
+/* підказка про гортання — лише на мобільній */
+@media (min-width: 900px) {
+  .reviews__hint { display: none; }
 }
 
 .reviews__hint {
