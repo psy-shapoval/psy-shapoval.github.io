@@ -56,8 +56,8 @@
 :root {
   --color-dark: #352a22;       /* основний темний текст / темний фон футера */
   --color-body: #5c5247;       /* колір тексту параграфів */
-  --color-cream: #ece5da;      /* фон секцій - бежевий з першого екрана */
-  --color-sage: #d7d4c0;       /* фон секцій - оливковий з першого екрана */
+  --color-cream: #f2efe6;      /* фон секцій - світлий */
+  --color-sage: #e0e5d4;       /* фон секцій - зеленуватий */
   --color-accent: #5f7c46;     /* колір кнопок - зелений, як на першому екрані */
   --color-accent-hover: #51693b;
   --color-heading-green: #5f7c46;  /* зелені заголовки запитів */
@@ -545,41 +545,47 @@ img {
 .changes {
   position: relative;
   overflow: hidden;
-  background-color: #f2efe6;
-  padding: 54px 0 70px;
+  background-color: var(--color-cream);
+  padding: 54px 0 64px;
 }
 
-/* --- фон: м'які плями, гілочки, закарлючки --- */
+/* --- фон --- */
 
-.changes__bg { position: absolute; inset: 0; pointer-events: none; color: #b3c0a4; }
-.changes__bg svg { display: block; width: 100%; height: 100%; }
-.changes__bg .fill { fill: #dfe4d3; }
-.changes__bg .line { fill: none; stroke: #b3c0a4; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.changes__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: #b9c5aa;
+}
 
-.bg-el { position: absolute; }
+.changes__bg .bg-el { position: absolute; }
+.changes__bg .bg-el > svg { display: block; width: 100%; height: 100%; }
+.changes__bg .fill { fill: var(--color-sage); }
+.changes__bg .line { fill: none; stroke: #c2cdb4; stroke-width: 1.6; stroke-linecap: round; }
+.changes__bg .bg-dec { opacity: .85; }
 
-.bg-tl { top: 0;    left: 0;   width: 42%; height: 190px; }
-.bg-lm { top: 30%;  left: 0;   width: 60px; height: 130px; }
-.bg-br { bottom: 0; right: 0;  width: 64%; height: 210px; }
-.bg-bl { bottom: 0; left: 0;   width: 30%; height: 120px; }
-.bg-wave { bottom: 40px; right: 0; width: 58%; height: 90px; }
+.bg-tl   { top: 0;    left: 0;  width: 38%; height: 170px; }
+.bg-lm   { top: 32%;  left: 0;  width: 52px; height: 120px; }
+.bg-br   { bottom: 0; right: 0; width: 58%; height: 180px; }
+.bg-bl   { bottom: 0; left: 0;  width: 26%; height: 100px; }
+.bg-wave { bottom: 34px; right: 0; width: 52%; height: 80px; }
 
-.bg-leaf-l  { top: 46%; left: 10px;  width: 58px;  height: 90px; }
-.bg-leaf-r  { bottom: 90px; right: 14px; width: 74px; height: 112px; transform: scaleX(-1) rotate(6deg); }
-.bg-sq-1    { top: 60px;  right: 12%; width: 40px; height: 22px; }
-.bg-sq-2    { top: 26%;   left: 5%;   width: 30px; height: 18px; }
-.bg-sq-3    { bottom: 34px; left: 8%; width: 34px; height: 20px; }
-.bg-dashes  { bottom: 26px; left: 40%; width: 76px; height: 36px; }
+.bg-leaf-l { top: 44%;     left: 12px;  width: 46px; height: 72px; }
+.bg-leaf-r { bottom: 96px; right: 16px; width: 58px; height: 88px; transform: scaleX(-1) rotate(6deg); }
+.bg-sq-1   { top: 54px;    right: 11%;  width: 34px; height: 20px; }
+.bg-sq-2   { top: 27%;     left: 6%;    width: 26px; height: 16px; }
+.bg-sq-3   { bottom: 40px; left: 9%;    width: 30px; height: 18px; }
+.bg-dashes { bottom: 30px; left: 41%;   width: 66px; height: 32px; }
 
 @media (max-width: 899px) {
-  .bg-tl { width: 62%; height: 130px; }
-  .bg-br { width: 88%; height: 150px; }
-  .bg-bl { width: 46%; height: 90px; }
-  .bg-wave { width: 80%; height: 70px; bottom: 30px; }
-  .bg-leaf-l { top: 40%; width: 40px; height: 62px; left: 2px; }
-  .bg-leaf-r { bottom: 60px; right: 2px; width: 46px; height: 70px; }
-  .bg-sq-1 { top: 40px; right: 6%; width: 30px; }
-  .bg-sq-2, .bg-dashes { display: none; }
+  .bg-tl   { width: 58%; height: 120px; }
+  .bg-br   { width: 86%; height: 130px; }
+  .bg-bl   { width: 42%; height: 78px; }
+  .bg-wave { width: 76%; height: 60px; bottom: 26px; }
+  .bg-leaf-l { top: 38%; left: 2px; width: 32px; height: 50px; }
+  .bg-leaf-r { bottom: 64px; right: 2px; width: 36px; height: 56px; }
+  .bg-sq-1 { top: 34px; right: 5%; width: 26px; height: 15px; }
+  .bg-sq-2, .bg-sq-3, .bg-dashes { display: none; }
 }
 
 .changes__inner { position: relative; z-index: 1; }
@@ -588,8 +594,8 @@ img {
 
 .changes .section-title {
   font-family: 'Manrope', sans-serif;
-  font-weight: 800;
-  font-size: 25px;
+  font-weight: 700;
+  font-size: 26px;
   color: var(--color-dark);
 }
 
@@ -611,34 +617,26 @@ img {
   color: #a9b89b;
 }
 
-/* --- сітка --- */
+/* --- сітка в шаховому порядку --- */
 
 .steps {
   list-style: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: start;
-  column-gap: 38px;
-  row-gap: 58px;
-  margin-top: 36px;
+  column-gap: 26px;
+  row-gap: 54px;
+  margin-top: 38px;
 }
 
-/* змійка на дві колонки */
-.step:nth-child(1) { grid-area: 1 / 1; }
-.step:nth-child(2) { grid-area: 1 / 2; }
-.step:nth-child(3) { grid-area: 2 / 2; }
-.step:nth-child(4) { grid-area: 2 / 1; }
-.step:nth-child(5) { grid-area: 3 / 1; }
-.step:nth-child(6) { grid-area: 3 / 2; }
-.step:nth-child(7) { grid-area: 4 / 2; }
-.step:nth-child(8) { grid-area: 4 / 1; }
-.step:nth-child(9) { grid-area: 5 / 1; }
+.step:nth-child(even) { margin-top: 116px; }
 
-/* --- картка-крапля --- */
+/* --- картка --- */
 
 .step {
   position: relative;
-  padding: 26px 14px 24px;
+  min-height: 190px;
+  padding: 28px 16px 26px;
   text-align: center;
 }
 
@@ -652,7 +650,7 @@ img {
 }
 
 .step__shape path {
-  fill: rgba(255, 255, 255, 0.38);
+  fill: rgba(255, 255, 255, 0.4);
   stroke: #9fb08f;
   stroke-width: 1.7;
   stroke-dasharray: 5 7;
@@ -663,12 +661,12 @@ img {
 .step__num {
   position: absolute;
   z-index: 2;
-  top: -8px;
-  left: 12%;
+  top: -13px;
+  left: 14%;
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: #5f7c46;
+  background-color: var(--color-accent);
   color: var(--color-white);
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
@@ -681,10 +679,10 @@ img {
   position: relative;
   z-index: 1;
   display: block;
-  width: 23px;
-  height: 23px;
+  width: 22px;
+  height: 22px;
   margin: 0 auto 10px;
-  color: #6b8a4f;
+  color: var(--color-accent);
 }
 
 .step__title {
@@ -692,23 +690,23 @@ img {
   z-index: 1;
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 700;
-  font-size: 13.5px;
-  line-height: 1.3;
+  font-size: 15px;
+  line-height: 1.25;
   color: var(--color-heading-green);
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 
 .step__descr {
   position: relative;
   z-index: 1;
   font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 11.8px;
+  font-weight: 300;
+  font-size: 12.5px;
   line-height: 1.45;
   color: var(--color-body);
 }
 
-/* --- довгі пунктирні стрілки --- */
+/* --- пунктирні стрілки --- */
 
 .arrow {
   position: absolute;
@@ -722,10 +720,10 @@ img {
 
 @media (max-width: 899px) {
   .a-mob { display: block; }
-
-  .a-mob.arrow--right { top: 50%; right: -38px; width: 38px; height: 30px; transform: translateY(-50%); }
-  .a-mob.arrow--left  { top: 50%; left: -38px;  width: 38px; height: 30px; transform: translateY(-50%) scaleX(-1); }
-  .a-mob.arrow--v     { bottom: -58px; left: 50%; width: 44px; height: 58px; transform: translateX(-50%); }
+  .a-mob.arrow--diag    { top: 50%;  right: -30px; width: 52px; height: 104px; }
+  .a-mob.arrow--diag-up { bottom: 50%; right: -30px; width: 52px; height: 104px; transform: scaleY(-1); }
+  .a-mob.arrow--exit    { top: 52%;  right: -18px; width: 48px; height: 86px; }
+  .a-mob.arrow--enter   { top: -40px; left: -40px; width: 48px; height: 92px; }
 }
 
 @media (min-width: 900px) {
@@ -735,33 +733,28 @@ img {
 
   .steps {
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 118px;
-    row-gap: 104px;
+    column-gap: 88px;
+    row-gap: 96px;
     margin-top: 56px;
   }
 
-  /* змійка на три колонки + легкий різнобій */
-  .step:nth-child(1) { grid-area: 1 / 1; transform: translateY(10px)  rotate(-1deg); }
-  .step:nth-child(2) { grid-area: 1 / 2; transform: translateY(-6px)  rotate(0.8deg); }
-  .step:nth-child(3) { grid-area: 1 / 3; transform: translateY(4px)   rotate(-0.6deg); }
-  .step:nth-child(4) { grid-area: 2 / 3; transform: translateY(-8px)  rotate(1.1deg); }
-  .step:nth-child(5) { grid-area: 2 / 2; transform: translateY(6px)   rotate(-0.9deg); }
-  .step:nth-child(6) { grid-area: 2 / 1; transform: translateY(-4px)  rotate(0.7deg); }
-  .step:nth-child(7) { grid-area: 3 / 1; transform: translateY(8px)   rotate(-1.2deg); }
-  .step:nth-child(8) { grid-area: 3 / 2; transform: translateY(-6px)  rotate(0.9deg); }
-  .step:nth-child(9) { grid-area: 3 / 3; transform: translateY(5px)   rotate(-0.8deg); }
+  .step:nth-child(even) { margin-top: 172px; }
 
-  .step { padding: 40px 30px 36px; }
-  .step__num { width: 34px; height: 34px; line-height: 34px; font-size: 13px; top: -10px; left: 14%; }
+  .step {
+    min-height: 232px;
+    padding: 42px 32px 38px;
+  }
+
+  .step__num { width: 34px; height: 34px; line-height: 34px; font-size: 13px; top: -16px; left: 13%; }
   .step__icon { width: 28px; height: 28px; margin-bottom: 14px; }
-  .step__title { font-size: 18px; }
-  .step__descr { font-size: 14.5px; }
+  .step__title { font-size: 22px; }
+  .step__descr { font-size: 16px; }
 
   .a-desk { display: block; }
-
-  .a-desk.arrow--right { top: 50%; right: -118px; width: 118px; height: 62px; transform: translateY(-50%); }
-  .a-desk.arrow--left  { top: 50%; left: -118px;  width: 118px; height: 62px; transform: translateY(-50%) scaleX(-1); }
-  .a-desk.arrow--v     { bottom: -104px; left: 50%; width: 96px; height: 104px; transform: translateX(-50%); }
+  .a-desk.arrow--diag    { top: 52%;  right: -86px; width: 108px; height: 176px; }
+  .a-desk.arrow--diag-up { bottom: 52%; right: -86px; width: 108px; height: 176px; transform: scaleY(-1); }
+  .a-desk.arrow--exit    { top: 56%;  right: -62px; width: 96px; height: 146px; }
+  .a-desk.arrow--enter   { top: -70px; left: -92px; width: 96px; height: 152px; }
 }
 
 /* ============ БЛОК 4: ЯК ПРОХОДИТЬ ТЕРАПІЯ (картки) ============ */
@@ -775,6 +768,7 @@ img {
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
   font-size: 26px;
+  color: var(--color-dark);
 }
 
 .pgrid {
@@ -796,7 +790,7 @@ img {
   height: 62px;
   margin: 0 auto 16px;
   border-radius: 50%;
-  background-color: #e7ece0;
+  background-color: var(--color-cream);
   color: var(--color-accent);
   display: flex;
   align-items: center;
@@ -808,7 +802,7 @@ img {
 .pcard__title {
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1.25;
   color: var(--color-heading-green);
   margin-bottom: 10px;
@@ -817,7 +811,7 @@ img {
 .pcard__text {
   font-family: 'Manrope', sans-serif;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 16.5px;
   line-height: 1.5;
   color: var(--color-body);
 }
@@ -844,8 +838,8 @@ img {
 @media (min-width: 900px) {
   .process { padding: 90px 0; }
   .process .section-title { font-size: 44px; }
-  .pcard__title { font-size: 20px; }
-  .pcard__text { font-size: 17px; }
+  .pcard__title { font-size: 26px; }
+  .pcard__text { font-size: 19px; }
   .process__note { font-size: 19px; }
 }
 
@@ -1065,7 +1059,7 @@ img {
   object-fit: cover;
   object-position: center top;
   border-radius: 14px;
-  background-color: #dfe6d8;
+  background-color: #eef1e6;
   box-shadow: 0 12px 30px -12px rgba(39, 45, 66, 0.45);
   cursor: zoom-in;
   transition: transform .2s ease-in-out;
@@ -1621,14 +1615,19 @@ img {
         <path d="M12 15.4c-1.9-1.2-2.9-2.3-2.9-3.4 0-.8.6-1.4 1.4-1.4.6 0 1.1.3 1.5.8.4-.5.9-.8 1.5-.8.8 0 1.4.6 1.4 1.4 0 1.1-1 2.2-2.9 3.4z"/>
       </symbol>
 
-      <symbol id="arw-h" viewBox="0 0 118 62" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 56C28 14 84 6 112 30" stroke-dasharray="5 7"/>
-        <path d="M107.5 20 112 30 101.4 27"/>
+      <symbol id="arw-diag" viewBox="0 0 110 170" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 8C36 2 72 18 84 54 94 84 88 118 98 148" stroke-dasharray="5 7"/>
+        <path d="M99.3 137.1 98 148 90.4 140"/>
       </symbol>
 
-      <symbol id="arw-v" viewBox="0 0 96 104" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M50 4C50 30 12 40 12 66c0 26 38 24 38 32" stroke-dasharray="5 7"/>
-        <path d="M44 90 50 99 56 90"/>
+      <symbol id="arw-exit" viewBox="0 0 100 150" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 10C42 4 86 16 90 56 93 86 76 106 63 128" stroke-dasharray="5 7"/>
+        <path d="M71.6 121.2 63 128 63.3 117"/>
+      </symbol>
+
+      <symbol id="arw-enter" viewBox="0 0 100 160" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 6C0 44 16 80 48 102 70 117 80 124 90 134" stroke-dasharray="5 7"/>
+        <path d="M86 124.8 90 134 80.8 130"/>
       </symbol>
 
       <symbol id="dec-leaf" viewBox="0 0 60 92" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1663,12 +1662,12 @@ img {
       <span class="bg-el bg-br"><svg viewBox="0 0 400 210" preserveAspectRatio="none"><path class="fill" d="M400 210H24C64 178 116 152 178 164 240 176 288 190 330 160 364 136 382 100 400 66Z"/></svg></span>
       <span class="bg-el bg-bl"><svg viewBox="0 0 200 120" preserveAspectRatio="none"><path class="fill" d="M0 120V44C26 62 44 90 82 100 122 110 158 106 200 120Z"/></svg></span>
       <span class="bg-el bg-wave"><svg viewBox="0 0 400 90" preserveAspectRatio="none"><path class="line" d="M0 78C60 40 140 26 214 44 288 62 336 54 400 12"/></svg></span>
-      <svg class="bg-el bg-leaf-l"><use href="#dec-leaf"/></svg>
-      <svg class="bg-el bg-leaf-r"><use href="#dec-leaf"/></svg>
-      <svg class="bg-el bg-sq-1"><use href="#dec-squiggle"/></svg>
-      <svg class="bg-el bg-sq-2"><use href="#dec-squiggle"/></svg>
-      <svg class="bg-el bg-sq-3"><use href="#dec-squiggle"/></svg>
-      <svg class="bg-el bg-dashes"><use href="#dec-dashes"/></svg>
+      <svg class="bg-el bg-dec bg-leaf-l"><use href="#dec-leaf"/></svg>
+      <svg class="bg-el bg-dec bg-leaf-r"><use href="#dec-leaf"/></svg>
+      <svg class="bg-el bg-dec bg-sq-1"><use href="#dec-squiggle"/></svg>
+      <svg class="bg-el bg-dec bg-sq-2"><use href="#dec-squiggle"/></svg>
+      <svg class="bg-el bg-dec bg-sq-3"><use href="#dec-squiggle"/></svg>
+      <svg class="bg-el bg-dec bg-dashes"><use href="#dec-dashes"/></svg>
     </div>
 
     <div class="changes__inner">
@@ -1681,89 +1680,93 @@ img {
         <ul class="steps">
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M100 3C138 1 184 12 192 44 200 76 178 118 136 131 94 144 40 136 18 110 -4 84 4 38 28 20 52 2 72 5 100 3Z"/></svg>
+            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M46 4C90 1 140 2 166 8 186 13 196 30 196 54 196 78 197 102 184 118 170 134 128 136 96 136 62 136 26 135 14 120 2 104 4 80 4 56 4 32 8 12 46 4Z"/></svg>
             <span class="step__num">01</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-inner"/></svg>
             <div class="step__title">Ви краще розумієте свої почуття й потреби</div>
             <div class="step__descr">Перестаєте боротися із симптомами, а впливаєте на причини.</div>
-            <span class="arrow arrow--right a-desk a-mob"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+            <span class="arrow arrow--diag a-desk a-mob"><svg aria-hidden="true"><use href="#arw-diag"/></svg></span>
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M96 5C134 -3 180 6 190 40 200 74 182 114 142 128 102 142 50 138 24 112 -2 86 8 42 32 22 56 2 70 11 96 5Z"/></svg>
+            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M50 5C94 2 144 1 168 10 188 17 195 34 194 58 193 80 198 104 183 119 168 134 124 135 92 135 60 135 24 134 13 118 2 102 5 78 6 54 7 30 12 13 50 5Z"/></svg>
             <span class="step__num">02</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-wave"/></svg>
             <div class="step__title">Менше тривоги, пригніченості й напруги</div>
             <div class="step__descr">Переживання перестають керувати вашим життям.</div>
-            <span class="arrow arrow--right a-desk"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
-            <span class="arrow arrow--v a-mob"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+            <span class="arrow arrow--diag-up a-desk"><svg aria-hidden="true"><use href="#arw-diag"/></svg></span>
+            <span class="arrow arrow--exit a-mob"><svg aria-hidden="true"><use href="#arw-exit"/></svg></span>
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M106 2C148 5 190 22 192 54 194 86 166 122 124 133 82 144 34 130 14 102 -6 74 14 34 40 16 66 -2 82 -1 106 2Z"/></svg>
+            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M44 6C88 2 138 3 164 9 185 14 197 32 197 56 197 80 195 104 181 119 167 134 126 137 94 137 60 137 25 136 13 121 1 106 3 82 4 58 5 34 6 14 44 6Z"/></svg>
             <span class="step__num">03</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-hand"/></svg>
             <div class="step__title">Менше самокритики, провини й сорому</div>
             <div class="step__descr">Прийняття та підтримки себе — все більше.</div>
-            <span class="arrow arrow--v a-desk"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
-            <span class="arrow arrow--left a-mob"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+            <span class="arrow arrow--exit a-desk"><svg aria-hidden="true"><use href="#arw-exit"/></svg></span>
+            <span class="arrow arrow--enter a-mob"><svg aria-hidden="true"><use href="#arw-enter"/></svg></span>
+            <span class="arrow arrow--diag a-mob"><svg aria-hidden="true"><use href="#arw-diag"/></svg></span>
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M90 6C130 0 174 10 188 42 202 74 188 116 148 129 108 142 54 140 26 116 -2 92 0 44 26 24 52 4 64 12 90 6Z"/></svg>
+            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M48 3C92 0 142 1 167 7 187 12 198 31 197 55 196 79 196 103 182 118 168 133 125 136 93 136 61 136 23 135 12 119 1 103 5 79 6 55 7 31 10 11 48 3Z"/></svg>
             <span class="step__num">04</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-compass"/></svg>
             <div class="step__title">Менше чутливості до чужих оцінок</div>
             <div class="step__descr">Все більше опори на власні цінності та бажання.</div>
-            <span class="arrow arrow--left a-desk"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
-            <span class="arrow arrow--v a-mob"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+            <span class="arrow arrow--enter a-desk"><svg aria-hidden="true"><use href="#arw-enter"/></svg></span>
+            <span class="arrow arrow--diag a-desk"><svg aria-hidden="true"><use href="#arw-diag"/></svg></span>
+            <span class="arrow arrow--exit a-mob"><svg aria-hidden="true"><use href="#arw-exit"/></svg></span>
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M110 3C150 7 190 26 190 58 190 90 164 124 122 135 80 146 30 130 12 102 -6 74 16 32 42 14 68 -4 84 -1 110 3Z"/></svg>
+            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M45 5C90 3 141 1 166 9 187 15 196 33 195 57 194 81 197 103 182 119 167 135 127 136 95 136 63 136 25 135 13 120 1 105 4 81 5 57 6 33 9 12 45 5Z"/></svg>
             <span class="step__num">05</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-shield"/></svg>
             <div class="step__title">Легше відстоювати власні інтереси</div>
             <div class="step__descr">Гарні стосунки з іншими без принесення себе в жертву.</div>
-            <span class="arrow arrow--left a-desk"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
-            <span class="arrow arrow--right a-mob"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+            <span class="arrow arrow--diag-up a-desk"><svg aria-hidden="true"><use href="#arw-diag"/></svg></span>
+            <span class="arrow arrow--enter a-mob"><svg aria-hidden="true"><use href="#arw-enter"/></svg></span>
+            <span class="arrow arrow--diag a-mob"><svg aria-hidden="true"><use href="#arw-diag"/></svg></span>
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M94 4C138 2 182 14 190 46 198 78 176 116 134 130 92 144 38 134 16 108 -6 82 10 36 34 18 58 0 68 6 94 4Z"/></svg>
+            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M49 4C93 1 143 2 168 8 189 14 197 33 196 57 195 81 194 105 180 120 166 135 123 136 91 136 59 136 24 135 12 119 0 103 4 79 5 55 6 31 11 12 49 4Z"/></svg>
             <span class="step__num">06</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-mountain"/></svg>
             <div class="step__title">З'являється більше віри у власні сили</div>
             <div class="step__descr">Пораєтеся зі складними життєвими ситуаціями.</div>
-            <span class="arrow arrow--v a-desk a-mob"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+            <span class="arrow arrow--exit a-desk a-mob"><svg aria-hidden="true"><use href="#arw-exit"/></svg></span>
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M102 2C144 6 188 18 191 52 194 86 168 120 126 132 84 144 36 132 15 104 -6 76 12 34 38 16 64 -2 78 -2 102 2Z"/></svg>
+            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M43 5C87 2 137 2 163 8 184 13 196 31 196 55 196 79 196 103 182 118 168 133 127 136 95 136 63 136 24 136 12 120 0 104 3 80 4 56 5 32 5 13 43 5Z"/></svg>
             <span class="step__num">07</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-sprout"/></svg>
             <div class="step__title">Повертаються сили та внутрішній ресурс</div>
             <div class="step__descr">Для роботи, стосунків, спорту й турботи про себе.</div>
-            <span class="arrow arrow--right a-desk"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
-            <span class="arrow arrow--left a-mob"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+            <span class="arrow arrow--enter a-desk a-mob"><svg aria-hidden="true"><use href="#arw-enter"/></svg></span>
+            <span class="arrow arrow--diag a-desk a-mob"><svg aria-hidden="true"><use href="#arw-diag"/></svg></span>
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M92 4C136 -2 178 12 189 44 200 76 184 118 144 130 104 142 48 136 22 110 -4 84 6 40 30 20 54 0 68 10 92 4Z"/></svg>
+            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M47 4C91 1 141 3 167 9 188 15 197 34 196 58 195 82 196 104 181 119 166 134 124 136 92 136 60 136 25 136 13 120 1 104 4 80 5 56 6 32 9 12 47 4Z"/></svg>
             <span class="step__num">08</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-cycle"/></svg>
             <div class="step__title">Все частіше справляєтеся з емоціями без їжі</div>
             <div class="step__descr">Виходите з кола «дієта → зрив → провина».</div>
-            <span class="arrow arrow--right a-desk"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
-            <span class="arrow arrow--v a-mob"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+            <span class="arrow arrow--diag-up a-desk"><svg aria-hidden="true"><use href="#arw-diag"/></svg></span>
+            <span class="arrow arrow--exit a-mob"><svg aria-hidden="true"><use href="#arw-exit"/></svg></span>
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M104 3C146 3 186 20 191 50 196 80 172 120 130 133 88 146 36 134 15 106 -6 78 8 36 34 17 60 -2 80 3 104 3Z"/></svg>
+            <svg class="step__shape" viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true"><path d="M46 3C90 0 140 1 165 8 186 14 198 32 197 56 196 80 195 104 181 119 167 134 125 137 93 137 61 137 25 136 13 121 1 106 4 82 5 58 6 34 8 11 46 3Z"/></svg>
             <span class="step__num">09</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-key"/></svg>
             <div class="step__title">Життя стає все більш «вашим»</div>
             <div class="step__descr">Таким, як хочете саме ви.</div>
+            <span class="arrow arrow--enter a-mob"><svg aria-hidden="true"><use href="#arw-enter"/></svg></span>
           </li>
 
         </ul>
