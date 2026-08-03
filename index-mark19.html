@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Микола Шаповал — психолог</title>
+  <meta name="description" content="Психолог у клієнтоцентрованому підході. Допомагаю нарешті видихнути й повернути смак до життя.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23e7ece0%22/><text x=%2250%22 y=%2268%22 font-size=%2255%22 font-family=%22Arial%22 font-weight=%22800%22 fill=%22%23352a22%22 text-anchor=%22middle%22>М</text></svg>" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Manrope лежить локально у fonts/, але лише 400-800.
+       Вага 300 потрібна кнопці й дрібним підписам - тягнемо тільки її. -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-800-normal.woff2') format('woff2');
+}
+
+
+:root {
+  --color-dark: #352a22;       /* основний темний текст / темний фон футера */
+  --color-body: #5c5247;       /* колір тексту параграфів */
+  --color-cream: #ece5da;      /* фон секцій - бежевий з першого екрана */
+  --color-sage: #d7d4c0;       /* фон секцій - оливковий з першого екрана */
+  --color-accent: #5f7c46;     /* колір кнопок - зелений, як на першому екрані */
+  --color-accent-hover: #51693b;
+  --color-heading-green: #5f7c46;  /* зелені заголовки запитів */
+  --color-note: #565a4b;           /* дрібні підписи */
+  --color-green: #3e5b49;      /* колір ціни / акцентних крапок */
+  --color-white: #ffffff;
+
+  --font-main: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --container-max: 1200px;
+  --radius-btn: 30px;
+  --radius-card: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-body);
+  line-height: 1.4;
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.narrow-960 { max-width: 960px; margin-left: auto; margin-right: auto; }
+.narrow-760 { max-width: 760px; margin-left: auto; margin-right: auto; }
+.narrow-560 { max-width: 560px; margin-left: auto; margin-right: auto; }
+
+.text-center { text-align: center; }
+
+.section {
+  position: relative;
+}
+
+/* ============ Кнопка "ПИШІТЬ СЮДИ" ============ */
+
+.btn-tg {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background-color: var(--color-accent);
+  color: var(--color-white) !important;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 14px 28px;
+  border-radius: var(--radius-btn);
+  border: none;
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+  white-space: normal;
+}
+
+.btn-tg:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-tg .btn-tg__icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.btn-tg .btn-tg__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============ HERO ============ */
+/* Мобільна версія — базові правила, десктоп — у медіазапиті нижче.
+   Позиції у % від секції (прив'язані до фону), кеглі у vw. */
+
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1080 / 1920;
+  background-color: var(--color-cream);
+  background-image: url('images/hero-mobile.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.hero__el {
+  position: absolute;
+  margin: 0;
+}
+
+/* «Привіт!» + розчерк */
+
+.hero__hi {
+  left: 11.6%;
+  top: 8.0%;
+  width: 42%;
+  font-family: 'Caveat', cursive;
+  font-weight: 400;
+  font-size: 9.75vw;
+  line-height: 1.05;
+  color: #536d40;
+}
+
+.hero__swash {
+  display: block;
+  width: 58%;
+  height: auto;
+  margin-top: -1.2vw;
+  fill: #536d40;
+  stroke: none;
+}
+
+/* «Я МИКОЛА» */
+
+.hero__title {
+  left: 9.3%;
+  top: 17.0%;
+  font-family: 'Manrope', var(--font-main);
+  font-weight: 600;
+  font-size: 10.5vw;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  color: #1c2d1d;
+}
+
+/* опис */
+
+.hero__descr {
+  left: 9.3%;
+  top: 26.2%;
+  font-family: 'Montserrat Alternates', var(--font-main);
+  font-weight: 500;
+  font-size: 4.4vw;
+  line-height: 1.28;
+  color: #3f4038;
+}
+
+/* риска над кнопкою */
+
+.hero__rule {
+  left: 9.3%;
+  top: 35.60%;
+  width: 15.5%;
+}
+
+.hero__rule svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  stroke: none;
+}
+
+/* кнопка: розмір задається текстом + відступами */
+
+.hero__btn {
+  left: 8.6%;
+  top: 41.12%;
+  display: inline-flex;
+  align-items: center;
+  gap: 2vw;
+  padding: 3.60vw 4.60vw;
+  border-radius: 999px;
+  background-color: #5f7c46;
+  color: var(--color-white);
+  font-family: 'Manrope', var(--font-main);
+  font-size: 4.30vw;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: 0 0.9vw 2.2vw -0.9vw rgba(28, 45, 25, 0.4);
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+}
+
+.hero__btn:hover {
+  background-color: #51693b;
+  transform: translateY(-2px);
+}
+
+.hero__btn svg {
+  width: 4vw;
+  height: 4vw;
+  fill: var(--color-white);
+  flex: none;
+}
+
+/* стрілка + «мій telegram» */
+
+.hero__note {
+  left: 9.3%;
+  top: 49.72%;
+  display: flex;
+  align-items: flex-end;
+  gap: 1.6vw;
+  font-family: 'Manrope', var(--font-main);
+  font-weight: 300;
+  color: var(--color-note);
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.hero__note svg {
+  width: 2.8vw;
+  height: auto;
+  margin-bottom: 0.55em;
+  flex: none;
+  fill: none;
+  stroke: var(--color-note);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- ДЕСКТОП ---------- */
+
+@media (min-width: 900px) {
+
+  .hero {
+    aspect-ratio: 2000 / 850;
+    background-image: url('images/hero-desktop.png');
+    background-position: center;
+  }
+
+  .hero__hi {
+    left: 10.3%;
+    top: 11.8%;
+    width: 21%;
+    font-size: 4.3vw;
+  }
+
+  .hero__swash {
+    width: 54%;
+    margin-top: -0.5vw;
+  }
+
+  .hero__title {
+    left: 10.2%;
+    top: 28.2%;
+    font-size: 4.95vw;
+  }
+
+  .hero__descr {
+    left: 10.2%;
+    top: 43.5%;
+    font-weight: 400;
+    font-size: 1.6vw;
+    line-height: 1.3;
+  }
+
+  .hero__rule {
+    left: 10.2%;
+    top: 58.38%;
+    width: 4.95%;
+  }
+
+
+
+  .hero__btn {
+    left: 10.2%;
+    top: 65.79%;
+    gap: 0.9vw;
+    padding: 0.95vw 1.90vw;
+    font-size: 1.45vw;
+    font-weight: 300;
+    box-shadow: 0 0.45vw 1.1vw -0.4vw rgba(28, 45, 25, 0.35);
+  }
+
+  .hero__btn svg {
+    width: 1.6vw;
+    height: 1.6vw;
+  }
+
+  .hero__note {
+    left: 10.6%;
+    top: 76.79%;
+    gap: 0.7vw;
+    font-size: 20px;
+  }
+
+  .hero__note svg {
+    width: 1.1vw;
+    height: auto;
+    stroke-width: 1.2;
+  }
+}
+
+
+/* ============ Заголовки секцій (загальні) ============ */
+
+.section-title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .section-title { font-size: 44px; }
+}
+
+.body-text {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* ============ "До мене звертаються коли…" ============ */
+
+.intro-q {
+  background-color: var(--color-cream);
+  padding: 60px 0 0;
+}
+
+/* ============ Картки причин (508) ============ */
+
+.reasons {
+  background-color: var(--color-cream);
+  padding: 0 0 60px;
+}
+
+.reasons__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.reasons__item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.reasons__bullet {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 10px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+}
+
+.reasons__title {
+  color: #107B57;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+@media (min-width: 900px) {
+  .reasons__title { font-size: 26px; }
+}
+
+.reasons__descr {
+  color: var(--color-body);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.reasons__descr strong {
+  color: inherit;
+  font-weight: 500;
+}
+
+/* ============ "Привіт! Я Микола" ============ */
+
+.about-intro {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.about-intro__title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 900px) {
+  .about-intro__title { font-size: 34px; }
+}
+
+.about-intro__descr {
+  color: var(--color-body);
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.about-intro__descr strong {
+  color: #333;
+}
+
+.about-intro__descr em {
+  font-style: italic;
+}
+
+/* ============ Насиченість тексту (утиліти) ============ */
+/* Підсвічують окремі слова, не змінюючи шрифт і розмір.
+   Використання: <span class="w500">слово</span>
+   Manrope у папці fonts/ має 400-800; 300 підвантажується з Google. */
+
+.w300 { font-weight: 300; }
+.w400 { font-weight: 400; }
+.w500 { font-weight: 500; }
+.w600 { font-weight: 600; }
+.w700 { font-weight: 700; }
+.w800 { font-weight: 800; }
+
+/* ============ ДРУГИЙ ЕКРАН ============ */
+
+.screen2 {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.screen2 .section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.screen2 .reasons__list {
+  margin-top: 40px;
+}
+
+.screen2 .reasons__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-heading-green);
+}
+
+.screen2 .reasons__descr {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+@media (min-width: 900px) {
+  .screen2 { padding: 90px 0; }
+  .screen2 .section-title { font-size: 44px; }
+  .screen2 .reasons__title { font-size: 26px; }
+}
+
+/* ============ БЛОК 3: ЩО ЗМІНЮЄТЬСЯ (траєкторія) ============ */
+
+.narrow-1100 { max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+.changes {
+  background-color: var(--color-cream);
+  padding: 60px 0;
+}
+
+.changes .section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.changes__sub {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--color-note);
+  text-align: center;
+  margin-top: 10px;
+}
+
+.steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-top: 48px;
+}
+
+.step {
+  position: relative;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1.6px dashed #a9b89b;
+  border-radius: 20px;
+  padding: 26px 20px 24px;
+  text-align: center;
+}
+
+.step__num {
+  position: absolute;
+  top: -13px;
+  left: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.step__icon {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin: 2px auto 14px;
+  color: var(--color-accent);
+}
+
+.step__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.25;
+  color: var(--color-heading-green);
+  margin-bottom: 8px;
+}
+
+.step__descr {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+/* --- пунктирні стрілки-переходи --- */
+
+.arrow {
+  position: absolute;
+  display: block;
+  color: #93a684;
+  pointer-events: none;
+}
+
+.arrow svg { width: 100%; height: 100%; display: block; }
+
+.arrow--h { display: none; }
+
+.arrow--v {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -56px;
+  width: 60px;
+  height: 56px;
+}
+
+@media (min-width: 900px) {
+  .changes { padding: 90px 0; }
+  .changes .section-title { font-size: 44px; }
+  .changes__sub { font-size: 28px; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 64px;
+    row-gap: 64px;
+    align-items: stretch;
+    margin-top: 56px;
+  }
+
+  .step:nth-child(1) { grid-area: 1 / 1; }
+  .step:nth-child(2) { grid-area: 1 / 2; }
+  .step:nth-child(3) { grid-area: 1 / 3; }
+  .step:nth-child(4) { grid-area: 2 / 3; }
+  .step:nth-child(5) { grid-area: 2 / 2; }
+  .step:nth-child(6) { grid-area: 2 / 1; }
+  .step:nth-child(7) { grid-area: 3 / 1; }
+  .step:nth-child(8) { grid-area: 3 / 2; }
+  .step:nth-child(9) { grid-area: 3 / 3; }
+
+  .step__title { font-size: 20px; }
+  .step__descr { font-size: 17px; }
+
+  .arrow--h {
+    display: block;
+    top: 50%;
+    width: 64px;
+    height: 44px;
+  }
+  .arrow--right { right: -64px; transform: translateY(-50%); }
+  .arrow--left  { left: -64px;  transform: translateY(-50%) scaleX(-1); }
+
+  .arrow--v { display: none; }
+  .arrow--v-desk { display: block; bottom: -64px; height: 64px; }
+}
+
+/* ============ БЛОК 4: ЯК ПРОХОДИТЬ ТЕРАПІЯ (картки) ============ */
+
+.process {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.process .section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.pgrid {
+  list-style: none;
+  display: grid;
+  gap: 20px;
+  margin-top: 44px;
+}
+
+.pcard {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  padding: 28px 22px 26px;
+  text-align: center;
+}
+
+.pcard__ico {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background-color: #e7ece0;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pcard__ico svg { width: 30px; height: 30px; display: block; }
+
+.pcard__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--color-heading-green);
+  margin-bottom: 10px;
+}
+
+.pcard__text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+.pcard__text + .pcard__text { margin-top: 10px; }
+
+.process__note {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--color-body);
+  text-align: center;
+  margin-top: 34px;
+}
+
+@media (min-width: 700px) {
+  .pgrid { grid-template-columns: repeat(6, 1fr); gap: 24px; }
+  .pcard { grid-column: span 2; }
+  .pcard:nth-child(4) { grid-column: 2 / span 2; }
+  .pcard:nth-child(5) { grid-column: 4 / span 2; }
+}
+
+@media (min-width: 900px) {
+  .process { padding: 90px 0; }
+  .process .section-title { font-size: 44px; }
+  .pcard__title { font-size: 20px; }
+  .pcard__text { font-size: 17px; }
+  .process__note { font-size: 19px; }
+}
+
+.only-desk { display: none; }
+@media (min-width: 900px) { .only-desk { display: inline; } }
+
+/* ============ "Про мене" ============ */
+
+.about-bio {
+  background-color: var(--color-cream);
+  padding: 60px 0;
+}
+
+.about-bio__head {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.about-bio__lead {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.about-bio__kpt {
+  text-align: center;
+}
+
+.about-bio__method {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  text-align: center;
+  margin: 18px 0;
+}
+
+@media (min-width: 900px) {
+  .about-bio__method { font-size: 26px; }
+}
+
+.about-bio__descr {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.about-bio__descr strong {
+  color: #333;
+}
+
+.about-bio__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.about-bio__gallery-item {
+  flex: none;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: unset;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+@media (min-width: 900px) {
+  .about-bio__gallery {
+    flex-direction: row;
+  }
+  .about-bio__gallery-item {
+    flex: 1 1 0;
+    width: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.about-bio__cont {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.about-bio__cont .body-text {
+  text-align: center;
+}
+
+.about-bio__cont strong {
+  color: #333;
+}
+
+.about-bio__edu-outer {
+  display: flex;
+  gap: 20px;
+  margin: 30px 0 0;
+}
+
+.about-bio__edu-side {
+  flex: 1 1 0;
+}
+
+.about-bio__edu-center {
+  flex: 1 1 0;
+}
+
+.about-bio__edu-label {
+  text-align: center;
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+.about-bio__edu-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+@media (max-width: 899px) {
+  .about-bio__edu-outer {
+    flex-direction: column;
+    gap: 0;
+  }
+  .about-bio__edu-side {
+    display: none;
+  }
+}
+
+.about-bio__edu-outer {
+  margin-top: 30px;
+}
+
+/* ============ Карусель відгуків ============ */
+
+.reviews {
+  background-color: var(--color-cream);
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.reviews__title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 900px) {
+  .reviews__title { font-size: 44px; }
+}
+
+.reviews__subtitle {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+  opacity: 0.75;
+  margin-bottom: 28px;
+}
+
+.reviews__viewport {
+  position: relative;
+}
+
+.reviews__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-left: 20px;
+  padding: 4px 20px 18px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #b9c4b0 transparent;
+}
+
+.reviews__track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.reviews__track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reviews__track::-webkit-scrollbar-thumb {
+  background: #b9c4b0;
+  border-radius: 3px;
+}
+
+.reviews__item {
+  flex: 0 0 auto;
+  width: min(260px, 68vw);
+  scroll-snap-align: start;
+}
+
+@media (min-width: 900px) {
+  .reviews__item { width: 280px; }
+}
+
+.reviews__img {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 14px;
+  background-color: #dfe6d8;
+  box-shadow: 0 12px 30px -12px rgba(39, 45, 66, 0.45);
+  cursor: zoom-in;
+  transition: transform .2s ease-in-out;
+}
+
+.reviews__img:hover {
+  transform: translateY(-3px);
+}
+
+.reviews__caption {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.35;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.reviews__caption strong {
+  display: block;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: #6c5448;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+/* підказка про гортання — лише на мобільній */
+@media (min-width: 900px) {
+  .reviews__hint { display: none; }
+}
+
+.reviews__hint {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 10px;
+}
+
+/* стрілки */
+
+.reviews__arrow {
+  display: none;
+  position: absolute;
+  top: calc(50% - 30px);
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px -6px rgba(39, 45, 66, 0.45);
+  transition: background-color .2s ease-in-out, opacity .2s ease-in-out;
+  z-index: 2;
+}
+
+.reviews__arrow:hover {
+  background-color: #f0f4ec;
+}
+
+.reviews__arrow[disabled] {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.reviews__arrow--prev { left: -6px; }
+.reviews__arrow--next { right: -6px; }
+
+@media (min-width: 900px) {
+  .reviews__arrow { display: block; }
+}
+
+/* лайтбокс */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(24, 20, 16, 0.92);
+  padding: 20px;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 92vh;
+  width: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  line-height: 1;
+  transition: background-color .2s ease-in-out;
+}
+
+.lightbox__close:hover,
+.lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.lightbox__close {
+  top: 16px;
+  right: 16px;
+}
+
+.lightbox__nav--prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox__nav--next { right: 12px; top: 50%; transform: translateY(-50%); }
+
+/* ============ "Відгуки" ============ */
+
+.testimonials {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.testimonials__inner {
+  text-align: center;
+}
+
+.testimonials__title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 26px;
+  padding-bottom: 16px;
+}
+
+@media (min-width: 900px) {
+  .testimonials__title { font-size: 44px; }
+}
+
+.testimonials__subtitle {
+  color: var(--color-body);
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 700;
+  padding-bottom: 24px;
+}
+
+.testimonials__list p {
+  text-align: left;
+  color: var(--color-body);
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.testimonials__list p strong {
+  font-weight: 700;
+}
+
+/* ============ "Вартість" ============ */
+
+.pricing {
+  background-color: var(--color-cream);
+  padding: 60px 0 60px;
+}
+
+.pricing__title {
+  margin-bottom: 40px;
+}
+
+@media (min-width: 900px) {
+  .pricing__title { margin-bottom: 105px; }
+}
+
+.pricing__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.pricing__card {
+  flex: 1 1 260px;
+  max-width: 460px;
+  width: calc(100% - 24px);
+  background-color: var(--color-white);
+  border-radius: var(--radius-card);
+  box-shadow: 0 15px 45px -10px rgba(39, 45, 66, 0.15);
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.pricing__card-title {
+  color: var(--color-dark);
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+@media (min-width: 900px) {
+  .pricing__card-title { font-size: 28px; line-height: 1.1; }
+}
+
+.pricing__card-uptitle {
+  color: var(--color-body);
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.pricing__card-price {
+  color: var(--color-green);
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 900px) {
+  .pricing__card-price { font-size: 38px; }
+}
+
+.pricing__card-descr {
+  color: var(--color-body);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* ============ Фінальний CTA ============ */
+
+.final-cta {
+  background-color: var(--color-sage);
+  padding: 60px 0 60px;
+  text-align: center;
+}
+
+.final-cta__head {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 900px) {
+  .final-cta__head { font-size: 26px; }
+}
+
+.final-cta__descr {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.final-cta__descr strong {
+  color: var(--color-dark);
+}
+
+/* ============ Посилання на тести ============ */
+
+.test-links {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.test-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out, transform .2s ease-in-out;
+}
+
+.test-link svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.test-link:hover {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+/* на десктопі — в рядок, по вмісту */
+@media (min-width: 900px) {
+  .test-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .test-link { padding: 13px 26px; }
+}
+
+/* ============ Соцмережі (футер) ============ */
+
+.social-footer {
+  background-color: var(--color-dark);
+  padding: 60px 0 60px;
+  text-align: center;
+}
+
+.social-footer__title {
+  color: var(--color-sage);
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+.social-footer__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+}
+
+.social-footer__link {
+  display: inline-block;
+  background-color: var(--color-sage);
+  color: var(--color-dark);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 16px;
+  border-radius: var(--radius-btn);
+  transition: background-color .2s ease-in-out;
+  white-space: nowrap;
+}
+
+.social-footer__link:hover {
+  background-color: #d9e0d2;
+}
+
+.social-footer__sign {
+  margin-top: 30px;
+}
+
+.social-footer__name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-sage);
+}
+
+.social-footer__nick {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--color-sage);
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <p class="hero__el hero__hi">Привіт!
+      <svg class="hero__swash" viewBox="0 0 200 16.7" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0.08 15.51 L7.23 14.88 L14.46 13.77 L21.58 12.57 L28.92 11.55 L35.90 9.94 L49.28 8.81 L56.38 8.22 L63.49 7.49 L70.63 6.80 L77.79 6.16 L84.92 5.44 L92.04 4.94 L99.16 4.48 L106.33 4.03 L113.44 3.45 L120.56 3.17 L127.72 2.80 L134.87 2.46 L141.99 2.16 L149.11 2.09 L156.25 2.09 L163.39 2.09 L170.52 2.05 L177.66 2.10 L184.81 2.19 L191.96 2.34 L199.09 2.48 L199.99 2.51 L200.01 1.27 L199.12 1.26 L191.97 1.22 L184.83 1.06 L177.69 0.81 L170.55 0.52 L163.39 0.31 L156.25 0.31 L149.11 0.31 L141.94 0.28 L134.78 0.58 L127.63 0.92 L120.51 1.14 L113.35 1.45 L106.17 1.82 L99.06 2.30 L91.89 2.82 L84.73 3.42 L77.57 4.11 L70.44 4.74 L63.29 5.41 L56.12 6.08 L48.94 6.77 L35.53 7.98 L28.22 9.60 L21.28 10.62 L14.11 11.89 L7.05 12.99 L-0.08 13.67 Z"/>
+      </svg>
+    </p>
+
+    <h1 class="hero__el hero__title">Я МИКОЛА</h1>
+
+    <p class="hero__el hero__descr">Зі мною перестають «заїдати» <br>емоції та повертають <br>легкість</p>
+
+    <span class="hero__el hero__rule">
+      <svg viewBox="0 -0.9 121 10.3" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="ruleFade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"    stop-color="#8a9678" stop-opacity="1"/>
+            <stop offset="0.55" stop-color="#8a9678" stop-opacity="0.92"/>
+            <stop offset="1"    stop-color="#8a9678" stop-opacity="0.62"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#ruleFade)" d="M0.00 7.39 L5.10 7.51 L10.08 7.06 L14.98 6.68 L20.02 6.29 L24.96 5.97 L30.00 5.51 L34.94 5.06 L39.91 4.61 L44.84 4.22 L49.77 3.84 L54.82 3.58 L59.68 3.13 L64.68 3.13 L69.73 2.93 L74.62 2.48 L79.53 2.42 L84.50 2.42 L89.47 2.42 L94.44 2.42 L99.41 2.42 L104.32 2.42 L109.35 2.42 L114.27 2.48 L119.63 3.09 L120.48 2.31 L119.52 0.40 L118.95 0.33 L114.37 0.29 L109.35 0.16 L104.44 -0.23 L99.41 -0.42 L94.44 -0.42 L89.47 -0.42 L84.50 -0.42 L79.53 -0.42 L74.49 -0.42 L69.44 -0.22 L64.55 0.23 L59.61 0.29 L54.53 0.36 L49.64 0.81 L44.62 1.00 L39.62 1.46 L34.65 1.85 L29.64 2.30 L24.75 2.88 L19.74 3.27 L14.84 3.71 L9.81 4.10 L4.84 4.62 L0.00 5.26 Z"/>
+      </svg>
+    </span>
+
+    <a class="hero__el hero__btn" href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">
+      <svg viewBox="2 3 20 18" xmlns="http://www.w3.org/2000/svg"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+      <span>ПИШІТЬ СЮДИ</span>
+    </a>
+
+    <div class="hero__el hero__note">
+      <svg viewBox="-1.2 -1.2 24.4 59.4" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8.6 0.6 C 6.4 3.6, 5.2 6.2, 4.4 9.4 C 3.2 14, 2 19, 1.3 24.5 C 0.7 29.5, 1.1 34, 2.3 38.4 C 3.6 43, 6.2 47.4, 10.3 51.4 C 13.2 54.2, 16.2 55.9, 19 56.8"/>
+        <path d="M8.6 0.6 C 6.2 2.2, 3.6 3.9, 0.7 5.6"/>
+        <path d="M8.6 0.6 C 9.6 3.4, 10.2 6.6, 10.5 11.4"/>
+      </svg>
+      <span>мій telegram</span>
+    </div>
+
+  </section>
+
+  <!-- ДРУГИЙ ЕКРАН: ДО МЕНЕ ЗВЕРТАЮТЬСЯ, КОЛИ… -->
+  <section class="screen2">
+    <div class="container narrow-960 text-center">
+      <h2 class="section-title">Можу бути вам корисним, якщо...</h2>
+    </div>
+    <div class="container narrow-960">
+      <ul class="reasons__list">
+        <li class="reasons__item">
+          <span class="reasons__bullet"></span>
+          <div>
+            <div class="reasons__title">Депресія, тривожність, тривожно-депресивний розлад</div>
+            <div class="reasons__descr">Панічні атаки, головні болі, СПК та ін.<!--<br><i class="w400">Психотерапія психологічних причин.</i>--></div>
+          </div>
+        </li>
+        <li class="reasons__item">
+          <span class="reasons__bullet"></span>
+          <div>
+            <div class="reasons__title">Переїдання та зриви</div>
+            <div class="reasons__descr">Нав'язливі думки про їжу та важко зупинитися.<!--<br><i class="w400">Допомагаю вийти із замкненого кола <br>«дієта → зрив → відчуття провини».</i>--></div>
+          </div>
+        </li>
+        <li class="reasons__item">
+          <span class="reasons__bullet"></span>
+          <div>
+            <div class="reasons__title">А також</div>
+            <div class="reasons__descr">Криза у стосунках, складнощі із батьками, вигорання, втрата, кПТСР та ін. <!--<br><i class="w400">Допомагаю пройти кризу та <br>відновити внутрішні опори.</i>--></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SVG-СПРАЙТ: іконки та пунктирні стрілки для блоків 3-4 -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <g id="ln" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></g>
+
+      <symbol id="ic-wave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1.5 12Q3 3.5 4.5 12Q6 19 7.5 12Q9 6.5 10.5 12Q12 16.5 13.5 12Q15 8.8 16.5 12Q18 14.6 19.5 12 L22.5 12"/>
+      </symbol>
+
+      <symbol id="ic-inner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 16.8c-2.7-1.8-4.2-3.4-4.2-5.1 0-1.3 1-2.2 2.2-2.2.8 0 1.5.4 2 1.1.5-.7 1.2-1.1 2-1.1 1.2 0 2.2.9 2.2 2.2 0 1.7-1.5 3.3-4.2 5.1z"/>
+      </symbol>
+
+      <symbol id="ic-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 20.5c1.6-4.4 4.8-6.6 9-6.6s7.4 2.2 9 6.6"/>
+        <path d="M12 11.2C9.6 9.6 8.4 8.4 8.4 7c0-1.1.8-1.9 1.9-1.9.7 0 1.3.4 1.7 1 .4-.6 1-1 1.7-1 1.1 0 1.9.8 1.9 1.9 0 1.4-1.2 2.6-3.6 4.2z"/>
+      </symbol>
+
+      <symbol id="ic-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M15.8 8.2l-2.1 5.5-5.5 2.1 2.1-5.5z"/>
+      </symbol>
+
+      <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2.8l7.5 3v5.4c0 4.4-3 8.1-7.5 9.6-4.5-1.5-7.5-5.2-7.5-9.6V5.8z"/>
+      </symbol>
+
+      <symbol id="ic-mountain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 20.5h20L14.2 8.2l-3.3 5.1-2.1-2.9z"/>
+        <path d="M14.2 8.2V2.6"/>
+        <path d="M14.2 3.2l4.4 1.3-4.4 1.4"/>
+      </symbol>
+
+      <symbol id="ic-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21v-7.6"/>
+        <path d="M12 14.2c-.2-3.4-2.7-5.6-6-5.6.2 3.4 2.7 5.6 6 5.6z"/>
+        <path d="M12 12.6c.2-3.1 2.4-5.1 5.4-5.1-.2 3.1-2.4 5.1-5.4 5.1z"/>
+      </symbol>
+
+      <symbol id="ic-cycle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19.4 8.4A8.2 8.2 0 1 1 6.8 5.7"/>
+        <path d="M3.4 6.6 6.8 5.6 5.4 9.1"/>
+        <path d="M11.4 4.4l1.5-2.7M14.2 5.4l1.5-2.7"/>
+      </symbol>
+
+      <symbol id="ic-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="8.5" cy="14.5" r="4.2"/>
+        <path d="M11.6 11.6l8.4-8.4"/>
+        <path d="M16.4 6.8l2.2 2.2"/>
+        <path d="M19 4.2l2.2 2.2"/>
+      </symbol>
+
+      <symbol id="ic-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.2" y="4.8" width="17.6" height="11.4" rx="1.8"/>
+        <path d="M1.5 19.2h21"/>
+      </symbol>
+
+      <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 6.6V12l4 2.4"/>
+      </symbol>
+
+      <symbol id="ic-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.4" y="5" width="17.2" height="15.4" rx="2"/>
+        <path d="M3.4 9.6h17.2M8 3v4M16 3v4"/>
+        <circle cx="12" cy="14.8" r="1.5" fill="currentColor" stroke="none"/>
+      </symbol>
+
+      <symbol id="ic-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4.4" y="10.4" width="15.2" height="10" rx="2.2"/>
+        <path d="M8 10.4V7.8a4 4 0 0 1 8 0v2.6"/>
+      </symbol>
+
+      <symbol id="ic-bubble" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.6 12.2c0 3.6-3.9 6.6-8.6 6.6-.9 0-1.8-.1-2.6-.3L4.6 21l1.3-3.5c-1.5-1.3-2.5-3.1-2.5-5.3 0-3.6 3.9-6.6 8.6-6.6s8.6 3 8.6 6.6z"/>
+        <path d="M12 15.4c-1.9-1.2-2.9-2.3-2.9-3.4 0-.8.6-1.4 1.4-1.4.6 0 1.1.3 1.5.8.4-.5.9-.8 1.5-.8.8 0 1.4.6 1.4 1.4 0 1.1-1 2.2-2.9 3.4z"/>
+      </symbol>
+
+      <symbol id="arw-h" viewBox="0 0 64 44" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 26C16 6 44 6 58 20" stroke-dasharray="4 5"/>
+        <path d="M55.3 12.5 58 20 50.5 17.3"/>
+      </symbol>
+
+      <symbol id="arw-v" viewBox="0 0 60 64" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M30 2C30 14 16 20 16 32c0 13 14 15 14 27" stroke-dasharray="4 5"/>
+        <path d="M25.5 52.5 30 60 34.5 52.5"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- БЛОК 3: ЩО ЗМІНЮЄТЬСЯ В ПРОЦЕСІ ТЕРАПІЇ -->
+  <section class="changes">
+    <div class="container narrow-960 text-center">
+      <h2 class="section-title">Що змінюється в процесі терапії</h2>
+      <p class="changes__sub">крок за кроком</p>
+    </div>
+
+    <div class="container narrow-1100">
+      <ul class="steps">
+
+        <li class="step">
+          <span class="step__num">01</span>
+          <svg class="step__icon" aria-hidden="true"><use href="#ic-wave"/></svg>
+          <div class="step__title">Менше тривоги, пригніченості й напруги</div>
+          <div class="step__descr">Переживання перестають керувати вашим життям.</div>
+          <span class="arrow arrow--h arrow--right"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+          <span class="arrow arrow--v"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+        </li>
+
+        <li class="step">
+          <span class="step__num">02</span>
+          <svg class="step__icon" aria-hidden="true"><use href="#ic-inner"/></svg>
+          <div class="step__title">Ви краще розумієте свої почуття й потреби</div>
+          <div class="step__descr">Перестаєте боротися із симптомами, а впливаєте на причини.</div>
+          <span class="arrow arrow--h arrow--right"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+          <span class="arrow arrow--v"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+        </li>
+
+        <li class="step">
+          <span class="step__num">03</span>
+          <svg class="step__icon" aria-hidden="true"><use href="#ic-hand"/></svg>
+          <div class="step__title">Менше самокритики, провини й сорому</div>
+          <div class="step__descr">Прийняття та підтримки себе — все більше.</div>
+          <span class="arrow arrow--v arrow--v-desk"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+        </li>
+
+        <li class="step">
+          <span class="step__num">04</span>
+          <svg class="step__icon" aria-hidden="true"><use href="#ic-compass"/></svg>
+          <div class="step__title">Менше чутливості до чужих оцінок</div>
+          <div class="step__descr">Все більше опори на власні цінності та бажання.</div>
+          <span class="arrow arrow--h arrow--left"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+          <span class="arrow arrow--v"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+        </li>
+
+        <li class="step">
+          <span class="step__num">05</span>
+          <svg class="step__icon" aria-hidden="true"><use href="#ic-shield"/></svg>
+          <div class="step__title">Легше відстоювати власні інтереси</div>
+          <div class="step__descr">Гарні стосунки з іншими без принесення себе в жертву.</div>
+          <span class="arrow arrow--h arrow--left"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+          <span class="arrow arrow--v"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+        </li>
+
+        <li class="step">
+          <span class="step__num">06</span>
+          <svg class="step__icon" aria-hidden="true"><use href="#ic-mountain"/></svg>
+          <div class="step__title">З'являється більше віри у власні сили</div>
+          <div class="step__descr">Пораєтеся зі складними життєвими ситуаціями.</div>
+          <span class="arrow arrow--v arrow--v-desk"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+        </li>
+
+        <li class="step">
+          <span class="step__num">07</span>
+          <svg class="step__icon" aria-hidden="true"><use href="#ic-sprout"/></svg>
+          <div class="step__title">Повертаються сили та внутрішній ресурс</div>
+          <div class="step__descr">Для роботи, стосунків, спорту й турботи про себе.</div>
+          <span class="arrow arrow--h arrow--right"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+          <span class="arrow arrow--v"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+        </li>
+
+        <li class="step">
+          <span class="step__num">08</span>
+          <svg class="step__icon" aria-hidden="true"><use href="#ic-cycle"/></svg>
+          <div class="step__title">Все частіше справляєтеся з емоціями без їжі</div>
+          <div class="step__descr">Виходите з кола «дієта → зрив → провина».</div>
+          <span class="arrow arrow--h arrow--right"><svg aria-hidden="true"><use href="#arw-h"/></svg></span>
+          <span class="arrow arrow--v"><svg aria-hidden="true"><use href="#arw-v"/></svg></span>
+        </li>
+
+        <li class="step">
+          <span class="step__num">09</span>
+          <svg class="step__icon" aria-hidden="true"><use href="#ic-key"/></svg>
+          <div class="step__title">Життя стає все більш «вашим»</div>
+          <div class="step__descr">Таким, як хочете саме ви.</div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- БЛОК 4: ЯК ПРОХОДИТЬ ТЕРАПІЯ -->
+  <section class="process">
+    <div class="container narrow-960 text-center">
+      <h2 class="section-title">Як проходить терапія</h2>
+    </div>
+
+    <div class="container narrow-1100">
+      <ul class="pgrid">
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-laptop"/></svg></span>
+          <div class="pcard__title">Онлайн у Zoom</div>
+          <p class="pcard__text">Потрібні лише інтернет та місце, де вас не будуть турбувати.</p>
+        </li>
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-clock"/></svg></span>
+          <div class="pcard__title">50 хвилин</div>
+          <p class="pcard__text">Цього часу достатньо, щоб доторкнутися до важливих переживань і дати їм простір.</p>
+          <p class="pcard__text">Більшість змін відбувається після зустрічі — коли ви осмислюєте прожите.</p>
+        </li>
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-calendar"/></svg></span>
+          <div class="pcard__title">Зазвичай — 1 раз на тиждень</div>
+          <p class="pcard__text">За потреби змінюємо частоту зустрічей відповідно до вашого запиту, життєвих обставин і можливостей.</p>
+        </li>
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-lock"/></svg></span>
+          <div class="pcard__title">Конфіденційність</div>
+          <p class="pcard__text">Усе, про що ми говоримо на консультаціях, залишається між нами.</p>
+          <p class="pcard__text">Виняток — професійні супервізії з колегами. Там не розголошуються ваше ім'я, особисті дані чи деталі, за якими можна вас ідентифікувати.</p>
+        </li>
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-bubble"/></svg></span>
+          <div class="pcard__title">Без осуду та тиску</div>
+          <p class="pcard__text">Вам не потрібно бути «сильними», «зручними» чи знати, з чого почати.</p>
+          <p class="pcard__text">Ми рухаємося у тому темпі, який підходить саме вам, і працюємо з тим, що найважливіше зараз.</p>
+        </li>
+
+      </ul>
+
+      <p class="process__note">Саме такий підхід дозволяє не просто полегшувати симптоми, <br class="only-desk">а й змінювати психологічні причини, які їх підтримують.</p>
+    </div>
+  </section>
+
+  <!-- ПРО МЕНЕ -->
+  <section class="about-bio">
+    <div class="container narrow-960">
+      <h2 class="section-title about-bio__head">У психології більше 12 років</h2>
+      <p class="body-text about-bio__descr">Починав з НЛП, гіпнотерапії, <br>тренінгів по стосунках та <br>особистісного зростання.</p>
+      <div class="about-bio__gallery">
+        <div class="about-bio__gallery-item" style="background-image:url('images/Психолог Микола Шаповал на телебаченні.webp');"></div>
+        <div class="about-bio__gallery-item" style="background-image:url('images/Психолог Микола Шаповал. Тренінги по стосунках.webp');"></div>
+        <div class="about-bio__gallery-item" style="background-image:url('images/Психолог Микола Шаповал. Тренінги з особистісного зростання.webp');"></div>
+      </div>
+
+      <p class="body-text about-bio__lead">Згодом прийшов, й зараз працюю у підході, який приніс найбільш глибокі та стабільні зміни:</p>
+
+      <p class="about-bio__method">клієнтоцентрована та <br>експірієнтальна <br>психотерапія.</p>
+
+      <p class="body-text about-bio__kpt">— підхід, в основі якого емпатичне слухання та безумовне прийняття. <br><br>В такій атмосфері людині безпечно: <br>— розслабитись, <br>— почути та зрозуміти, що насправді впливає на неї зсередині, <br>— разом прожити важкі переживання (що зменшує їх вплив).</p>
+    </div>
+  </section>
+
+  <section class="about-bio__cont">
+    <div class="container narrow-960">
+      <div class="about-bio__edu-outer">
+        <div class="about-bio__edu-side"></div>
+        <div class="about-bio__edu-center">
+          <div class="about-bio__edu-img" style="background-image:url('images/Психолог Микола Шаповал. Освіта.webp');"></div>
+          <div class="about-bio__edu-label">про освіту — в Instagram</div>
+        </div>
+        <div class="about-bio__edu-side"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ВІДГУКИ (карусель) -->
+  <section class="reviews">
+    <div class="container narrow-960">
+      <h2 class="reviews__title">Відгуки</h2>
+      <p class="reviews__subtitle">Опубліковані за згодою клієнтів.</p>
+    </div>
+
+    <div class="container reviews__viewport">
+      <button class="reviews__arrow reviews__arrow--prev" type="button" aria-label="Попередній відгук">‹</button>
+
+      <div class="reviews__track" id="reviewsTrack">
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/001_y.jpg" alt="Відгук клієнта: тривожність, кордони з чоловіками" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Тривожність, кордони з чоловіками</strong>4 онлайн-сесії</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/002_y.jpg" alt="Відгук клієнта: панічні атаки, страх виходити з дому" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Панічні атаки, страх виходити з дому</strong>9 онлайн-сесій</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/003_y.jpg" alt="Відгук клієнта: вигорання, продуктивність" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Вигорання, продуктивність</strong>8 онлайн-сесій</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/004_y.jpg" alt="Відгук клієнта: панічні атаки, ментальне здоров'я" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Панічні атаки, ментальне здоров'я</strong>11 онлайн-сесій</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/005_y.jpg" alt="Відгук клієнта: проблеми у стосунках, виснаження від бізнесу" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Стосунки, виснаження від бізнесу</strong>5 місяців співпраці</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/006_y.jpg" alt="Відгук клієнта: впевненість, стосунки, частина 1" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Впевненість, стосунки</strong>1,5 роки · частина 1</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/007_y.jpg" alt="Відгук клієнта: впевненість, стосунки, частина 2" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Впевненість, стосунки</strong>1,5 роки · частина 2</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/008_y.jpg" alt="Відгук клієнта: депресія, частина 1" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Депресія</strong>6 онлайн-сесій · частина 1</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/009_y.jpg" alt="Відгук клієнта: депресія, частина 2" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Депресія</strong>6 онлайн-сесій · частина 2</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/010_y.jpg" alt="Відгук клієнта: депресія, частина 3" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Депресія</strong>6 онлайн-сесій · частина 3</figcaption>
+        </figure>
+
+      </div>
+
+      <button class="reviews__arrow reviews__arrow--next" type="button" aria-label="Наступний відгук">›</button>
+    </div>
+
+    <div class="container narrow-960">
+      <p class="reviews__hint">гортайте пальцем · торкніться, щоб збільшити</p>
+    </div>
+  </section>
+
+  <!-- ЛАЙТБОКС -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Перегляд відгуку">
+    <button class="lightbox__close" type="button" aria-label="Закрити">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Попередній">‹</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Наступний">›</button>
+  </div>
+
+  <!-- ВАРТІСТЬ + CTA -->
+  <section class="final-cta">
+    <div class="container narrow-960">
+      <p class="final-cta__head">Щоб дізнатися вартість,</p>
+      <p class="final-cta__descr" style="margin-bottom: 40px;">записатися та з будь-якими <br>питаннями</p>
+      <a class="btn-tg" href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">
+        <span>ПИШІТЬ СЮДИ</span>
+        <span class="btn-tg__icon"><svg viewBox="2 3 20 18" xmlns="http://www.w3.org/2000/svg" fill="white"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></span>
+      </a>
+      <p class="final-cta__descr" style="margin-top: 40px; margin-bottom: 0;">Якщо конкретного запиту немає — теж <br>пишіть. З'ясуємо його разом.</p>
+
+      <div class="test-links">
+        <a class="test-link" href="test-phq9.html">
+          <span>Пройти тест на депресію</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a class="test-link" href="test-gad7.html">
+          <span>Пройти тест на тривогу</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a class="test-link" href="test-debq.html">
+          <span>Пройти тест на стилі харчової поведінки</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- СОЦМЕРЕЖІ -->
+  <footer class="social-footer">
+    <div class="container">
+      <div class="social-footer__title">Мої соціальні мережі:</div>
+      <ul class="social-footer__list">
+        <li><a class="social-footer__link" href="https://www.instagram.com/psy.shapoval/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a class="social-footer__link" href="https://www.facebook.com/psy.shapoval" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a class="social-footer__link" href="https://www.tiktok.com/@psy.shapoval" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+      <div class="social-footer__sign">
+        <div class="social-footer__name">Психолог Микола Шаповал</div>
+        <div class="social-footer__nick">@psy.shapoval</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var track = document.getElementById('reviewsTrack');
+    if (!track) return;
+
+    var imgs = Array.prototype.slice.call(track.querySelectorAll('.reviews__img'));
+    var prev = document.querySelector('.reviews__arrow--prev');
+    var next = document.querySelector('.reviews__arrow--next');
+
+    /* --- стрілки каруселі --- */
+    function step() {
+      var item = track.querySelector('.reviews__item');
+      return item ? item.getBoundingClientRect().width + 16 : 300;
+    }
+
+    function updateArrows() {
+      if (!prev || !next) return;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+    }
+
+    if (prev && next) {
+      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
+    }
+
+    /* --- лайтбокс --- */
+    var box = document.getElementById('lightbox');
+    var boxImg = document.getElementById('lightboxImg');
+    var current = 0;
+
+    function show(i) {
+      current = (i + imgs.length) % imgs.length;
+      boxImg.src = imgs[current].getAttribute('src');
+      boxImg.alt = imgs[current].getAttribute('alt') || '';
+    }
+
+    function open(i) {
+      show(i);
+      box.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      box.classList.remove('is-open');
+      document.body.style.overflow = '';
+      boxImg.src = '';
+    }
+
+    imgs.forEach(function (img, i) {
+      img.addEventListener('click', function () { open(i); });
+    });
+
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target === boxImg) close();
+    });
+
+    box.querySelector('.lightbox__close').addEventListener('click', close);
+    box.querySelector('.lightbox__nav--prev').addEventListener('click', function (e) {
+      e.stopPropagation(); show(current - 1);
+    });
+    box.querySelector('.lightbox__nav--next').addEventListener('click', function (e) {
+      e.stopPropagation(); show(current + 1);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!box.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+
+    /* свайп у лайтбоксі */
+    var x0 = null;
+    box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+      x0 = null;
+    }, { passive: true });
+  })();
+  </script>
+
+
+
+
+
+</body>
+</html>
