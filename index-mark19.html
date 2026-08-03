@@ -538,7 +538,16 @@ img {
   .screen2 .reasons__title { font-size: 26px; }
 }
 
-/* ============ БЛОК 3: ЩО ЗМІНЮЄТЬСЯ (траєкторія) ============ */
+/* ============================================================
+   БЛОК 3: ЩО ЗМІНЮЄТЬСЯ (траєкторія)
+   Структура CSS:
+     3.1 СПІЛЬНЕ      — кольори, шрифти, форма, те що однакове скрізь
+     3.2 МОБІЛЬНА     — @media (max-width: 899px), тільки розміри й розкладка
+     3.3 ВЕБ          — @media (min-width: 900px), тільки розміри й розкладка
+   Тексти карток лежать у розмітці <ul class="steps"> — одні для обох версій.
+   ============================================================ */
+
+/* ---------- 3.1 СПІЛЬНЕ ---------- */
 
 .narrow-1100 { max-width: 1100px; margin-left: auto; margin-right: auto; }
 
@@ -546,56 +555,13 @@ img {
   position: relative;
   overflow: hidden;
   background-color: var(--color-cream);
-  padding: 54px 0 64px;
-}
-
-/* --- фон --- */
-
-.changes__bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  color: #b9c5aa;
-}
-
-.changes__bg .bg-el { position: absolute; }
-.changes__bg .bg-el > svg { display: block; width: 100%; height: 100%; }
-.changes__bg .fill { fill: var(--color-sage); }
-.changes__bg .line { fill: none; stroke: #c2cdb4; stroke-width: 1.6; stroke-linecap: round; }
-.changes__bg .bg-dec { opacity: .85; }
-
-.bg-tl   { top: 0;    left: 0;  width: 38%; height: 170px; }
-.bg-lm   { top: 32%;  left: 0;  width: 52px; height: 120px; }
-.bg-br   { bottom: 0; right: 0; width: 58%; height: 180px; }
-.bg-bl   { bottom: 0; left: 0;  width: 26%; height: 100px; }
-.bg-wave { bottom: 34px; right: 0; width: 52%; height: 80px; }
-
-.bg-leaf-l { top: 44%;     left: 12px;  width: 46px; height: 72px; }
-.bg-leaf-r { bottom: 96px; right: 16px; width: 58px; height: 88px; transform: scaleX(-1) rotate(6deg); }
-.bg-sq-1   { top: 54px;    right: 11%;  width: 34px; height: 20px; }
-.bg-sq-2   { top: 27%;     left: 6%;    width: 26px; height: 16px; }
-.bg-sq-3   { bottom: 40px; left: 9%;    width: 30px; height: 18px; }
-.bg-dashes { bottom: 30px; left: 41%;   width: 66px; height: 32px; }
-
-@media (max-width: 899px) {
-  .bg-tl   { width: 58%; height: 120px; }
-  .bg-br   { width: 86%; height: 130px; }
-  .bg-bl   { width: 42%; height: 78px; }
-  .bg-wave { width: 76%; height: 60px; bottom: 26px; }
-  .bg-leaf-l { top: 38%; left: 2px; width: 32px; height: 50px; }
-  .bg-leaf-r { bottom: 64px; right: 2px; width: 36px; height: 56px; }
-  .bg-sq-1 { top: 34px; right: 5%; width: 26px; height: 15px; }
-  .bg-sq-2, .bg-sq-3, .bg-dashes { display: none; }
 }
 
 .changes__inner { position: relative; z-index: 1; }
 
-/* --- заголовок --- */
-
 .changes .section-title {
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
-  font-size: 26px;
   color: var(--color-dark);
 }
 
@@ -603,7 +569,6 @@ img {
   position: relative;
   display: inline-block;
   font-family: 'Caveat', cursive;
-  font-size: 25px;
   line-height: 1.1;
   color: var(--color-note);
   margin-top: 6px;
@@ -617,35 +582,30 @@ img {
   color: #a9b89b;
 }
 
-/* --- сітка --- */
+/* фон секції */
+.changes__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: #b9c5aa;
+}
 
+.changes__bg .bg-el { position: absolute; }
+.changes__bg .bg-el > svg { display: block; width: 100%; height: 100%; }
+.changes__bg .fill { fill: var(--color-sage); }
+.changes__bg .line { fill: none; stroke: #c2cdb4; stroke-width: 1.6; stroke-linecap: round; }
+.changes__bg .bg-dec { opacity: .85; }
+
+/* сітка */
 .steps {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   align-items: stretch;
-  column-gap: 34px;
-  row-gap: 58px;
-  margin-top: 38px;
 }
 
-/* мобільна змійка на дві колонки */
-.step:nth-child(1) { grid-area: 1 / 1; }
-.step:nth-child(2) { grid-area: 1 / 2; }
-.step:nth-child(3) { grid-area: 2 / 2; }
-.step:nth-child(4) { grid-area: 2 / 1; }
-.step:nth-child(5) { grid-area: 3 / 1; }
-.step:nth-child(6) { grid-area: 3 / 2; }
-.step:nth-child(7) { grid-area: 4 / 2; }
-.step:nth-child(8) { grid-area: 4 / 1; }
-.step:nth-child(9) { grid-area: 5 / 1; }
-
-/* --- картка --- */
-
+/* картка */
 .step {
   position: relative;
-  min-height: 184px;
-  padding: 28px 16px 26px;
   text-align: center;
 }
 
@@ -670,17 +630,11 @@ img {
 .step__num {
   position: absolute;
   z-index: 2;
-  top: -14px;
-  left: 13%;
-  width: 30px;
-  height: 30px;
   border-radius: 50%;
   background-color: var(--color-accent);
   color: var(--color-white);
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 30px;
   text-align: center;
 }
 
@@ -688,9 +642,7 @@ img {
   position: relative;
   z-index: 1;
   display: block;
-  width: 22px;
-  height: 22px;
-  margin: 0 auto 10px;
+  margin: 0 auto;
   color: var(--color-accent);
 }
 
@@ -699,10 +651,8 @@ img {
   z-index: 1;
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 700;
-  font-size: 15px;
   line-height: 1.25;
   color: var(--color-heading-green);
-  margin-bottom: 8px;
 }
 
 .step__descr {
@@ -710,13 +660,11 @@ img {
   z-index: 1;
   font-family: 'Manrope', sans-serif;
   font-weight: 300;
-  font-size: 12.5px;
   line-height: 1.45;
   color: var(--color-body);
 }
 
-/* --- пунктирні стрілки --- */
-
+/* стрілки */
 .arrow {
   position: absolute;
   display: none;
@@ -727,7 +675,50 @@ img {
 
 .arrow svg { width: 100%; height: 100%; display: block; }
 
+/* ---------- 3.2 МОБІЛЬНА (< 900px) ---------- */
+
 @media (max-width: 899px) {
+  .changes { padding: 54px 0 64px; }
+  .changes .section-title { font-size: 26px; }
+  .changes__sub { font-size: 25px; }
+
+  /* фон */
+  .bg-tl   { top: 0; left: 0; width: 58%; height: 120px; }
+  .bg-lm   { top: 32%; left: 0; width: 52px; height: 120px; }
+  .bg-br   { bottom: 0; right: 0; width: 86%; height: 130px; }
+  .bg-bl   { bottom: 0; left: 0; width: 42%; height: 78px; }
+  .bg-wave { bottom: 26px; right: 0; width: 76%; height: 60px; }
+  .bg-leaf-l { top: 38%; left: 2px; width: 32px; height: 50px; }
+  .bg-leaf-r { bottom: 64px; right: 2px; width: 36px; height: 56px; transform: scaleX(-1) rotate(6deg); }
+  .bg-sq-1 { top: 34px; right: 5%; width: 26px; height: 15px; }
+  .bg-sq-2, .bg-sq-3, .bg-dashes { display: none; }
+
+  /* сітка: змійка на дві колонки */
+  .steps {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 34px;
+    row-gap: 58px;
+    margin-top: 38px;
+  }
+
+  .step:nth-child(1) { grid-area: 1 / 1; }
+  .step:nth-child(2) { grid-area: 1 / 2; }
+  .step:nth-child(3) { grid-area: 2 / 2; }
+  .step:nth-child(4) { grid-area: 2 / 1; }
+  .step:nth-child(5) { grid-area: 3 / 1; }
+  .step:nth-child(6) { grid-area: 3 / 2; }
+  .step:nth-child(7) { grid-area: 4 / 2; }
+  .step:nth-child(8) { grid-area: 4 / 1; }
+  .step:nth-child(9) { grid-area: 5 / 1; }
+
+  /* картка */
+  .step { min-height: 184px; padding: 28px 16px 26px; }
+  .step__num { top: -14px; left: 13%; width: 30px; height: 30px; line-height: 30px; font-size: 12px; }
+  .step__icon { width: 22px; height: 22px; margin-bottom: 10px; }
+  .step__title { font-size: 15px; margin-bottom: 8px; }
+  .step__descr { font-size: 12.5px; }
+
+  /* стрілки */
   .a-mob { display: block; }
   .a-mob.arrow--right { top: 46%; right: -34px; width: 34px; height: 26px; }
   .a-mob.arrow--left  { top: 46%; left: -34px;  width: 34px; height: 26px; transform: scaleX(-1); }
@@ -735,11 +726,27 @@ img {
   .a-mob.arrow--drop-l{ top: 44%; left: -40px;  width: 60px; height: 130px; transform: scaleX(-1); }
 }
 
+/* ---------- 3.3 ВЕБ (≥ 900px) ---------- */
+
 @media (min-width: 900px) {
   .changes { padding: 90px 0 104px; }
   .changes .section-title { font-size: 44px; }
   .changes__sub { font-size: 30px; }
 
+  /* фон */
+  .bg-tl   { top: 0; left: 0; width: 38%; height: 170px; }
+  .bg-lm   { top: 32%; left: 0; width: 52px; height: 120px; }
+  .bg-br   { bottom: 0; right: 0; width: 58%; height: 180px; }
+  .bg-bl   { bottom: 0; left: 0; width: 26%; height: 100px; }
+  .bg-wave { bottom: 34px; right: 0; width: 52%; height: 80px; }
+  .bg-leaf-l { top: 44%; left: 12px; width: 46px; height: 72px; }
+  .bg-leaf-r { bottom: 96px; right: 16px; width: 58px; height: 88px; transform: scaleX(-1) rotate(6deg); }
+  .bg-sq-1 { top: 54px; right: 11%; width: 34px; height: 20px; }
+  .bg-sq-2 { top: 27%; left: 6%; width: 26px; height: 16px; }
+  .bg-sq-3 { bottom: 40px; left: 9%; width: 30px; height: 18px; }
+  .bg-dashes { bottom: 30px; left: 41%; width: 66px; height: 32px; }
+
+  /* сітка: три ряди змійкою, 3-й ряд — дзеркало 2-го */
   .steps {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 88px;
@@ -747,7 +754,6 @@ img {
     margin-top: 60px;
   }
 
-  /* три ряди змійкою: 3-й ряд — дзеркало 2-го */
   .step:nth-child(1) { grid-area: 1 / 1; }
   .step:nth-child(2) { grid-area: 1 / 2; }
   .step:nth-child(3) { grid-area: 1 / 3; }
@@ -758,16 +764,14 @@ img {
   .step:nth-child(8) { grid-area: 3 / 2; }
   .step:nth-child(9) { grid-area: 3 / 3; }
 
-  .step {
-    min-height: 268px;
-    padding: 46px 28px 40px;
-  }
-
-  .step__num { width: 42px; height: 42px; line-height: 42px; font-size: 14px; top: -20px; left: 12%; }
+  /* картка */
+  .step { min-height: 268px; padding: 46px 28px 40px; }
+  .step__num { top: -20px; left: 12%; width: 42px; height: 42px; line-height: 42px; font-size: 14px; }
   .step__icon { width: 30px; height: 30px; margin-bottom: 16px; }
   .step__title { font-size: 26px; margin-bottom: 14px; }
   .step__descr { font-size: 20px; }
 
+  /* стрілки */
   .a-desk { display: block; }
   .a-desk.arrow--right { top: 44%; right: -88px; width: 88px; height: 56px; }
   .a-desk.arrow--left  { top: 44%; left: -88px;  width: 88px; height: 56px; transform: scaleX(-1); }
@@ -1690,6 +1694,8 @@ img {
       </div>
 
       <div class="container">
+        <!-- ТЕКСТИ КАРТОК: єдине джерело для веб- і мобільної версії.
+             Правити тут: step__title (заголовок) і step__descr (підпис). -->
         <ul class="steps">
 
           <li class="step">
