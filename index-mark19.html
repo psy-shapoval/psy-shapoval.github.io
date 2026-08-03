@@ -540,11 +540,12 @@ img {
 
 /* ============================================================
    БЛОК 3: ЩО ЗМІНЮЄТЬСЯ (траєкторія)
-   Структура CSS:
-     3.1 СПІЛЬНЕ      — кольори, шрифти, форма, те що однакове скрізь
-     3.2 МОБІЛЬНА     — @media (max-width: 899px), тільки розміри й розкладка
-     3.3 ВЕБ          — @media (min-width: 900px), тільки розміри й розкладка
-   Тексти карток лежать у розмітці <ul class="steps"> — одні для обох версій.
+     3.1 СПІЛЬНЕ  — кольори, шрифти, форма картки
+     3.2 МОБІЛЬНА — @media (max-width: 899px)
+     3.3 ВЕБ      — @media (min-width: 900px)
+   Тексти карток — у розмітці <ul class="steps">, одні для обох версій.
+   Кольори/розміри виміряні з макета (1536px): контур #cfcfbe 2px, пунктир 4/3,
+   радіус 50, кружечок 39px #647d49, заголовок 25px #455b28, підпис 19px.
    ============================================================ */
 
 /* ---------- 3.1 СПІЛЬНЕ ---------- */
@@ -601,37 +602,29 @@ img {
   list-style: none;
   display: grid;
   align-items: stretch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* картка */
+/* картка: пунктирна рамка + м'яка тінь, як у макеті */
 .step {
   position: relative;
+  z-index: 1;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px dashed #cfcfbe;
+  box-shadow: 0 6px 18px rgba(112, 102, 78, 0.10);
 }
 
-.step__shape {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  z-index: 0;
-}
-
-.step__shape path {
-  fill: none;
-  stroke: #a3b294;
-  stroke-width: 1.8;
-  stroke-dasharray: 6 8;
-  stroke-linecap: round;
-  vector-effect: non-scaling-stroke;
-}
+.step:nth-child(3n+1) { border-radius: 50px; }
+.step:nth-child(3n+2) { border-radius: 46px; }
+.step:nth-child(3n)   { border-radius: 54px; }
 
 .step__num {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   border-radius: 50%;
-  background-color: var(--color-accent);
+  background-color: #647d49;
   color: var(--color-white);
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
@@ -640,36 +633,36 @@ img {
 
 .step__icon {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: block;
   margin: 0 auto;
-  color: var(--color-accent);
+  color: #5a733a;
 }
 
 .step__title {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 700;
-  line-height: 1.25;
-  color: var(--color-heading-green);
+  line-height: 1.28;
+  color: #455b28;
 }
 
 .step__descr {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   font-family: 'Manrope', sans-serif;
   font-weight: 300;
-  line-height: 1.45;
+  line-height: 1.55;
   color: var(--color-body);
 }
 
-/* стрілки */
+/* стрілки: завжди під картками, ніколи їх не перекривають */
 .arrow {
   position: absolute;
   display: none;
-  z-index: 1;
-  color: #9aab8b;
+  z-index: -1;
+  color: #9aa884;
   pointer-events: none;
 }
 
@@ -682,7 +675,6 @@ img {
   .changes .section-title { font-size: 26px; }
   .changes__sub { font-size: 25px; }
 
-  /* фон */
   .bg-tl   { top: 0; left: 0; width: 58%; height: 120px; }
   .bg-lm   { top: 32%; left: 0; width: 52px; height: 120px; }
   .bg-br   { bottom: 0; right: 0; width: 86%; height: 130px; }
@@ -693,7 +685,6 @@ img {
   .bg-sq-1 { top: 34px; right: 5%; width: 26px; height: 15px; }
   .bg-sq-2, .bg-sq-3, .bg-dashes { display: none; }
 
-  /* сітка: змійка на дві колонки */
   .steps {
     grid-template-columns: 1fr 1fr;
     column-gap: 34px;
@@ -711,29 +702,26 @@ img {
   .step:nth-child(8) { grid-area: 4 / 1; }
   .step:nth-child(9) { grid-area: 5 / 1; }
 
-  /* картка */
-  .step { min-height: 184px; padding: 28px 16px 26px; }
-  .step__num { top: -14px; left: 13%; width: 30px; height: 30px; line-height: 30px; font-size: 12px; }
+  .step { min-height: 184px; padding: 26px 14px 24px; }
+  .step__num { top: -1px; left: 13%; width: 30px; height: 30px; line-height: 30px; font-size: 12px; }
   .step__icon { width: 22px; height: 22px; margin-bottom: 10px; }
   .step__title { font-size: 15px; margin-bottom: 8px; }
   .step__descr { font-size: 12.5px; }
 
-  /* стрілки */
   .a-mob { display: block; }
-  .a-mob.arrow--right { top: 46%; right: -34px; width: 34px; height: 26px; }
-  .a-mob.arrow--left  { top: 46%; left: -34px;  width: 34px; height: 26px; transform: scaleX(-1); }
-  .a-mob.arrow--drop  { top: 44%; right: -40px; width: 60px; height: 130px; }
-  .a-mob.arrow--drop-l{ top: 44%; left: -40px;  width: 60px; height: 130px; transform: scaleX(-1); }
+  .a-mob.arrow--right { top: 40%; right: -34px; width: 34px; height: 30px; }
+  .a-mob.arrow--left  { top: 40%; left: -34px;  width: 34px; height: 30px; transform: scaleX(-1); }
+  .a-mob.arrow--drop  { top: 44%; right: -52px; width: 62px; height: 110px; }
+  .a-mob.arrow--drop-l{ top: 44%; left: -52px;  width: 62px; height: 110px; transform: scaleX(-1); }
 }
 
 /* ---------- 3.3 ВЕБ (≥ 900px) ---------- */
 
 @media (min-width: 900px) {
-  .changes { padding: 90px 0 104px; }
+  .changes { padding: 90px 0 100px; }
   .changes .section-title { font-size: 44px; }
   .changes__sub { font-size: 30px; }
 
-  /* фон */
   .bg-tl   { top: 0; left: 0; width: 38%; height: 170px; }
   .bg-lm   { top: 32%; left: 0; width: 52px; height: 120px; }
   .bg-br   { bottom: 0; right: 0; width: 58%; height: 180px; }
@@ -746,12 +734,13 @@ img {
   .bg-sq-3 { bottom: 40px; left: 9%; width: 30px; height: 18px; }
   .bg-dashes { bottom: 30px; left: 41%; width: 66px; height: 32px; }
 
-  /* сітка: три ряди змійкою, 3-й ряд — дзеркало 2-го */
+  /* 1 2 3 / 6 5 4 / 7 8 9 */
   .steps {
+    max-width: 1080px;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 88px;
-    row-gap: 116px;
-    margin-top: 60px;
+    row-gap: 78px;
+    margin-top: 58px;
   }
 
   .step:nth-child(1) { grid-area: 1 / 1; }
@@ -764,19 +753,17 @@ img {
   .step:nth-child(8) { grid-area: 3 / 2; }
   .step:nth-child(9) { grid-area: 3 / 3; }
 
-  /* картка */
-  .step { min-height: 268px; padding: 46px 28px 40px; }
-  .step__num { top: -20px; left: 12%; width: 42px; height: 42px; line-height: 42px; font-size: 14px; }
-  .step__icon { width: 30px; height: 30px; margin-bottom: 16px; }
-  .step__title { font-size: 26px; margin-bottom: 14px; }
-  .step__descr { font-size: 20px; }
+  .step { min-height: 288px; padding: 40px 28px 34px; }
+  .step__num { top: -1px; left: 15%; width: 39px; height: 39px; line-height: 39px; font-size: 13px; }
+  .step__icon { width: 28px; height: 28px; margin-bottom: 16px; }
+  .step__title { font-size: 25px; margin-bottom: 12px; }
+  .step__descr { font-size: 19px; }
 
-  /* стрілки */
   .a-desk { display: block; }
-  .a-desk.arrow--right { top: 44%; right: -88px; width: 88px; height: 56px; }
-  .a-desk.arrow--left  { top: 44%; left: -88px;  width: 88px; height: 56px; transform: scaleX(-1); }
-  .a-desk.arrow--drop  { top: 42%; right: -108px; width: 150px; height: 244px; }
-  .a-desk.arrow--drop-l{ top: 42%; left: -108px;  width: 150px; height: 244px; transform: scaleX(-1); }
+  .a-desk.arrow--right { top: 40%; right: -88px; width: 88px; height: 60px; }
+  .a-desk.arrow--left  { top: 40%; left: -88px;  width: 88px; height: 60px; transform: scaleX(-1); }
+  .a-desk.arrow--drop  { top: 44%; right: -120px; width: 130px; height: 220px; }
+  .a-desk.arrow--drop-l{ top: 44%; left: -120px;  width: 130px; height: 220px; transform: scaleX(-1); }
 }
 
 /* ============ БЛОК 4: ЯК ПРОХОДИТЬ ТЕРАПІЯ (картки) ============ */
@@ -1637,14 +1624,14 @@ img {
         <path d="M12 15.4c-1.9-1.2-2.9-2.3-2.9-3.4 0-.8.6-1.4 1.4-1.4.6 0 1.1.3 1.5.8.4-.5.9-.8 1.5-.8.8 0 1.4.6 1.4 1.4 0 1.1-1 2.2-2.9 3.4z"/>
       </symbol>
 
-      <symbol id="arw-h" viewBox="0 0 88 56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 44C24 42 42 24 62 16 70 13 78 11 84 10" stroke-dasharray="6 8"/>
-        <path d="M75.3 7.6 84 10 76.6 15.1"/>
+      <symbol id="arw-h" viewBox="0 0 88 60" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 46C24 45 40 36 58 28 68 23 78 16 86 10" stroke-dasharray="5 5"/>
+        <path d="M77.2 11.9 86 10 81.8 17.9"/>
       </symbol>
 
-      <symbol id="arw-drop" viewBox="0 0 150 244" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 30C40 24 76 34 84 80 92 126 90 168 68 200 58 214 46 222 36 228" stroke-dasharray="6 8"/>
-        <path d="M47.9 226.8 36 228 42.7 218.1"/>
+      <symbol id="arw-drop" viewBox="0 0 130 220" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 8C60 4 76 30 78 74 80 118 74 152 56 182 46 198 34 208 24 214" stroke-dasharray="5 5"/>
+        <path d="M35.9 212.8 24 214 30.7 204.1"/>
       </symbol>
 
       <symbol id="dec-leaf" viewBox="0 0 60 92" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1699,7 +1686,6 @@ img {
         <ul class="steps">
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M54 3C90 2 130 2 152 4 176 7 197 24 196 50 195 76 198 108 186 128 174 148 130 147 100 147 68 147 30 146 16 128 3 111 4 82 4 54 4 26 24 5 54 3Z"/></svg>
             <span class="step__num">01</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-inner"/></svg>
             <div class="step__title">Ви краще розумієте свої почуття й потреби</div>
@@ -1708,7 +1694,6 @@ img {
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M52 4C88 2 128 1 150 3 175 6 196 25 195 51 194 77 197 107 185 127 173 147 128 148 98 148 66 148 29 147 15 129 2 112 5 83 5 55 5 27 22 6 52 4Z"/></svg>
             <span class="step__num">02</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-wave"/></svg>
             <div class="step__title">Менше тривоги, пригніченості й напруги</div>
@@ -1718,7 +1703,6 @@ img {
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M56 3C92 1 132 3 154 5 178 8 196 26 195 52 194 78 197 106 184 127 171 147 132 148 102 148 70 148 31 146 17 129 4 112 3 83 3 55 3 27 26 5 56 3Z"/></svg>
             <span class="step__num">03</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-hand"/></svg>
             <div class="step__title">Менше самокритики, провини й сорому</div>
@@ -1728,7 +1712,6 @@ img {
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M53 5C89 3 129 2 151 4 176 8 197 26 196 52 195 78 196 106 184 126 172 146 129 147 99 147 67 147 28 146 14 128 1 111 4 82 4 54 4 26 23 7 53 5Z"/></svg>
             <span class="step__num">04</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-compass"/></svg>
             <div class="step__title">Менше чутливості до чужих оцінок</div>
@@ -1738,7 +1721,6 @@ img {
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M55 3C91 1 131 2 153 5 177 8 197 25 196 51 195 77 197 107 185 128 173 148 131 147 101 147 69 147 30 145 16 128 3 110 5 82 5 54 5 26 25 5 55 3Z"/></svg>
             <span class="step__num">05</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-shield"/></svg>
             <div class="step__title">Легше відстоювати власні інтереси</div>
@@ -1748,7 +1730,6 @@ img {
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M51 4C87 3 127 2 149 4 174 7 195 24 194 50 193 76 196 108 184 128 172 148 127 148 97 148 65 148 28 146 14 129 1 112 4 83 4 55 4 27 21 6 51 4Z"/></svg>
             <span class="step__num">06</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-mountain"/></svg>
             <div class="step__title">З'являється більше віри у власні сили</div>
@@ -1758,7 +1739,6 @@ img {
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M57 4C93 2 133 2 155 4 179 7 197 27 196 53 195 79 196 107 183 127 170 147 133 148 103 148 71 148 32 147 18 129 5 112 4 83 4 55 4 27 27 6 57 4Z"/></svg>
             <span class="step__num">07</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-sprout"/></svg>
             <div class="step__title">Повертаються сили та внутрішній ресурс</div>
@@ -1768,7 +1748,6 @@ img {
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M54 5C90 3 130 3 152 5 177 9 196 27 195 53 194 79 197 105 185 126 173 146 130 147 100 147 68 147 29 146 15 129 2 112 5 83 5 55 5 27 24 7 54 5Z"/></svg>
             <span class="step__num">08</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-cycle"/></svg>
             <div class="step__title">Все частіше справляєтеся з емоціями без їжі</div>
@@ -1778,7 +1757,6 @@ img {
           </li>
 
           <li class="step">
-            <svg class="step__shape" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true"><path d="M53 3C89 1 129 1 151 3 176 6 197 25 196 51 195 77 197 108 185 128 173 148 129 148 99 148 67 148 29 146 15 128 2 111 4 82 4 54 4 26 23 5 53 3Z"/></svg>
             <span class="step__num">09</span>
             <svg class="step__icon" aria-hidden="true"><use href="#ic-key"/></svg>
             <div class="step__title">Життя стає все більш «вашим»</div>
