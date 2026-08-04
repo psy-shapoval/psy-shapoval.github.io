@@ -2,6 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Схема — 9 форм</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +39,11 @@
     .section-title { font-size: 44px; }
     .changes .section-title { font-size: 44px; }
   }
-  .canvas { position: relative; width: 1080px; height: 2187px; margin: 0 auto; }
+  /* Полотно — фіксований артборд 1080 px, який на вузьких екранах
+     цілком масштабується. Розміри шрифтів компенсуються в скрипті, щоб на мобільному
+     вони збігалися зі значеннями з index-mark19.html (15 px / 12.5 px). */
+  .stage { overflow: hidden; }
+  .canvas { position: relative; width: 1080px; height: 2187px; margin: 0 auto; transform-origin: top left; }
   .canvas > svg.shape { position: absolute; display: block; overflow: visible; }
   .canvas > svg.overlay { position: absolute; left: 0; top: 0; display: block; }
 
@@ -59,6 +64,9 @@
   .panel input[type=range] { width: 100%; margin-top: 4px; }
   .panel output { font-weight: 700; }
   .panel__info { border-top: 1px solid #e6e1d6; padding-top: 8px; line-height: 1.6; color: #5c5247; }
+  @media (max-width: 899px) {
+    .panel { position: static; width: auto; margin: 0 12px 16px; }
+  }
   .card-block__inner { margin: 0 auto; }
   .step__icon { display: block; margin: 0 auto; color: #5a733a; }
   .step__title {
@@ -92,6 +100,7 @@
     <h2 class="section-title">Що дає терапія</h2>
   </div>
 
+<div class="stage">
 <div class="canvas">
   <!-- СТРІЛКА 1->2: форма 1 (точка "2") -> форма 2 (точка "А")
        P0 = (356.8, 261.0);  P3 = (820.7, 290.6)
@@ -435,6 +444,7 @@
     </div>
   </div>
 </div>
+</div>
 </section>
 
 
@@ -452,8 +462,8 @@
   <label>Відступ опису від країв блоку <output id="oDsc"></output> px
     <input id="iDsc" type="range" min="0" max="150" step="1" value="29">
   </label>
-  <label>Зменшення відступу зліва і справа <output id="oCut"></output> px
-    <input id="iCut" type="range" min="0" max="150" step="1" value="0">
+  <label>Відстань між формами по вертикалі <output id="oGapV"></output> px
+    <input id="iGapV" type="range" min="0" max="400" step="1" value="145">
   </label>
   <div class="panel__info" id="info"></div>
 </div>
@@ -462,9 +472,13 @@
 (function(){
   const FORMS=[{pos:1,rl:51.5,rw:457.9,bt:145.3,h0:399.5,vh:300.17,th:292.32,el:46.1,ew:468.8,p1:0.5287},{pos:2,rl:570.7,rw:452.2,bt:290.6,h0:391.4,vh:290.47,th:282.54,el:565.1,ew:462.8,p1:0.5529},{pos:3,rl:61.4,rw:465.6,bt:689.8,h0:392.7,vh:281.66,th:273.85,el:55.7,ew:477.1,p1:0.4816},{pos:4,rl:570.7,rw:456.2,bt:827.2,h0:396.3,vh:293.39,th:285.70,el:565.2,ew:466.9,p1:0.5021},{pos:5,rl:56.6,rw:456.0,bt:1227.6,h0:417.6,vh:297.28,th:289.46,el:50.9,ew:467.5,p1:0.5639},{pos:6,rl:587.1,rw:434.5,bt:1368.4,h0:379.0,vh:300.17,th:292.32,el:582.0,ew:444.8,p1:0.5287},{pos:7,rl:56.4,rw:448.7,bt:1790.3,h0:388.3,vh:290.47,th:282.54,el:50.9,ew:459.2,p1:0.5529},{pos:8,rl:578.9,rw:442.9,bt:1892.5,h0:373.5,vh:281.66,th:273.85,el:573.5,ew:453.8,p1:0.4816},{pos:9,rl:65.5,rw:462.0,bt:2323.8,h0:401.4,vh:293.39,th:285.70,el:59.9,ew:473.0,p1:0.5021}];
   const ARROWS=[{a:1,b:2,fx:0.6667,fy:0.3333,ang:15.0,mode:'h',w1:200.0,w2:180.0},{a:3,b:4,fx:0.6667,fy:0.6667,ang:50.0,mode:'h',w1:200.0,w2:180.0},{a:5,b:6,fx:0.6667,fy:0.6667,ang:50.0,mode:'h',w1:200.0,w2:180.0},{a:7,b:8,fx:0.6667,fy:0.6667,ang:50.0,mode:'h',w1:200.0,w2:180.0},{a:2,b:3,fx:0.3333,fy:0.6667,ang:5.0,mode:'v',w1:50.0,w2:180.0},{a:4,b:5,fx:0.3333,fy:0.6667,ang:5.0,mode:'v',w1:50.0,w2:180.0},{a:6,b:7,fx:0.3333,fy:0.6667,ang:5.0,mode:'v',w1:50.0,w2:180.0},{a:8,b:9,fx:0.3333,fy:0.6667,ang:5.0,mode:'v',w1:50.0,w2:180.0}];
-  const GAPV=145.3;   // зафіксований вертикальний просвіт, px
+
   const canvas=document.querySelector('.canvas');
-  const iIcon=document.getElementById('iIcon'), iPad=document.getElementById('iPad'), iCut=document.getElementById('iCut'), iGap=document.getElementById('iGap'), iDsc=document.getElementById('iDsc');
+  const stage=document.querySelector('.stage');
+  const ART=1080;                 // ширина артборда
+  const F_TITLE_D=25, F_DESCR_D=19; // розміри з файлу стилів, >=900px
+  const F_TITLE_M=15, F_DESCR_M=12.5; // розміри з файлу стилів, <900px
+  const iIcon=document.getElementById('iIcon'), iPad=document.getElementById('iPad'), iGap=document.getElementById('iGap'), iDsc=document.getElementById('iDsc'), iGapV=document.getElementById('iGapV');
 
   FORMS.forEach(function(f){
     f.svg=document.getElementById('pos-'+f.pos);
@@ -488,9 +502,17 @@
   }
 
   function update(){
+    // масштаб артборда під ширину екрана і компенсація кеглів
+    const vw=document.documentElement.clientWidth;
+    const scale=Math.min(1, vw/ART);
+    const mobile=vw<900;
+    const fT=(mobile?F_TITLE_M:F_TITLE_D)/scale;
+    const fD=(mobile?F_DESCR_M:F_DESCR_D)/scale;
+
     const iconH=parseFloat(iIcon.value);
     const padPct=parseFloat(iPad.value);
-    const cut=parseFloat(iCut.value);
+    const cut=0;
+    const GAPV=parseFloat(iGapV.value);   // зафіксований вертикальний просвіт, px
     const gap=parseFloat(iGap.value);
     const dscPad=parseFloat(iDsc.value);
 
@@ -504,12 +526,14 @@
       f.icon.style.width=(iconH*1.0909).toFixed(1)+'px';
       f.card.style.left=(f.rl+sidePad).toFixed(1)+'px';
       f.card.style.width=f.bw.toFixed(1)+'px';
+      f.title.style.fontSize=fT.toFixed(2)+'px';
+      f.descr.style.fontSize=fD.toFixed(2)+'px';
       f.title.style.marginTop=gap+'px';
       f.descr.style.marginTop=gap+'px';
       f.descr.style.width=Math.max(0,f.bw-2*dscPad).toFixed(1)+'px';
       f.descr.style.marginLeft='auto'; f.descr.style.marginRight='auto';
     });
-    FORMS.forEach(function(f){ f.cont=f.inner.getBoundingClientRect().height; });
+    FORMS.forEach(function(f){ f.cont=f.inner.offsetHeight; });
 
     // 2) висоти і позиції за ЗАФІКСОВАНИМИ відстанями:
     //    верх форми 1 = GAPV нижче заголовка, верх форми 2 = верх форми 1 + GAPV,
@@ -527,6 +551,8 @@
       f.card.style.top=(f.top+f.padPx).toFixed(1)+'px';
     });
     canvas.style.height=canvasH.toFixed(0)+'px';
+    canvas.style.transform='scale('+scale+')';
+    stage.style.height=(canvasH*scale).toFixed(0)+'px';
 
     // 4) стрілки
     ARROWS.forEach(function(a){
@@ -543,20 +569,21 @@
 
     document.getElementById('oIcon').textContent=iconH.toFixed(1);
     document.getElementById('oPad').textContent=padPct.toFixed(1);
-    document.getElementById('oCut').textContent=cut.toFixed(0);
+    document.getElementById('oGapV').textContent=GAPV.toFixed(0);
     document.getElementById('oGap').textContent=gap.toFixed(0);
     document.getElementById('oDsc').textContent=dscPad.toFixed(0);
     const f1=FORMS[0];
     document.getElementById('info').innerHTML=
       'форма 1 — відступ зверху/знизу: <b>'+f1.padPx.toFixed(1)+' px</b><br>'+
-      'форма 1 — відступ зліва/справа: <b>'+f1.sidePad.toFixed(1)+' px</b><br>'+
+
       'форма 1 — ширина блоку: <b>'+f1.bw.toFixed(1)+' px</b><br>'+
       'форма 1 — висота контенту: <b>'+f1.cont.toFixed(1)+' px</b><br>'+
       'форма 1 — прямокутник: <b>'+f1.rw.toFixed(1)+' x '+f1.h.toFixed(1)+' px</b><br>'+
       'просвіт між формами (зафіксовано): <b>'+GAPV.toFixed(1)+' px</b><br>'+
       'висота полотна: <b>'+canvasH.toFixed(0)+' px</b>';
   }
-  [iIcon,iPad,iCut,iGap,iDsc].forEach(function(el){ el.addEventListener('input',update); });
+  [iIcon,iPad,iGap,iDsc,iGapV].forEach(function(el){ el.addEventListener('input',update); });
+  window.addEventListener('resize',update);
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(update);
   update();
 })();
