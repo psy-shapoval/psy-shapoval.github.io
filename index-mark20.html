@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Микола Шаповал — психолог</title>
+  <meta name="description" content="Психолог у клієнтоцентрованому підході. Допомагаю нарешті видихнути й повернути смак до життя.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23e7ece0%22/><text x=%2250%22 y=%2268%22 font-size=%2255%22 font-family=%22Arial%22 font-weight=%22800%22 fill=%22%23352a22%22 text-anchor=%22middle%22>М</text></svg>" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Manrope лежить локально у fonts/, але лише 400-800.
+       Вага 300 потрібна кнопці й дрібним підписам - тягнемо тільки її. -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('fonts/manrope-cyrillic-800-normal.woff2') format('woff2');
+}
+
+
+:root {
+  --color-dark: #352a22;       /* основний темний текст / темний фон футера */
+  --color-body: #5c5247;       /* колір тексту параграфів */
+  --color-cream: #f2efe6;      /* фон секцій - світлий */
+  --color-sage: #e0e5d4;       /* фон секцій - зеленуватий */
+  --color-accent: #5f7c46;     /* колір кнопок - зелений, як на першому екрані */
+  --color-accent-hover: #51693b;
+  --color-heading-green: #5f7c46;  /* зелені заголовки запитів */
+  --color-note: #565a4b;           /* дрібні підписи */
+  --color-green: #3e5b49;      /* колір ціни / акцентних крапок */
+  --color-white: #ffffff;
+
+  --font-main: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --container-max: 1200px;
+  --radius-btn: 30px;
+  --radius-card: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-body);
+  line-height: 1.4;
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.narrow-960 { max-width: 960px; margin-left: auto; margin-right: auto; }
+.narrow-760 { max-width: 760px; margin-left: auto; margin-right: auto; }
+.narrow-560 { max-width: 560px; margin-left: auto; margin-right: auto; }
+
+.text-center { text-align: center; }
+
+.section {
+  position: relative;
+}
+
+/* ============ Кнопка "ПИШІТЬ СЮДИ" ============ */
+
+.btn-tg {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background-color: var(--color-accent);
+  color: var(--color-white) !important;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 14px 28px;
+  border-radius: var(--radius-btn);
+  border: none;
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+  white-space: normal;
+}
+
+.btn-tg:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-tg .btn-tg__icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.btn-tg .btn-tg__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============ HERO ============ */
+/* Мобільна версія — базові правила, десктоп — у медіазапиті нижче.
+   Позиції у % від секції (прив'язані до фону), кеглі у vw. */
+
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1080 / 1920;
+  background-color: var(--color-cream);
+  background-image: url('images/hero-mobile.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.hero__el {
+  position: absolute;
+  margin: 0;
+}
+
+/* «Привіт!» + розчерк */
+
+.hero__hi {
+  left: 11.6%;
+  top: 8.0%;
+  width: 42%;
+  font-family: 'Caveat', cursive;
+  font-weight: 400;
+  font-size: 9.75vw;
+  line-height: 1.05;
+  color: #536d40;
+}
+
+.hero__swash {
+  display: block;
+  width: 58%;
+  height: auto;
+  margin-top: -1.2vw;
+  fill: #536d40;
+  stroke: none;
+}
+
+/* «Я МИКОЛА» */
+
+.hero__title {
+  left: 9.3%;
+  top: 17.0%;
+  font-family: 'Manrope', var(--font-main);
+  font-weight: 600;
+  font-size: 10.5vw;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  color: #1c2d1d;
+}
+
+/* опис */
+
+.hero__descr {
+  left: 9.3%;
+  top: 26.2%;
+  font-family: 'Montserrat Alternates', var(--font-main);
+  font-weight: 500;
+  font-size: 4.4vw;
+  line-height: 1.28;
+  color: #3f4038;
+}
+
+/* риска над кнопкою */
+
+.hero__rule {
+  left: 9.3%;
+  top: 35.60%;
+  width: 15.5%;
+}
+
+.hero__rule svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  stroke: none;
+}
+
+/* кнопка: розмір задається текстом + відступами */
+
+.hero__btn {
+  left: 8.6%;
+  top: 41.12%;
+  display: inline-flex;
+  align-items: center;
+  gap: 2vw;
+  padding: 3.60vw 4.60vw;
+  border-radius: 999px;
+  background-color: #5f7c46;
+  color: var(--color-white);
+  font-family: 'Manrope', var(--font-main);
+  font-size: 4.30vw;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: 0 0.9vw 2.2vw -0.9vw rgba(28, 45, 25, 0.4);
+  transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+}
+
+.hero__btn:hover {
+  background-color: #51693b;
+  transform: translateY(-2px);
+}
+
+.hero__btn svg {
+  width: 4vw;
+  height: 4vw;
+  fill: var(--color-white);
+  flex: none;
+}
+
+/* стрілка + «мій telegram» */
+
+.hero__note {
+  left: 9.3%;
+  top: 49.72%;
+  display: flex;
+  align-items: flex-end;
+  gap: 1.6vw;
+  font-family: 'Manrope', var(--font-main);
+  font-weight: 300;
+  color: var(--color-note);
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.hero__note svg {
+  width: 2.8vw;
+  height: auto;
+  margin-bottom: 0.55em;
+  flex: none;
+  fill: none;
+  stroke: var(--color-note);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- ДЕСКТОП ---------- */
+
+@media (min-width: 900px) {
+
+  .hero {
+    aspect-ratio: 2000 / 850;
+    background-image: url('images/hero-desktop.png');
+    background-position: center;
+  }
+
+  .hero__hi {
+    left: 10.3%;
+    top: 11.8%;
+    width: 21%;
+    font-size: 4.3vw;
+  }
+
+  .hero__swash {
+    width: 54%;
+    margin-top: -0.5vw;
+  }
+
+  .hero__title {
+    left: 10.2%;
+    top: 28.2%;
+    font-size: 4.95vw;
+  }
+
+  .hero__descr {
+    left: 10.2%;
+    top: 43.5%;
+    font-weight: 400;
+    font-size: 1.6vw;
+    line-height: 1.3;
+  }
+
+  .hero__rule {
+    left: 10.2%;
+    top: 58.38%;
+    width: 4.95%;
+  }
+
+
+
+  .hero__btn {
+    left: 10.2%;
+    top: 65.79%;
+    gap: 0.9vw;
+    padding: 0.95vw 1.90vw;
+    font-size: 1.45vw;
+    font-weight: 300;
+    box-shadow: 0 0.45vw 1.1vw -0.4vw rgba(28, 45, 25, 0.35);
+  }
+
+  .hero__btn svg {
+    width: 1.6vw;
+    height: 1.6vw;
+  }
+
+  .hero__note {
+    left: 10.6%;
+    top: 76.79%;
+    gap: 0.7vw;
+    font-size: 20px;
+  }
+
+  .hero__note svg {
+    width: 1.1vw;
+    height: auto;
+    stroke-width: 1.2;
+  }
+}
+
+
+/* ============ Заголовки секцій (загальні) ============ */
+
+.section-title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .section-title { font-size: 44px; }
+}
+
+.body-text {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* ============ "До мене звертаються коли…" ============ */
+
+.intro-q {
+  background-color: var(--color-cream);
+  padding: 60px 0 0;
+}
+
+/* ============ Картки причин (508) ============ */
+
+.reasons {
+  background-color: var(--color-cream);
+  padding: 0 0 60px;
+}
+
+.reasons__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.reasons__item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.reasons__bullet {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 10px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+}
+
+.reasons__title {
+  color: #107B57;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+@media (min-width: 900px) {
+  .reasons__title { font-size: 26px; }
+}
+
+.reasons__descr {
+  color: var(--color-body);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.reasons__descr strong {
+  color: inherit;
+  font-weight: 500;
+}
+
+/* ============ "Привіт! Я Микола" ============ */
+
+.about-intro {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.about-intro__title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 900px) {
+  .about-intro__title { font-size: 34px; }
+}
+
+.about-intro__descr {
+  color: var(--color-body);
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.about-intro__descr strong {
+  color: #333;
+}
+
+.about-intro__descr em {
+  font-style: italic;
+}
+
+/* ============ Насиченість тексту (утиліти) ============ */
+/* Підсвічують окремі слова, не змінюючи шрифт і розмір.
+   Використання: <span class="w500">слово</span>
+   Manrope у папці fonts/ має 400-800; 300 підвантажується з Google. */
+
+.w300 { font-weight: 300; }
+.w400 { font-weight: 400; }
+.w500 { font-weight: 500; }
+.w600 { font-weight: 600; }
+.w700 { font-weight: 700; }
+.w800 { font-weight: 800; }
+
+/* ============ ДРУГИЙ ЕКРАН ============ */
+
+.screen2 {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.screen2 .section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.screen2 .reasons__list {
+  margin-top: 40px;
+}
+
+.screen2 .reasons__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-heading-green);
+}
+
+.screen2 .reasons__descr {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+@media (min-width: 900px) {
+  .screen2 { padding: 90px 0; }
+  .screen2 .section-title { font-size: 44px; }
+  .screen2 .reasons__title { font-size: 26px; }
+}
+
+.narrow-1100 { max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+/* ============ БЛОК 3: ЩО ДАЄ ТЕРАПІЯ ============ */
+/* Геометрія форм, стрілок і карток обчислюється скриптом унизу сторінки.
+   Полотно тягнеться на ширину екрана (максимум 1080 px), уся розкладка —
+   частки цієї ширини. Кеглі не масштабуються: беруться для брейкпойнта. */
+
+.changes {
+  position: relative;
+  overflow: hidden;
+  padding: 54px 0;
+  background-color: var(--color-cream);
+}
+
+.changes__inner { position: relative; z-index: 1; }
+
+@media (min-width: 900px) {
+  .changes { padding: 90px 0; }
+}
+
+/* полотно з формами */
+
+.stage { position: relative; z-index: 1; }
+
+.canvas {
+  position: relative;
+  width: 1080px;
+  max-width: 100%;
+  height: 1471px;
+  margin: 0 auto;
+}
+
+.canvas > svg.shape {
+  position: absolute;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 6px 16px rgba(122, 112, 84, 0.16))
+          drop-shadow(0 2px 4px rgba(122, 112, 84, 0.08));
+}
+
+.canvas > svg.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+}
+
+/* пунктирні лінії між формами — тільки в мобільній версії */
+@media (min-width: 900px) {
+  .canvas > svg.overlay.link { display: none; }
+}
+
+/* фонові плями у кутах блоку */
+
+.changes > svg.bg-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 90%;
+  height: auto;
+  display: block;
+}
+
+.changes > svg.bg-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 90%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .changes > svg.bg-bottom,
+  .changes > svg.bg-top { width: 66.6667%; }
+}
+
+/* картка всередині форми */
+
+.card-block { position: absolute; text-align: center; }
+
+.results__icon { display: block; margin: 0 auto; color: #5a733a; }
+
+.results__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.28;
+  color: #455b28;
+}
+
+.results__descr {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--color-body);
+}
+
+@media (min-width: 900px) {
+  .results__title { font-size: 25px; }
+  .results__descr { font-size: 19px; }
+}
+
+/* ============ БЛОК 4: ЯК ПРОХОДИТЬ ТЕРАПІЯ (картки) ============ */
+
+.process {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.process .section-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--color-dark);
+}
+
+.pgrid {
+  list-style: none;
+  display: grid;
+  gap: 20px;
+  margin-top: 44px;
+}
+
+.pcard {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  padding: 28px 22px 26px;
+  text-align: center;
+}
+
+.pcard__ico {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background-color: var(--color-cream);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pcard__ico svg { width: 30px; height: 30px; display: block; }
+
+.pcard__title {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
+  color: var(--color-heading-green);
+  margin-bottom: 10px;
+}
+
+.pcard__text {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 16.5px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+.pcard__text + .pcard__text { margin-top: 10px; }
+
+.process__note {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--color-body);
+  text-align: center;
+  margin-top: 34px;
+}
+
+@media (min-width: 700px) {
+  .pgrid { grid-template-columns: repeat(6, 1fr); gap: 24px; }
+  .pcard { grid-column: span 2; }
+  .pcard:nth-child(4) { grid-column: 2 / span 2; }
+  .pcard:nth-child(5) { grid-column: 4 / span 2; }
+}
+
+@media (min-width: 900px) {
+  .process { padding: 90px 0; }
+  .process .section-title { font-size: 44px; }
+  .pcard__title { font-size: 26px; }
+  .pcard__text { font-size: 19px; }
+  .process__note { font-size: 19px; }
+}
+
+.only-desk { display: none; }
+@media (min-width: 900px) { .only-desk { display: inline; } }
+
+/* ============ "Про мене" ============ */
+
+.about-bio {
+  background-color: var(--color-cream);
+  padding: 60px 0;
+}
+
+.about-bio__head {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.about-bio__lead {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.about-bio__kpt {
+  text-align: center;
+}
+
+.about-bio__method {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  text-align: center;
+  margin: 18px 0;
+}
+
+@media (min-width: 900px) {
+  .about-bio__method { font-size: 26px; }
+}
+
+.about-bio__descr {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.about-bio__descr strong {
+  color: #333;
+}
+
+.about-bio__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.about-bio__gallery-item {
+  flex: none;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: unset;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+@media (min-width: 900px) {
+  .about-bio__gallery {
+    flex-direction: row;
+  }
+  .about-bio__gallery-item {
+    flex: 1 1 0;
+    width: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.about-bio__cont {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.about-bio__cont .body-text {
+  text-align: center;
+}
+
+.about-bio__cont strong {
+  color: #333;
+}
+
+.about-bio__edu-outer {
+  display: flex;
+  gap: 20px;
+  margin: 30px 0 0;
+}
+
+.about-bio__edu-side {
+  flex: 1 1 0;
+}
+
+.about-bio__edu-center {
+  flex: 1 1 0;
+}
+
+.about-bio__edu-label {
+  text-align: center;
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+.about-bio__edu-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+@media (max-width: 899px) {
+  .about-bio__edu-outer {
+    flex-direction: column;
+    gap: 0;
+  }
+  .about-bio__edu-side {
+    display: none;
+  }
+}
+
+.about-bio__edu-outer {
+  margin-top: 30px;
+}
+
+/* ============ Карусель відгуків ============ */
+
+.reviews {
+  background-color: var(--color-cream);
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.reviews__title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 900px) {
+  .reviews__title { font-size: 44px; }
+}
+
+.reviews__subtitle {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+  opacity: 0.75;
+  margin-bottom: 28px;
+}
+
+.reviews__viewport {
+  position: relative;
+}
+
+.reviews__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-left: 20px;
+  padding: 4px 20px 18px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #b9c4b0 transparent;
+}
+
+.reviews__track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.reviews__track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reviews__track::-webkit-scrollbar-thumb {
+  background: #b9c4b0;
+  border-radius: 3px;
+}
+
+.reviews__item {
+  flex: 0 0 auto;
+  width: min(260px, 68vw);
+  scroll-snap-align: start;
+}
+
+@media (min-width: 900px) {
+  .reviews__item { width: 280px; }
+}
+
+.reviews__img {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 14px;
+  background-color: #eef1e6;
+  box-shadow: 0 12px 30px -12px rgba(39, 45, 66, 0.45);
+  cursor: zoom-in;
+  transition: transform .2s ease-in-out;
+}
+
+.reviews__img:hover {
+  transform: translateY(-3px);
+}
+
+.reviews__caption {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.35;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.reviews__caption strong {
+  display: block;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: #6c5448;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+/* підказка про гортання — лише на мобільній */
+@media (min-width: 900px) {
+  .reviews__hint { display: none; }
+}
+
+.reviews__hint {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 10px;
+}
+
+/* стрілки */
+
+.reviews__arrow {
+  display: none;
+  position: absolute;
+  top: calc(50% - 30px);
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px -6px rgba(39, 45, 66, 0.45);
+  transition: background-color .2s ease-in-out, opacity .2s ease-in-out;
+  z-index: 2;
+}
+
+.reviews__arrow:hover {
+  background-color: #f0f4ec;
+}
+
+.reviews__arrow[disabled] {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.reviews__arrow--prev { left: -6px; }
+.reviews__arrow--next { right: -6px; }
+
+@media (min-width: 900px) {
+  .reviews__arrow { display: block; }
+}
+
+/* лайтбокс */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(24, 20, 16, 0.92);
+  padding: 20px;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 92vh;
+  width: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  line-height: 1;
+  transition: background-color .2s ease-in-out;
+}
+
+.lightbox__close:hover,
+.lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.lightbox__close {
+  top: 16px;
+  right: 16px;
+}
+
+.lightbox__nav--prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox__nav--next { right: 12px; top: 50%; transform: translateY(-50%); }
+
+/* ============ "Відгуки" ============ */
+
+.testimonials {
+  background-color: var(--color-sage);
+  padding: 60px 0;
+}
+
+.testimonials__inner {
+  text-align: center;
+}
+
+.testimonials__title {
+  color: var(--color-dark);
+  font-weight: 800;
+  font-size: 26px;
+  padding-bottom: 16px;
+}
+
+@media (min-width: 900px) {
+  .testimonials__title { font-size: 44px; }
+}
+
+.testimonials__subtitle {
+  color: var(--color-body);
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 700;
+  padding-bottom: 24px;
+}
+
+.testimonials__list p {
+  text-align: left;
+  color: var(--color-body);
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.testimonials__list p strong {
+  font-weight: 700;
+}
+
+/* ============ "Вартість" ============ */
+
+.pricing {
+  background-color: var(--color-cream);
+  padding: 60px 0 60px;
+}
+
+.pricing__title {
+  margin-bottom: 40px;
+}
+
+@media (min-width: 900px) {
+  .pricing__title { margin-bottom: 105px; }
+}
+
+.pricing__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.pricing__card {
+  flex: 1 1 260px;
+  max-width: 460px;
+  width: calc(100% - 24px);
+  background-color: var(--color-white);
+  border-radius: var(--radius-card);
+  box-shadow: 0 15px 45px -10px rgba(39, 45, 66, 0.15);
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.pricing__card-title {
+  color: var(--color-dark);
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+@media (min-width: 900px) {
+  .pricing__card-title { font-size: 28px; line-height: 1.1; }
+}
+
+.pricing__card-uptitle {
+  color: var(--color-body);
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.pricing__card-price {
+  color: var(--color-green);
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 900px) {
+  .pricing__card-price { font-size: 38px; }
+}
+
+.pricing__card-descr {
+  color: var(--color-body);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* ============ Фінальний CTA ============ */
+
+.final-cta {
+  background-color: var(--color-sage);
+  padding: 60px 0 60px;
+  text-align: center;
+}
+
+.final-cta__head {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-heading-green);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 900px) {
+  .final-cta__head { font-size: 26px; }
+}
+
+.final-cta__descr {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.final-cta__descr strong {
+  color: var(--color-dark);
+}
+
+/* ============ Посилання на тести ============ */
+
+.test-links {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.test-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out, transform .2s ease-in-out;
+}
+
+.test-link svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.test-link:hover {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+/* на десктопі — в рядок, по вмісту */
+@media (min-width: 900px) {
+  .test-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .test-link { padding: 13px 26px; }
+}
+
+/* ============ Соцмережі (футер) ============ */
+
+.social-footer {
+  background-color: var(--color-dark);
+  padding: 60px 0 60px;
+  text-align: center;
+}
+
+.social-footer__title {
+  color: var(--color-sage);
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+.social-footer__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+}
+
+.social-footer__link {
+  display: inline-block;
+  background-color: var(--color-sage);
+  color: var(--color-dark);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 16px;
+  border-radius: var(--radius-btn);
+  transition: background-color .2s ease-in-out;
+  white-space: nowrap;
+}
+
+.social-footer__link:hover {
+  background-color: #d9e0d2;
+}
+
+.social-footer__sign {
+  margin-top: 30px;
+}
+
+.social-footer__name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-sage);
+}
+
+.social-footer__nick {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--color-sage);
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <p class="hero__el hero__hi">Привіт!
+      <svg class="hero__swash" viewBox="0 0 200 16.7" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0.08 15.51 L7.23 14.88 L14.46 13.77 L21.58 12.57 L28.92 11.55 L35.90 9.94 L49.28 8.81 L56.38 8.22 L63.49 7.49 L70.63 6.80 L77.79 6.16 L84.92 5.44 L92.04 4.94 L99.16 4.48 L106.33 4.03 L113.44 3.45 L120.56 3.17 L127.72 2.80 L134.87 2.46 L141.99 2.16 L149.11 2.09 L156.25 2.09 L163.39 2.09 L170.52 2.05 L177.66 2.10 L184.81 2.19 L191.96 2.34 L199.09 2.48 L199.99 2.51 L200.01 1.27 L199.12 1.26 L191.97 1.22 L184.83 1.06 L177.69 0.81 L170.55 0.52 L163.39 0.31 L156.25 0.31 L149.11 0.31 L141.94 0.28 L134.78 0.58 L127.63 0.92 L120.51 1.14 L113.35 1.45 L106.17 1.82 L99.06 2.30 L91.89 2.82 L84.73 3.42 L77.57 4.11 L70.44 4.74 L63.29 5.41 L56.12 6.08 L48.94 6.77 L35.53 7.98 L28.22 9.60 L21.28 10.62 L14.11 11.89 L7.05 12.99 L-0.08 13.67 Z"/>
+      </svg>
+    </p>
+
+    <h1 class="hero__el hero__title">Я МИКОЛА</h1>
+
+    <p class="hero__el hero__descr">Зі мною перестають «заїдати» <br>емоції та повертають <br>легкість</p>
+
+    <span class="hero__el hero__rule">
+      <svg viewBox="0 -0.9 121 10.3" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="ruleFade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0"    stop-color="#8a9678" stop-opacity="1"/>
+            <stop offset="0.55" stop-color="#8a9678" stop-opacity="0.92"/>
+            <stop offset="1"    stop-color="#8a9678" stop-opacity="0.62"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#ruleFade)" d="M0.00 7.39 L5.10 7.51 L10.08 7.06 L14.98 6.68 L20.02 6.29 L24.96 5.97 L30.00 5.51 L34.94 5.06 L39.91 4.61 L44.84 4.22 L49.77 3.84 L54.82 3.58 L59.68 3.13 L64.68 3.13 L69.73 2.93 L74.62 2.48 L79.53 2.42 L84.50 2.42 L89.47 2.42 L94.44 2.42 L99.41 2.42 L104.32 2.42 L109.35 2.42 L114.27 2.48 L119.63 3.09 L120.48 2.31 L119.52 0.40 L118.95 0.33 L114.37 0.29 L109.35 0.16 L104.44 -0.23 L99.41 -0.42 L94.44 -0.42 L89.47 -0.42 L84.50 -0.42 L79.53 -0.42 L74.49 -0.42 L69.44 -0.22 L64.55 0.23 L59.61 0.29 L54.53 0.36 L49.64 0.81 L44.62 1.00 L39.62 1.46 L34.65 1.85 L29.64 2.30 L24.75 2.88 L19.74 3.27 L14.84 3.71 L9.81 4.10 L4.84 4.62 L0.00 5.26 Z"/>
+      </svg>
+    </span>
+
+    <a class="hero__el hero__btn" href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">
+      <svg viewBox="2 3 20 18" xmlns="http://www.w3.org/2000/svg"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+      <span>ПИШІТЬ СЮДИ</span>
+    </a>
+
+    <div class="hero__el hero__note">
+      <svg viewBox="-1.2 -1.2 24.4 59.4" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8.6 0.6 C 6.4 3.6, 5.2 6.2, 4.4 9.4 C 3.2 14, 2 19, 1.3 24.5 C 0.7 29.5, 1.1 34, 2.3 38.4 C 3.6 43, 6.2 47.4, 10.3 51.4 C 13.2 54.2, 16.2 55.9, 19 56.8"/>
+        <path d="M8.6 0.6 C 6.2 2.2, 3.6 3.9, 0.7 5.6"/>
+        <path d="M8.6 0.6 C 9.6 3.4, 10.2 6.6, 10.5 11.4"/>
+      </svg>
+      <span>мій telegram</span>
+    </div>
+
+  </section>
+
+  <!-- ДРУГИЙ ЕКРАН: ДО МЕНЕ ЗВЕРТАЮТЬСЯ, КОЛИ… -->
+  <section class="screen2">
+    <div class="container narrow-960 text-center">
+      <h2 class="section-title">Можу бути вам корисним, якщо...</h2>
+    </div>
+    <div class="container narrow-960">
+      <ul class="reasons__list">
+        <li class="reasons__item">
+          <span class="reasons__bullet"></span>
+          <div>
+            <div class="reasons__title">Депресія, тривожність, тривожно-депресивний розлад</div>
+            <div class="reasons__descr">Панічні атаки, головні болі, СПК та ін.<!--<br><i class="w400">Психотерапія психологічних причин.</i>--></div>
+          </div>
+        </li>
+        <li class="reasons__item">
+          <span class="reasons__bullet"></span>
+          <div>
+            <div class="reasons__title">Переїдання та зриви</div>
+            <div class="reasons__descr">Нав'язливі думки про їжу та важко зупинитися.<!--<br><i class="w400">Допомагаю вийти із замкненого кола <br>«дієта → зрив → відчуття провини».</i>--></div>
+          </div>
+        </li>
+        <li class="reasons__item">
+          <span class="reasons__bullet"></span>
+          <div>
+            <div class="reasons__title">А також</div>
+            <div class="reasons__descr">Криза у стосунках, складнощі із батьками, вигорання, втрата, кПТСР та ін. <!--<br><i class="w400">Допомагаю пройти кризу та <br>відновити внутрішні опори.</i>--></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SVG-СПРАЙТ: іконки, стрілки та рукописний декор для блоків 3-4 -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="ic-wave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1.5 12Q3 3.5 4.5 12Q6 19 7.5 12Q9 6.5 10.5 12Q12 16.5 13.5 12Q15 8.8 16.5 12Q18 14.6 19.5 12 L22.5 12"/>
+      </symbol>
+
+      <symbol id="ic-inner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 16.8c-2.7-1.8-4.2-3.4-4.2-5.1 0-1.3 1-2.2 2.2-2.2.8 0 1.5.4 2 1.1.5-.7 1.2-1.1 2-1.1 1.2 0 2.2.9 2.2 2.2 0 1.7-1.5 3.3-4.2 5.1z"/>
+      </symbol>
+
+      <symbol id="ic-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 20.5c1.6-4.4 4.8-6.6 9-6.6s7.4 2.2 9 6.6"/>
+        <path d="M12 11.2C9.6 9.6 8.4 8.4 8.4 7c0-1.1.8-1.9 1.9-1.9.7 0 1.3.4 1.7 1 .4-.6 1-1 1.7-1 1.1 0 1.9.8 1.9 1.9 0 1.4-1.2 2.6-3.6 4.2z"/>
+      </symbol>
+
+      <symbol id="ic-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M15.8 8.2l-2.1 5.5-5.5 2.1 2.1-5.5z"/>
+      </symbol>
+
+      <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2.8l7.5 3v5.4c0 4.4-3 8.1-7.5 9.6-4.5-1.5-7.5-5.2-7.5-9.6V5.8z"/>
+      </symbol>
+
+      <symbol id="ic-mountain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 20.5h20L14.2 8.2l-3.3 5.1-2.1-2.9z"/>
+        <path d="M14.2 8.2V2.6"/>
+        <path d="M14.2 3.2l4.4 1.3-4.4 1.4"/>
+      </symbol>
+
+      <symbol id="ic-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 21v-7.6"/>
+        <path d="M12 14.2c-.2-3.4-2.7-5.6-6-5.6.2 3.4 2.7 5.6 6 5.6z"/>
+        <path d="M12 12.6c.2-3.1 2.4-5.1 5.4-5.1-.2 3.1-2.4 5.1-5.4 5.1z"/>
+      </symbol>
+
+      <symbol id="ic-cycle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19.4 8.4A8.2 8.2 0 1 1 6.8 5.7"/>
+        <path d="M3.4 6.6 6.8 5.6 5.4 9.1"/>
+        <path d="M11.4 4.4l1.5-2.7M14.2 5.4l1.5-2.7"/>
+      </symbol>
+
+      <symbol id="ic-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="8.5" cy="14.5" r="4.2"/>
+        <path d="M11.6 11.6l8.4-8.4"/>
+        <path d="M16.4 6.8l2.2 2.2"/>
+        <path d="M19 4.2l2.2 2.2"/>
+      </symbol>
+
+      <symbol id="ic-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.2" y="4.8" width="17.6" height="11.4" rx="1.8"/>
+        <path d="M1.5 19.2h21"/>
+      </symbol>
+
+      <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 6.6V12l4 2.4"/>
+      </symbol>
+
+      <symbol id="ic-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.4" y="5" width="17.2" height="15.4" rx="2"/>
+        <path d="M3.4 9.6h17.2M8 3v4M16 3v4"/>
+        <circle cx="12" cy="14.8" r="1.5" fill="currentColor" stroke="none"/>
+      </symbol>
+
+      <symbol id="ic-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4.4" y="10.4" width="15.2" height="10" rx="2.2"/>
+        <path d="M8 10.4V7.8a4 4 0 0 1 8 0v2.6"/>
+      </symbol>
+
+      <symbol id="ic-bubble" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.6 12.2c0 3.6-3.9 6.6-8.6 6.6-.9 0-1.8-.1-2.6-.3L4.6 21l1.3-3.5c-1.5-1.3-2.5-3.1-2.5-5.3 0-3.6 3.9-6.6 8.6-6.6s8.6 3 8.6 6.6z"/>
+        <path d="M12 15.4c-1.9-1.2-2.9-2.3-2.9-3.4 0-.8.6-1.4 1.4-1.4.6 0 1.1.3 1.5.8.4-.5.9-.8 1.5-.8.8 0 1.4.6 1.4 1.4 0 1.1-1 2.2-2.9 3.4z"/>
+      </symbol>
+
+      <symbol id="arw-h" viewBox="0 0 88 60" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 46C24 45 40 36 58 28 68 23 78 16 86 10" stroke-dasharray="5 5"/>
+        <path d="M77.2 11.9 86 10 81.8 17.9"/>
+      </symbol>
+
+      <symbol id="arw-drop" viewBox="0 0 130 220" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 8C60 4 76 30 78 74 80 118 74 152 56 182 46 198 34 208 24 214" stroke-dasharray="5 5"/>
+        <path d="M35.9 212.8 24 214 30.7 204.1"/>
+      </symbol>
+
+      <symbol id="dec-leaf" viewBox="0 0 60 92" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 90C14 66 26 44 50 14"/>
+        <path d="M20 62c-8-2-11-9-9-16 7 1 11 8 9 16z"/>
+        <path d="M26 50c8-1 12-8 11-15-7 2-11 8-11 15z"/>
+        <path d="M34 38c-8-2-11-9-9-16 7 1 11 8 9 16z"/>
+        <path d="M40 27c8-1 12-8 11-15-7 2-11 8-11 15z"/>
+      </symbol>
+
+      <symbol id="dec-squiggle" viewBox="0 0 40 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 15c2-10 4 6 6-1s4 8 6 0 4 6 6-2 4 5 6-2 4 4 6-1"/>
+      </symbol>
+
+      <symbol id="dec-dashes" viewBox="0 0 72 34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <path d="M4 12 8 2M16 12 20 2M28 12 32 2M40 12 44 2M52 12 56 2"/>
+        <path d="M10 30 14 20M22 30 26 20M34 30 38 20M46 30 50 20"/>
+      </symbol>
+
+      <symbol id="dec-underline" viewBox="0 0 140 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M2 5C34 1 72 8 138 3"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- БЛОК 3: ЩО ДАЄ ТЕРАПІЯ -->
+<section class="changes">
+  <svg class="bg-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 450" preserveAspectRatio="xMinYMin meet" aria-hidden="true">
+    <!-- пляма у верхньому лівому куті -->
+    <path d="M 0 0
+             L 150 0
+             C 122 8 96 21 74 38
+             C 52 55 36 77 27 103
+             C 19 126 14 152 12 176
+             C 11 190 8 200 0 207
+             Z"
+          fill="#D5D4C1"/>
+    <!-- тонка лінія вздовж краю плями -->
+    <g fill="none" stroke="#C2C7AE" stroke-width="1.2" stroke-linecap="round">
+      <path d="M 158 0
+               C 128 10 100 25 78 44
+               C 54 64 38 90 29 120
+               C 21 148 16 180 14 212
+               C 12 244 10 276 6 300
+               C 4 313 2 320 0 326"/>
+    </g>
+  </svg>
+  <div class="changes__inner">
+    <h2 class="section-title">Що дає терапія</h2>
+  </div>
+
+<div class="stage">
+<div class="canvas">
+  <!-- ЛІНІЯ 1->2: форма 1 (точка "2") -> форма 2 (точка "1")
+       P0 = (438.2, 142.9);  P3 = (804.5, 312.7) -->
+  <svg id="arrow-1" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 438.2 142.9 L 804.5 312.7" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+  </svg>
+
+  <!-- ПОЗИЦІЯ 1 — ФОРМА 01
+       left = -32.1px (-2.97%)   right = 402.7px (37.28%)
+       габарит форми: top = 40.0px, bottom = 348.8px
+       ширина = 709.4px   висота = 317.1px
+       Точки дотику (відстань до найближчої сторони габаритного прямокутника):
+         А (верх) 47.1% від правого;  Б (право) 45.5% від нижнього;
+         В (низ)  48.3% від правого;  Г (ліво)  42.8% від верхнього -->
+  <svg id="pos-1" data-shape="1" class="shape"
+       style="left:-32.1px; top:35.8px; width:709.4px; height:317.1px;"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343.05 300.17" preserveAspectRatio="none">
+    <path d="M 338.88 150.50 C 339.36 157.74, 339.43 165.09, 339.05 172.41 C 338.68 179.74, 337.96 187.16, 336.65 194.46 C 335.34 201.75, 333.61 209.13, 331.20 216.19 C 328.79 223.26, 325.95 230.42, 322.18 236.86 C 318.41 243.30, 313.76 249.49, 308.57 254.83 C 303.38 260.18, 297.24 264.87, 291.04 268.94 C 284.84 273.01, 278.08 276.39, 271.39 279.24 C 264.70 282.10, 257.65 284.12, 250.88 286.08 C 244.11 288.04, 237.41 289.60, 230.79 290.98 C 224.17 292.36, 217.66 293.56, 211.15 294.37 C 204.64 295.18, 198.16 295.56, 191.74 295.86 C 185.31 296.16, 178.96 296.30, 172.60 296.17 C 166.24 296.03, 159.92 295.62, 153.57 295.03 C 147.22 294.44, 140.90 293.65, 134.51 292.65 C 128.12 291.65, 121.67 290.55, 115.22 289.03 C 108.77 287.51, 102.21 285.79, 95.80 283.53 C 89.38 281.27, 82.89 278.65, 76.72 275.45 C 70.55 272.26, 64.33 268.63, 58.76 264.34 C 53.18 260.06, 47.95 255.05, 43.28 249.73 C 38.62 244.40, 34.48 238.46, 30.76 232.39 C 27.05 226.32, 23.90 219.84, 20.98 213.30 C 18.07 206.77, 15.46 200.04, 13.28 193.19 C 11.09 186.34, 9.25 179.30, 7.86 172.19 C 6.47 165.07, 5.58 157.81, 4.93 150.50 C 4.29 143.19, 3.95 135.78, 4.00 128.30 C 4.05 120.83, 4.37 113.24, 5.23 105.65 C 6.08 98.07, 7.06 90.23, 9.13 82.79 C 11.19 75.35, 13.73 67.66, 17.61 61.01 C 21.48 54.37, 26.70 48.14, 32.38 42.91 C 38.06 37.67, 44.92 33.29, 51.70 29.60 C 58.48 25.91, 65.93 23.17, 73.07 20.78 C 80.20 18.40, 87.55 16.87, 94.53 15.28 C 101.51 13.69, 108.29 12.54, 114.92 11.25 C 121.55 9.96, 127.87 8.53, 134.30 7.54 C 140.72 6.55, 147.10 5.90, 153.49 5.31 C 159.87 4.72, 166.20 4.20, 172.60 4.00 C 179.00 3.80, 185.41 3.80, 191.88 4.10 C 198.34 4.39, 204.79 5.03, 211.38 5.77 C 217.97 6.51, 224.77 7.10, 231.41 8.53 C 238.04 9.96, 244.77 11.85, 251.21 14.34 C 257.66 16.83, 264.09 19.87, 270.07 23.48 C 276.05 27.08, 281.78 31.38, 287.11 35.99 C 292.45 40.60, 297.55 45.69, 302.09 51.14 C 306.64 56.58, 310.76 62.52, 314.39 68.64 C 318.02 74.76, 321.06 81.28, 323.86 87.85 C 326.66 94.41, 329.12 101.16, 331.17 108.01 C 333.23 114.86, 334.90 121.88, 336.19 128.96 C 337.47 136.04, 338.40 143.26, 338.88 150.50 Z" fill="#F7F5F0" stroke="#A8A994" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="butt" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ВНУТРІШНІЙ БЛОК ФОРМИ 1
+       габаритний прямокутник: 693.0 x 308.8 px, відступ 79.7 px (11.5% ширини)
+       ширина блоку = ширина текстової колонки = 533.6 px, іконка 84.0 px -->
+  <div class="card-block" id="card-1" style="left:55.9px; top:119.7px; width:533.6px;">
+    <div class="card-block__inner">
+      <svg style="height:84.0px; width:112.4px;" class="results__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1.67 4.01 145.17 108.49" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g stroke="currentColor" stroke-width="0.427" stroke-linejoin="round" stroke-linecap="round"><defs><clipPath id="878b90f8e3"><path d="M 2.183594 4.65625 L 146.292969 4.65625 L 146.292969 112.003906 L 2.183594 112.003906 Z M 2.183594 4.65625 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#878b90f8e3)"><path fill="currentColor" d="M 74.238281 74.039062 C 77.269531 74.039062 80.015625 72.808594 82 70.816406 C 83.984375 68.828125 85.214844 66.082031 85.214844 63.046875 C 85.214844 60.007812 83.984375 57.261719 82 55.273438 C 80.011719 53.285156 77.269531 52.054688 74.238281 52.054688 C 71.207031 52.054688 68.464844 53.285156 66.476562 55.273438 C 64.492188 57.261719 63.261719 60.007812 63.261719 63.046875 C 63.261719 66.082031 64.492188 68.828125 66.476562 70.816406 C 68.464844 72.808594 71.207031 74.039062 74.238281 74.039062 Z M 73.121094 11.644531 C 68.953125 8.269531 65.398438 7.570312 62.886719 8.585938 C 61.472656 9.160156 60.359375 10.300781 59.636719 11.820312 C 58.863281 13.457031 58.539062 15.515625 58.773438 17.792969 C 59.394531 23.859375 63.921875 31.273438 74.238281 36.457031 C 84.554688 31.273438 89.082031 23.859375 89.707031 17.792969 C 89.941406 15.515625 89.617188 13.457031 88.839844 11.820312 C 88.121094 10.300781 87.003906 9.160156 85.59375 8.585938 C 83.078125 7.570312 79.519531 8.269531 75.34375 11.65625 C 74.683594 12.191406 73.75 12.167969 73.121094 11.644531 Z M 61.582031 5.332031 C 64.953125 3.964844 69.367188 4.535156 74.238281 8.085938 C 79.109375 4.535156 83.523438 3.964844 86.894531 5.332031 C 89.15625 6.246094 90.914062 8.007812 92.007812 10.320312 C 93.050781 12.519531 93.492188 15.222656 93.191406 18.152344 C 92.449219 25.382812 87.132812 34.167969 75.015625 39.976562 L 74.992188 39.988281 C 74.53125 40.210938 73.980469 40.226562 73.484375 39.988281 C 61.351562 34.175781 56.03125 25.386719 55.289062 18.152344 C 54.988281 15.222656 55.425781 12.519531 56.46875 10.320312 C 57.566406 8.007812 59.320312 6.246094 61.582031 5.332031 Z M 128.691406 72.242188 C 127.851562 71.753906 127.566406 70.679688 128.050781 69.84375 C 128.539062 69.003906 129.609375 68.71875 130.445312 69.203125 L 141.566406 75.636719 C 142.40625 76.121094 142.691406 77.195312 142.207031 78.03125 C 141.722656 78.871094 140.648438 79.15625 139.8125 78.671875 Z M 130.441406 44.105469 C 129.601562 44.585938 128.535156 44.296875 128.050781 43.460938 C 127.570312 42.621094 127.859375 41.550781 128.699219 41.070312 L 139.820312 34.640625 C 140.65625 34.15625 141.726562 34.445312 142.207031 35.285156 C 142.6875 36.125 142.398438 37.191406 141.5625 37.675781 Z M 131.625 58.238281 C 130.652344 58.238281 129.867188 57.449219 129.867188 56.476562 C 129.867188 55.507812 130.652344 54.71875 131.625 54.71875 L 144.464844 54.71875 C 145.433594 54.71875 146.222656 55.507812 146.222656 56.476562 C 146.222656 57.449219 145.433594 58.238281 144.464844 58.238281 Z M 18.03125 69.203125 C 18.867188 68.71875 19.941406 69.003906 20.425781 69.84375 C 20.910156 70.679688 20.625 71.753906 19.785156 72.242188 L 8.664062 78.671875 C 7.828125 79.15625 6.757812 78.871094 6.269531 78.03125 C 5.785156 77.195312 6.070312 76.121094 6.910156 75.636719 Z M 19.785156 41.070312 C 20.625 41.554688 20.910156 42.628906 20.425781 43.464844 C 19.941406 44.304688 18.867188 44.589844 18.03125 44.105469 L 6.910156 37.675781 C 6.070312 37.1875 5.785156 36.117188 6.269531 35.277344 C 6.757812 34.4375 7.828125 34.152344 8.664062 34.640625 Z M 16.855469 54.71875 C 17.824219 54.71875 18.609375 55.507812 18.609375 56.476562 C 18.609375 57.449219 17.824219 58.238281 16.855469 58.238281 L 4.011719 58.238281 C 3.042969 58.238281 2.257812 57.449219 2.257812 56.476562 C 2.257812 55.507812 3.042969 54.71875 4.011719 54.71875 Z M 58.273438 130.320312 L 58.273438 103.902344 L 58.265625 103.902344 C 58.265625 103.371094 58.023438 102.84375 57.566406 102.5 C 55.726562 101.117188 53.769531 99.972656 51.832031 98.835938 C 47.988281 96.585938 44.226562 94.378906 42.292969 90.695312 C 40.382812 87.058594 38.300781 80.660156 36.308594 74.539062 C 34.914062 70.253906 33.5625 66.105469 32.324219 63.046875 C 30.902344 59.542969 31.125 57.097656 32.121094 55.75 C 32.433594 55.332031 32.828125 55.027344 33.269531 54.839844 C 33.714844 54.65625 34.207031 54.589844 34.714844 54.648438 C 36.167969 54.820312 37.714844 55.984375 38.664062 58.265625 L 38.699219 58.347656 L 46.027344 75.453125 C 46.050781 75.503906 46.074219 75.554688 46.101562 75.601562 C 48.171875 79.410156 50.597656 81.636719 53.292969 82.863281 C 55.972656 84.082031 58.828125 84.269531 61.820312 84.019531 C 67.25 83.570312 70.894531 83.390625 74.464844 83.414062 C 78.027344 83.4375 81.675781 83.671875 87.050781 84.046875 C 89.96875 84.253906 92.753906 84.011719 95.367188 82.773438 C 97.964844 81.539062 100.308594 79.351562 102.320312 75.6875 C 102.363281 75.613281 102.40625 75.535156 102.441406 75.453125 L 109.769531 58.347656 C 110.761719 56.035156 112.34375 54.847656 113.816406 54.675781 C 114.332031 54.613281 114.832031 54.679688 115.269531 54.867188 C 115.703125 55.054688 116.09375 55.363281 116.402344 55.792969 C 117.363281 57.132812 117.558594 59.566406 116.144531 63.046875 C 114.90625 66.105469 113.554688 70.253906 112.160156 74.535156 C 110.167969 80.65625 108.085938 87.054688 106.175781 90.695312 C 104.242188 94.378906 100.480469 96.585938 96.636719 98.835938 C 94.746094 99.945312 92.832031 101.0625 91.03125 102.402344 C 90.53125 102.710938 90.195312 103.269531 90.195312 103.902344 L 90.195312 130.320312 Z M 91.949219 133.835938 L 56.515625 133.835938 C 55.546875 133.835938 54.761719 133.050781 54.761719 132.078125 L 54.761719 104.789062 C 53.273438 103.738281 51.660156 102.792969 50.0625 101.859375 C 45.78125 99.347656 41.585938 96.894531 39.191406 92.328125 C 37.140625 88.417969 35.011719 81.878906 32.976562 75.621094 C 31.605469 71.417969 30.28125 67.347656 29.070312 64.363281 C 27.121094 59.558594 27.65625 55.894531 29.308594 53.664062 C 30.011719 52.714844 30.910156 52.019531 31.910156 51.597656 C 32.910156 51.179688 34.011719 51.027344 35.128906 51.160156 C 37.726562 51.46875 40.398438 53.328125 41.894531 56.917969 L 41.921875 56.976562 L 49.222656 74.015625 C 50.875 77.019531 52.722656 78.746094 54.730469 79.660156 C 56.773438 80.589844 59.070312 80.722656 61.53125 80.515625 C 66.976562 80.066406 70.707031 79.882812 74.480469 79.910156 C 78.261719 79.9375 81.921875 80.171875 87.28125 80.546875 C 89.664062 80.710938 91.890625 80.539062 93.871094 79.597656 C 95.824219 78.671875 97.628906 76.953125 99.242188 74.015625 L 106.546875 56.976562 C 108.089844 53.371094 110.796875 51.496094 113.402344 51.183594 C 114.523438 51.050781 115.632812 51.207031 116.640625 51.636719 C 117.652344 52.070312 118.546875 52.777344 119.238281 53.746094 C 120.839844 55.976562 121.324219 59.609375 119.394531 64.363281 C 118.1875 67.347656 116.859375 71.417969 115.492188 75.621094 C 113.457031 81.878906 111.324219 88.417969 109.273438 92.328125 C 106.878906 96.890625 102.6875 99.347656 98.40625 101.855469 C 96.804688 102.792969 95.195312 103.738281 93.707031 104.789062 L 93.707031 132.078125 C 93.707031 133.050781 92.917969 133.835938 91.949219 133.835938 Z M 84.480469 73.304688 C 81.859375 75.929688 78.238281 77.554688 74.238281 77.554688 C 70.238281 77.554688 66.617188 75.929688 63.996094 73.304688 C 61.375 70.679688 59.75 67.050781 59.75 63.046875 C 59.75 59.039062 61.375 55.410156 63.996094 52.785156 C 66.617188 50.160156 70.238281 48.535156 74.238281 48.535156 C 78.238281 48.535156 81.859375 50.160156 84.480469 52.785156 C 87.105469 55.410156 88.726562 59.039062 88.726562 63.046875 C 88.726562 67.050781 87.105469 70.679688 84.480469 73.304688 Z M 84.480469 73.304688 " fill-opacity="1" fill-rule="evenodd"/></g></g></svg>
+      <div class="results__title">Розуміння почуттів та причин свого стану</div>
+      <div class="results__descr" style="width:499.6px; margin-left:auto; margin-right:auto;">Перестаєте боротися із симптомами, і впливаєте на причини.</div>
+    </div>
+  </div>
+
+  <!-- ЛІНІЯ 2->3: форма 2 (точка "3") -> форма 3 (точка "2")
+       P0 = (804.5, 405.0);  P3 = (441.3, 449.2) -->
+  <svg id="arrow-2" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 804.5 405.0 L 441.3 449.2" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+  </svg>
+
+  <!-- ПОЗИЦІЯ 2 — ФОРМА 02
+       left = 638.5px (59.12%)   right = -50.1px (-4.64%)
+       габарит форми: top = 220.4px, bottom = 497.3px
+       ширина = 491.7px   висота = 284.7px
+       Точки дотику (відстань до найближчої сторони габаритного прямокутника):
+         А (верх) 44.7% від правого;  Б (право) 37.1% від нижнього;
+         В (низ)  49.3% від лівого;  Г (ліво)  49.1% від нижнього -->
+  <svg id="pos-2" data-shape="2" class="shape"
+       style="left:638.5px; top:216.4px; width:491.7px; height:284.7px;"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 334.09 290.47" preserveAspectRatio="none">
+    <path d="M 327.83 149.03 C 328.85 156.03, 329.66 163.17, 330.04 170.44 C 330.42 177.71, 330.62 185.18, 330.09 192.62 C 329.56 200.06, 328.74 207.78, 326.86 215.08 C 324.98 222.39, 322.54 229.93, 318.80 236.44 C 315.06 242.96, 310.06 249.15, 304.42 254.17 C 298.78 259.20, 291.77 263.23, 284.97 266.60 C 278.16 269.98, 270.66 272.29, 263.61 274.42 C 256.56 276.56, 249.48 278.05, 242.67 279.41 C 235.85 280.77, 229.20 281.70, 222.71 282.58 C 216.22 283.46, 209.95 284.10, 203.74 284.69 C 197.53 285.27, 191.49 285.77, 185.43 286.07 C 179.37 286.36, 173.41 286.45, 167.39 286.47 C 161.37 286.49, 155.41 286.40, 149.33 286.18 C 143.26 285.95, 137.16 285.65, 130.92 285.11 C 124.69 284.57, 118.39 283.90, 111.92 282.94 C 105.46 281.98, 98.81 280.94, 92.14 279.36 C 85.47 277.79, 78.50 276.05, 71.88 273.49 C 65.26 270.94, 58.50 267.87, 52.41 264.01 C 46.32 260.15, 40.30 255.58, 35.34 250.35 C 30.38 245.12, 26.19 238.90, 22.62 232.61 C 19.05 226.32, 16.29 219.43, 13.92 212.59 C 11.56 205.76, 9.89 198.65, 8.44 191.62 C 6.99 184.58, 5.97 177.47, 5.23 170.37 C 4.49 163.28, 4.06 156.15, 4.00 149.03 C 3.94 141.90, 4.33 134.78, 4.90 127.63 C 5.47 120.49, 6.28 113.34, 7.42 106.16 C 8.56 98.98, 9.84 91.70, 11.77 84.57 C 13.69 77.43, 15.40 69.76, 18.96 63.33 C 22.52 56.91, 27.27 50.60, 33.14 46.01 C 39.00 41.42, 47.45 39.05, 54.14 35.77 C 60.82 32.50, 66.98 29.29, 73.25 26.35 C 79.53 23.40, 85.58 20.51, 91.81 18.11 C 98.03 15.72, 104.30 13.59, 110.62 11.98 C 116.94 10.38, 123.40 9.42, 129.73 8.48 C 136.06 7.55, 142.33 7.03, 148.61 6.37 C 154.88 5.71, 161.08 4.92, 167.39 4.53 C 173.70 4.13, 180.05 3.90, 186.48 4.00 C 192.91 4.10, 199.40 4.43, 205.95 5.10 C 212.50 5.78, 219.16 6.66, 225.79 8.03 C 232.42 9.41, 239.23 11.00, 245.72 13.35 C 252.22 15.70, 258.81 18.52, 264.76 22.13 C 270.70 25.75, 276.37 30.18, 281.39 35.03 C 286.41 39.87, 290.90 45.47, 294.85 51.22 C 298.80 56.97, 302.07 63.27, 305.09 69.53 C 308.10 75.78, 310.60 82.26, 312.95 88.73 C 315.30 95.20, 317.37 101.73, 319.20 108.35 C 321.03 114.96, 322.49 121.64, 323.93 128.42 C 325.37 135.20, 326.81 142.02, 327.83 149.03 Z" fill="#F7F5F0" stroke="#A8A994" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="butt" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ВНУТРІШНІЙ БЛОК ФОРМИ 2
+       габаритний прямокутник: 480.4 x 277.0 px, відступ 55.2 px (11.5% ширини)
+       ширина блоку = ширина текстової колонки = 369.9 px, іконка 84.0 px -->
+  <div class="card-block" id="card-2" style="left:699.6px; top:275.6px; width:369.9px;">
+    <div class="card-block__inner">
+      <svg style="height:84.0px; width:213.8px;" class="results__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 504 198" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image x="0" y="0" width="504" height="198" xlink:href="data:image/png;base64,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"/></svg>
+      <div class="results__title">Зниження напруги</div>
+      <div class="results__descr" style="width:335.9px; margin-left:auto; margin-right:auto;">Тривога перестає керувати вашим життям.</div>
+    </div>
+  </div>
+
+  <!-- ЛІНІЯ 3->4: форма 3 (точка "4") -> форма 4 (точка "1")
+       P0 = (441.3, 539.5);  P3 = (727.3, 600.8) -->
+  <svg id="arrow-3" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 441.3 539.5 L 727.3 600.8" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+  </svg>
+
+  <!-- ПОЗИЦІЯ 3 — ФОРМА 03
+       left = 9.2px (0.85%)   right = 418.7px (38.77%)
+       габарит форми: top = 358.8px, bottom = 629.8px
+       ширина = 652.1px   висота = 278.6px
+       Точки дотику (відстань до найближчої сторони габаритного прямокутника):
+         А (верх) 48.2% від лівого;  Б (право) 41.8% від нижнього;
+         В (низ)  39.6% від лівого;  Г (ліво)  42.9% від верхнього -->
+  <svg id="pos-3" data-shape="3" class="shape"
+       style="left:9.2px; top:354.9px; width:652.1px; height:278.6px;"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 332.70 281.66" preserveAspectRatio="none">
+    <path d="M 327.72 143.56 C 328.37 150.67, 328.80 157.90, 328.70 165.15 C 328.60 172.40, 328.12 179.78, 327.11 187.08 C 326.09 194.38, 324.90 201.93, 322.60 208.97 C 320.30 216.02, 317.47 223.28, 313.29 229.36 C 309.11 235.45, 303.47 240.98, 297.51 245.49 C 291.55 250.00, 284.37 253.46, 277.53 256.42 C 270.69 259.37, 263.40 261.41, 256.49 263.22 C 249.58 265.03, 242.63 266.04, 236.09 267.25 C 229.54 268.46, 223.37 269.53, 217.25 270.49 C 211.12 271.44, 205.23 272.25, 199.35 272.99 C 193.47 273.73, 187.74 274.37, 181.96 274.92 C 176.18 275.47, 170.49 275.87, 164.67 276.28 C 158.85 276.68, 153.04 277.12, 147.06 277.35 C 141.07 277.58, 134.98 277.79, 128.74 277.66 C 122.49 277.52, 116.06 277.30, 109.58 276.54 C 103.11 275.79, 96.46 274.73, 89.86 273.12 C 83.27 271.52, 76.40 269.65, 70.01 266.92 C 63.61 264.19, 57.06 260.92, 51.49 256.73 C 45.93 252.55, 40.93 247.30, 36.63 241.80 C 32.34 236.31, 28.88 230.00, 25.72 223.78 C 22.56 217.55, 20.00 210.99, 17.67 204.44 C 15.34 197.90, 13.40 191.24, 11.73 184.54 C 10.06 177.83, 8.74 171.06, 7.64 164.23 C 6.53 157.40, 5.72 150.53, 5.11 143.56 C 4.51 136.58, 4.02 129.53, 4.00 122.40 C 3.98 115.27, 4.15 107.99, 4.97 100.76 C 5.79 93.54, 6.95 86.14, 8.94 79.05 C 10.94 71.97, 13.34 64.67, 16.92 58.25 C 20.49 51.83, 24.94 45.47, 30.42 40.54 C 35.89 35.61, 43.31 32.22, 49.78 28.67 C 56.26 25.12, 62.77 21.98, 69.26 19.22 C 75.76 16.46, 82.25 14.03, 88.77 12.10 C 95.29 10.16, 101.87 8.70, 108.36 7.62 C 114.85 6.53, 121.37 6.12, 127.70 5.59 C 134.03 5.06, 140.19 4.69, 146.35 4.42 C 152.51 4.16, 158.58 3.89, 164.67 4.00 C 170.76 4.11, 176.80 4.60, 182.90 5.08 C 189.00 5.56, 195.17 5.92, 201.29 6.88 C 207.42 7.83, 213.58 9.13, 219.65 10.82 C 225.72 12.52, 231.73 14.66, 237.70 17.07 C 243.66 19.47, 249.75 22.04, 255.44 25.26 C 261.13 28.48, 266.56 32.33, 271.84 36.39 C 277.11 40.45, 282.31 44.83, 287.11 49.60 C 291.91 54.38, 296.58 59.53, 300.64 65.06 C 304.69 70.58, 308.30 76.59, 311.46 82.75 C 314.62 88.92, 317.36 95.42, 319.59 102.04 C 321.82 108.66, 323.49 115.55, 324.84 122.47 C 326.20 129.39, 327.08 136.44, 327.72 143.56 Z" fill="#F7F5F0" stroke="#A8A994" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="butt" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ВНУТРІШНІЙ БЛОК ФОРМИ 3
+       габаритний прямокутник: 636.5 x 270.9 px, відступ 73.2 px (11.5% ширини)
+       ширина блоку = ширина текстової колонки = 490.1 px, іконка 84.0 px -->
+  <div class="card-block" id="card-3" style="left:90.2px; top:432.0px; width:490.1px;">
+    <div class="card-block__inner">
+      <svg style="height:84.0px; width:100.0px;" class="results__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="14.00 4.67 122.00 102.48" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><clipPath id="0e3725cd05"><path d="M 14.507812 5.1875 L 135.46875 5.1875 L 135.46875 106.734375 L 14.507812 106.734375 Z M 14.507812 5.1875 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#0e3725cd05)"><path fill="currentColor" d="M 72.824219 106.007812 C 60.675781 98.867188 42.40625 86.171875 29.621094 71.289062 C 20.875 61.101562 14.71875 49.875 14.515625 38.695312 C 14.226562 22.746094 23.109375 11.191406 35.378906 7.015625 C 47.074219 3.035156 61.972656 5.753906 74.976562 18.136719 C 87.980469 5.769531 102.882812 3.046875 114.582031 7.023438 C 126.859375 11.199219 135.75 22.746094 135.460938 38.695312 C 135.257812 49.875 129.101562 61.101562 120.355469 71.289062 C 107.570312 86.171875 89.300781 98.867188 77.152344 106.007812 C 75.785156 106.820312 74.191406 106.820312 72.824219 106.007812 Z M 74.824219 102.65625 C 74.925781 102.71875 75.050781 102.71875 75.152344 102.65625 C 75.160156 102.652344 75.164062 102.648438 75.167969 102.648438 C 87.035156 95.671875 104.902344 83.289062 117.394531 68.746094 C 125.5 59.308594 131.371094 48.984375 131.5625 38.625 C 131.816406 24.609375 124.113281 14.382812 113.328125 10.714844 C 102.378906 6.992188 88.402344 10.015625 76.367188 22.242188 C 76 22.613281 75.5 22.824219 74.976562 22.824219 C 74.453125 22.824219 73.953125 22.613281 73.585938 22.238281 C 61.550781 10.003906 47.578125 6.980469 36.636719 10.707031 C 25.855469 14.378906 18.160156 24.609375 18.414062 38.625 C 18.605469 48.984375 24.476562 59.308594 32.582031 68.746094 C 45.074219 83.289062 62.941406 95.671875 74.808594 102.648438 C 74.8125 102.648438 74.816406 102.652344 74.824219 102.65625 Z M 80.445312 60.679688 C 80.460938 60.679688 80.472656 60.679688 80.488281 60.679688 C 80.855469 60.679688 81.214844 60.546875 81.472656 60.296875 C 81.707031 60.074219 81.839844 59.777344 81.839844 59.464844 C 81.839844 59.152344 81.707031 58.855469 81.472656 58.632812 C 81.214844 58.382812 80.855469 58.25 80.488281 58.25 L 68.078125 58.25 C 66.203125 58.25 64.378906 58.859375 62.917969 59.988281 L 61.210938 61.304688 C 60.964844 61.496094 60.53125 61.730469 59.863281 61.820312 C 59.296875 61.898438 58.339844 61.898438 57.066406 61.796875 C 50.796875 61.285156 35.722656 58.351562 25.472656 54.410156 C 24.464844 54.023438 23.964844 52.894531 24.351562 51.890625 C 24.738281 50.886719 25.867188 50.386719 26.871094 50.769531 C 36.773438 54.578125 51.328125 57.414062 57.386719 57.910156 C 58.089844 57.964844 58.828125 57.964844 59.160156 57.960938 L 60.535156 56.898438 C 62.671875 55.25 65.332031 54.347656 68.078125 54.347656 L 80.488281 54.347656 C 81.871094 54.347656 83.195312 54.878906 84.175781 55.816406 C 85.183594 56.785156 85.742188 58.097656 85.742188 59.464844 C 85.742188 59.878906 85.691406 60.285156 85.59375 60.679688 L 89.480469 60.679688 C 90.867188 60.679688 92.191406 61.210938 93.167969 62.148438 C 94.175781 63.117188 94.738281 64.429688 94.738281 65.796875 C 94.738281 66.210938 94.6875 66.617188 94.585938 67.011719 L 96.3125 67.011719 C 97.695312 67.011719 99.019531 67.542969 100 68.480469 C 101.007812 69.449219 101.566406 70.761719 101.566406 72.128906 C 101.566406 73.496094 101.007812 74.808594 100 75.773438 C 99.101562 76.636719 97.910156 77.15625 96.652344 77.234375 C 96.75 77.632812 96.804688 78.042969 96.804688 78.460938 C 96.804688 79.828125 96.242188 81.140625 95.234375 82.105469 C 94.257812 83.042969 92.929688 83.578125 91.546875 83.578125 L 89.871094 83.578125 C 89.96875 83.972656 90.019531 84.378906 90.019531 84.792969 C 90.019531 86.160156 89.460938 87.472656 88.449219 88.4375 C 87.472656 89.375 86.148438 89.910156 84.765625 89.910156 L 68.078125 89.910156 C 65.332031 89.910156 62.671875 89.007812 60.535156 87.355469 L 59 86.171875 C 58.476562 86.058594 54.664062 85.21875 50.679688 84.433594 C 49.621094 84.226562 48.933594 83.199219 49.140625 82.144531 C 49.351562 81.089844 50.375 80.402344 51.433594 80.609375 C 55.492188 81.40625 58.585938 81.972656 59.921875 82.367188 C 60.589844 82.5625 61.007812 82.796875 61.210938 82.953125 L 62.917969 84.269531 C 64.378906 85.398438 66.203125 86.007812 68.078125 86.007812 L 84.765625 86.007812 C 85.132812 86.007812 85.488281 85.875 85.75 85.625 C 85.980469 85.402344 86.117188 85.105469 86.117188 84.792969 C 86.117188 84.480469 85.980469 84.183594 85.75 83.960938 C 85.488281 83.710938 85.132812 83.578125 84.765625 83.578125 L 73.617188 83.578125 C 72.542969 83.578125 71.667969 82.703125 71.667969 81.625 C 71.667969 80.550781 72.542969 79.675781 73.617188 79.675781 L 91.546875 79.675781 C 91.917969 79.675781 92.273438 79.542969 92.535156 79.292969 C 92.765625 79.070312 92.902344 78.773438 92.902344 78.460938 C 92.902344 78.148438 92.765625 77.851562 92.535156 77.628906 C 92.273438 77.378906 91.917969 77.246094 91.546875 77.246094 L 80.402344 77.246094 C 79.324219 77.246094 78.453125 76.371094 78.453125 75.292969 C 78.453125 74.21875 79.324219 73.34375 80.402344 73.34375 L 96.3125 73.34375 C 96.679688 73.34375 97.039062 73.210938 97.300781 72.960938 C 97.53125 72.738281 97.667969 72.441406 97.667969 72.128906 C 97.667969 71.816406 97.53125 71.519531 97.300781 71.296875 C 97.039062 71.046875 96.679688 70.914062 96.3125 70.914062 L 78.335938 70.914062 C 77.257812 70.914062 76.386719 70.039062 76.386719 68.960938 C 76.386719 67.886719 77.257812 67.011719 78.335938 67.011719 L 89.480469 67.011719 C 89.851562 67.011719 90.207031 66.878906 90.46875 66.628906 C 90.699219 66.40625 90.835938 66.109375 90.835938 65.796875 C 90.835938 65.484375 90.699219 65.1875 90.46875 64.964844 C 90.207031 64.714844 89.851562 64.582031 89.480469 64.582031 L 80.488281 64.582031 C 80.472656 64.582031 80.460938 64.582031 80.445312 64.578125 C 80.429688 64.582031 80.417969 64.582031 80.402344 64.582031 L 70.875 64.582031 C 69.796875 64.582031 68.921875 63.707031 68.921875 62.628906 C 68.921875 61.554688 69.796875 60.679688 70.875 60.679688 L 80.402344 60.679688 C 80.417969 60.679688 80.429688 60.679688 80.445312 60.679688 Z M 88.472656 47.59375 C 88.101562 47.59375 87.746094 47.730469 87.484375 47.980469 C 87.253906 48.203125 87.117188 48.5 87.117188 48.8125 C 87.117188 49.125 87.253906 49.421875 87.484375 49.640625 C 87.746094 49.890625 88.101562 50.027344 88.472656 50.027344 L 105.15625 50.027344 C 107.035156 50.027344 108.855469 49.414062 110.316406 48.289062 L 112.023438 46.972656 C 112.246094 46.800781 112.769531 46.527344 113.609375 46.300781 C 115.496094 45.796875 119.96875 45.03125 125.542969 43.871094 C 126.597656 43.652344 127.628906 44.328125 127.851562 45.382812 C 128.070312 46.4375 127.390625 47.46875 126.335938 47.691406 C 120.550781 48.894531 114.777344 50.078125 114.242188 50.183594 L 112.699219 51.375 C 110.5625 53.023438 107.902344 53.925781 105.15625 53.925781 L 88.472656 53.925781 C 87.089844 53.925781 85.761719 53.394531 84.785156 52.457031 C 83.777344 51.492188 83.214844 50.179688 83.214844 48.8125 C 83.214844 48.398438 83.265625 47.992188 83.367188 47.59375 L 81.6875 47.59375 C 80.304688 47.59375 78.980469 47.0625 78 46.125 C 76.992188 45.160156 76.433594 43.847656 76.433594 42.480469 C 76.433594 42.0625 76.484375 41.652344 76.585938 41.253906 C 75.324219 41.171875 74.136719 40.652344 73.238281 39.792969 C 72.226562 38.828125 71.667969 37.511719 71.667969 36.148438 C 71.667969 34.78125 72.226562 33.464844 73.238281 32.5 C 74.214844 31.5625 75.539062 31.03125 76.921875 31.03125 L 78.648438 31.03125 C 78.550781 30.636719 78.5 30.226562 78.5 29.816406 C 78.5 28.449219 79.058594 27.132812 80.066406 26.167969 C 81.046875 25.230469 82.371094 24.699219 83.753906 24.699219 L 87.644531 24.699219 C 87.542969 24.304688 87.492188 23.894531 87.492188 23.484375 C 87.492188 22.117188 88.050781 20.800781 89.0625 19.835938 C 90.039062 18.898438 91.363281 18.367188 92.75 18.367188 L 105.15625 18.367188 C 107.902344 18.367188 110.5625 19.269531 112.699219 20.917969 L 114.066406 21.972656 C 114.78125 21.9375 117.808594 21.773438 120.929688 21.273438 C 121.996094 21.105469 122.996094 21.832031 123.164062 22.894531 C 123.335938 23.957031 122.609375 24.957031 121.546875 25.125 C 117.796875 25.722656 114.90625 25.980469 113.640625 25.871094 C 112.8125 25.796875 112.289062 25.527344 112.023438 25.324219 L 110.316406 24.007812 C 108.855469 22.878906 107.035156 22.265625 105.15625 22.265625 L 92.75 22.265625 C 92.378906 22.265625 92.023438 22.402344 91.761719 22.652344 C 91.53125 22.871094 91.394531 23.171875 91.394531 23.484375 C 91.394531 23.796875 91.53125 24.09375 91.761719 24.3125 C 92.023438 24.5625 92.378906 24.699219 92.75 24.699219 C 92.761719 24.699219 92.777344 24.699219 92.789062 24.699219 C 92.804688 24.699219 92.820312 24.699219 92.832031 24.699219 L 102.363281 24.699219 C 103.4375 24.699219 104.3125 25.574219 104.3125 26.648438 C 104.3125 27.726562 103.4375 28.597656 102.363281 28.597656 L 92.832031 28.597656 C 92.820312 28.597656 92.804688 28.597656 92.789062 28.597656 C 92.777344 28.597656 92.761719 28.597656 92.75 28.597656 L 83.753906 28.597656 C 83.386719 28.597656 83.027344 28.734375 82.765625 28.984375 C 82.535156 29.207031 82.402344 29.503906 82.402344 29.816406 C 82.402344 30.128906 82.535156 30.425781 82.765625 30.644531 C 83.027344 30.894531 83.386719 31.03125 83.753906 31.03125 L 94.898438 31.03125 C 95.976562 31.03125 96.851562 31.90625 96.851562 32.980469 C 96.851562 34.058594 95.976562 34.929688 94.898438 34.929688 L 76.921875 34.929688 C 76.554688 34.929688 76.199219 35.066406 75.9375 35.316406 C 75.707031 35.539062 75.570312 35.835938 75.570312 36.148438 C 75.570312 36.460938 75.707031 36.757812 75.9375 36.976562 C 76.199219 37.226562 76.554688 37.363281 76.921875 37.363281 L 92.832031 37.363281 C 93.910156 37.363281 94.785156 38.238281 94.785156 39.3125 C 94.785156 40.390625 93.910156 41.261719 92.832031 41.261719 L 81.6875 41.261719 C 81.320312 41.261719 80.960938 41.398438 80.703125 41.648438 C 80.46875 41.871094 80.335938 42.167969 80.335938 42.480469 C 80.335938 42.792969 80.46875 43.089844 80.703125 43.308594 C 80.960938 43.558594 81.320312 43.695312 81.6875 43.695312 L 99.617188 43.695312 C 100.695312 43.695312 101.566406 44.570312 101.566406 45.644531 C 101.566406 46.722656 100.695312 47.59375 99.617188 47.59375 Z M 88.472656 47.59375 " fill-opacity="1" fill-rule="evenodd"/></g></svg>
+      <div class="results__title">Менше сорому та провини</div>
+      <div class="results__descr" style="width:456.1px; margin-left:auto; margin-right:auto;">Прийняття та підтримки себе — все більше.</div>
+    </div>
+  </div>
+
+  <!-- ЛІНІЯ 4->5: форма 4 (точка "3") -> форма 5 (точка "2")
+       P0 = (727.3, 686.4);  P3 = (382.3, 706.9) -->
+  <svg id="arrow-4" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 727.3 686.4 L 382.3 706.9" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+  </svg>
+
+  <!-- ПОЗИЦІЯ 4 — ФОРМА 04
+       left = 540.5px (50.05%)   right = -13.9px (-1.28%)
+       габарит форми: top = 515.3px, bottom = 771.9px
+       ширина = 553.4px   висота = 263.4px
+       Точки дотику (відстань до найближчої сторони габаритного прямокутника):
+         А (верх) 49.8% від правого;  Б (право) 49.8% від нижнього;
+         В (низ)  41.3% від лівого;  Г (ліво)  47.7% від верхнього -->
+  <svg id="pos-4" data-shape="4" class="shape"
+       style="left:540.5px; top:511.7px; width:553.4px; height:263.4px;"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336.61 293.39" preserveAspectRatio="none">
+    <path d="M 332.61 149.39 C 332.56 156.56, 332.03 163.75, 331.20 170.87 C 330.38 178.00, 329.16 185.11, 327.65 192.17 C 326.13 199.23, 324.52 206.38, 322.13 213.23 C 319.75 220.09, 317.05 227.08, 313.35 233.31 C 309.65 239.54, 305.17 245.62, 299.92 250.61 C 294.67 255.60, 288.22 259.76, 281.84 263.23 C 275.47 266.70, 268.38 269.21, 261.65 271.43 C 254.91 273.66, 248.00 275.08, 241.44 276.60 C 234.89 278.11, 228.56 279.33, 222.32 280.53 C 216.08 281.72, 210.06 282.82, 204.00 283.76 C 197.95 284.70, 192.01 285.43, 186.01 286.15 C 180.00 286.88, 174.07 287.58, 168.00 288.11 C 161.93 288.64, 155.83 289.13, 149.57 289.35 C 143.32 289.56, 136.95 289.70, 130.49 289.39 C 124.02 289.09, 117.44 288.49, 110.79 287.51 C 104.14 286.52, 97.27 285.36, 90.58 283.48 C 83.90 281.60, 77.06 279.29, 70.67 276.24 C 64.27 273.18, 57.91 269.50, 52.23 265.16 C 46.56 260.82, 41.22 255.70, 36.61 250.21 C 32.00 244.71, 28.05 238.49, 24.58 232.19 C 21.10 225.90, 18.22 219.19, 15.77 212.45 C 13.31 205.71, 11.48 198.72, 9.86 191.76 C 8.23 184.81, 6.99 177.78, 6.01 170.72 C 5.03 163.65, 4.31 156.54, 4.00 149.39 C 3.69 142.24, 3.67 135.01, 4.14 127.82 C 4.60 120.62, 5.36 113.32, 6.80 106.19 C 8.23 99.07, 10.15 91.90, 12.74 85.08 C 15.32 78.26, 18.01 71.11, 22.32 65.28 C 26.62 59.44, 32.84 54.61, 38.58 50.08 C 44.31 45.55, 50.84 42.00, 56.72 38.11 C 62.61 34.22, 68.07 30.23, 73.89 26.74 C 79.71 23.25, 85.51 19.75, 91.66 17.16 C 97.81 14.58, 104.37 12.77, 110.77 11.22 C 117.17 9.66, 123.70 8.85, 130.07 7.83 C 136.44 6.80, 142.68 5.72, 149.00 5.08 C 155.32 4.44, 161.67 4.00, 168.00 4.00 C 174.33 4.00, 180.67 4.46, 187.00 5.08 C 193.33 5.70, 199.62 6.63, 205.96 7.72 C 212.30 8.81, 218.69 10.01, 225.06 11.63 C 231.43 13.24, 237.92 15.03, 244.19 17.42 C 250.47 19.80, 256.70 22.67, 262.73 25.93 C 268.76 29.20, 274.79 32.84, 280.39 37.00 C 285.99 41.16, 291.42 45.83, 296.35 50.90 C 301.27 55.98, 305.92 61.55, 309.93 67.44 C 313.95 73.33, 317.52 79.71, 320.44 86.25 C 323.36 92.78, 325.58 99.73, 327.43 106.67 C 329.28 113.60, 330.67 120.74, 331.53 127.86 C 332.40 134.98, 332.67 142.22, 332.61 149.39 Z" fill="#F7F5F0" stroke="#A8A994" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="butt" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ВНУТРІШНІЙ БЛОК ФОРМИ 4
+       габаритний прямокутник: 540.6 x 256.5 px, відступ 62.2 px (11.5% ширини)
+       ширина блоку = ширина текстової колонки = 416.3 px, іконка 84.0 px -->
+  <div class="card-block" id="card-4" style="left:609.2px; top:577.5px; width:416.3px;">
+    <div class="card-block__inner">
+      <svg style="height:84.0px; width:83.7px;" class="results__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="21.67 2.50 107.00 107.32" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g stroke="currentColor" stroke-width="0.530" stroke-linejoin="round" stroke-linecap="round"><defs><clipPath id="ba5bf6bc77"><path d="M 22.160156 3.160156 L 128.1875 3.160156 L 128.1875 109.191406 L 22.160156 109.191406 Z M 22.160156 3.160156 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#ba5bf6bc77)"><path fill="currentColor" d="M 75.175781 109.191406 C 61.015625 109.191406 47.699219 103.675781 37.6875 93.664062 C 27.675781 83.648438 22.160156 70.335938 22.160156 56.175781 C 22.160156 42.015625 27.675781 28.703125 37.6875 18.6875 C 47.699219 8.675781 61.015625 3.160156 75.175781 3.160156 C 89.335938 3.160156 102.648438 8.675781 112.660156 18.6875 C 122.675781 28.703125 128.1875 42.015625 128.1875 56.175781 C 128.1875 70.335938 122.675781 83.648438 112.660156 93.664062 C 102.648438 103.675781 89.335938 109.191406 75.175781 109.191406 Z M 75.175781 6.453125 C 61.894531 6.453125 49.40625 11.625 40.015625 21.015625 C 30.621094 30.40625 25.449219 42.894531 25.449219 56.175781 C 25.449219 69.457031 30.621094 81.945312 40.015625 91.335938 C 49.40625 100.726562 61.894531 105.898438 75.175781 105.898438 C 88.457031 105.898438 100.945312 100.726562 110.335938 91.335938 C 119.726562 81.945312 124.898438 69.457031 124.898438 56.175781 C 124.898438 42.894531 119.726562 30.40625 110.335938 21.015625 C 100.945312 11.625 88.457031 6.453125 75.175781 6.453125 Z M 105.707031 25.644531 C 105.15625 25.09375 104.296875 25.003906 103.644531 25.429688 L 68.0625 48.582031 C 68.015625 48.613281 67.972656 48.644531 67.929688 48.679688 C 67.929688 48.679688 67.925781 48.683594 67.925781 48.683594 C 67.886719 48.710938 67.855469 48.746094 67.820312 48.777344 C 67.804688 48.792969 67.789062 48.804688 67.777344 48.820312 C 67.742188 48.855469 67.710938 48.890625 67.683594 48.925781 C 67.679688 48.925781 67.679688 48.929688 67.679688 48.929688 C 67.644531 48.972656 67.613281 49.019531 67.582031 49.0625 L 44.429688 84.644531 C 44.003906 85.296875 44.09375 86.15625 44.644531 86.707031 C 44.960938 87.023438 45.382812 87.1875 45.808594 87.1875 C 46.117188 87.1875 46.429688 87.101562 46.703125 86.921875 L 82.285156 63.769531 C 82.285156 63.769531 82.289062 63.769531 82.289062 63.769531 C 82.382812 63.707031 82.46875 63.636719 82.554688 63.554688 C 82.636719 63.472656 82.707031 63.382812 82.769531 63.289062 L 105.921875 27.707031 C 106.34375 27.054688 106.253906 26.195312 105.707031 25.644531 Z M 81.117188 59.792969 L 71.558594 50.234375 L 98.925781 32.425781 Z M 81.117188 59.792969 " fill-opacity="1" fill-rule="nonzero"/></g></g></svg>
+      <div class="results__title">Стійкість до чужих оцінок</div>
+      <div class="results__descr" style="width:382.3px; margin-left:auto; margin-right:auto;">Більше опори на власні цінності та інтереси.</div>
+    </div>
+  </div>
+
+  <!-- ЛІНІЯ 5->6: форма 5 (точка "4") -> форма 6 (точка "1")
+       P0 = (382.3, 794.9);  P3 = (787.2, 877.1) -->
+  <svg id="arrow-5" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 382.3 794.9 L 787.2 877.1" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+  </svg>
+
+  <!-- ПОЗИЦІЯ 5 — ФОРМА 05
+       left = -19.9px (-1.85%)   right = 492.9px (45.64%)
+       габарит форми: top = 618.8px, bottom = 883.0px
+       ширина = 607.1px   висота = 271.4px
+       Точки дотику (відстань до найближчої сторони габаритного прямокутника):
+         А (верх) 43.6% від правого;  Б (право) 39.7% від нижнього;
+         В (низ)  42.8% від лівого;  Г (ліво)  49.4% від верхнього -->
+  <svg id="pos-5" data-shape="5" class="shape"
+       style="left:-19.9px; top:615.1px; width:607.1px; height:271.4px;"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324.04 297.28" preserveAspectRatio="none">
+    <path d="M 318.94 152.44 C 319.53 159.21, 319.92 166.03, 320.04 172.98 C 320.16 179.94, 320.21 187.03, 319.68 194.15 C 319.14 201.28, 318.48 208.67, 316.85 215.75 C 315.22 222.84, 313.12 230.16, 309.88 236.66 C 306.63 243.17, 302.46 249.60, 297.37 254.78 C 292.28 259.97, 285.73 264.20, 279.34 267.78 C 272.94 271.36, 265.79 273.93, 259.00 276.25 C 252.21 278.56, 245.27 280.16, 238.61 281.67 C 231.95 283.18, 225.40 284.19, 219.04 285.33 C 212.68 286.46, 206.59 287.55, 200.45 288.48 C 194.31 289.40, 188.30 290.23, 182.22 290.86 C 176.15 291.48, 170.13 291.82, 164.00 292.22 C 157.87 292.62, 151.73 293.17, 145.46 293.28 C 139.19 293.39, 132.82 293.31, 126.37 292.88 C 119.92 292.44, 113.39 291.70, 106.75 290.66 C 100.10 289.63, 93.12 288.65, 86.50 286.68 C 79.88 284.70, 73.17 282.13, 67.04 278.80 C 60.91 275.48, 55.00 271.33, 49.72 266.72 C 44.45 262.10, 39.61 256.74, 35.39 251.13 C 31.16 245.52, 27.55 239.31, 24.38 233.05 C 21.20 226.80, 18.64 220.19, 16.33 213.61 C 14.02 207.03, 12.20 200.30, 10.53 193.56 C 8.85 186.83, 7.39 180.06, 6.31 173.20 C 5.22 166.35, 4.27 159.40, 4.00 152.44 C 3.73 145.49, 4.18 138.48, 4.71 131.47 C 5.23 124.47, 5.95 117.42, 7.14 110.41 C 8.34 103.40, 9.61 96.21, 11.87 89.43 C 14.12 82.64, 17.03 75.85, 20.67 69.69 C 24.32 63.53, 28.65 57.50, 33.72 52.48 C 38.79 47.45, 45.03 43.27, 51.09 39.53 C 57.15 35.79, 63.76 32.88, 70.08 30.05 C 76.41 27.22, 82.84 25.06, 89.01 22.56 C 95.18 20.07, 100.96 17.13, 107.11 15.09 C 113.26 13.05, 119.63 11.67, 125.92 10.34 C 132.22 9.02, 138.52 8.06, 144.87 7.14 C 151.22 6.22, 157.55 5.35, 164.00 4.83 C 170.45 4.31, 176.97 3.92, 183.54 4.00 C 190.11 4.08, 196.75 4.55, 203.43 5.30 C 210.11 6.05, 216.98 6.88, 223.61 8.52 C 230.25 10.17, 236.97 12.32, 243.25 15.18 C 249.53 18.04, 255.65 21.63, 261.27 25.68 C 266.88 29.74, 272.22 34.44, 276.94 39.50 C 281.67 44.56, 285.92 50.23, 289.61 56.05 C 293.31 61.88, 296.27 68.22, 299.10 74.44 C 301.93 80.66, 304.34 87.02, 306.59 93.38 C 308.83 99.74, 310.94 106.13, 312.59 112.63 C 314.25 119.12, 315.46 125.73, 316.52 132.36 C 317.58 139.00, 318.36 145.67, 318.94 152.44 Z" fill="#F7F5F0" stroke="#A8A994" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="butt" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ВНУТРІШНІЙ БЛОК ФОРМИ 5
+       габаритний прямокутник: 592.1 x 264.3 px, відступ 68.1 px (11.5% ширини)
+       ширина блоку = ширина текстової колонки = 455.9 px, іконка 84.0 px -->
+  <div class="card-block" id="card-5" style="left:55.7px; top:686.9px; width:455.9px;">
+    <div class="card-block__inner">
+      <svg style="height:84.0px; width:69.4px;" class="results__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="29.83 1.50 90.33 109.33" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g stroke="currentColor" stroke-width="0.134" stroke-linejoin="round" stroke-linecap="round"><defs><clipPath id="c6e4ccb8c3"><path d="M 30.1875 2.011719 L 119.789062 2.011719 L 119.789062 110.277344 L 30.1875 110.277344 Z M 30.1875 2.011719 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#c6e4ccb8c3)"><path fill="currentColor" d="M 116.25 19.441406 C 104.203125 19.054688 93.234375 15.355469 83.367188 8.328125 C 81.089844 6.703125 78.605469 4.710938 75.925781 2.351562 C 75.667969 2.125 75.359375 2.011719 74.992188 2.011719 C 74.632812 2.011719 74.324219 2.125 74.066406 2.34375 C 71.382812 4.710938 68.902344 6.703125 66.621094 8.320312 C 56.746094 15.339844 45.78125 19.035156 33.730469 19.414062 C 32.589844 19.445312 31.933594 20.007812 31.761719 21.101562 C 29.992188 32.144531 29.894531 43.148438 31.472656 54.117188 C 35.28125 80.5 49.632812 99.257812 73.683594 109.941406 C 74.1875 110.167969 74.617188 110.277344 74.960938 110.277344 C 75.308594 110.277344 75.738281 110.167969 76.234375 109.941406 C 100.296875 99.277344 114.664062 80.527344 118.484375 54.148438 C 120.074219 43.179688 119.984375 32.175781 118.21875 21.128906 C 118.050781 20.035156 117.394531 19.472656 116.25 19.441406 Z M 110.875 69.058594 C 104.625 86.371094 91.867188 99.03125 75.121094 106.160156 C 75.101562 106.164062 75.050781 106.171875 74.960938 106.171875 C 74.875 106.171875 74.824219 106.164062 74.8125 106.160156 C 58.0625 99.023438 45.308594 86.359375 39.070312 69.046875 C 33.90625 54.734375 33.09375 38.570312 35.175781 23.570312 C 35.207031 23.355469 35.382812 23.191406 35.597656 23.175781 C 50.609375 22.164062 63.707031 16.632812 74.878906 6.5625 C 74.917969 6.53125 74.898438 6.539062 74.980469 6.539062 C 75.0625 6.539062 75.050781 6.53125 75.089844 6.5625 C 86.253906 16.636719 99.347656 22.179688 114.359375 23.191406 C 114.574219 23.203125 114.75 23.375 114.78125 23.589844 C 116.855469 38.589844 116.039062 54.753906 110.875 69.058594 Z M 110.875 69.058594 " fill-opacity="1" fill-rule="nonzero"/></g><path fill="currentColor" d="M 108.507812 28.007812 C 96.578125 26.339844 85.8125 21.847656 76.222656 14.539062 C 75.78125 14.203125 75.371094 14.039062 74.988281 14.039062 C 74.597656 14.039062 74.1875 14.203125 73.746094 14.539062 C 64.148438 21.84375 53.382812 26.328125 41.453125 27.992188 C 40.539062 28.117188 40.027344 28.738281 39.929688 29.863281 C 38.9375 40.957031 39.695312 51.492188 42.191406 61.472656 C 46.632812 79.230469 58.246094 92.320312 74.484375 100.042969 C 74.558594 100.082031 74.714844 100.101562 74.960938 100.101562 C 75.207031 100.101562 75.367188 100.082031 75.433594 100.050781 C 91.679688 92.335938 103.300781 79.25 107.75 61.492188 C 110.253906 51.511719 111.011719 40.972656 110.035156 29.882812 C 109.933594 28.761719 109.421875 28.136719 108.507812 28.007812 Z M 89.585938 85.839844 C 85.304688 89.867188 80.480469 93.257812 75.121094 96.007812 C 75.082031 96.027344 75.027344 96.035156 74.949219 96.035156 C 74.878906 96.035156 74.824219 96.027344 74.78125 96.003906 C 69.425781 93.25 64.609375 89.855469 60.332031 85.820312 C 45.75 72.109375 42.210938 50.964844 43.585938 31.855469 C 43.605469 31.59375 43.800781 31.386719 44.050781 31.355469 C 55.257812 29.683594 65.523438 25.351562 74.847656 18.371094 C 74.878906 18.351562 74.960938 18.351562 74.992188 18.351562 C 75.027344 18.351562 75.113281 18.351562 75.140625 18.371094 C 84.457031 25.367188 94.71875 29.703125 105.921875 31.386719 C 106.175781 31.425781 106.371094 31.632812 106.390625 31.886719 C 107.746094 51.003906 104.183594 72.140625 89.585938 85.839844 Z M 89.585938 85.839844 " fill-opacity="1" fill-rule="nonzero"/></g></svg>
+      <div class="results__title">Легше відстоювати своє</div>
+      <div class="results__descr" style="width:421.9px; margin-left:auto; margin-right:auto;">Гарні стосунки без жертви своїми інтересами.</div>
+    </div>
+  </div>
+
+  <!-- ЛІНІЯ 6->7: форма 6 (точка "3") -> форма 7 (точка "2")
+       P0 = (787.2, 971.4);  P3 = (370.8, 999.6) -->
+  <svg id="arrow-6" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 787.2 971.4 L 370.8 999.6" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+  </svg>
+
+  <!-- ПОЗИЦІЯ 6 — ФОРМА 01
+       left = 607.9px (56.29%)   right = -59.4px (-5.50%)
+       габарит форми: top = 782.9px, bottom = 1065.6px
+       ширина = 531.5px   висота = 290.4px
+       Точки дотику (відстань до найближчої сторони габаритного прямокутника):
+         А (верх) 47.1% від правого;  Б (право) 45.5% від нижнього;
+         В (низ)  48.3% від правого;  Г (ліво)  42.8% від верхнього -->
+  <svg id="pos-6" data-shape="1" class="shape"
+       style="left:607.9px; top:779.0px; width:531.5px; height:290.4px;"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343.05 300.17" preserveAspectRatio="none">
+    <path d="M 338.88 150.50 C 339.36 157.74, 339.43 165.09, 339.05 172.41 C 338.68 179.74, 337.96 187.16, 336.65 194.46 C 335.34 201.75, 333.61 209.13, 331.20 216.19 C 328.79 223.26, 325.95 230.42, 322.18 236.86 C 318.41 243.30, 313.76 249.49, 308.57 254.83 C 303.38 260.18, 297.24 264.87, 291.04 268.94 C 284.84 273.01, 278.08 276.39, 271.39 279.24 C 264.70 282.10, 257.65 284.12, 250.88 286.08 C 244.11 288.04, 237.41 289.60, 230.79 290.98 C 224.17 292.36, 217.66 293.56, 211.15 294.37 C 204.64 295.18, 198.16 295.56, 191.74 295.86 C 185.31 296.16, 178.96 296.30, 172.60 296.17 C 166.24 296.03, 159.92 295.62, 153.57 295.03 C 147.22 294.44, 140.90 293.65, 134.51 292.65 C 128.12 291.65, 121.67 290.55, 115.22 289.03 C 108.77 287.51, 102.21 285.79, 95.80 283.53 C 89.38 281.27, 82.89 278.65, 76.72 275.45 C 70.55 272.26, 64.33 268.63, 58.76 264.34 C 53.18 260.06, 47.95 255.05, 43.28 249.73 C 38.62 244.40, 34.48 238.46, 30.76 232.39 C 27.05 226.32, 23.90 219.84, 20.98 213.30 C 18.07 206.77, 15.46 200.04, 13.28 193.19 C 11.09 186.34, 9.25 179.30, 7.86 172.19 C 6.47 165.07, 5.58 157.81, 4.93 150.50 C 4.29 143.19, 3.95 135.78, 4.00 128.30 C 4.05 120.83, 4.37 113.24, 5.23 105.65 C 6.08 98.07, 7.06 90.23, 9.13 82.79 C 11.19 75.35, 13.73 67.66, 17.61 61.01 C 21.48 54.37, 26.70 48.14, 32.38 42.91 C 38.06 37.67, 44.92 33.29, 51.70 29.60 C 58.48 25.91, 65.93 23.17, 73.07 20.78 C 80.20 18.40, 87.55 16.87, 94.53 15.28 C 101.51 13.69, 108.29 12.54, 114.92 11.25 C 121.55 9.96, 127.87 8.53, 134.30 7.54 C 140.72 6.55, 147.10 5.90, 153.49 5.31 C 159.87 4.72, 166.20 4.20, 172.60 4.00 C 179.00 3.80, 185.41 3.80, 191.88 4.10 C 198.34 4.39, 204.79 5.03, 211.38 5.77 C 217.97 6.51, 224.77 7.10, 231.41 8.53 C 238.04 9.96, 244.77 11.85, 251.21 14.34 C 257.66 16.83, 264.09 19.87, 270.07 23.48 C 276.05 27.08, 281.78 31.38, 287.11 35.99 C 292.45 40.60, 297.55 45.69, 302.09 51.14 C 306.64 56.58, 310.76 62.52, 314.39 68.64 C 318.02 74.76, 321.06 81.28, 323.86 87.85 C 326.66 94.41, 329.12 101.16, 331.17 108.01 C 333.23 114.86, 334.90 121.88, 336.19 128.96 C 337.47 136.04, 338.40 143.26, 338.88 150.50 Z" fill="#F7F5F0" stroke="#A8A994" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="butt" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ВНУТРІШНІЙ БЛОК ФОРМИ 6
+       габаритний прямокутник: 519.2 x 282.8 px, відступ 59.7 px (11.5% ширини)
+       ширина блоку = ширина текстової колонки = 399.8 px, іконка 84.0 px -->
+  <div class="card-block" id="card-6" style="left:673.8px; top:842.6px; width:399.8px;">
+    <div class="card-block__inner">
+      <svg style="height:84.0px; width:96.4px;" class="results__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="14.83 3.51 120.33 104.82" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g stroke="currentColor" stroke-width="0.325" stroke-linejoin="round" stroke-linecap="round"><defs><clipPath id="7d4ab8cfa5"><path d="M 43 39 L 134.742188 39 L 134.742188 107.828125 L 43 107.828125 Z M 43 39 " clip-rule="nonzero"/></clipPath><clipPath id="bec08a85b7"><path d="M 15.273438 59 L 63 59 L 63 102 L 15.273438 102 Z M 15.273438 59 " clip-rule="nonzero"/></clipPath><clipPath id="49e8f134b1"><path d="M 86 4.039062 L 91 4.039062 L 91 44 L 86 44 Z M 86 4.039062 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#7d4ab8cfa5)"><path fill="currentColor" d="M 132.886719 107.824219 C 132.3125 107.824219 131.75 107.554688 131.402344 107.046875 L 88.316406 44.539062 C 84.984375 49.332031 76.550781 61.460938 68.183594 73.464844 C 61.898438 82.480469 56.875 89.660156 53.261719 94.808594 C 51.109375 97.867188 49.441406 100.234375 48.292969 101.84375 C 47.675781 102.710938 47.195312 103.378906 46.867188 103.824219 C 46.6875 104.070312 46.550781 104.25 46.453125 104.378906 C 46.386719 104.464844 46.335938 104.527344 46.289062 104.582031 C 45.628906 105.347656 44.824219 105.277344 44.507812 105.210938 C 43.535156 105.003906 42.914062 104.050781 43.117188 103.078125 C 43.191406 102.730469 43.363281 102.425781 43.597656 102.1875 C 45.304688 100.039062 70.296875 64.171875 86.84375 40.355469 C 87.179688 39.871094 87.730469 39.582031 88.320312 39.582031 C 88.324219 39.582031 88.324219 39.582031 88.324219 39.582031 C 88.917969 39.582031 89.46875 39.875 89.804688 40.359375 L 134.367188 105.007812 C 134.929688 105.828125 134.722656 106.945312 133.90625 107.507812 C 133.59375 107.722656 133.238281 107.824219 132.886719 107.824219 Z M 44.871094 101.652344 C 44.539062 101.652344 44.246094 101.746094 44.019531 101.871094 C 44.382812 101.675781 44.8125 101.597656 45.25 101.691406 C 45.117188 101.664062 44.992188 101.652344 44.871094 101.652344 Z M 44.871094 101.652344 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#bec08a85b7)"><path fill="currentColor" d="M 17.132812 101.667969 C 16.777344 101.667969 16.421875 101.566406 16.109375 101.351562 C 15.292969 100.785156 15.085938 99.667969 15.652344 98.847656 L 42.417969 60.085938 C 42.730469 59.632812 43.238281 59.347656 43.789062 59.3125 C 44.34375 59.28125 44.878906 59.503906 45.246094 59.917969 L 62.433594 79.296875 C 63.09375 80.042969 63.023438 81.175781 62.28125 81.835938 C 61.535156 82.492188 60.398438 82.425781 59.738281 81.679688 L 44.074219 64.019531 L 18.613281 100.890625 C 18.265625 101.398438 17.703125 101.667969 17.132812 101.667969 Z M 17.132812 101.667969 " fill-opacity="1" fill-rule="nonzero"/></g><path fill="currentColor" d="M 81.316406 75.5 C 80.882812 75.5 80.457031 75.34375 80.128906 75.054688 L 71.160156 67.21875 C 70.414062 66.566406 70.335938 65.429688 70.992188 64.683594 C 71.644531 63.933594 72.785156 63.859375 73.53125 64.511719 L 81.003906 71.042969 L 85.457031 64.820312 C 85.765625 64.386719 86.253906 64.113281 86.789062 64.074219 C 87.320312 64.035156 87.84375 64.234375 88.214844 64.617188 L 94.535156 71.164062 L 102.945312 63.101562 C 103.660156 62.414062 104.800781 62.4375 105.488281 63.15625 C 106.175781 63.871094 106.15625 65.007812 105.4375 65.695312 L 95.734375 75 C 95.015625 75.683594 93.878906 75.664062 93.191406 74.949219 L 87.125 68.667969 L 82.777344 74.746094 C 82.484375 75.160156 82.027344 75.429688 81.523438 75.488281 C 81.453125 75.496094 81.382812 75.5 81.316406 75.5 Z M 81.316406 75.5 " fill-opacity="1" fill-rule="nonzero"/><g clip-path="url(#49e8f134b1)"><path fill="currentColor" d="M 88.320312 43.175781 C 87.328125 43.175781 86.519531 42.371094 86.519531 41.378906 L 86.519531 5.835938 C 86.519531 4.839844 87.328125 4.035156 88.320312 4.035156 C 89.316406 4.035156 90.121094 4.839844 90.121094 5.835938 L 90.121094 41.378906 C 90.121094 42.371094 89.316406 43.175781 88.320312 43.175781 Z M 88.320312 43.175781 " fill-opacity="1" fill-rule="nonzero"/></g><path fill="currentColor" d="M 116.769531 32.960938 L 102.824219 32.960938 C 102.242188 32.960938 101.691406 32.675781 101.355469 32.199219 L 99.019531 28.902344 L 88.882812 28.902344 C 87.886719 28.902344 87.082031 28.097656 87.082031 27.105469 C 87.082031 26.113281 87.886719 25.308594 88.882812 25.308594 L 99.953125 25.308594 C 100.535156 25.308594 101.085938 25.589844 101.421875 26.066406 L 103.757812 29.367188 L 112.523438 29.367188 L 107.207031 23.875 C 106.542969 23.191406 106.53125 22.109375 107.175781 21.410156 L 112.660156 15.46875 L 102.613281 15.46875 C 102.148438 15.46875 101.703125 15.289062 101.367188 14.964844 L 98.105469 11.832031 L 88.882812 11.832031 C 87.886719 11.832031 87.082031 11.027344 87.082031 10.03125 C 87.082031 9.039062 87.886719 8.234375 88.882812 8.234375 L 98.832031 8.234375 C 99.296875 8.234375 99.746094 8.414062 100.078125 8.738281 L 103.339844 11.875 L 116.769531 11.875 C 117.484375 11.875 118.128906 12.296875 118.417969 12.949219 C 118.703125 13.605469 118.578125 14.363281 118.09375 14.890625 L 110.976562 22.597656 L 118.0625 29.914062 C 118.566406 30.433594 118.707031 31.199219 118.425781 31.863281 C 118.144531 32.527344 117.492188 32.960938 116.769531 32.960938 Z M 116.769531 32.960938 " fill-opacity="1" fill-rule="nonzero"/></g></svg>
+      <div class="results__title">Віра у власні сили</div>
+      <div class="results__descr" style="width:365.8px; margin-left:auto; margin-right:auto;">Впоратися зі складними життєвими ситуаціями.</div>
+    </div>
+  </div>
+
+  <!-- ЛІНІЯ 7->8: форма 7 (точка "4") -> форма 8 (точка "1")
+       P0 = (370.8, 1091.2);  P3 = (760.2, 1189.6) -->
+  <svg id="arrow-7" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 370.8 1091.2 L 760.2 1189.6" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+  </svg>
+
+  <!-- ПОЗИЦІЯ 7 — ФОРМА 02
+       left = -78.9px (-7.31%)   right = 481.0px (44.54%)
+       габарит форми: top = 908.0px, bottom = 1182.8px
+       ширина = 677.9px   висота = 282.5px
+       Точки дотику (відстань до найближчої сторони габаритного прямокутника):
+         А (верх) 44.7% від правого;  Б (право) 37.1% від нижнього;
+         В (низ)  49.3% від лівого;  Г (ліво)  49.1% від нижнього -->
+  <svg id="pos-7" data-shape="2" class="shape"
+       style="left:-78.9px; top:904.1px; width:677.9px; height:282.5px;"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 334.09 290.47" preserveAspectRatio="none">
+    <path d="M 327.83 149.03 C 328.85 156.03, 329.66 163.17, 330.04 170.44 C 330.42 177.71, 330.62 185.18, 330.09 192.62 C 329.56 200.06, 328.74 207.78, 326.86 215.08 C 324.98 222.39, 322.54 229.93, 318.80 236.44 C 315.06 242.96, 310.06 249.15, 304.42 254.17 C 298.78 259.20, 291.77 263.23, 284.97 266.60 C 278.16 269.98, 270.66 272.29, 263.61 274.42 C 256.56 276.56, 249.48 278.05, 242.67 279.41 C 235.85 280.77, 229.20 281.70, 222.71 282.58 C 216.22 283.46, 209.95 284.10, 203.74 284.69 C 197.53 285.27, 191.49 285.77, 185.43 286.07 C 179.37 286.36, 173.41 286.45, 167.39 286.47 C 161.37 286.49, 155.41 286.40, 149.33 286.18 C 143.26 285.95, 137.16 285.65, 130.92 285.11 C 124.69 284.57, 118.39 283.90, 111.92 282.94 C 105.46 281.98, 98.81 280.94, 92.14 279.36 C 85.47 277.79, 78.50 276.05, 71.88 273.49 C 65.26 270.94, 58.50 267.87, 52.41 264.01 C 46.32 260.15, 40.30 255.58, 35.34 250.35 C 30.38 245.12, 26.19 238.90, 22.62 232.61 C 19.05 226.32, 16.29 219.43, 13.92 212.59 C 11.56 205.76, 9.89 198.65, 8.44 191.62 C 6.99 184.58, 5.97 177.47, 5.23 170.37 C 4.49 163.28, 4.06 156.15, 4.00 149.03 C 3.94 141.90, 4.33 134.78, 4.90 127.63 C 5.47 120.49, 6.28 113.34, 7.42 106.16 C 8.56 98.98, 9.84 91.70, 11.77 84.57 C 13.69 77.43, 15.40 69.76, 18.96 63.33 C 22.52 56.91, 27.27 50.60, 33.14 46.01 C 39.00 41.42, 47.45 39.05, 54.14 35.77 C 60.82 32.50, 66.98 29.29, 73.25 26.35 C 79.53 23.40, 85.58 20.51, 91.81 18.11 C 98.03 15.72, 104.30 13.59, 110.62 11.98 C 116.94 10.38, 123.40 9.42, 129.73 8.48 C 136.06 7.55, 142.33 7.03, 148.61 6.37 C 154.88 5.71, 161.08 4.92, 167.39 4.53 C 173.70 4.13, 180.05 3.90, 186.48 4.00 C 192.91 4.10, 199.40 4.43, 205.95 5.10 C 212.50 5.78, 219.16 6.66, 225.79 8.03 C 232.42 9.41, 239.23 11.00, 245.72 13.35 C 252.22 15.70, 258.81 18.52, 264.76 22.13 C 270.70 25.75, 276.37 30.18, 281.39 35.03 C 286.41 39.87, 290.90 45.47, 294.85 51.22 C 298.80 56.97, 302.07 63.27, 305.09 69.53 C 308.10 75.78, 310.60 82.26, 312.95 88.73 C 315.30 95.20, 317.37 101.73, 319.20 108.35 C 321.03 114.96, 322.49 121.64, 323.93 128.42 C 325.37 135.20, 326.81 142.02, 327.83 149.03 Z" fill="#F7F5F0" stroke="#A8A994" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="butt" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ВНУТРІШНІЙ БЛОК ФОРМИ 7
+       габаритний прямокутник: 662.4 x 274.8 px, відступ 76.2 px (11.5% ширини)
+       ширина блоку = ширина текстової колонки = 510.0 px, іконка 84.0 px -->
+  <div class="card-block" id="card-7" style="left:5.4px; top:984.2px; width:510.0px;">
+    <div class="card-block__inner">
+      <svg style="height:84.0px; width:43.3px;" class="results__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="49.17 5.84 51.83 100.48" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g stroke="currentColor" stroke-width="2.786" stroke-linejoin="round" stroke-linecap="round"><defs><clipPath id="e763d2e989"><path d="M 49.722656 6.433594 L 100.496094 6.433594 L 100.496094 105.746094 L 49.722656 105.746094 Z M 49.722656 6.433594 " clip-rule="nonzero"/></clipPath></defs><g transform="translate(75.107 92.414) scale(0.70) translate(-75.107 -92.414)"><path fill="currentColor" d="M 92.921875 99.089844 L 57.292969 99.089844 C 56.074219 99.089844 55.085938 97.914062 55.085938 96.464844 L 55.085938 88.359375 C 55.085938 86.910156 56.074219 85.738281 57.292969 85.738281 L 92.921875 85.738281 C 94.140625 85.738281 95.128906 86.910156 95.128906 88.359375 L 95.128906 96.464844 C 95.128906 97.914062 94.140625 99.089844 92.921875 99.089844 Z M 92.921875 99.089844 " fill-opacity="1" fill-rule="nonzero"/></g><g transform="translate(75.107 76.023) scale(0.70) translate(-75.107 -76.023)"><path fill="currentColor" d="M 92.921875 82.699219 L 57.292969 82.699219 C 56.074219 82.699219 55.085938 81.523438 55.085938 80.078125 L 55.085938 71.972656 C 55.085938 70.523438 56.074219 69.347656 57.292969 69.347656 L 92.921875 69.347656 C 94.140625 69.347656 95.128906 70.523438 95.128906 71.972656 L 95.128906 80.078125 C 95.128906 81.523438 94.140625 82.699219 92.921875 82.699219 Z M 92.921875 82.699219 " fill-opacity="1" fill-rule="nonzero"/></g><g transform="translate(75.107 59.637) scale(0.70) translate(-75.107 -59.637)"><path fill="currentColor" d="M 92.921875 66.3125 L 57.292969 66.3125 C 56.074219 66.3125 55.085938 65.136719 55.085938 63.6875 L 55.085938 55.582031 C 55.085938 54.132812 56.074219 52.960938 57.292969 52.960938 L 92.921875 52.960938 C 94.140625 52.960938 95.128906 54.132812 95.128906 55.582031 L 95.128906 63.6875 C 95.128906 65.136719 94.140625 66.3125 92.921875 66.3125 Z M 92.921875 66.3125 " fill-opacity="1" fill-rule="nonzero"/></g><g transform="translate(75.107 43.246) scale(0.70) translate(-75.107 -43.246)"><path fill="currentColor" d="M 92.921875 49.921875 L 57.292969 49.921875 C 56.074219 49.921875 55.085938 48.746094 55.085938 47.300781 L 55.085938 39.195312 C 55.085938 37.746094 56.074219 36.570312 57.292969 36.570312 L 92.921875 36.570312 C 94.140625 36.570312 95.128906 37.746094 95.128906 39.195312 L 95.128906 47.300781 C 95.128906 48.746094 94.140625 49.921875 92.921875 49.921875 Z M 92.921875 49.921875 " fill-opacity="1" fill-rule="nonzero"/></g><g transform="translate(75.107 26.859) scale(0.70) translate(-75.107 -26.859)"><path fill="currentColor" d="M 92.921875 33.535156 L 57.292969 33.535156 C 56.074219 33.535156 55.085938 32.359375 55.085938 30.910156 L 55.085938 22.804688 C 55.085938 21.355469 56.074219 20.183594 57.292969 20.183594 L 92.921875 20.183594 C 94.140625 20.183594 95.128906 21.355469 95.128906 22.804688 L 95.128906 30.910156 C 95.128906 32.359375 94.140625 33.535156 92.921875 33.535156 Z M 92.921875 33.535156 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#e763d2e989)"><path fill="currentColor" d="M 90.167969 13.667969 L 85.261719 13.667969 C 85.292969 13.523438 85.308594 13.378906 85.308594 13.226562 L 85.308594 8.765625 C 85.308594 7.550781 84.320312 6.566406 83.097656 6.566406 L 67.117188 6.566406 C 65.898438 6.566406 64.910156 7.550781 64.910156 8.765625 L 64.910156 13.226562 C 64.910156 13.378906 64.925781 13.523438 64.953125 13.667969 L 60.050781 13.667969 C 54.355469 13.667969 49.722656 17.933594 49.722656 23.175781 L 49.722656 96.097656 C 49.722656 101.339844 54.355469 105.605469 60.050781 105.605469 L 90.167969 105.605469 C 95.863281 105.605469 100.496094 101.339844 100.496094 96.097656 L 100.496094 23.175781 C 100.496094 17.933594 95.863281 13.667969 90.167969 13.667969 Z M 98.289062 96.097656 C 98.289062 100.125 94.644531 103.402344 90.167969 103.402344 L 60.050781 103.402344 C 55.570312 103.402344 51.929688 100.125 51.929688 96.097656 L 51.929688 23.175781 C 51.929688 19.148438 55.570312 15.871094 60.050781 15.871094 L 90.167969 15.871094 C 94.644531 15.871094 98.289062 19.148438 98.289062 23.175781 Z M 98.289062 96.097656 " fill-opacity="1" fill-rule="nonzero"/></g></g></svg>
+      <div class="results__title">Внутрішній ресурс</div>
+      <div class="results__descr" style="width:476.0px; margin-left:auto; margin-right:auto;">Для роботи, навчання, спорту — змін, яких ви прагнете.</div>
+    </div>
+  </div>
+
+  <!-- ЛІНІЯ 8->9: форма 8 (точка "3") -> форма 9 (точка "2")
+       P0 = (760.2, 1295.6);  P3 = (391.6, 1299.5) -->
+  <svg id="arrow-8" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 760.2 1295.6 L 391.6 1299.5" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+  </svg>
+
+  <!-- ПОЗИЦІЯ 8 — ФОРМА 03
+       left = 573.7px (53.12%)   right = -46.7px (-4.33%)
+       габарит форми: top = 1083.6px, bottom = 1401.5px
+       ширина = 553.1px   висота = 326.9px
+       Точки дотику (відстань до найближчої сторони габаритного прямокутника):
+         А (верх) 48.2% від лівого;  Б (право) 41.8% від нижнього;
+         В (низ)  39.6% від лівого;  Г (ліво)  42.9% від верхнього -->
+  <svg id="pos-8" data-shape="3" class="shape"
+       style="left:573.7px; top:1079.0px; width:553.1px; height:326.9px;"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 332.70 281.66" preserveAspectRatio="none">
+    <path d="M 327.72 143.56 C 328.37 150.67, 328.80 157.90, 328.70 165.15 C 328.60 172.40, 328.12 179.78, 327.11 187.08 C 326.09 194.38, 324.90 201.93, 322.60 208.97 C 320.30 216.02, 317.47 223.28, 313.29 229.36 C 309.11 235.45, 303.47 240.98, 297.51 245.49 C 291.55 250.00, 284.37 253.46, 277.53 256.42 C 270.69 259.37, 263.40 261.41, 256.49 263.22 C 249.58 265.03, 242.63 266.04, 236.09 267.25 C 229.54 268.46, 223.37 269.53, 217.25 270.49 C 211.12 271.44, 205.23 272.25, 199.35 272.99 C 193.47 273.73, 187.74 274.37, 181.96 274.92 C 176.18 275.47, 170.49 275.87, 164.67 276.28 C 158.85 276.68, 153.04 277.12, 147.06 277.35 C 141.07 277.58, 134.98 277.79, 128.74 277.66 C 122.49 277.52, 116.06 277.30, 109.58 276.54 C 103.11 275.79, 96.46 274.73, 89.86 273.12 C 83.27 271.52, 76.40 269.65, 70.01 266.92 C 63.61 264.19, 57.06 260.92, 51.49 256.73 C 45.93 252.55, 40.93 247.30, 36.63 241.80 C 32.34 236.31, 28.88 230.00, 25.72 223.78 C 22.56 217.55, 20.00 210.99, 17.67 204.44 C 15.34 197.90, 13.40 191.24, 11.73 184.54 C 10.06 177.83, 8.74 171.06, 7.64 164.23 C 6.53 157.40, 5.72 150.53, 5.11 143.56 C 4.51 136.58, 4.02 129.53, 4.00 122.40 C 3.98 115.27, 4.15 107.99, 4.97 100.76 C 5.79 93.54, 6.95 86.14, 8.94 79.05 C 10.94 71.97, 13.34 64.67, 16.92 58.25 C 20.49 51.83, 24.94 45.47, 30.42 40.54 C 35.89 35.61, 43.31 32.22, 49.78 28.67 C 56.26 25.12, 62.77 21.98, 69.26 19.22 C 75.76 16.46, 82.25 14.03, 88.77 12.10 C 95.29 10.16, 101.87 8.70, 108.36 7.62 C 114.85 6.53, 121.37 6.12, 127.70 5.59 C 134.03 5.06, 140.19 4.69, 146.35 4.42 C 152.51 4.16, 158.58 3.89, 164.67 4.00 C 170.76 4.11, 176.80 4.60, 182.90 5.08 C 189.00 5.56, 195.17 5.92, 201.29 6.88 C 207.42 7.83, 213.58 9.13, 219.65 10.82 C 225.72 12.52, 231.73 14.66, 237.70 17.07 C 243.66 19.47, 249.75 22.04, 255.44 25.26 C 261.13 28.48, 266.56 32.33, 271.84 36.39 C 277.11 40.45, 282.31 44.83, 287.11 49.60 C 291.91 54.38, 296.58 59.53, 300.64 65.06 C 304.69 70.58, 308.30 76.59, 311.46 82.75 C 314.62 88.92, 317.36 95.42, 319.59 102.04 C 321.82 108.66, 323.49 115.55, 324.84 122.47 C 326.20 129.39, 327.08 136.44, 327.72 143.56 Z" fill="#F7F5F0" stroke="#A8A994" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="butt" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ВНУТРІШНІЙ БЛОК ФОРМИ 8
+       габаритний прямокутник: 539.8 x 317.9 px, відступ 62.1 px (11.5% ширини)
+       ширина блоку = ширина текстової колонки = 415.6 px, іконка 84.0 px -->
+  <div class="card-block" id="card-8" style="left:642.4px; top:1145.7px; width:415.6px;">
+    <div class="card-block__inner">
+      <svg style="height:84.0px; width:60.6px;" class="results__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="38.50 4.67 74.00 102.65" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g stroke="currentColor" stroke-width="1.512" stroke-linejoin="round" stroke-linecap="round"><defs><clipPath id="730ab7af2c"><path d="M 39 5 L 112 5 L 112 107 L 39 107 Z M 39 5 " clip-rule="nonzero"/></clipPath><clipPath id="591899105f"><path d="M 45.167969 -0.648438 L 115.015625 6.265625 L 104.496094 112.523438 L 34.648438 105.609375 Z M 45.167969 -0.648438 " clip-rule="nonzero"/></clipPath><clipPath id="e22a2fe850"><path d="M 45.167969 -0.648438 L 115.015625 6.265625 L 104.496094 112.523438 L 34.648438 105.609375 Z M 45.167969 -0.648438 " clip-rule="nonzero"/></clipPath><clipPath id="7ecdf13edd"><path d="M 45.167969 -0.648438 L 115.015625 6.265625 L 104.496094 112.523438 L 34.648438 105.609375 Z M 45.167969 -0.648438 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#730ab7af2c)"><g clip-path="url(#591899105f)"><g clip-path="url(#e22a2fe850)"><g clip-path="url(#7ecdf13edd)"><path fill="currentColor" d="M 105.03125 8.929688 C 97.105469 14.863281 87.980469 18.15625 78.863281 21.460938 C 73.199219 23.515625 67.488281 25.441406 62.148438 28.296875 C 52.753906 33.328125 46.347656 40.882812 43.214844 51.117188 C 40.726562 59.25 41.089844 67.390625 43.472656 75.484375 C 44.613281 79.355469 46.167969 83.046875 48.230469 86.515625 C 48.367188 86.746094 48.523438 86.964844 48.761719 87.316406 C 49.300781 86.042969 49.71875 84.855469 50.292969 83.742188 C 51.785156 80.847656 53.363281 77.996094 54.859375 75.105469 C 55.0625 74.710938 55.179688 74.117188 55.035156 73.726562 C 52.71875 67.378906 52.082031 60.847656 52.75 54.152344 C 52.835938 53.285156 53.15625 52.675781 54.109375 52.6875 C 54.886719 52.699219 55.265625 53.289062 55.136719 54.371094 C 54.472656 59.972656 54.851562 65.476562 56.605469 70.855469 C 56.691406 71.117188 56.777344 71.378906 56.875 71.632812 C 56.898438 71.683594 56.980469 71.710938 57.011719 71.734375 C 58.625 69.777344 60.132812 67.722656 61.867188 65.886719 C 64.222656 63.402344 66.730469 61.054688 69.234375 58.710938 C 69.78125 58.195312 69.945312 57.785156 69.820312 57.050781 C 68.964844 51.910156 68.539062 46.75 69.472656 41.570312 C 69.738281 40.089844 70.160156 38.632812 70.5625 37.179688 C 70.78125 36.390625 71.320312 35.890625 72.179688 36.203125 C 73.03125 36.515625 73.074219 37.21875 72.8125 38 C 70.824219 43.933594 71.042969 49.960938 72.078125 56.023438 C 72.085938 56.082031 72.148438 56.132812 72.230469 56.25 C 78.828125 51.335938 85.699219 46.761719 90.964844 40.28125 C 93.71875 36.898438 95.90625 33.203125 97.191406 28.996094 C 97.320312 28.566406 97.574219 28.054688 97.921875 27.84375 C 98.226562 27.660156 98.921875 27.675781 99.140625 27.902344 C 99.4375 28.203125 99.660156 28.863281 99.535156 29.246094 C 99.003906 30.90625 98.429688 32.570312 97.699219 34.152344 C 95.085938 39.8125 91.136719 44.460938 86.382812 48.378906 C 81.988281 51.996094 77.402344 55.382812 72.898438 58.871094 C 72.742188 58.992188 72.570312 59.101562 72.242188 59.332031 C 73.816406 59.488281 75.183594 59.738281 76.550781 59.738281 C 82.441406 59.742188 88.222656 59.066406 93.6875 56.636719 C 94.523438 56.265625 95.3125 56.527344 95.5 57.199219 C 95.738281 58.042969 95.328125 58.535156 94.558594 58.882812 C 89.464844 61.167969 84.078125 61.996094 78.566406 62.023438 C 75.796875 62.039062 73.03125 61.765625 70.261719 61.652344 C 69.921875 61.640625 69.476562 61.699219 69.242188 61.910156 C 63.671875 66.785156 59.125 72.5 55.355469 78.964844 C 57.273438 79.15625 59.082031 79.492188 60.890625 79.480469 C 65.695312 79.457031 70.320312 78.433594 74.75 76.542969 C 75.476562 76.230469 76.179688 76.152344 76.597656 76.996094 C 76.941406 77.6875 76.519531 78.414062 75.578125 78.816406 C 69.226562 81.523438 62.621094 82.382812 55.785156 81.574219 C 54.042969 81.367188 54.03125 81.375 53.296875 82.914062 C 50.085938 89.621094 47.902344 96.640625 46.941406 104.027344 C 46.875 104.539062 46.765625 105.042969 46.683594 105.550781 C 46.550781 106.363281 46.105469 106.796875 45.265625 106.65625 C 44.441406 106.515625 44.242188 105.917969 44.363281 105.191406 C 44.75 102.851562 45.066406 100.496094 45.582031 98.1875 C 46.140625 95.675781 46.90625 93.210938 47.539062 90.71875 C 47.617188 90.40625 47.546875 89.964844 47.371094 89.699219 C 42.636719 82.375 39.894531 74.355469 39.320312 65.65625 C 38.574219 54.292969 41.671875 44.125 49.164062 35.425781 C 53.679688 30.179688 59.320312 26.507812 65.640625 23.941406 C 72.519531 21.148438 79.53125 18.695312 86.457031 16.011719 C 91.699219 13.976562 96.816406 11.65625 101.484375 8.460938 C 102.554688 7.730469 103.566406 6.890625 104.519531 6.007812 C 105.621094 4.988281 106.546875 5.152344 107.019531 6.617188 C 108.632812 11.628906 109.671875 16.769531 110.371094 21.980469 C 111.632812 31.421875 111.886719 40.886719 110.5 50.339844 C 109.082031 60.019531 106.175781 69.136719 100.105469 76.996094 C 95.304688 83.210938 89.09375 87.542969 81.898438 90.515625 C 73.738281 93.886719 65.253906 95.113281 56.476562 94.273438 C 55.386719 94.167969 54.3125 93.941406 53.226562 93.773438 C 52.234375 93.617188 51.730469 93.09375 51.84375 92.335938 C 51.957031 91.59375 52.613281 91.253906 53.621094 91.433594 C 59.207031 92.421875 64.789062 92.355469 70.367188 91.351562 C 79.175781 89.761719 87.125 86.289062 93.820312 80.230469 C 100 74.632812 103.742188 67.535156 106.085938 59.617188 C 108.332031 52.027344 109.058594 44.25 109.03125 36.378906 C 109 27.511719 107.839844 18.792969 105.578125 10.226562 C 105.484375 9.859375 105.359375 9.503906 105.242188 9.144531 C 105.222656 9.089844 105.152344 9.050781 105.03125 8.929688 Z M 105.03125 8.929688 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g></g></svg>
+      <div class="results__title">Все легше поратися з емоціями без їжі</div>
+      <div class="results__descr" style="width:381.6px; margin-left:auto; margin-right:auto;">Вихід з кола «дієта → зрив → провина».</div>
+    </div>
+  </div>
+
+  <!-- ПОЗИЦІЯ 9 — ФОРМА 04
+       left = 21.9px (2.03%)   right = 500.7px (46.36%)
+       габарит форми: top = 1213.8px, bottom = 1471.0px
+       ширина = 557.4px   висота = 264.1px
+       Точки дотику (відстань до найближчої сторони габаритного прямокутника):
+         А (верх) 49.8% від правого;  Б (право) 49.8% від нижнього;
+         В (низ)  41.3% від лівого;  Г (ліво)  47.7% від верхнього -->
+  <svg id="pos-9" data-shape="4" class="shape"
+       style="left:21.9px; top:1210.2px; width:557.4px; height:264.1px;"
+       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336.61 293.39" preserveAspectRatio="none">
+    <path d="M 332.61 149.39 C 332.56 156.56, 332.03 163.75, 331.20 170.87 C 330.38 178.00, 329.16 185.11, 327.65 192.17 C 326.13 199.23, 324.52 206.38, 322.13 213.23 C 319.75 220.09, 317.05 227.08, 313.35 233.31 C 309.65 239.54, 305.17 245.62, 299.92 250.61 C 294.67 255.60, 288.22 259.76, 281.84 263.23 C 275.47 266.70, 268.38 269.21, 261.65 271.43 C 254.91 273.66, 248.00 275.08, 241.44 276.60 C 234.89 278.11, 228.56 279.33, 222.32 280.53 C 216.08 281.72, 210.06 282.82, 204.00 283.76 C 197.95 284.70, 192.01 285.43, 186.01 286.15 C 180.00 286.88, 174.07 287.58, 168.00 288.11 C 161.93 288.64, 155.83 289.13, 149.57 289.35 C 143.32 289.56, 136.95 289.70, 130.49 289.39 C 124.02 289.09, 117.44 288.49, 110.79 287.51 C 104.14 286.52, 97.27 285.36, 90.58 283.48 C 83.90 281.60, 77.06 279.29, 70.67 276.24 C 64.27 273.18, 57.91 269.50, 52.23 265.16 C 46.56 260.82, 41.22 255.70, 36.61 250.21 C 32.00 244.71, 28.05 238.49, 24.58 232.19 C 21.10 225.90, 18.22 219.19, 15.77 212.45 C 13.31 205.71, 11.48 198.72, 9.86 191.76 C 8.23 184.81, 6.99 177.78, 6.01 170.72 C 5.03 163.65, 4.31 156.54, 4.00 149.39 C 3.69 142.24, 3.67 135.01, 4.14 127.82 C 4.60 120.62, 5.36 113.32, 6.80 106.19 C 8.23 99.07, 10.15 91.90, 12.74 85.08 C 15.32 78.26, 18.01 71.11, 22.32 65.28 C 26.62 59.44, 32.84 54.61, 38.58 50.08 C 44.31 45.55, 50.84 42.00, 56.72 38.11 C 62.61 34.22, 68.07 30.23, 73.89 26.74 C 79.71 23.25, 85.51 19.75, 91.66 17.16 C 97.81 14.58, 104.37 12.77, 110.77 11.22 C 117.17 9.66, 123.70 8.85, 130.07 7.83 C 136.44 6.80, 142.68 5.72, 149.00 5.08 C 155.32 4.44, 161.67 4.00, 168.00 4.00 C 174.33 4.00, 180.67 4.46, 187.00 5.08 C 193.33 5.70, 199.62 6.63, 205.96 7.72 C 212.30 8.81, 218.69 10.01, 225.06 11.63 C 231.43 13.24, 237.92 15.03, 244.19 17.42 C 250.47 19.80, 256.70 22.67, 262.73 25.93 C 268.76 29.20, 274.79 32.84, 280.39 37.00 C 285.99 41.16, 291.42 45.83, 296.35 50.90 C 301.27 55.98, 305.92 61.55, 309.93 67.44 C 313.95 73.33, 317.52 79.71, 320.44 86.25 C 323.36 92.78, 325.58 99.73, 327.43 106.67 C 329.28 113.60, 330.67 120.74, 331.53 127.86 C 332.40 134.98, 332.67 142.22, 332.61 149.39 Z" fill="#F7F5F0" stroke="#A8A994" stroke-width="2" stroke-dasharray="5 3" stroke-linecap="butt" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- ВНУТРІШНІЙ БЛОК ФОРМИ 9
+       габаритний прямокутник: 544.6 x 257.1 px, відступ 62.6 px (11.5% ширини)
+       ширина блоку = ширина текстової колонки = 419.3 px, іконка 84.0 px -->
+  <div class="card-block" id="card-9" style="left:91.2px; top:1276.5px; width:419.3px;">
+    <div class="card-block__inner">
+      <svg style="height:84.0px; width:96.6px;" class="results__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 253 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image x="0" y="0" width="253" height="220" xlink:href="data:image/png;base64,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"/></svg>
+      <div class="results__title">Життя стає більш «вашим»</div>
+      <div class="results__descr" style="width:385.3px; margin-left:auto; margin-right:auto;">Таким, як хочете саме ви.</div>
+    </div>
+  </div>
+
+  <!-- Габаритні прямокутники форм, осі третин і точки їх перетину. Малюються скриптом у координатах полотна. -->
+</div>
+</div>
+  <svg class="bg-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 450" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+    <!-- пагорб -->
+    <path d="M 150 450
+             C 165 447 176 442 186 428
+             C 199 410 213 396 232 386
+             C 248 378 262 375 276 377
+             C 292 379 302 388 312 400
+             C 330 421 348 435 372 442
+             C 396 449 420 449 444 445
+             C 468 441 486 429 500 409
+             C 512 391 520 372 532 355
+             C 542 341 552 335 562 340
+             C 574 346 583 356 592 364
+             C 604 374 616 374 628 370
+             C 646 364 662 348 678 326
+             C 700 296 724 262 750 230
+             L 750 450 Z"
+          fill="#D5D4C1"/>
+  
+    <!-- тонкі лінії -->
+    <g fill="none" stroke="#DDD9C7" stroke-width="1.1" stroke-linecap="round">
+      <path d="M 0 450 C 96 447 168 434 232 412
+               C 300 388 356 372 412 372
+               C 462 372 500 384 528 402"/>
+      <path d="M 612 450 C 636 404 660 358 686 318
+               C 708 284 730 252 750 226"/>
+    </g>
+  
+    <!-- гілочка -->
+    <g fill="none" stroke="#B2B999" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 605 341 C 618 328 630 316 641 302 C 651 289 658 274 662 255 C 665 241 668 228 669 214"/>
+      <path d="M 634.0 312.0 C 646.0 310.6, 651.4 303.0, 658.0 288.0 C 643.0 294.6, 635.4 300.0, 634.0 312.0 Z"/>
+      <path d="M 634.0 312.0 C 642.4 303.6, 650.8 295.2, 658.0 288.0"/>
+      <path d="M 650.0 283.0 C 635.3 278.8, 627.5 285.8, 617.0 302.0 C 636.2 301.1, 646.2 297.9, 650.0 283.0 Z"/>
+      <path d="M 650.0 283.0 C 638.5 289.6, 626.9 296.3, 617.0 302.0"/>
+      <path d="M 659.0 275.0 C 673.4 273.6, 680.0 264.8, 688.0 247.0 C 669.9 254.4, 660.9 260.7, 659.0 275.0 Z"/>
+      <path d="M 659.0 275.0 C 669.1 265.2, 679.3 255.4, 688.0 247.0"/>
+      <path d="M 656.0 268.0 C 667.9 254.9, 669.8 239.9, 669.0 214.0 C 656.5 236.7, 651.4 250.9, 656.0 268.0 Z"/>
+      <path d="M 656.0 268.0 C 660.5 249.1, 665.1 230.2, 669.0 214.0"/>
+    </g>
+  </svg>
+</section>
+
+  <!-- БЛОК 4: ЯК ПРОХОДИТЬ ТЕРАПІЯ -->
+  <section class="process">
+    <div class="container narrow-960 text-center">
+      <h2 class="section-title">Як проходить терапія</h2>
+    </div>
+
+    <div class="container narrow-1100">
+      <ul class="pgrid">
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-laptop"/></svg></span>
+          <div class="pcard__title">Онлайн у Zoom</div>
+          <p class="pcard__text">Потрібні лише інтернет та місце, де вас не будуть турбувати.</p>
+        </li>
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-clock"/></svg></span>
+          <div class="pcard__title">50 хвилин</div>
+          <p class="pcard__text">Цього часу достатньо, щоб доторкнутися до важливих переживань і дати їм простір.</p>
+          <p class="pcard__text">Більшість змін відбувається після зустрічі — коли ви осмислюєте прожите.</p>
+        </li>
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-calendar"/></svg></span>
+          <div class="pcard__title">Зазвичай — 1 раз на тиждень</div>
+          <p class="pcard__text">За потреби змінюємо частоту зустрічей відповідно до вашого запиту, життєвих обставин і можливостей.</p>
+        </li>
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-lock"/></svg></span>
+          <div class="pcard__title">Конфіденційність</div>
+          <p class="pcard__text">Усе, про що ми говоримо на консультаціях, залишається між нами.</p>
+          <p class="pcard__text">Виняток — професійні супервізії з колегами. Там не розголошуються ваше ім'я, особисті дані чи деталі, за якими можна вас ідентифікувати.</p>
+        </li>
+
+        <li class="pcard">
+          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-bubble"/></svg></span>
+          <div class="pcard__title">Без осуду та тиску</div>
+          <p class="pcard__text">Вам не потрібно бути «сильними», «зручними» чи знати, з чого почати.</p>
+          <p class="pcard__text">Ми рухаємося у тому темпі, який підходить саме вам, і працюємо з тим, що найважливіше зараз.</p>
+        </li>
+
+      </ul>
+
+      <p class="process__note">Саме такий підхід дозволяє не просто полегшувати симптоми, <br class="only-desk">а й змінювати психологічні причини, які їх підтримують.</p>
+    </div>
+  </section>
+
+  <!-- ПРО МЕНЕ -->
+  <section class="about-bio">
+    <div class="container narrow-960">
+      <h2 class="section-title about-bio__head">У психології більше 12 років</h2>
+      <p class="body-text about-bio__descr">Починав з НЛП, гіпнотерапії, <br>тренінгів по стосунках та <br>особистісного зростання.</p>
+      <div class="about-bio__gallery">
+        <div class="about-bio__gallery-item" style="background-image:url('images/Психолог Микола Шаповал на телебаченні.webp');"></div>
+        <div class="about-bio__gallery-item" style="background-image:url('images/Психолог Микола Шаповал. Тренінги по стосунках.webp');"></div>
+        <div class="about-bio__gallery-item" style="background-image:url('images/Психолог Микола Шаповал. Тренінги з особистісного зростання.webp');"></div>
+      </div>
+
+      <p class="body-text about-bio__lead">Згодом прийшов, й зараз працюю у підході, який приніс найбільш глибокі та стабільні зміни:</p>
+
+      <p class="about-bio__method">клієнтоцентрована та <br>експірієнтальна <br>психотерапія.</p>
+
+      <p class="body-text about-bio__kpt">— підхід, в основі якого емпатичне слухання та безумовне прийняття. <br><br>В такій атмосфері людині безпечно: <br>— розслабитись, <br>— почути та зрозуміти, що насправді впливає на неї зсередині, <br>— разом прожити важкі переживання (що зменшує їх вплив).</p>
+    </div>
+  </section>
+
+  <section class="about-bio__cont">
+    <div class="container narrow-960">
+      <div class="about-bio__edu-outer">
+        <div class="about-bio__edu-side"></div>
+        <div class="about-bio__edu-center">
+          <div class="about-bio__edu-img" style="background-image:url('images/Психолог Микола Шаповал. Освіта.webp');"></div>
+          <div class="about-bio__edu-label">про освіту — в Instagram</div>
+        </div>
+        <div class="about-bio__edu-side"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ВІДГУКИ (карусель) -->
+  <section class="reviews">
+    <div class="container narrow-960">
+      <h2 class="reviews__title">Відгуки</h2>
+      <p class="reviews__subtitle">Опубліковані за згодою клієнтів.</p>
+    </div>
+
+    <div class="container reviews__viewport">
+      <button class="reviews__arrow reviews__arrow--prev" type="button" aria-label="Попередній відгук">‹</button>
+
+      <div class="reviews__track" id="reviewsTrack">
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/001_y.jpg" alt="Відгук клієнта: тривожність, кордони з чоловіками" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Тривожність, кордони з чоловіками</strong>4 онлайн-сесії</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/002_y.jpg" alt="Відгук клієнта: панічні атаки, страх виходити з дому" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Панічні атаки, страх виходити з дому</strong>9 онлайн-сесій</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/003_y.jpg" alt="Відгук клієнта: вигорання, продуктивність" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Вигорання, продуктивність</strong>8 онлайн-сесій</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/004_y.jpg" alt="Відгук клієнта: панічні атаки, ментальне здоров'я" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Панічні атаки, ментальне здоров'я</strong>11 онлайн-сесій</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/005_y.jpg" alt="Відгук клієнта: проблеми у стосунках, виснаження від бізнесу" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Стосунки, виснаження від бізнесу</strong>5 місяців співпраці</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/006_y.jpg" alt="Відгук клієнта: впевненість, стосунки, частина 1" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Впевненість, стосунки</strong>1,5 роки · частина 1</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/007_y.jpg" alt="Відгук клієнта: впевненість, стосунки, частина 2" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Впевненість, стосунки</strong>1,5 роки · частина 2</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/008_y.jpg" alt="Відгук клієнта: депресія, частина 1" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Депресія</strong>6 онлайн-сесій · частина 1</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/009_y.jpg" alt="Відгук клієнта: депресія, частина 2" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Депресія</strong>6 онлайн-сесій · частина 2</figcaption>
+        </figure>
+
+        <figure class="reviews__item">
+          <img class="reviews__img" src="images/010_y.jpg" alt="Відгук клієнта: депресія, частина 3" loading="lazy" decoding="async">
+          <figcaption class="reviews__caption"><strong>Депресія</strong>6 онлайн-сесій · частина 3</figcaption>
+        </figure>
+
+      </div>
+
+      <button class="reviews__arrow reviews__arrow--next" type="button" aria-label="Наступний відгук">›</button>
+    </div>
+
+    <div class="container narrow-960">
+      <p class="reviews__hint">гортайте пальцем · торкніться, щоб збільшити</p>
+    </div>
+  </section>
+
+  <!-- ЛАЙТБОКС -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Перегляд відгуку">
+    <button class="lightbox__close" type="button" aria-label="Закрити">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Попередній">‹</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Наступний">›</button>
+  </div>
+
+  <!-- ВАРТІСТЬ + CTA -->
+  <section class="final-cta">
+    <div class="container narrow-960">
+      <p class="final-cta__head">Щоб дізнатися вартість,</p>
+      <p class="final-cta__descr" style="margin-bottom: 40px;">записатися та з будь-якими <br>питаннями</p>
+      <a class="btn-tg" href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">
+        <span>ПИШІТЬ СЮДИ</span>
+        <span class="btn-tg__icon"><svg viewBox="2 3 20 18" xmlns="http://www.w3.org/2000/svg" fill="white"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></span>
+      </a>
+      <p class="final-cta__descr" style="margin-top: 40px; margin-bottom: 0;">Якщо конкретного запиту немає — теж <br>пишіть. З'ясуємо його разом.</p>
+
+      <!-- Посилання на психологічні тести приховані.
+           Щоб повернути — прибрати style="display: none;" нижче. -->
+      <div class="test-links" style="display: none;">
+        <a class="test-link" href="test-phq9.html">
+          <span>Пройти тест на депресію</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a class="test-link" href="test-gad7.html">
+          <span>Пройти тест на тривогу</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a class="test-link" href="test-debq.html">
+          <span>Пройти тест на стилі харчової поведінки</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- СОЦМЕРЕЖІ -->
+  <footer class="social-footer">
+    <div class="container">
+      <div class="social-footer__title">Мої соціальні мережі:</div>
+      <ul class="social-footer__list">
+        <li><a class="social-footer__link" href="https://www.instagram.com/psy.shapoval/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a class="social-footer__link" href="https://www.facebook.com/psy.shapoval" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a class="social-footer__link" href="https://www.tiktok.com/@psy.shapoval" target="_blank" rel="noopener">TikTok</a></li>
+      </ul>
+      <div class="social-footer__sign">
+        <div class="social-footer__name">Психолог Микола Шаповал</div>
+        <div class="social-footer__nick">@psy.shapoval</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var track = document.getElementById('reviewsTrack');
+    if (!track) return;
+
+    var imgs = Array.prototype.slice.call(track.querySelectorAll('.reviews__img'));
+    var prev = document.querySelector('.reviews__arrow--prev');
+    var next = document.querySelector('.reviews__arrow--next');
+
+    /* --- стрілки каруселі --- */
+    function step() {
+      var item = track.querySelector('.reviews__item');
+      return item ? item.getBoundingClientRect().width + 16 : 300;
+    }
+
+    function updateArrows() {
+      if (!prev || !next) return;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+    }
+
+    if (prev && next) {
+      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
+    }
+
+    /* --- лайтбокс --- */
+    var box = document.getElementById('lightbox');
+    var boxImg = document.getElementById('lightboxImg');
+    var current = 0;
+
+    function show(i) {
+      current = (i + imgs.length) % imgs.length;
+      boxImg.src = imgs[current].getAttribute('src');
+      boxImg.alt = imgs[current].getAttribute('alt') || '';
+    }
+
+    function open(i) {
+      show(i);
+      box.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      box.classList.remove('is-open');
+      document.body.style.overflow = '';
+      boxImg.src = '';
+    }
+
+    imgs.forEach(function (img, i) {
+      img.addEventListener('click', function () { open(i); });
+    });
+
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target === boxImg) close();
+    });
+
+    box.querySelector('.lightbox__close').addEventListener('click', close);
+    box.querySelector('.lightbox__nav--prev').addEventListener('click', function (e) {
+      e.stopPropagation(); show(current - 1);
+    });
+    box.querySelector('.lightbox__nav--next').addEventListener('click', function (e) {
+      e.stopPropagation(); show(current + 1);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!box.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(current - 1);
+      if (e.key === 'ArrowRight') show(current + 1);
+    });
+
+    /* свайп у лайтбоксі */
+    var x0 = null;
+    box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+      x0 = null;
+    }, { passive: true });
+  })();
+  </script>
+
+
+
+
+
+  <!-- Розкладка блоку 3: обчислює позиції форм, карток і зʼєднувальних ліній -->
+  <script>
+(function(){
+  const FORMS=[{pos:1,elF:0.027723,ewF:0.462408,vw:343.05,tw:335.10,vh:300.17,th:292.32,p1:0.5287,iar:1.3380},{pos:2,elF:0.513406,ewF:0.455248,vw:334.09,tw:326.45,vh:290.47,th:282.54,p1:0.5529,iar:2.5455},{pos:3,elF:0.033508,ewF:0.464923,vw:332.70,tw:324.71,vh:281.66,th:273.85,p1:0.4816,iar:1.1904},{pos:4,elF:0.513431,ewF:0.457742,vw:336.61,tw:328.84,vh:293.39,th:285.70,p1:0.5021,iar:0.9970},{pos:5,elF:0.030615,ewF:0.461166,vw:324.04,tw:316.08,vh:297.28,th:289.46,p1:0.5639,iar:0.8263},{pos:6,elF:0.521206,ewF:0.446733,vw:343.05,tw:335.10,vh:300.17,th:292.32,p1:0.5287,iar:1.1480},{pos:7,elF:0.030648,ewF:0.457283,vw:334.09,tw:326.45,vh:290.47,th:282.54,p1:0.5529,iar:0.5159},{pos:8,elF:0.517281,ewF:0.450999,vw:332.70,tw:324.71,vh:281.66,th:273.85,p1:0.4816,iar:0.7209},{pos:9,elF:0.036026,ewF:0.462429,vw:336.61,tw:328.84,vh:293.39,th:285.70,p1:0.5021,iar:1.1500}];
+  const ARROWS=[{a:1,b:2,fx:0.6667,fy:0.3333,ang:15.0,mode:'h',w1:200.0,w2:180.0},{a:3,b:4,fx:0.6667,fy:0.6667,ang:50.0,mode:'h',w1:200.0,w2:180.0},{a:5,b:6,fx:0.6667,fy:0.6667,ang:50.0,mode:'h',w1:200.0,w2:180.0},{a:7,b:8,fx:0.6667,fy:0.6667,ang:50.0,mode:'h',w1:200.0,w2:180.0},{a:2,b:3,fx:0.3333,fy:0.6667,ang:5.0,mode:'v',w1:50.0,w2:180.0},{a:4,b:5,fx:0.3333,fy:0.6667,ang:5.0,mode:'v',w1:50.0,w2:180.0},{a:6,b:7,fx:0.3333,fy:0.6667,ang:5.0,mode:'v',w1:50.0,w2:180.0},{a:8,b:9,fx:0.3333,fy:0.6667,ang:5.0,mode:'v',w1:50.0,w2:180.0}];
+  const CTL={"1":{"icon":84.0,"pad":7.5,"gapp":15.0,"dsc":71.0,"wide":210.0,"shift":-62.0,"dicon":83.0,"dpad":9.5,"dgapp":15.0,"ddsc":17.0,"dwide":145.0,"ddx":-113.0,"ddy":0.0},"2":{"icon":84.0,"pad":7.5,"gapp":15.0,"dsc":17.0,"wide":0.0,"shift":84.0,"off":5.0,"dicon":57.0,"dpad":9.5,"dgapp":15.0,"ddsc":17.0,"dwide":80.0,"ddx":0.0,"ddy":31.0},"3":{"icon":84.0,"pad":7.5,"gapp":15.0,"dsc":69.0,"wide":150.0,"shift":-27.0,"gapv":10.0,"dicon":54.5,"dpad":9.5,"dgapp":15.0,"ddsc":17.0,"dwide":32.0,"ddx":55.0,"ddy":46.0},"4":{"icon":84.0,"pad":7.5,"gapp":15.0,"dsc":17.0,"wide":59.0,"shift":45.0,"gapv":18.0,"dicon":84.0,"dpad":9.5,"dgapp":15.0,"ddsc":17.0,"dwide":147.0,"ddx":-132.0,"ddy":-17.0},"5":{"icon":84.0,"pad":7.5,"gapp":15.0,"dsc":17.0,"wide":109.0,"shift":-53.0,"gapv":-11.0,"dicon":84.0,"dpad":9.5,"dgapp":15.0,"ddsc":17.0,"dwide":121.0,"ddx":2.0,"ddy":-41.0},"6":{"icon":84.0,"pad":7.5,"gapp":15.0,"dsc":17.0,"wide":49.0,"shift":94.0,"gapv":11.0,"dicon":69.0,"dpad":9.5,"dgapp":15.0,"ddsc":17.0,"dwide":47.0,"ddx":81.0,"ddy":-25.0},"7":{"icon":84.0,"pad":7.5,"gapp":15.0,"dsc":23.0,"wide":184.0,"shift":-112.0,"gapv":25.0,"dicon":59.5,"dpad":9.5,"dgapp":15.0,"ddsc":17.0,"dwide":0.0,"ddx":-85.0,"ddy":-44.0},"8":{"icon":84.0,"pad":7.5,"gapp":15.0,"dsc":69.0,"wide":66.0,"shift":81.0,"gapv":18.0,"dicon":63.0,"dpad":9.5,"dgapp":15.0,"ddsc":17.0,"dwide":128.0,"ddx":-32.0,"ddy":-69.0},"9":{"icon":84.0,"pad":7.5,"gapp":15.0,"dsc":17.0,"wide":58.0,"shift":-17.0,"gapv":31.0,"dicon":65.0,"dpad":9.5,"dgapp":15.0,"ddsc":17.0,"dwide":0.0,"ddx":21.0,"ddy":-85.0}};
+  const ART=1080;      // ширина артборда
+  const HEADGAP=40;      // від низу заголовка до верху форми 1, фіксовано
+
+  const F_TITLE_D=25, F_DESCR_D=19;   // стиль results, >=900px
+  const F_TITLE_M=20, F_DESCR_M=17;   // стиль results, <900px
+  const canvas=document.querySelector('.canvas');
+  const stage=document.querySelector('.stage');
+  ARROWS.forEach(function(a){ a.svg=document.getElementById('arrow-'+a.a); });
+
+  FORMS.forEach(function(f){
+    f.svg=document.getElementById('pos-'+f.pos);
+    f.card=document.getElementById('card-'+f.pos);
+    f.inner=f.card.querySelector('.card-block__inner');
+    f.icon=f.card.querySelector('.results__icon');
+    f.title=f.card.querySelector('.results__title');
+    f.descr=f.card.querySelector('.results__descr');
+    f.ctl=CTL[f.pos]||{};
+  });
+
+  const val=function(f,key,dflt){ return (f.ctl[key]!==undefined) ? f.ctl[key] : dflt; };
+
+  function update(){
+    // полотно тягнеться на ширину екрана; уся геометрія — частки цієї ширини
+    const vw=document.documentElement.clientWidth;
+    const W=Math.min(ART, vw);
+    const k=W/ART;
+    const mobile=vw<900;
+    const fT=mobile?F_TITLE_M:F_TITLE_D;
+    const fD=mobile?F_DESCR_M:F_DESCR_D;
+    canvas.style.width=W.toFixed(1)+'px';
+
+    // 1) горизонталь, іконка, кеглі -> міряємо контент
+    const COLGAP=24*k, ROWGAP=40*k;
+    const cardW=(W-2*COLGAP)/3;
+    FORMS.forEach(function(f,i){
+      const P=mobile?'':'d';
+      const icon=val(f, mobile?'icon':'dicon', 84);
+      const pad =val(f, mobile?'pad':'dpad', 7.5);
+      const gapp=val(f, mobile?'gapp':'dgapp', 15);
+      const dsc =val(f, mobile?'dsc':'ddsc', 17);
+      let elL, elW, sx;
+      if(mobile){
+        const wide=val(f,'wide',66)*k, shift=val(f,'shift',0)*k;
+        const odd=(f.pos%2===1);
+        elL=(odd ? f.elF*W : f.elF*W-wide)+shift;
+        elW=f.ewF*W+wide;
+        sx=elW/f.vw;
+      } else {
+        // десктоп: сітка 3 в рядок, ширина картки однакова
+        const dwide=val(f,'dwide',0)*k;
+        sx=(cardW+dwide)/f.tw;
+        elW=sx*f.vw;
+        const col=i%3;
+        elL=col*(cardW+COLGAP)+(cardW-(cardW+dwide))/2-4*sx+val(f,'ddx',0)*k;
+      }
+      f.rl=elL+4*sx; f.rw=f.tw*sx;
+      f.svg.style.left=elL.toFixed(1)+'px';
+      f.svg.style.width=elW.toFixed(1)+'px';
+      f.padPx=pad/100*f.rw;
+      f.bw=f.rw-2*f.padPx;
+      f.icon.style.height=(icon*k).toFixed(1)+'px';
+      f.icon.style.width=(icon*k*f.iar).toFixed(1)+'px';
+      f.card.style.left=(f.rl+f.padPx).toFixed(1)+'px';
+      f.card.style.width=f.bw.toFixed(1)+'px';
+      f.title.style.fontSize=fT.toFixed(2)+'px';
+      f.descr.style.fontSize=fD.toFixed(2)+'px';
+      f.title.style.marginTop=(gapp*k).toFixed(1)+'px';
+      f.descr.style.marginTop=(gapp*k).toFixed(1)+'px';
+      f.descr.style.width=Math.max(0,f.bw-2*dsc*k).toFixed(1)+'px';
+      f.descr.style.marginLeft='auto'; f.descr.style.marginRight='auto';
+    });
+    FORMS.forEach(function(f){ f.cont=f.inner.offsetHeight; f.h=f.cont+2*f.padPx; });
+
+    // 2) вертикаль:
+    //    форма 1 — HEADGAP під заголовком;
+    //    форма i (i>=3) — низ форми i-2 плюс її власний просвіт;
+    //    форма 2 — по центру просвіту між формами 1 і 3, зі зміщенням off
+    if(mobile){
+      const F=function(p){ return FORMS[p-1]; };
+      F(1).top=HEADGAP;
+      [3,4,5,6,7,8,9].forEach(function(p){
+        if(p===4) F(2).top=F(1).top+F(1).h + val(F(3),'gapv',39)*k/2 - F(2).h/2 + val(F(2),'off',0)*k;
+        F(p).top=F(p-2).top+F(p-2).h + val(F(p),'gapv',39)*k;
+      });
+    } else {
+      // десктоп: три рядки, висота рядка — по найвищій картці в ньому
+      let y=HEADGAP;
+      for(let r=0;r<3;r++){
+        let rowH=0;
+        for(let c=0;c<3;c++) rowH=Math.max(rowH, FORMS[r*3+c].h);
+        for(let c=0;c<3;c++) FORMS[r*3+c].top=y+val(FORMS[r*3+c],'ddy',0)*k;
+        y+=rowH+ROWGAP;
+      }
+    }
+
+    // 3) застосовуємо
+    FORMS.forEach(function(f){
+      f.svg.style.top=(f.top-4*f.h/f.th).toFixed(1)+'px';
+      f.svg.style.height=(f.h*f.vh/f.th).toFixed(1)+'px';
+      f.card.style.top=(f.top+f.padPx).toFixed(1)+'px';
+    });
+    const canvasH=Math.max.apply(null, FORMS.map(function(f){ return f.top+f.h; }));
+    canvas.style.height=canvasH.toFixed(0)+'px';
+    stage.style.height=canvasH.toFixed(0)+'px';
+
+    // 4) пунктирні лінії між формами (діють лише в мобільній версії)
+    if(mobile) ARROWS.forEach(function(a){
+      const A=FORMS[a.a-1], B=FORMS[a.b-1];
+      const P0=[A.rl+a.fx*A.rw, A.top+a.fy*A.h];
+      const ex=(a.b%2===0)?1/3:2/3;
+      const P3=[B.rl+ex*B.rw, B.top+B.h/3];
+      const ln=a.svg.querySelector('.ln');
+      if(ln) ln.setAttribute('d','M '+P0[0].toFixed(1)+' '+P0[1].toFixed(1)+' L '+P3[0].toFixed(1)+' '+P3[1].toFixed(1));
+    });
+
+  }
+
+  window.addEventListener('resize',update);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(update);
+  update();
+})();
+  </script>
+
+</body>
+</html>
