@@ -58,7 +58,16 @@
      отже лівий нижній кут завжди стоїть на 1/3 від лівого краю. */
   .changes > svg.bg-bottom {
     position: absolute; right: 0; bottom: 0; z-index: 0;
-    width: 66.6667%; height: auto; display: block;
+    width: 90%; height: auto; display: block;
+  }
+  /* дзеркальна ілюстрація у верхньому лівому куті блоку */
+  .changes > svg.bg-top {
+    position: absolute; left: 0; top: 0; z-index: 0;
+    width: 90%; height: auto; display: block;
+  }
+  @media (min-width: 900px) {
+    .changes > svg.bg-bottom,
+    .changes > svg.bg-top { width: 66.6667%; }
   }
 
   /* Допоміжна графіка: габаритні прямокутники, осі третин, точки перетину,
@@ -250,6 +259,26 @@
 -->
 
 <section class="changes">
+  <svg class="bg-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 450" preserveAspectRatio="xMinYMin meet" aria-hidden="true">
+    <!-- пляма у верхньому лівому куті -->
+    <path d="M 0 0
+             L 150 0
+             C 122 8 96 21 74 38
+             C 52 55 36 77 27 103
+             C 19 126 14 152 12 176
+             C 11 190 8 200 0 207
+             Z"
+          fill="#D5D4C1"/>
+    <!-- тонка лінія вздовж краю плями -->
+    <g fill="none" stroke="#C2C7AE" stroke-width="1.2" stroke-linecap="round">
+      <path d="M 158 0
+               C 128 10 100 25 78 44
+               C 54 64 38 90 29 120
+               C 21 148 16 180 14 212
+               C 12 244 10 276 6 300
+               C 4 313 2 320 0 326"/>
+    </g>
+  </svg>
   <div class="changes__inner">
     <h2 class="section-title">Що дає терапія</h2>
   </div>
