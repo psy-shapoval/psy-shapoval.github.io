@@ -70,8 +70,11 @@
   .panel input[type=range] { width: 100%; margin-top: 4px; }
   .panel output { font-weight: 700; }
   .panel__info { border-top: 1px solid #e6e1d6; padding-top: 8px; line-height: 1.6; color: #5c5247; }
+  /* Верхня панель — тільки для форми 1, стоїть у потоці на початку сторінки */
+  .panel--top { position: static; width: 300px; margin: 16px auto 0; }
   @media (max-width: 899px) {
     .panel { position: static; width: auto; margin: 0 12px 16px; }
+    .panel--top { width: auto; margin: 12px; }
   }
   .card-block__inner { margin: 0 auto; }
   /* ============ СТИЛЬ "RESULTS" — окремо для цього екрана ============
@@ -101,11 +104,31 @@
 </style>
 </head>
 <body>
+<div class="panel panel--top">
+  <h3>Форма 1 — власні параметри</h3>
+  <label>Розмір іконки <output id="oIcon1"></output> px
+    <input id="iIcon1" type="range" min="10" max="120" step="0.5" value="84.0">
+  </label>
+  <label>Відступ від усіх сторін <output id="oPad1"></output> %
+    <input id="iPad1" type="range" min="0" max="40" step="0.5" value="11.5">
+  </label>
+  <label>Відступ між абзацами <output id="oGapP1"></output> px
+    <input id="iGapP1" type="range" min="0" max="60" step="1" value="15">
+  </label>
+  <label>Відступ опису від країв блоку <output id="oDsc1"></output> px
+    <input id="iDsc1" type="range" min="0" max="150" step="1" value="17">
+  </label>
+  <label>Розтягування по горизонталі <output id="oWide1"></output> px
+    <input id="iWide1" type="range" min="0" max="250" step="1" value="66">
+  </label>
+</div>
+
 
 <!--
   ПОЛОТНО 1080 x 1889 px.  Ліва колона — позиції 1,3,5,7,9;  права — 2,4,6,8.
-  Верх форми 1 — на 145.3 px нижче за низ заголовка (той самий просвіт, що між формами в колоні).
-  Крок по вертикалі між верхніми краями сусідніх форм — рівно 145.3 px для всіх пар 1→2 … 8→9.
+  Верх форми 1 — на 40 px нижче за низ заголовка (фіксовано, як .reasons__list у mark19).
+  Просвіт між формами — 39 px; форма 2 центрована у просвіті між формами 1 і 3.
+  Форма 1 має власний набір параметрів (верхня панель), решта — спільний (нижня панель).
   Допоміжна графіка (габаритні прямокутники, осі третин, точки перетину, точки на
   кінцях ліній) схована правилом .guides { display: none; } у стилях вище.
 -->
@@ -455,11 +478,8 @@
   <label>Розтягування форм по горизонталі <output id="oWide"></output> px
     <input id="iWide" type="range" min="0" max="250" step="1" value="66">
   </label>
-  <label>Розтягування форми 1 <output id="oWide1"></output> px
-    <input id="iWide1" type="range" min="0" max="250" step="1" value="66">
-  </label>
   <label>Розтягування форми 9 <output id="oWide9"></output> px
-    <input id="iWide9" type="range" min="0" max="250" step="1" value="66">
+    <input id="iWide9" type="range" min="0" max="250" step="1" value="39">
   </label>
   <label>Відстань між формами по вертикалі <output id="oGapV"></output> px
     <input id="iGapV" type="range" min="0" max="400" step="1" value="39">
@@ -478,7 +498,10 @@
   const HEADGAP=40;                 // від низу заголовка до верху форми 1, фіксовано
   const F_TITLE_D=25, F_DESCR_D=19;   // стиль results, >=900px (як .step__* у mark19)
   const F_TITLE_M=20, F_DESCR_M=17;   // стиль results, <900px
-  const iIcon=document.getElementById('iIcon'), iPad=document.getElementById('iPad'), iGap=document.getElementById('iGap'), iDsc=document.getElementById('iDsc'), iGapV=document.getElementById('iGapV'), iWide=document.getElementById('iWide'), iWide1=document.getElementById('iWide1'), iWide9=document.getElementById('iWide9');
+  const iIcon=document.getElementById('iIcon'), iPad=document.getElementById('iPad'), iGap=document.getElementById('iGap'), iDsc=document.getElementById('iDsc'), iGapV=document.getElementById('iGapV'), iWide=document.getElementById('iWide'), iWide9=document.getElementById('iWide9');
+  const iIcon1=document.getElementById('iIcon1'), iPad1=document.getElementById('iPad1'),
+        iGapP1=document.getElementById('iGapP1'), iDsc1=document.getElementById('iDsc1'),
+        iWide1=document.getElementById('iWide1');
 
   FORMS.forEach(function(f){
     f.svg=document.getElementById('pos-'+f.pos);
@@ -514,6 +537,16 @@
     const fD=mobile?F_DESCR_M:F_DESCR_D;
     canvas.style.width=W.toFixed(1)+'px';
 
+    // форма 1 має власний набір значень (верхня панель), решта — спільний (нижня)
+    const V={
+      icon:parseFloat(iIcon.value), pad:parseFloat(iPad.value),
+      gap:parseFloat(iGap.value),   dsc:parseFloat(iDsc.value)
+    };
+    const V1={
+      icon:parseFloat(iIcon1.value), pad:parseFloat(iPad1.value),
+      gap:parseFloat(iGapP1.value),  dsc:parseFloat(iDsc1.value)
+    };
+    const par=function(pos){ return pos===1?V1:V; };
     const iconH=parseFloat(iIcon.value);
     const padPct=parseFloat(iPad.value);
     const cut=0;
@@ -532,19 +565,20 @@
       f.rl=elL+4*sx; f.rw=f.tw*sx;
       f.svg.style.left=elL.toFixed(1)+'px';
       f.svg.style.width=elW.toFixed(1)+'px';
-      const padPx=padPct/100*f.rw;
+      const p=par(f.pos);
+      const padPx=p.pad/100*f.rw;
       const sidePad=padPx-cut;
       f.padPx=padPx; f.sidePad=sidePad;
       f.bw=f.rw-2*sidePad;
-      f.icon.style.height=(iconH*k).toFixed(1)+'px';
-      f.icon.style.width=(iconH*k*1.0909).toFixed(1)+'px';
+      f.icon.style.height=(p.icon*k).toFixed(1)+'px';
+      f.icon.style.width=(p.icon*k*1.0909).toFixed(1)+'px';
       f.card.style.left=(f.rl+sidePad).toFixed(1)+'px';
       f.card.style.width=f.bw.toFixed(1)+'px';
       f.title.style.fontSize=fT.toFixed(2)+'px';
       f.descr.style.fontSize=fD.toFixed(2)+'px';
-      f.title.style.marginTop=(gap*k).toFixed(1)+'px';
-      f.descr.style.marginTop=(gap*k).toFixed(1)+'px';
-      f.descr.style.width=Math.max(0,f.bw-2*dscPad*k).toFixed(1)+'px';
+      f.title.style.marginTop=(p.gap*k).toFixed(1)+'px';
+      f.descr.style.marginTop=(p.gap*k).toFixed(1)+'px';
+      f.descr.style.width=Math.max(0,f.bw-2*p.dsc*k).toFixed(1)+'px';
       f.descr.style.marginLeft='auto'; f.descr.style.marginRight='auto';
     });
     FORMS.forEach(function(f){ f.cont=f.inner.offsetHeight; });
@@ -602,14 +636,18 @@
       q('.p3').setAttribute('cx',P3[0].toFixed(1)); q('.p3').setAttribute('cy',P3[1].toFixed(1));
     });
 
-    document.getElementById('oIcon').textContent=iconH.toFixed(1);
-    document.getElementById('oPad').textContent=padPct.toFixed(1);
+    document.getElementById('oIcon').textContent=V.icon.toFixed(1);
+    document.getElementById('oIcon1').textContent=V1.icon.toFixed(1);
+    document.getElementById('oPad1').textContent=V1.pad.toFixed(1);
+    document.getElementById('oGapP1').textContent=V1.gap.toFixed(0);
+    document.getElementById('oDsc1').textContent=V1.dsc.toFixed(0);
+    document.getElementById('oPad').textContent=V.pad.toFixed(1);
     document.getElementById('oGapV').textContent=GAPV.toFixed(0);
     document.getElementById('oWide').textContent=wideAll.toFixed(0);
     document.getElementById('oWide1').textContent=wide1.toFixed(0);
     document.getElementById('oWide9').textContent=wide9.toFixed(0);
-    document.getElementById('oGap').textContent=gap.toFixed(0);
-    document.getElementById('oDsc').textContent=dscPad.toFixed(0);
+    document.getElementById('oGap').textContent=V.gap.toFixed(0);
+    document.getElementById('oDsc').textContent=V.dsc.toFixed(0);
     const f1=FORMS[0];
     document.getElementById('info').innerHTML=
       'форма 1 — відступ зверху/знизу: <b>'+f1.padPx.toFixed(1)+' px</b><br>'+
@@ -620,7 +658,7 @@
       'просвіт між формами (зафіксовано): <b>'+GAPV.toFixed(1)+' px</b><br>'+
       'висота полотна: <b>'+canvasH.toFixed(0)+' px</b>';
   }
-  [iIcon,iPad,iGap,iDsc,iGapV,iWide,iWide1,iWide9].forEach(function(el){ el.addEventListener('input',update); });
+  [iIcon,iPad,iGap,iDsc,iGapV,iWide,iWide1,iWide9,iIcon1,iPad1,iGapP1,iDsc1].forEach(function(el){ el.addEventListener('input',update); });
   window.addEventListener('resize',update);
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(update);
   update();
