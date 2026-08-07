@@ -129,11 +129,10 @@
   .panel input[type=range] { width: 100%; margin-top: 3px; }
   .panel output { font-weight: 700; }
   .panel--info { width: auto; align-self: center; padding: 8px 12px; color: #5c5247; }
-  /* панелі керування — тільки в десктопній версії; мобільні приховані завжди */
+  /* Панелі керування приховані. Щоб знову показати десктопні —
+     прибрати правило .panels--desktop нижче. */
   .panels--mobile { display: none !important; }
-  @media (min-width: 900px) {
-    .panels--desktop { display: flex; }
-  }
+  .panels--desktop { display: none !important; }
 
 </style>
 </head>
