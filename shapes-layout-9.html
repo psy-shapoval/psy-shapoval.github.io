@@ -43,7 +43,7 @@
      стрілки, відступи, іконки — задана частками цієї ширини й масштабується разом з нею.
      Кеглі НЕ масштабуються: вони беруться з index-mark19.html для поточного брейкпойнта
      (>=900px: 25/19 px, <900px: 15/12.5 px), тож рендеряться однаково на всіх екранах. */
-  .stage { overflow: hidden; }
+  .stage { position: relative; overflow: hidden; }
   .canvas { position: relative; width: 1080px; max-width: 100%; height: 1471px; margin: 0 auto; }
   /* Мʼяка розмита тінь від форм на фон */
   .canvas > svg.shape {
@@ -53,12 +53,14 @@
   }
   .canvas > svg.overlay { position: absolute; left: 0; top: 0; display: block; }
 
-  /* Фонова ілюстрація: правий нижній кут прибитий до правого нижнього кута блоку,
-     ширина — 2/3 блоку, тобто лівий нижній кут стоїть на 1/3 від лівого краю. */
-  .canvas > svg.bg-bottom {
-    position: absolute; right: 0; bottom: 0;
+  /* Фонова ілюстрація: правий нижній кут — до правого нижнього кута блоку
+     (тобто до правого краю екрана), ширина — 2/3 ширини екрана,
+     отже лівий нижній кут завжди стоїть на 1/3 від лівого краю. */
+  .stage > svg.bg-bottom {
+    position: absolute; right: 0; bottom: 0; z-index: 0;
     width: 66.6667%; height: auto; display: block;
   }
+  .stage > .canvas { position: relative; z-index: 1; }
 
   /* Допоміжна графіка: габаритні прямокутники, осі третин, точки перетину,
      точки на кінцях пунктирних ліній. Увімкнути — прибрати це правило. */
@@ -254,7 +256,6 @@
   </div>
 
 <div class="stage">
-<div class="canvas">
   <svg class="bg-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 450" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
     <!-- пагорб -->
     <path d="M 150 450
@@ -296,7 +297,7 @@
       <path d="M 664 295 C 655 301 647 308 640 314"/>
     </g>
   </svg>
-
+<div class="canvas">
   <!-- ЛІНІЯ 1->2: форма 1 (точка "2") -> форма 2 (точка "1")
        P0 = (438.2, 142.9);  P3 = (804.5, 312.7) -->
   <svg id="arrow-1" class="overlay" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
