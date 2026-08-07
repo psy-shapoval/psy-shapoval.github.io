@@ -52,6 +52,10 @@
             drop-shadow(0 2px 4px rgba(122, 112, 84, 0.08));
   }
   .canvas > svg.overlay { position: absolute; left: 0; top: 0; display: block; }
+  /* пунктирні лінії між формами — тільки в мобільній версії */
+  @media (min-width: 900px) {
+    .canvas > svg.overlay.link { display: none; }
+  }
 
   /* Фонова ілюстрація: правий нижній кут — до правого нижнього кута блоку
      (тобто до правого краю екрана), ширина — 2/3 ширини екрана,
@@ -105,7 +109,7 @@
 
   /* ---- Панелі керування: по одній на форму, згортаються ---- */
   /* Панелі керування сховані. Показати — прибрати display:none нижче. */
-  .panels { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+  .panels { display: none; flex-wrap: wrap; gap: 10px; justify-content: center;
              padding: 14px 12px; font-family: 'Manrope', sans-serif; }
 
   .panel {
@@ -125,11 +129,16 @@
   .panel input[type=range] { width: 100%; margin-top: 3px; }
   .panel output { font-weight: 700; }
   .panel--info { width: auto; align-self: center; padding: 8px 12px; color: #5c5247; }
+  /* панелі керування — тільки в десктопній версії; мобільні приховані завжди */
+  .panels--mobile { display: none !important; }
+  @media (min-width: 900px) {
+    .panels--desktop { display: flex; }
+  }
 
 </style>
 </head>
 <body>
-  <div class="panels panels--top">
+  <div class="panels panels--mobile">
     <details class="panel panel--form">
       <summary>Форма 1</summary>
       <label>Розмір іконки <output id="o-icon-1"></output> px
@@ -144,16 +153,10 @@
       <label>Опису від країв блоку <output id="o-dsc-1"></output> px
         <input id="dsc-1" type="range" min="0" max="150" step="1" value="71">
       </label>
-      <label>Мобільний: розтягування <output id="o-wide-1"></output> px
+      <label>Розтягування по горизонталі <output id="o-wide-1"></output> px
         <input id="wide-1" type="range" min="0" max="250" step="1" value="210">
       </label>
-      <label>Десктоп: вліво/вправо <output id="o-dx-1"></output> px
-        <input id="dx-1" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Десктоп: вгору/вниз <output id="o-dy-1"></output> px
-        <input id="dy-1" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Мобільний: вліво/вправо <output id="o-shift-1"></output> px
+      <label>Зсув вліво/вправо <output id="o-shift-1"></output> px
         <input id="shift-1" type="range" min="-400" max="400" step="1" value="-62">
       </label>
     </details>
@@ -171,19 +174,13 @@
       <label>Опису від країв блоку <output id="o-dsc-2"></output> px
         <input id="dsc-2" type="range" min="0" max="150" step="1" value="17">
       </label>
-      <label>Мобільний: розтягування <output id="o-wide-2"></output> px
+      <label>Розтягування по горизонталі <output id="o-wide-2"></output> px
         <input id="wide-2" type="range" min="0" max="250" step="1" value="0">
       </label>
-      <label>Десктоп: вліво/вправо <output id="o-dx-2"></output> px
-        <input id="dx-2" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Десктоп: вгору/вниз <output id="o-dy-2"></output> px
-        <input id="dy-2" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Мобільний: вліво/вправо <output id="o-shift-2"></output> px
+      <label>Зсув вліво/вправо <output id="o-shift-2"></output> px
         <input id="shift-2" type="range" min="-400" max="400" step="1" value="84">
       </label>
-      <label>Мобільний: зміщення від середини <output id="o-off-2"></output> px
+      <label>Зміщення вгору/вниз від середини <output id="o-off-2"></output> px
         <input id="off-2" type="range" min="-200" max="200" step="1" value="5">
       </label>
     </details>
@@ -201,19 +198,13 @@
       <label>Опису від країв блоку <output id="o-dsc-3"></output> px
         <input id="dsc-3" type="range" min="0" max="150" step="1" value="69">
       </label>
-      <label>Мобільний: розтягування <output id="o-wide-3"></output> px
+      <label>Розтягування по горизонталі <output id="o-wide-3"></output> px
         <input id="wide-3" type="range" min="0" max="250" step="1" value="150">
       </label>
-      <label>Десктоп: вліво/вправо <output id="o-dx-3"></output> px
-        <input id="dx-3" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Десктоп: вгору/вниз <output id="o-dy-3"></output> px
-        <input id="dy-3" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Мобільний: вліво/вправо <output id="o-shift-3"></output> px
+      <label>Зсув вліво/вправо <output id="o-shift-3"></output> px
         <input id="shift-3" type="range" min="-400" max="400" step="1" value="-27">
       </label>
-      <label>Мобільний: відстань від форми вище <output id="o-gapv-3"></output> px
+      <label>Відстань від форми над нею <output id="o-gapv-3"></output> px
         <input id="gapv-3" type="range" min="-400" max="400" step="1" value="10">
       </label>
     </details>
@@ -231,19 +222,13 @@
       <label>Опису від країв блоку <output id="o-dsc-4"></output> px
         <input id="dsc-4" type="range" min="0" max="150" step="1" value="17">
       </label>
-      <label>Мобільний: розтягування <output id="o-wide-4"></output> px
+      <label>Розтягування по горизонталі <output id="o-wide-4"></output> px
         <input id="wide-4" type="range" min="0" max="250" step="1" value="59">
       </label>
-      <label>Десктоп: вліво/вправо <output id="o-dx-4"></output> px
-        <input id="dx-4" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Десктоп: вгору/вниз <output id="o-dy-4"></output> px
-        <input id="dy-4" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Мобільний: вліво/вправо <output id="o-shift-4"></output> px
+      <label>Зсув вліво/вправо <output id="o-shift-4"></output> px
         <input id="shift-4" type="range" min="-400" max="400" step="1" value="45">
       </label>
-      <label>Мобільний: відстань від форми вище <output id="o-gapv-4"></output> px
+      <label>Відстань від форми над нею <output id="o-gapv-4"></output> px
         <input id="gapv-4" type="range" min="-400" max="400" step="1" value="18">
       </label>
     </details>
@@ -261,20 +246,232 @@
       <label>Опису від країв блоку <output id="o-dsc-5"></output> px
         <input id="dsc-5" type="range" min="0" max="150" step="1" value="17">
       </label>
-      <label>Мобільний: розтягування <output id="o-wide-5"></output> px
+      <label>Розтягування по горизонталі <output id="o-wide-5"></output> px
         <input id="wide-5" type="range" min="0" max="250" step="1" value="109">
       </label>
-      <label>Десктоп: вліво/вправо <output id="o-dx-5"></output> px
-        <input id="dx-5" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Десктоп: вгору/вниз <output id="o-dy-5"></output> px
-        <input id="dy-5" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Мобільний: вліво/вправо <output id="o-shift-5"></output> px
+      <label>Зсув вліво/вправо <output id="o-shift-5"></output> px
         <input id="shift-5" type="range" min="-400" max="400" step="1" value="-53">
       </label>
-      <label>Мобільний: відстань від форми вище <output id="o-gapv-5"></output> px
+      <label>Відстань від форми над нею <output id="o-gapv-5"></output> px
         <input id="gapv-5" type="range" min="-400" max="400" step="1" value="-11">
+      </label>
+    </details>
+    <details class="panel panel--form">
+      <summary>Форма 6</summary>
+      <label>Розмір іконки <output id="o-icon-6"></output> px
+        <input id="icon-6" type="range" min="10" max="160" step="0.5" value="84.0">
+      </label>
+      <label>Відступ з усіх сторін <output id="o-pad-6"></output> %
+        <input id="pad-6" type="range" min="0" max="40" step="0.5" value="7.5">
+      </label>
+      <label>Між абзацами <output id="o-gapp-6"></output> px
+        <input id="gapp-6" type="range" min="0" max="60" step="1" value="15">
+      </label>
+      <label>Опису від країв блоку <output id="o-dsc-6"></output> px
+        <input id="dsc-6" type="range" min="0" max="150" step="1" value="17">
+      </label>
+      <label>Розтягування по горизонталі <output id="o-wide-6"></output> px
+        <input id="wide-6" type="range" min="0" max="250" step="1" value="49">
+      </label>
+      <label>Зсув вліво/вправо <output id="o-shift-6"></output> px
+        <input id="shift-6" type="range" min="-400" max="400" step="1" value="94">
+      </label>
+      <label>Відстань від форми над нею <output id="o-gapv-6"></output> px
+        <input id="gapv-6" type="range" min="-400" max="400" step="1" value="11">
+      </label>
+    </details>
+    <details class="panel panel--form">
+      <summary>Форма 7</summary>
+      <label>Розмір іконки <output id="o-icon-7"></output> px
+        <input id="icon-7" type="range" min="10" max="160" step="0.5" value="84.0">
+      </label>
+      <label>Відступ з усіх сторін <output id="o-pad-7"></output> %
+        <input id="pad-7" type="range" min="0" max="40" step="0.5" value="7.5">
+      </label>
+      <label>Між абзацами <output id="o-gapp-7"></output> px
+        <input id="gapp-7" type="range" min="0" max="60" step="1" value="15">
+      </label>
+      <label>Опису від країв блоку <output id="o-dsc-7"></output> px
+        <input id="dsc-7" type="range" min="0" max="150" step="1" value="23">
+      </label>
+      <label>Розтягування по горизонталі <output id="o-wide-7"></output> px
+        <input id="wide-7" type="range" min="0" max="250" step="1" value="184">
+      </label>
+      <label>Зсув вліво/вправо <output id="o-shift-7"></output> px
+        <input id="shift-7" type="range" min="-400" max="400" step="1" value="-112">
+      </label>
+      <label>Відстань від форми над нею <output id="o-gapv-7"></output> px
+        <input id="gapv-7" type="range" min="-400" max="400" step="1" value="25">
+      </label>
+    </details>
+    <details class="panel panel--form">
+      <summary>Форма 8</summary>
+      <label>Розмір іконки <output id="o-icon-8"></output> px
+        <input id="icon-8" type="range" min="10" max="160" step="0.5" value="84.0">
+      </label>
+      <label>Відступ з усіх сторін <output id="o-pad-8"></output> %
+        <input id="pad-8" type="range" min="0" max="40" step="0.5" value="7.5">
+      </label>
+      <label>Між абзацами <output id="o-gapp-8"></output> px
+        <input id="gapp-8" type="range" min="0" max="60" step="1" value="15">
+      </label>
+      <label>Опису від країв блоку <output id="o-dsc-8"></output> px
+        <input id="dsc-8" type="range" min="0" max="150" step="1" value="69">
+      </label>
+      <label>Розтягування по горизонталі <output id="o-wide-8"></output> px
+        <input id="wide-8" type="range" min="0" max="250" step="1" value="66">
+      </label>
+      <label>Зсув вліво/вправо <output id="o-shift-8"></output> px
+        <input id="shift-8" type="range" min="-400" max="400" step="1" value="81">
+      </label>
+      <label>Відстань від форми над нею <output id="o-gapv-8"></output> px
+        <input id="gapv-8" type="range" min="-400" max="400" step="1" value="18">
+      </label>
+    </details>
+    <details class="panel panel--form">
+      <summary>Форма 9</summary>
+      <label>Розмір іконки <output id="o-icon-9"></output> px
+        <input id="icon-9" type="range" min="10" max="160" step="0.5" value="84.0">
+      </label>
+      <label>Відступ з усіх сторін <output id="o-pad-9"></output> %
+        <input id="pad-9" type="range" min="0" max="40" step="0.5" value="7.5">
+      </label>
+      <label>Між абзацами <output id="o-gapp-9"></output> px
+        <input id="gapp-9" type="range" min="0" max="60" step="1" value="15">
+      </label>
+      <label>Опису від країв блоку <output id="o-dsc-9"></output> px
+        <input id="dsc-9" type="range" min="0" max="150" step="1" value="17">
+      </label>
+      <label>Розтягування по горизонталі <output id="o-wide-9"></output> px
+        <input id="wide-9" type="range" min="0" max="250" step="1" value="58">
+      </label>
+      <label>Зсув вліво/вправо <output id="o-shift-9"></output> px
+        <input id="shift-9" type="range" min="-400" max="400" step="1" value="-17">
+      </label>
+      <label>Відстань від форми над нею <output id="o-gapv-9"></output> px
+        <input id="gapv-9" type="range" min="-400" max="400" step="1" value="31">
+      </label>
+    </details>
+  </div>
+  <div class="panels panels--desktop">
+    <details class="panel panel--form">
+      <summary>Форма 1</summary>
+      <label>Розмір іконки <output id="o-dicon-1"></output> px
+        <input id="dicon-1" type="range" min="10" max="160" step="0.5" value="84.0">
+      </label>
+      <label>Відступ з усіх сторін <output id="o-dpad-1"></output> %
+        <input id="dpad-1" type="range" min="0" max="40" step="0.5" value="11.5">
+      </label>
+      <label>Між абзацами <output id="o-dgapp-1"></output> px
+        <input id="dgapp-1" type="range" min="0" max="60" step="1" value="15">
+      </label>
+      <label>Опису від країв блоку <output id="o-ddsc-1"></output> px
+        <input id="ddsc-1" type="range" min="0" max="150" step="1" value="17">
+      </label>
+      <label>Розтягування по горизонталі <output id="o-dwide-1"></output> px
+        <input id="dwide-1" type="range" min="-200" max="300" step="1" value="0">
+      </label>
+      <label>Зсув вліво/вправо <output id="o-ddx-1"></output> px
+        <input id="ddx-1" type="range" min="-500" max="500" step="1" value="0">
+      </label>
+      <label>Зсув вгору/вниз <output id="o-ddy-1"></output> px
+        <input id="ddy-1" type="range" min="-500" max="500" step="1" value="0">
+      </label>
+    </details>
+    <details class="panel panel--form">
+      <summary>Форма 2</summary>
+      <label>Розмір іконки <output id="o-dicon-2"></output> px
+        <input id="dicon-2" type="range" min="10" max="160" step="0.5" value="84.0">
+      </label>
+      <label>Відступ з усіх сторін <output id="o-dpad-2"></output> %
+        <input id="dpad-2" type="range" min="0" max="40" step="0.5" value="11.5">
+      </label>
+      <label>Між абзацами <output id="o-dgapp-2"></output> px
+        <input id="dgapp-2" type="range" min="0" max="60" step="1" value="15">
+      </label>
+      <label>Опису від країв блоку <output id="o-ddsc-2"></output> px
+        <input id="ddsc-2" type="range" min="0" max="150" step="1" value="17">
+      </label>
+      <label>Розтягування по горизонталі <output id="o-dwide-2"></output> px
+        <input id="dwide-2" type="range" min="-200" max="300" step="1" value="0">
+      </label>
+      <label>Зсув вліво/вправо <output id="o-ddx-2"></output> px
+        <input id="ddx-2" type="range" min="-500" max="500" step="1" value="0">
+      </label>
+      <label>Зсув вгору/вниз <output id="o-ddy-2"></output> px
+        <input id="ddy-2" type="range" min="-500" max="500" step="1" value="0">
+      </label>
+    </details>
+    <details class="panel panel--form">
+      <summary>Форма 3</summary>
+      <label>Розмір іконки <output id="o-dicon-3"></output> px
+        <input id="dicon-3" type="range" min="10" max="160" step="0.5" value="84.0">
+      </label>
+      <label>Відступ з усіх сторін <output id="o-dpad-3"></output> %
+        <input id="dpad-3" type="range" min="0" max="40" step="0.5" value="11.5">
+      </label>
+      <label>Між абзацами <output id="o-dgapp-3"></output> px
+        <input id="dgapp-3" type="range" min="0" max="60" step="1" value="15">
+      </label>
+      <label>Опису від країв блоку <output id="o-ddsc-3"></output> px
+        <input id="ddsc-3" type="range" min="0" max="150" step="1" value="17">
+      </label>
+      <label>Розтягування по горизонталі <output id="o-dwide-3"></output> px
+        <input id="dwide-3" type="range" min="-200" max="300" step="1" value="0">
+      </label>
+      <label>Зсув вліво/вправо <output id="o-ddx-3"></output> px
+        <input id="ddx-3" type="range" min="-500" max="500" step="1" value="0">
+      </label>
+      <label>Зсув вгору/вниз <output id="o-ddy-3"></output> px
+        <input id="ddy-3" type="range" min="-500" max="500" step="1" value="0">
+      </label>
+    </details>
+    <details class="panel panel--form">
+      <summary>Форма 4</summary>
+      <label>Розмір іконки <output id="o-dicon-4"></output> px
+        <input id="dicon-4" type="range" min="10" max="160" step="0.5" value="84.0">
+      </label>
+      <label>Відступ з усіх сторін <output id="o-dpad-4"></output> %
+        <input id="dpad-4" type="range" min="0" max="40" step="0.5" value="11.5">
+      </label>
+      <label>Між абзацами <output id="o-dgapp-4"></output> px
+        <input id="dgapp-4" type="range" min="0" max="60" step="1" value="15">
+      </label>
+      <label>Опису від країв блоку <output id="o-ddsc-4"></output> px
+        <input id="ddsc-4" type="range" min="0" max="150" step="1" value="17">
+      </label>
+      <label>Розтягування по горизонталі <output id="o-dwide-4"></output> px
+        <input id="dwide-4" type="range" min="-200" max="300" step="1" value="0">
+      </label>
+      <label>Зсув вліво/вправо <output id="o-ddx-4"></output> px
+        <input id="ddx-4" type="range" min="-500" max="500" step="1" value="0">
+      </label>
+      <label>Зсув вгору/вниз <output id="o-ddy-4"></output> px
+        <input id="ddy-4" type="range" min="-500" max="500" step="1" value="0">
+      </label>
+    </details>
+    <details class="panel panel--form">
+      <summary>Форма 5</summary>
+      <label>Розмір іконки <output id="o-dicon-5"></output> px
+        <input id="dicon-5" type="range" min="10" max="160" step="0.5" value="84.0">
+      </label>
+      <label>Відступ з усіх сторін <output id="o-dpad-5"></output> %
+        <input id="dpad-5" type="range" min="0" max="40" step="0.5" value="11.5">
+      </label>
+      <label>Між абзацами <output id="o-dgapp-5"></output> px
+        <input id="dgapp-5" type="range" min="0" max="60" step="1" value="15">
+      </label>
+      <label>Опису від країв блоку <output id="o-ddsc-5"></output> px
+        <input id="ddsc-5" type="range" min="0" max="150" step="1" value="17">
+      </label>
+      <label>Розтягування по горизонталі <output id="o-dwide-5"></output> px
+        <input id="dwide-5" type="range" min="-200" max="300" step="1" value="0">
+      </label>
+      <label>Зсув вліво/вправо <output id="o-ddx-5"></output> px
+        <input id="ddx-5" type="range" min="-500" max="500" step="1" value="0">
+      </label>
+      <label>Зсув вгору/вниз <output id="o-ddy-5"></output> px
+        <input id="ddy-5" type="range" min="-500" max="500" step="1" value="0">
       </label>
     </details>
   </div>
@@ -315,6 +512,16 @@
 
 <div class="stage">
 <div class="canvas">
+  <!-- ЛІНІЯ 1->2: форма 1 (точка "2") -> форма 2 (точка "1")
+       P0 = (438.2, 142.9);  P3 = (804.5, 312.7) -->
+  <svg id="arrow-1" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 438.2 142.9 L 804.5 312.7" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+    <g class="guides">
+      <circle class="p0" cx="438.2" cy="142.9" r="5" fill="#D14520"/>
+      <circle class="p3" cx="804.5" cy="312.7" r="5" fill="#185FA5"/>
+    </g>
+  </svg>
+
   <!-- ПОЗИЦІЯ 1 — ФОРМА 01
        left = -32.1px (-2.97%)   right = 402.7px (37.28%)
        габарит форми: top = 40.0px, bottom = 348.8px
@@ -338,6 +545,16 @@
       <div class="results__descr" contenteditable="true" style="width:499.6px; margin-left:auto; margin-right:auto;">Перестаєте боротися із симптомами, і впливаєте на причини.</div>
     </div>
   </div>
+
+  <!-- ЛІНІЯ 2->3: форма 2 (точка "3") -> форма 3 (точка "2")
+       P0 = (804.5, 405.0);  P3 = (441.3, 449.2) -->
+  <svg id="arrow-2" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 804.5 405.0 L 441.3 449.2" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+    <g class="guides">
+      <circle class="p0" cx="804.5" cy="405.0" r="5" fill="#D14520"/>
+      <circle class="p3" cx="441.3" cy="449.2" r="5" fill="#185FA5"/>
+    </g>
+  </svg>
 
   <!-- ПОЗИЦІЯ 2 — ФОРМА 02
        left = 638.5px (59.12%)   right = -50.1px (-4.64%)
@@ -363,6 +580,16 @@
     </div>
   </div>
 
+  <!-- ЛІНІЯ 3->4: форма 3 (точка "4") -> форма 4 (точка "1")
+       P0 = (441.3, 539.5);  P3 = (727.3, 600.8) -->
+  <svg id="arrow-3" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 441.3 539.5 L 727.3 600.8" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+    <g class="guides">
+      <circle class="p0" cx="441.3" cy="539.5" r="5" fill="#D14520"/>
+      <circle class="p3" cx="727.3" cy="600.8" r="5" fill="#185FA5"/>
+    </g>
+  </svg>
+
   <!-- ПОЗИЦІЯ 3 — ФОРМА 03
        left = 9.2px (0.85%)   right = 418.7px (38.77%)
        габарит форми: top = 358.8px, bottom = 629.8px
@@ -386,6 +613,16 @@
       <div class="results__descr" contenteditable="true" style="width:456.1px; margin-left:auto; margin-right:auto;">Прийняття та підтримки себе — все більше.</div>
     </div>
   </div>
+
+  <!-- ЛІНІЯ 4->5: форма 4 (точка "3") -> форма 5 (точка "2")
+       P0 = (727.3, 686.4);  P3 = (382.3, 706.9) -->
+  <svg id="arrow-4" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 727.3 686.4 L 382.3 706.9" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+    <g class="guides">
+      <circle class="p0" cx="727.3" cy="686.4" r="5" fill="#D14520"/>
+      <circle class="p3" cx="382.3" cy="706.9" r="5" fill="#185FA5"/>
+    </g>
+  </svg>
 
   <!-- ПОЗИЦІЯ 4 — ФОРМА 04
        left = 540.5px (50.05%)   right = -13.9px (-1.28%)
@@ -411,6 +648,16 @@
     </div>
   </div>
 
+  <!-- ЛІНІЯ 5->6: форма 5 (точка "4") -> форма 6 (точка "1")
+       P0 = (382.3, 794.9);  P3 = (787.2, 877.1) -->
+  <svg id="arrow-5" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 382.3 794.9 L 787.2 877.1" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+    <g class="guides">
+      <circle class="p0" cx="382.3" cy="794.9" r="5" fill="#D14520"/>
+      <circle class="p3" cx="787.2" cy="877.1" r="5" fill="#185FA5"/>
+    </g>
+  </svg>
+
   <!-- ПОЗИЦІЯ 5 — ФОРМА 05
        left = -19.9px (-1.85%)   right = 492.9px (45.64%)
        габарит форми: top = 618.8px, bottom = 883.0px
@@ -434,6 +681,16 @@
       <div class="results__descr" contenteditable="true" style="width:421.9px; margin-left:auto; margin-right:auto;">Гарні стосунки без жертви своїми інтересами.</div>
     </div>
   </div>
+
+  <!-- ЛІНІЯ 6->7: форма 6 (точка "3") -> форма 7 (точка "2")
+       P0 = (787.2, 971.4);  P3 = (370.8, 999.6) -->
+  <svg id="arrow-6" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 787.2 971.4 L 370.8 999.6" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+    <g class="guides">
+      <circle class="p0" cx="787.2" cy="971.4" r="5" fill="#D14520"/>
+      <circle class="p3" cx="370.8" cy="999.6" r="5" fill="#185FA5"/>
+    </g>
+  </svg>
 
   <!-- ПОЗИЦІЯ 6 — ФОРМА 01
        left = 607.9px (56.29%)   right = -59.4px (-5.50%)
@@ -459,6 +716,16 @@
     </div>
   </div>
 
+  <!-- ЛІНІЯ 7->8: форма 7 (точка "4") -> форма 8 (точка "1")
+       P0 = (370.8, 1091.2);  P3 = (760.2, 1189.6) -->
+  <svg id="arrow-7" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 370.8 1091.2 L 760.2 1189.6" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+    <g class="guides">
+      <circle class="p0" cx="370.8" cy="1091.2" r="5" fill="#D14520"/>
+      <circle class="p3" cx="760.2" cy="1189.6" r="5" fill="#185FA5"/>
+    </g>
+  </svg>
+
   <!-- ПОЗИЦІЯ 7 — ФОРМА 02
        left = -78.9px (-7.31%)   right = 481.0px (44.54%)
        габарит форми: top = 908.0px, bottom = 1182.8px
@@ -482,6 +749,16 @@
       <div class="results__descr" contenteditable="true" style="width:476.0px; margin-left:auto; margin-right:auto;">Для роботи, навчання, спорту — змін, яких ви прагнете.</div>
     </div>
   </div>
+
+  <!-- ЛІНІЯ 8->9: форма 8 (точка "3") -> форма 9 (точка "2")
+       P0 = (760.2, 1295.6);  P3 = (391.6, 1299.5) -->
+  <svg id="arrow-8" class="overlay link" xmlns="http://www.w3.org/2000/svg" width="1080" height="1471" viewBox="0 0 1080 1471">
+    <path class="ln" d="M 760.2 1295.6 L 391.6 1299.5" fill="none" stroke="#6F8050" stroke-width="2" stroke-dasharray="8 4" stroke-linecap="butt"/>
+    <g class="guides">
+      <circle class="p0" cx="760.2" cy="1295.6" r="5" fill="#D14520"/>
+      <circle class="p3" cx="391.6" cy="1299.5" r="5" fill="#185FA5"/>
+    </g>
+  </svg>
 
   <!-- ПОЗИЦІЯ 8 — ФОРМА 03
        left = 573.7px (53.12%)   right = -46.7px (-4.33%)
@@ -578,125 +855,101 @@
   </svg>
 </section>
 
-  <div class="panels panels--bottom">
+  <div class="panels panels--desktop">
     <details class="panel panel--form">
       <summary>Форма 6</summary>
-      <label>Розмір іконки <output id="o-icon-6"></output> px
-        <input id="icon-6" type="range" min="10" max="160" step="0.5" value="84.0">
+      <label>Розмір іконки <output id="o-dicon-6"></output> px
+        <input id="dicon-6" type="range" min="10" max="160" step="0.5" value="84.0">
       </label>
-      <label>Відступ з усіх сторін <output id="o-pad-6"></output> %
-        <input id="pad-6" type="range" min="0" max="40" step="0.5" value="7.5">
+      <label>Відступ з усіх сторін <output id="o-dpad-6"></output> %
+        <input id="dpad-6" type="range" min="0" max="40" step="0.5" value="11.5">
       </label>
-      <label>Між абзацами <output id="o-gapp-6"></output> px
-        <input id="gapp-6" type="range" min="0" max="60" step="1" value="15">
+      <label>Між абзацами <output id="o-dgapp-6"></output> px
+        <input id="dgapp-6" type="range" min="0" max="60" step="1" value="15">
       </label>
-      <label>Опису від країв блоку <output id="o-dsc-6"></output> px
-        <input id="dsc-6" type="range" min="0" max="150" step="1" value="17">
+      <label>Опису від країв блоку <output id="o-ddsc-6"></output> px
+        <input id="ddsc-6" type="range" min="0" max="150" step="1" value="17">
       </label>
-      <label>Мобільний: розтягування <output id="o-wide-6"></output> px
-        <input id="wide-6" type="range" min="0" max="250" step="1" value="49">
+      <label>Розтягування по горизонталі <output id="o-dwide-6"></output> px
+        <input id="dwide-6" type="range" min="-200" max="300" step="1" value="0">
       </label>
-      <label>Десктоп: вліво/вправо <output id="o-dx-6"></output> px
-        <input id="dx-6" type="range" min="-500" max="500" step="1" value="0">
+      <label>Зсув вліво/вправо <output id="o-ddx-6"></output> px
+        <input id="ddx-6" type="range" min="-500" max="500" step="1" value="0">
       </label>
-      <label>Десктоп: вгору/вниз <output id="o-dy-6"></output> px
-        <input id="dy-6" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Мобільний: вліво/вправо <output id="o-shift-6"></output> px
-        <input id="shift-6" type="range" min="-400" max="400" step="1" value="94">
-      </label>
-      <label>Мобільний: відстань від форми вище <output id="o-gapv-6"></output> px
-        <input id="gapv-6" type="range" min="-400" max="400" step="1" value="11">
+      <label>Зсув вгору/вниз <output id="o-ddy-6"></output> px
+        <input id="ddy-6" type="range" min="-500" max="500" step="1" value="0">
       </label>
     </details>
     <details class="panel panel--form">
       <summary>Форма 7</summary>
-      <label>Розмір іконки <output id="o-icon-7"></output> px
-        <input id="icon-7" type="range" min="10" max="160" step="0.5" value="84.0">
+      <label>Розмір іконки <output id="o-dicon-7"></output> px
+        <input id="dicon-7" type="range" min="10" max="160" step="0.5" value="84.0">
       </label>
-      <label>Відступ з усіх сторін <output id="o-pad-7"></output> %
-        <input id="pad-7" type="range" min="0" max="40" step="0.5" value="7.5">
+      <label>Відступ з усіх сторін <output id="o-dpad-7"></output> %
+        <input id="dpad-7" type="range" min="0" max="40" step="0.5" value="11.5">
       </label>
-      <label>Між абзацами <output id="o-gapp-7"></output> px
-        <input id="gapp-7" type="range" min="0" max="60" step="1" value="15">
+      <label>Між абзацами <output id="o-dgapp-7"></output> px
+        <input id="dgapp-7" type="range" min="0" max="60" step="1" value="15">
       </label>
-      <label>Опису від країв блоку <output id="o-dsc-7"></output> px
-        <input id="dsc-7" type="range" min="0" max="150" step="1" value="23">
+      <label>Опису від країв блоку <output id="o-ddsc-7"></output> px
+        <input id="ddsc-7" type="range" min="0" max="150" step="1" value="17">
       </label>
-      <label>Мобільний: розтягування <output id="o-wide-7"></output> px
-        <input id="wide-7" type="range" min="0" max="250" step="1" value="184">
+      <label>Розтягування по горизонталі <output id="o-dwide-7"></output> px
+        <input id="dwide-7" type="range" min="-200" max="300" step="1" value="0">
       </label>
-      <label>Десктоп: вліво/вправо <output id="o-dx-7"></output> px
-        <input id="dx-7" type="range" min="-500" max="500" step="1" value="0">
+      <label>Зсув вліво/вправо <output id="o-ddx-7"></output> px
+        <input id="ddx-7" type="range" min="-500" max="500" step="1" value="0">
       </label>
-      <label>Десктоп: вгору/вниз <output id="o-dy-7"></output> px
-        <input id="dy-7" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Мобільний: вліво/вправо <output id="o-shift-7"></output> px
-        <input id="shift-7" type="range" min="-400" max="400" step="1" value="-112">
-      </label>
-      <label>Мобільний: відстань від форми вище <output id="o-gapv-7"></output> px
-        <input id="gapv-7" type="range" min="-400" max="400" step="1" value="25">
+      <label>Зсув вгору/вниз <output id="o-ddy-7"></output> px
+        <input id="ddy-7" type="range" min="-500" max="500" step="1" value="0">
       </label>
     </details>
     <details class="panel panel--form">
       <summary>Форма 8</summary>
-      <label>Розмір іконки <output id="o-icon-8"></output> px
-        <input id="icon-8" type="range" min="10" max="160" step="0.5" value="84.0">
+      <label>Розмір іконки <output id="o-dicon-8"></output> px
+        <input id="dicon-8" type="range" min="10" max="160" step="0.5" value="84.0">
       </label>
-      <label>Відступ з усіх сторін <output id="o-pad-8"></output> %
-        <input id="pad-8" type="range" min="0" max="40" step="0.5" value="7.5">
+      <label>Відступ з усіх сторін <output id="o-dpad-8"></output> %
+        <input id="dpad-8" type="range" min="0" max="40" step="0.5" value="11.5">
       </label>
-      <label>Між абзацами <output id="o-gapp-8"></output> px
-        <input id="gapp-8" type="range" min="0" max="60" step="1" value="15">
+      <label>Між абзацами <output id="o-dgapp-8"></output> px
+        <input id="dgapp-8" type="range" min="0" max="60" step="1" value="15">
       </label>
-      <label>Опису від країв блоку <output id="o-dsc-8"></output> px
-        <input id="dsc-8" type="range" min="0" max="150" step="1" value="69">
+      <label>Опису від країв блоку <output id="o-ddsc-8"></output> px
+        <input id="ddsc-8" type="range" min="0" max="150" step="1" value="17">
       </label>
-      <label>Мобільний: розтягування <output id="o-wide-8"></output> px
-        <input id="wide-8" type="range" min="0" max="250" step="1" value="66">
+      <label>Розтягування по горизонталі <output id="o-dwide-8"></output> px
+        <input id="dwide-8" type="range" min="-200" max="300" step="1" value="0">
       </label>
-      <label>Десктоп: вліво/вправо <output id="o-dx-8"></output> px
-        <input id="dx-8" type="range" min="-500" max="500" step="1" value="0">
+      <label>Зсув вліво/вправо <output id="o-ddx-8"></output> px
+        <input id="ddx-8" type="range" min="-500" max="500" step="1" value="0">
       </label>
-      <label>Десктоп: вгору/вниз <output id="o-dy-8"></output> px
-        <input id="dy-8" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Мобільний: вліво/вправо <output id="o-shift-8"></output> px
-        <input id="shift-8" type="range" min="-400" max="400" step="1" value="81">
-      </label>
-      <label>Мобільний: відстань від форми вище <output id="o-gapv-8"></output> px
-        <input id="gapv-8" type="range" min="-400" max="400" step="1" value="18">
+      <label>Зсув вгору/вниз <output id="o-ddy-8"></output> px
+        <input id="ddy-8" type="range" min="-500" max="500" step="1" value="0">
       </label>
     </details>
     <details class="panel panel--form">
       <summary>Форма 9</summary>
-      <label>Розмір іконки <output id="o-icon-9"></output> px
-        <input id="icon-9" type="range" min="10" max="160" step="0.5" value="84.0">
+      <label>Розмір іконки <output id="o-dicon-9"></output> px
+        <input id="dicon-9" type="range" min="10" max="160" step="0.5" value="84.0">
       </label>
-      <label>Відступ з усіх сторін <output id="o-pad-9"></output> %
-        <input id="pad-9" type="range" min="0" max="40" step="0.5" value="7.5">
+      <label>Відступ з усіх сторін <output id="o-dpad-9"></output> %
+        <input id="dpad-9" type="range" min="0" max="40" step="0.5" value="11.5">
       </label>
-      <label>Між абзацами <output id="o-gapp-9"></output> px
-        <input id="gapp-9" type="range" min="0" max="60" step="1" value="15">
+      <label>Між абзацами <output id="o-dgapp-9"></output> px
+        <input id="dgapp-9" type="range" min="0" max="60" step="1" value="15">
       </label>
-      <label>Опису від країв блоку <output id="o-dsc-9"></output> px
-        <input id="dsc-9" type="range" min="0" max="150" step="1" value="17">
+      <label>Опису від країв блоку <output id="o-ddsc-9"></output> px
+        <input id="ddsc-9" type="range" min="0" max="150" step="1" value="17">
       </label>
-      <label>Мобільний: розтягування <output id="o-wide-9"></output> px
-        <input id="wide-9" type="range" min="0" max="250" step="1" value="58">
+      <label>Розтягування по горизонталі <output id="o-dwide-9"></output> px
+        <input id="dwide-9" type="range" min="-200" max="300" step="1" value="0">
       </label>
-      <label>Десктоп: вліво/вправо <output id="o-dx-9"></output> px
-        <input id="dx-9" type="range" min="-500" max="500" step="1" value="0">
+      <label>Зсув вліво/вправо <output id="o-ddx-9"></output> px
+        <input id="ddx-9" type="range" min="-500" max="500" step="1" value="0">
       </label>
-      <label>Десктоп: вгору/вниз <output id="o-dy-9"></output> px
-        <input id="dy-9" type="range" min="-500" max="500" step="1" value="0">
-      </label>
-      <label>Мобільний: вліво/вправо <output id="o-shift-9"></output> px
-        <input id="shift-9" type="range" min="-400" max="400" step="1" value="-17">
-      </label>
-      <label>Мобільний: відстань від форми вище <output id="o-gapv-9"></output> px
-        <input id="gapv-9" type="range" min="-400" max="400" step="1" value="31">
+      <label>Зсув вгору/вниз <output id="o-ddy-9"></output> px
+        <input id="ddy-9" type="range" min="-500" max="500" step="1" value="0">
       </label>
     </details>
     <div class="panel panel--info" id="info"></div>
@@ -714,6 +967,7 @@
   const stage=document.querySelector('.stage');
   const grid=document.getElementById('grid');
   const inputs=[];
+  ARROWS.forEach(function(a){ a.svg=document.getElementById('arrow-'+a.a); });
 
   FORMS.forEach(function(f){
     f.svg=document.getElementById('pos-'+f.pos);
@@ -723,7 +977,7 @@
     f.title=f.card.querySelector('.results__title');
     f.descr=f.card.querySelector('.results__descr');
     f.ctl={};
-    ['icon','pad','gapp','dsc','wide','gapv','off','shift','dx','dy'].forEach(function(key){
+    ['icon','pad','gapp','dsc','wide','gapv','off','shift','dicon','dpad','dgapp','ddsc','dwide','ddx','ddy'].forEach(function(key){
       const el=document.getElementById(key+'-'+f.pos);
       if(el){ f.ctl[key]=el; inputs.push(el); }
     });
@@ -752,8 +1006,11 @@
     const COLGAP=24*k, ROWGAP=40*k;
     const cardW=(W-2*COLGAP)/3;
     FORMS.forEach(function(f,i){
-      const icon=val(f,'icon',84), pad=val(f,'pad',11.5),
-            gapp=val(f,'gapp',15), dsc=val(f,'dsc',17);
+      const P=mobile?'':'d';
+      const icon=val(f, mobile?'icon':'dicon', 84);
+      const pad =val(f, mobile?'pad':'dpad', 7.5);
+      const gapp=val(f, mobile?'gapp':'dgapp', 15);
+      const dsc =val(f, mobile?'dsc':'ddsc', 17);
       let elL, elW, sx;
       if(mobile){
         const wide=val(f,'wide',66)*k, shift=val(f,'shift',0)*k;
@@ -763,10 +1020,11 @@
         sx=elW/f.vw;
       } else {
         // десктоп: сітка 3 в рядок, ширина картки однакова
-        sx=cardW/f.tw;
+        const dwide=val(f,'dwide',0)*k;
+        sx=(cardW+dwide)/f.tw;
         elW=sx*f.vw;
         const col=i%3;
-        elL=col*(cardW+COLGAP)-4*sx+val(f,'dx',0)*k;
+        elL=col*(cardW+COLGAP)+(cardW-(cardW+dwide))/2-4*sx+val(f,'ddx',0)*k;
       }
       f.rl=elL+4*sx; f.rw=f.tw*sx;
       f.svg.style.left=elL.toFixed(1)+'px';
@@ -803,7 +1061,7 @@
       for(let r=0;r<3;r++){
         let rowH=0;
         for(let c=0;c<3;c++) rowH=Math.max(rowH, FORMS[r*3+c].h);
-        for(let c=0;c<3;c++) FORMS[r*3+c].top=y+val(FORMS[r*3+c],'dy',0)*k;
+        for(let c=0;c<3;c++) FORMS[r*3+c].top=y+val(FORMS[r*3+c],'ddy',0)*k;
         y+=rowH+ROWGAP;
       }
     }
@@ -836,11 +1094,24 @@
     grid.setAttribute('viewBox', '0 0 '+W.toFixed(1)+' '+canvasH.toFixed(0));
     grid.innerHTML=g;
 
+    // 4) пунктирні лінії між формами (діють лише в мобільній версії)
+    if(mobile) ARROWS.forEach(function(a){
+      const A=FORMS[a.a-1], B=FORMS[a.b-1];
+      const P0=[A.rl+a.fx*A.rw, A.top+a.fy*A.h];
+      const ex=(a.b%2===0)?1/3:2/3;
+      const P3=[B.rl+ex*B.rw, B.top+B.h/3];
+      const q=function(c){ return a.svg.querySelector(c); };
+      q('.ln').setAttribute('d','M '+P0[0].toFixed(1)+' '+P0[1].toFixed(1)+' L '+P3[0].toFixed(1)+' '+P3[1].toFixed(1));
+      q('.p0').setAttribute('cx',P0[0].toFixed(1)); q('.p0').setAttribute('cy',P0[1].toFixed(1));
+      q('.p3').setAttribute('cx',P3[0].toFixed(1)); q('.p3').setAttribute('cy',P3[1].toFixed(1));
+    });
+
     // 5) підписи значень
     FORMS.forEach(function(f){
       show(f,'icon',1); show(f,'pad',1); show(f,'gapp',0);
       show(f,'dsc',0);  show(f,'wide',0); show(f,'gapv',0); show(f,'off',0); show(f,'shift',0);
-      show(f,'dx',0); show(f,'dy',0);
+      show(f,'dicon',1); show(f,'dpad',1); show(f,'dgapp',0); show(f,'ddsc',0);
+      show(f,'dwide',0); show(f,'ddx',0); show(f,'ddy',0);
     });
     const info=document.getElementById('info');
     if(info) info.textContent='висота полотна: '+canvasH.toFixed(0)+' px';
