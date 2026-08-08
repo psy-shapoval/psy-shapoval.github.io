@@ -341,8 +341,6 @@ img {
     width: 4.95%;
   }
 
-
-
   .hero__btn {
     left: 10.2%;
     top: 65.79%;
@@ -676,32 +674,46 @@ img {
 .pcard {
   background-color: var(--color-white);
   border-radius: 16px;
-  padding: 28px 22px 26px;
+  padding: 26px 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: start;
+  column-gap: 18px;
+}
+
+/* ліва третина: іконка, під нею назва */
+.pcard__side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .pcard__ico {
-  width: 62px;
-  height: 62px;
-  margin: 0 auto 16px;
+  width: 76px;
+  height: 76px;
+  margin-bottom: 12px;
   border-radius: 50%;
   background-color: var(--color-cream);
   color: var(--color-accent);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: none;
 }
 
-.pcard__ico svg { width: 30px; height: 30px; display: block; }
+.pcard__ico svg { width: 40px; height: 40px; display: block; }
 
 .pcard__title {
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.25;
   color: var(--color-heading-green);
-  margin-bottom: 10px;
 }
+
+/* права частина: опис */
+.pcard__body { min-width: 0; }
 
 .pcard__text {
   font-family: 'Manrope', sans-serif;
@@ -713,29 +725,18 @@ img {
 
 .pcard__text + .pcard__text { margin-top: 10px; }
 
-.process__note {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--color-body);
-  text-align: center;
-  margin-top: 34px;
-}
-
-@media (min-width: 700px) {
-  .pgrid { grid-template-columns: repeat(6, 1fr); gap: 24px; }
-  .pcard { grid-column: span 2; }
-  .pcard:nth-child(4) { grid-column: 2 / span 2; }
-  .pcard:nth-child(5) { grid-column: 4 / span 2; }
+@media (min-width: 900px) {
+  .pgrid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 }
 
 @media (min-width: 900px) {
   .process { padding: 90px 0; }
   .process .section-title { font-size: 44px; }
-  .pcard__title { font-size: 26px; }
+  .pcard { padding: 30px 26px; column-gap: 24px; }
+  .pcard__ico { width: 92px; height: 92px; }
+  .pcard__ico svg { width: 48px; height: 48px; }
+  .pcard__title { font-size: 22px; }
   .pcard__text { font-size: 19px; }
-  .process__note { font-size: 19px; }
 }
 
 .only-desk { display: none; }
@@ -1555,7 +1556,7 @@ img {
     </g>
   </svg>
   <div class="changes__inner">
-    <h2 class="section-title">Що дає терапія</h2>
+    <h2 class="section-title">Що саме дає психотерапія</h2>
   </div>
 
 <div class="stage">
@@ -1856,48 +1857,55 @@ img {
   <!-- БЛОК 4: ЯК ПРОХОДИТЬ ТЕРАПІЯ -->
   <section class="process">
     <div class="container narrow-960 text-center">
-      <h2 class="section-title">Як проходить терапія</h2>
+      <h2 class="section-title">Як проходить</h2>
     </div>
 
     <div class="container narrow-1100">
       <ul class="pgrid">
 
         <li class="pcard">
-          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-laptop"/></svg></span>
-          <div class="pcard__title">Онлайн у Zoom</div>
-          <p class="pcard__text">Потрібні лише інтернет та місце, де вас не будуть турбувати.</p>
+          <div class="pcard__side">
+            <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-laptop"/></svg></span>
+            <div class="pcard__title">Онлайн у Zoom</div>
+          </div>
+          <div class="pcard__body">
+            <p class="pcard__text">Потрібні лише інтернет та місце, де вас не будуть турбувати.</p>
+          </div>
         </li>
 
         <li class="pcard">
-          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-clock"/></svg></span>
-          <div class="pcard__title">50 хвилин</div>
-          <p class="pcard__text">Цього часу достатньо, щоб доторкнутися до важливих переживань і дати їм простір.</p>
-          <p class="pcard__text">Більшість змін відбувається після зустрічі — коли ви осмислюєте прожите.</p>
+          <div class="pcard__side">
+            <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-clock"/></svg></span>
+            <div class="pcard__title">50 хвилин</div>
+          </div>
+          <div class="pcard__body">
+            <p class="pcard__text">Цього часу достатньо, щоб доторкнутися до важливих переживань і дати їм простір.</p>
+            <p class="pcard__text">Більшість змін відбувається після зустрічі — коли ви осмислюєте прожите.</p>
+          </div>
         </li>
 
         <li class="pcard">
-          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-calendar"/></svg></span>
-          <div class="pcard__title">Зазвичай — 1 раз на тиждень</div>
-          <p class="pcard__text">За потреби змінюємо частоту зустрічей відповідно до вашого запиту, життєвих обставин і можливостей.</p>
+          <div class="pcard__side">
+            <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-calendar"/></svg></span>
+            <div class="pcard__title">Зазвичай — 1 раз на тиждень</div>
+          </div>
+          <div class="pcard__body">
+            <p class="pcard__text">За потреби змінюємо частоту зустрічей відповідно до вашого запиту, життєвих обставин і можливостей.</p>
+          </div>
         </li>
 
         <li class="pcard">
-          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-lock"/></svg></span>
-          <div class="pcard__title">Конфіденційність</div>
-          <p class="pcard__text">Усе, про що ми говоримо на консультаціях, залишається між нами.</p>
-          <p class="pcard__text">Виняток — професійні супервізії з колегами. Там не розголошуються ваше ім'я, особисті дані чи деталі, за якими можна вас ідентифікувати.</p>
-        </li>
-
-        <li class="pcard">
-          <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-bubble"/></svg></span>
-          <div class="pcard__title">Без осуду та тиску</div>
-          <p class="pcard__text">Вам не потрібно бути «сильними», «зручними» чи знати, з чого почати.</p>
-          <p class="pcard__text">Ми рухаємося у тому темпі, який підходить саме вам, і працюємо з тим, що найважливіше зараз.</p>
+          <div class="pcard__side">
+            <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-lock"/></svg></span>
+            <div class="pcard__title">Конфіденційність</div>
+          </div>
+          <div class="pcard__body">
+            <p class="pcard__text">Усе, про що ми говоримо на консультаціях, залишається між нами.</p>
+            <p class="pcard__text">Виняток — професійні супервізії з колегами. Там не розголошуються ваше ім'я, особисті дані чи деталі, за якими можна вас ідентифікувати.</p>
+          </div>
         </li>
 
       </ul>
-
-      <p class="process__note">Саме такий підхід дозволяє не просто полегшувати симптоми, <br class="only-desk">а й змінювати психологічні причини, які їх підтримують.</p>
     </div>
   </section>
 
@@ -2145,8 +2153,6 @@ img {
     }, { passive: true });
   })();
   </script>
-
-
 
 
 
