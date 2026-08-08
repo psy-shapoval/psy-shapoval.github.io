@@ -669,24 +669,23 @@ img {
 .ritem__title {
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 22px;
   line-height: 1.25;
   color: var(--color-heading-green);
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   overflow-wrap: break-word;
 }
 
 .ritem__text {
   font-family: 'Manrope', sans-serif;
   font-weight: 300;
-  font-size: 16px;
-  line-height: 1.45;
+  font-size: 20px;
+  line-height: 1.5;
   color: var(--color-body);
 }
 
 @media (min-width: 900px) {
-  .ritem__title { font-size: 21px; margin-bottom: 8px; }
-  .ritem__text { font-size: 18px; line-height: 1.5; }
+  .ritem__title { font-size: 26px; margin-bottom: 8px; }
 }
 
 /* ============ БЛОК 4: ЯК ПРОХОДИТЬ ТЕРАПІЯ (картки) ============ */
@@ -749,7 +748,7 @@ img {
 .pcard__title {
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.25;
   color: var(--color-heading-green);
   hyphens: manual;
@@ -763,7 +762,7 @@ img {
 .pcard__text {
   font-family: 'Manrope', sans-serif;
   font-weight: 300;
-  font-size: 16.5px;
+  font-size: 20px;
   line-height: 1.5;
   color: var(--color-body);
 }
@@ -780,8 +779,7 @@ img {
   .pcard { padding: 30px 26px; column-gap: 24px; }
   .pcard__ico { width: 92px; height: 92px; }
   .pcard__ico svg { width: 48px; height: 48px; }
-  .pcard__title { font-size: 22px; }
-  .pcard__text { font-size: 19px; }
+  .pcard__title { font-size: 26px; }
 }
 
 .only-desk { display: none; }
@@ -921,6 +919,7 @@ img {
 .edu__card {
   flex: 0 0 100%;
   min-width: 0;
+  scroll-snap-stop: always;   /* не давати інерції перескочити кілька карток */
   scroll-snap-align: center;
   display: grid;
   grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
@@ -986,8 +985,8 @@ img {
 .edu__title {
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 700;
-  font-size: 15px;
-  line-height: 1.3;
+  font-size: 22px;
+  line-height: 1.25;
   color: var(--color-heading-green);
   margin-bottom: 6px;
   overflow-wrap: break-word;
@@ -996,14 +995,13 @@ img {
 .edu__descr {
   font-family: 'Manrope', sans-serif;
   font-weight: 300;
-  font-size: 13.5px;
-  line-height: 1.45;
+  font-size: 20px;
+  line-height: 1.5;
   color: var(--color-body);
 }
 
 @media (min-width: 900px) {
-  .edu__title { font-size: 22px; margin-bottom: 8px; }
-  .edu__descr { font-size: 18px; line-height: 1.5; }
+  .edu__title { font-size: 26px; margin-bottom: 8px; }
   .edu__info { gap: 26px; }
   .edu__info--split .edu__item + .edu__item { padding-top: 26px; }
 }
@@ -1188,6 +1186,7 @@ img {
 
 .reviews__item {
   flex: 0 0 auto;
+  scroll-snap-stop: always;   /* не давати інерції перескочити кілька карток */
   width: min(260px, 68vw);
   scroll-snap-align: start;
 }
@@ -1865,14 +1864,6 @@ img {
           </div>
         </li>
 
-        <li class="ritem">
-          <span class="ritem__blob"><svg class="ritem__ico" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 253 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image x="0" y="0" xlink:href="data:image/png;base64,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"/></svg></span>
-          <div class="ritem__body">
-            <div class="ritem__title">Життя стає більш «вашим»</div>
-            <p class="ritem__text">Таким, як хочете саме ви.</p>
-          </div>
-        </li>
-
       </ul>
     </div>
   </section>
@@ -1924,7 +1915,7 @@ img {
             <div class="pcard__title">Конфі&shy;денцій&shy;ність</div>
           </div>
           <div class="pcard__body">
-            <p class="pcard__text">Усе залишається між нами.</p>
+            <p class="pcard__text"><span class="w600">Усе залишається між нами.</span></p>
             <p class="pcard__text">Виняток — супервізії. Але й там не розголошуються ваше ім'я чи деталі, за якими можна вас впізнати.</p>
           </div>
         </li>
