@@ -676,13 +676,16 @@ img {
   border-radius: 16px;
   padding: 26px 20px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  /* minmax(0, …) — інакше довге слово в назві не дає колонці
+     звузитися до третини й розсовує сітку */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   align-items: start;
   column-gap: 18px;
 }
 
 /* ліва третина: іконка, під нею назва */
 .pcard__side {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -710,6 +713,9 @@ img {
   font-size: 18px;
   line-height: 1.25;
   color: var(--color-heading-green);
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  overflow-wrap: break-word;
 }
 
 /* права частина: опис */
@@ -1876,7 +1882,7 @@ img {
         <li class="pcard">
           <div class="pcard__side">
             <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-clock"/></svg></span>
-            <div class="pcard__title">50 хвилин</div>
+            <div class="pcard__title">50<br>хвилин</div>
           </div>
           <div class="pcard__body">
             <p class="pcard__text">Цього часу достатньо, щоб доторкнутися до важливих переживань і дати їм простір.</p>
@@ -1887,7 +1893,7 @@ img {
         <li class="pcard">
           <div class="pcard__side">
             <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-calendar"/></svg></span>
-            <div class="pcard__title">Зазвичай — 1 раз на тиждень</div>
+            <div class="pcard__title">1 раз на<br>тиждень</div>
           </div>
           <div class="pcard__body">
             <p class="pcard__text">За потреби змінюємо частоту зустрічей відповідно до вашого запиту, життєвих обставин і можливостей.</p>
@@ -1897,7 +1903,7 @@ img {
         <li class="pcard">
           <div class="pcard__side">
             <span class="pcard__ico"><svg aria-hidden="true"><use href="#ic-lock"/></svg></span>
-            <div class="pcard__title">Конфіденційність</div>
+            <div class="pcard__title">Конфі&shy;денцій&shy;ність</div>
           </div>
           <div class="pcard__body">
             <p class="pcard__text">Усе, про що ми говоримо на консультаціях, залишається між нами.</p>
