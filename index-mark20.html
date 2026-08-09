@@ -903,6 +903,7 @@ img {
 
 .edu__track {
   display: flex;
+  align-items: stretch;      /* усі картки однакової висоти */
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -933,7 +934,6 @@ img {
     column-gap: 34px;
   }
 
-  .edu__pic { align-self: stretch; }
 }
 
 .edu__pic {
@@ -961,26 +961,22 @@ img {
 /* --- права частина --- */
 
 .edu__info {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 18px;
   min-width: 0;
 }
 
-/* один опис — по центру висоти */
-.edu__info--single { align-content: center; }
-
-/* два описи — верхній і нижній, з розділювачем */
-.edu__info--split {
-  grid-template-rows: 1fr 1fr;
-  align-content: stretch;
-}
+/* текст завжди від верху — без розтягування й зайвих відступів */
+.edu__info--single,
+.edu__info--split { justify-content: flex-start; }
 
 .edu__info--split .edu__item + .edu__item {
   padding-top: 18px;
   border-top: 1px solid rgba(90, 82, 71, .22);
 }
 
-.edu__item { align-self: center; min-width: 0; }
+.edu__item { min-width: 0; }
 
 .edu__title {
   font-family: 'Montserrat Alternates', sans-serif;
