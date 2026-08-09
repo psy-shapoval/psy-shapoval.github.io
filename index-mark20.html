@@ -988,6 +988,34 @@ img {
   overflow-wrap: break-word;
 }
 
+.edu__list {
+  list-style: none;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-body);
+}
+
+.edu__list li {
+  position: relative;
+  padding-left: 20px;
+  margin-top: 4px;
+}
+
+.edu__list li:first-child { margin-top: 0; }
+
+.edu__list li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+}
+
 .edu__descr {
   font-family: 'Manrope', sans-serif;
   font-weight: 300;
@@ -2055,7 +2083,13 @@ img {
           <div class="edu__info edu__info--single">
             <div class="edu__item">
               <h3 class="edu__title">Додатково</h3>
-              <p class="edu__descr">Емоційно-фокусована терапія в роботі з парами, <br>діалектична поведінкова терапія, <br>терапія подружньої зради, <br>консультування ЛГБТ+ клієнтів та інші.</p>
+              <ul class="edu__list">
+                <li>Емоційно-фокусована терапія в роботі з парами</li>
+                <li>Діалектична поведінкова терапія</li>
+                <li>Терапія подружньої зради</li>
+                <li>Консультування ЛГБТ+ клієнтів</li>
+                <li>та інші</li>
+              </ul>
             </div>
           </div>
         </article>
