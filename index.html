@@ -894,7 +894,7 @@ img {
   gap: 10px;
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 22px;          /* як .reasons__title / .about-bio__method */
   line-height: 1.25;
   color: var(--color-heading-green);
   margin-bottom: 10px;
@@ -902,22 +902,26 @@ img {
 
 .method-card__num {
   flex: none;
-  width: 28px;
-  height: 28px;
+  width: 27px;
+  height: 27px;
   border-radius: 50%;
   background-color: var(--color-accent);
   color: var(--color-white);
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
   font-size: 13px;
-  line-height: 28px;
-  text-align: center;
+  /* центруємо цифру по колу через flex; line-height:1 прибирає
+     зсув, який давав звичайний line-height, рівний висоті кола */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .method-card__text {
   font-family: 'Manrope', sans-serif;
   font-weight: 300;
-  font-size: 17px;
+  font-size: 20px;          /* як .body-text / .screen2 .reasons__descr */
   line-height: 1.5;
   color: var(--color-body);
 }
@@ -936,8 +940,12 @@ img {
   }
   .method-card__ico { margin-bottom: 18px; }
   .method-card__ico svg { width: 88px; height: 88px; }
-  .method-card__title { font-size: 22px; }
-  .method-card__text { font-size: 18px; }
+  .method-card__title { font-size: 26px; }
+  .method-card__num {
+    width: 31px;
+    height: 31px;
+    font-size: 14px;   /* 14px дає точне оптичне центрування цифри в колі */
+  }
 }
 
 .about-bio__gallery {
