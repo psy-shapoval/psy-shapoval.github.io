@@ -85,6 +85,14 @@ h1, h2, h3, h4, h5, h6 {
 
 html {
   scroll-behavior: smooth;
+  /* Забороняємо браузеру роздувати шрифти за системним налаштуванням
+     «розмір шрифту» Android. Вбудовані браузери Instagram / Facebook /
+     Telegram застосовують його через text-autosizer, і весь текст стає
+     ~1.4x більшим: кнопка налазить на обличчя, опис у hero обрізається.
+     Chrome має власне налаштування масштабу, тому там проблеми не видно. */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -93,6 +101,8 @@ body {
   line-height: 1.4;
   background: var(--color-cream);
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 a {
@@ -2436,6 +2446,50 @@ img {
       if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
       x0 = null;
     }, { passive: true });
+  })();
+  </script>
+
+  <!-- Запобіжник на випадок, якщо вбудований браузер ігнорує text-size-adjust.
+       Вимірюємо реальний кегль пробного елемента: якщо браузер його роздув —
+       ділимо всі font-size у стилях на той самий коефіцієнт.
+       За звичайних умов (коефіцієнт = 1) скрипт нічого не робить. -->
+  <script>
+  (function () {
+    try {
+      var probe = document.createElement('div');
+      probe.style.cssText = 'position:absolute;top:-9999px;left:-9999px;' +
+        'margin:0;padding:0;border:0;font-size:100px;line-height:1;' +
+        'font-family:monospace;white-space:nowrap;visibility:hidden;';
+      probe.textContent = 'M';
+      document.body.appendChild(probe);
+      var k = probe.getBoundingClientRect().height / 100;
+      probe.parentNode.removeChild(probe);
+      if (!(k > 1.02) || !isFinite(k)) return;
+
+      var out = [];
+      function walk(rules, media) {
+        for (var i = 0; i < rules.length; i++) {
+          var rule = rules[i];
+          if (rule.media) { walk(rule.cssRules || [], rule.media.mediaText); continue; }
+          if (!rule.style || !rule.selectorText) continue;
+          var fs = rule.style.getPropertyValue('font-size');
+          if (!fs) continue;
+          var m = /^\s*([0-9.]+)(px|vw|vh|em|rem|pt)\s*$/.exec(fs);
+          if (!m) continue;
+          var css = rule.selectorText + '{font-size:' +
+            (parseFloat(m[1]) / k).toFixed(4) + m[2] + ' !important}';
+          out.push(media ? '@media ' + media + '{' + css + '}' : css);
+        }
+      }
+      for (var s = 0; s < document.styleSheets.length; s++) {
+        var sheet = document.styleSheets[s];
+        try { if (sheet.cssRules) walk(sheet.cssRules, null); } catch (e) {}
+      }
+      if (!out.length) return;
+      var el = document.createElement('style');
+      el.textContent = out.join('\n');
+      document.head.appendChild(el);
+    } catch (e) {}
   })();
   </script>
 
