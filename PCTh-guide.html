@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>*{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>PCTh-guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600&family=Spectral:ital,wght@0,500;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#F1F3F2; --surface:#FFFFFF; --line:#D7DEDC; --line-soft:#E6EBEA;
+  --ink:#171F21; --muted:#5F6E6D; --faint:#8494921a;
+  --l1:#79868B; --l2:#5D7581; --l3:#53737F; --l4:#4C776E; --l5:#527A5F; --l6:#6A7B4A;
+  --t1:#EFF1F2; --t2:#ECF1F4; --t3:#EAF1F3; --t4:#E9F1EE; --t5:#EBF1EB; --t6:#F0F1E6;
+  --accent:#4C776E; --label:#4A5A5C; --hdr:#E6ECEC;
+  --btn-hi:#FFFFFF; --btn-lo:#7E8E91; --btn-bd:rgba(23,31,33,.11); --btn-bd2:rgba(23,31,33,.22);
+  --hl:rgba(255,255,255,.85); --sh:rgba(20,40,45,.17); --sh2:rgba(20,40,45,.30);
+  --rowA:#DEE9EB; --rowB:#F8F7F2; --hdrRow:#C9D6D7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111516; --surface:#191F21; --line:#2B3538; --line-soft:#222A2C;
+    --ink:#E1E7E6; --muted:#93A2A0; --faint:#8494920f;
+    --l1:#93A0A5; --l2:#84A0AE; --l3:#7BA2AE; --l4:#74A99C; --l5:#7CAB88; --l6:#9CAB6D;
+    --t1:#1A1F21; --t2:#182022; --t3:#172023; --t4:#162220; --t5:#172220; --t6:#1D2019;
+    --accent:#74A99C; --label:#AEBCBA; --hdr:#1E2528;
+  --btn-hi:#93A6AB; --btn-lo:#05090A; --btn-bd:rgba(255,255,255,.07); --btn-bd2:rgba(255,255,255,.13);
+  --hl:rgba(255,255,255,.10); --sh:rgba(0,0,0,.50); --sh2:rgba(0,0,0,.66); --hdr:#1E2528;
+    --btn-hi:#93A6AB; --btn-lo:#05090A; --btn-bd:rgba(255,255,255,.07); --btn-bd2:rgba(255,255,255,.13);
+    --hl:rgba(255,255,255,.10); --sh:rgba(0,0,0,.50); --sh2:rgba(0,0,0,.66);
+    --rowA:#212C30; --rowB:#0F1415; --hdrRow:#2C3A3E;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111516; --surface:#191F21; --line:#2B3538; --line-soft:#222A2C;
+  --ink:#E1E7E6; --muted:#93A2A0; --faint:#8494920f;
+  --l1:#93A0A5; --l2:#84A0AE; --l3:#7BA2AE; --l4:#74A99C; --l5:#7CAB88; --l6:#9CAB6D;
+  --t1:#1A1F21; --t2:#182022; --t3:#172023; --t4:#162220; --t5:#172220; --t6:#1D2019;
+  --accent:#74A99C; --label:#AEBCBA; --hdr:#1E2528;
+  --btn-hi:#93A6AB; --btn-lo:#05090A; --btn-bd:rgba(255,255,255,.07); --btn-bd2:rgba(255,255,255,.13);
+  --hl:rgba(255,255,255,.10); --sh:rgba(0,0,0,.50); --sh2:rgba(0,0,0,.66);
+  --rowA:#212C30; --rowB:#0F1415; --hdrRow:#2C3A3E;
+}
+
+html{ font-size: clamp(6.8px, min(0.635vw, 1.19vh), 17px); }
+*{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Commissioner", "Segoe UI", system-ui, sans-serif;
+  font-size:1rem; line-height:1.26;
+}
+.screen{ height:100vh; box-sizing:border-box; }
+.screen[hidden]{ display:none; }
+#s1{ display:grid; grid-template-rows:minmax(0,1fr) auto auto; gap:.35rem; padding:.4rem .5rem; }
+
+/* ---------- другий екран ---------- */
+#s2{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:minmax(0,1fr) auto auto;
+     gap:0; padding:.4rem .5rem .9rem; background:var(--hdr); }
+.pane{ padding:.6rem; min-height:0; display:flex; }
+.pane:first-child{ justify-content:flex-end; }
+.acts{ grid-column:1 / -1; display:flex; gap:.7rem; justify-content:center; padding-top:1.3rem; }
+.foot{ grid-column:1 / -1; text-align:center; padding-top:1.2rem;
+  color:var(--muted); opacity:.72; font-size:max(11px, .95rem); }
+.foot a{ color:inherit; text-decoration:none; border-bottom:1px solid currentColor; }
+.foot a:hover{ opacity:1; }
+.acts button.act{ width:auto; height:auto; padding:.62rem 1.6rem; font-size:max(13px, 1.18rem); }
+#note{
+  flex:0 1 auto; width:100%; max-width:100%; overflow:auto; min-height:0;
+  border:1px solid var(--btn-bd2); border-radius:4px;
+  background:var(--surface); color:var(--ink);
+  font-family:inherit; font-size:max(12.5px, 1.2rem); line-height:1.45;
+  padding:1rem 1.1rem;
+  box-shadow: inset 0 2px 4px var(--sh);
+}
+#note:focus{ outline:none; }
+#note p{ margin:0; }
+#note .hd{ margin-top:2em; text-align:center; letter-spacing:.03em; }
+#note .cmt{ margin-top:2em; }
+#note .hd:first-child{ margin-top:0; }
+#note .dt{ width:100%; height:auto; border-collapse:collapse; table-layout:auto; margin:.2em 0 0; }
+#note .dt td{ vertical-align:top; padding:0 0 .3em 0; }
+#note .dt td.nm{ width:1%; white-space:nowrap; padding-right:1.1em; vertical-align:middle; }
+#note .dt td.st{ width:1%; white-space:nowrap; padding-right:.7em; vertical-align:middle; }
+#note .dt td.cm{ width:98%; font-weight:400; }
+#note .meta{ font-style:italic; color:var(--muted); margin-bottom:.5em; }
+#note .ct{ width:auto; height:auto; border-collapse:collapse; margin:.2em 0 0; }
+#note .ct td{ vertical-align:top; padding:0 0 .1em 0; }
+#note .ct td.q{ padding-right:1.1em; white-space:nowrap; }
+#note .ct td.a{ white-space:nowrap; }
+#note .cm *{ font-weight:400; }
+.gen{ font-weight:600; }
+.usr{ font-weight:400; }
+
+.modal{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  background:rgba(10,18,20,.45); z-index:10; }
+.modal[hidden]{ display:none; }
+.modal .box{
+  background:var(--surface); border:1px solid var(--line); border-radius:6px;
+  padding:1.4rem 1.6rem; max-width:46ch; box-shadow:0 8px 26px rgba(10,25,28,.28);
+  font-size:max(13px, 1.25rem); line-height:1.45;
+}
+.modal .row{ display:flex; gap:.7rem; justify-content:flex-end; margin-top:1.2rem; }
+.modal button{ font-family:inherit; font-size:inherit; cursor:pointer; padding:.35rem 1.5rem;
+  border-radius:4px; border:1px solid var(--btn-bd2); background:var(--hdr); color:var(--ink); }
+.modal button.yes{ background:var(--accent); border-color:rgba(0,0,0,.22); color:#fff; font-weight:600; }
+
+/* ---------- основна таблиця ---------- */
+.grid{
+  background:var(--surface); border:1px solid var(--line); border-radius:3px;
+  overflow:hidden; min-height:0;
+}
+table{ width:100%; height:100%; border-collapse:collapse; table-layout:fixed; }
+col.c-dim{ width:12.05%; } col.c-l1{ width:12.5%; } col.c-l2{ width:13.6%; } col.c-l3{ width:14.35%; }
+col.c-l4{ width:14.55%; } col.c-l5{ width:15.3%; } col.c-l6{ width:17.65%; }
+th,td{ vertical-align:top; padding:.32rem .42rem; }
+td.cell{ padding:1.5px; height:100%; }
+td.dim{ border-right:1px solid var(--line); vertical-align:middle; }
+#s1 tbody tr + tr td.dim{ border-top:1px solid var(--line); }
+#s1 tbody tr:nth-child(odd) td.dim{ background:var(--rowA); }
+#s1 tbody tr:nth-child(even) td.dim{ background:var(--rowB); }
+
+thead th{ padding:.26rem .5rem .3rem; background:var(--hdrRow); border-bottom:1px solid var(--line); }
+.lvl{ display:flex; align-items:baseline; gap:.38rem; }
+.lvl b{
+  font-size:1.05rem; font-weight:600; color:#fff; background:var(--lc);
+  border-radius:2px; padding:.05rem .38rem; line-height:1.35;
+}
+.lvl span{ font-size:1.06rem; font-weight:600; color:var(--lc); letter-spacing:.005em; }
+.lvl-note{ display:block; font-size:.88rem; color:var(--muted); font-weight:400; margin-top:.12rem; }
+th.h-dim{ text-align:left; font-weight:500; font-size:.92rem; color:var(--muted);
+  letter-spacing:.1em; text-transform:uppercase; }
+
+
+.dim .name{ font-family:"Spectral", Georgia, serif; font-weight:600; font-size:1.22rem; line-height:1.2; }
+.dim .q{ color:var(--muted); font-style:italic; font-size:1.02rem; margin-top:.22rem; line-height:1.24; }
+
+.def{ margin:0 0 .22rem; }
+.ex{ margin:.1rem 0 0; color:var(--muted); padding-left:.62rem; text-indent:-.62rem; }
+.ex::before{ content:"▸ "; color:var(--l4); }
+
+
+/* ---------- кнопки-варіанти ---------- */
+#s1 tbody tr:nth-child(odd) .opt{ --c:var(--rowA); }
+#s1 tbody tr:nth-child(even) .opt{ --c:var(--rowB); }
+.opt{
+  display:flex; flex-direction:column; justify-content:center;
+  width:100%; height:100%; min-height:100%;
+  text-align:left; font:inherit; color:inherit; cursor:pointer;
+  padding:.3rem .4rem; border:1px solid var(--btn-bd); border-radius:5px;
+  background:var(--c);
+  background:linear-gradient(180deg,
+     color-mix(in srgb, var(--c) 48%, var(--btn-hi)) 0%,
+     var(--c) 55%,
+     color-mix(in srgb, var(--c) 82%, var(--btn-lo)) 100%);
+  box-shadow: inset 0 1px 0 var(--hl), inset 0 -1.5px 0 color-mix(in srgb, var(--c) 70%, var(--btn-lo)),
+              0 2px 3px var(--sh), 0 0 0 .5px var(--btn-bd);
+}
+.opt:hover{ border-color:var(--btn-bd2); }
+.opt:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
+.opt.is-on{
+  background:color-mix(in srgb, var(--c) 82%, var(--btn-lo));
+  background:linear-gradient(180deg,
+     color-mix(in srgb, var(--c) 62%, var(--btn-lo)) 0%,
+     color-mix(in srgb, var(--c) 86%, var(--btn-lo)) 46%,
+     color-mix(in srgb, var(--c) 62%, var(--btn-hi)) 100%);
+  border-color:var(--btn-bd2);
+  box-shadow: inset 0 3px 5px var(--sh2), inset 0 1px 2px var(--sh2),
+              inset 0 -1.5px 0 var(--hl), 0 0 0 .5px var(--btn-bd2);
+}
+.opt.is-on .def{ font-weight:500; }
+@media (prefers-reduced-motion:no-preference){ .opt{ transition:box-shadow .12s, background .12s; } }
+
+/* ---------- нижні смуги ---------- */
+.strip{ border:1px solid var(--line); border-radius:3px; padding:.32rem .45rem; }
+.strip.s-cond{ background:var(--rowB); }
+.strip.s-exp{ background:var(--rowA); }
+.s-cond .opt{ --c:var(--rowB); }
+.s-exp .opt{ --c:var(--rowA); }
+.band{ display:grid; gap:.38rem; align-items:stretch; }
+.band-label{
+  font-size:1rem; font-weight:600; line-height:1.16; color:var(--label);
+  align-self:center; padding-right:.3rem; border-right:1px solid var(--line);
+}
+
+.exp{ grid-template-columns:.26fr .78fr 1.01fr .92fr .98fr .96fr 1.22fr 1.13fr .66fr; gap:.28rem; }
+.exp .step{ display:flex; gap:.3rem; align-items:flex-start; padding:.28rem .32rem; }
+.exp .n{ font-size:1.12rem; font-weight:600; color:var(--sc); line-height:1.15; }
+.exp .t b{ display:block; font-weight:600; font-size:1rem; line-height:1.18; }
+.exp .t i{ font-style:normal; color:var(--muted); font-size:.9rem; line-height:1.2; display:block; }
+
+.cond{ grid-template-columns:.3fr repeat(6,1fr); }
+.cond .qq{ font-size:.98rem; line-height:1.2; }
+.cond .qq .no{ color:var(--l4); font-weight:600; font-variant-numeric:tabular-nums; margin-right:.25rem; }
+.btn-cell{ display:flex; align-items:center; justify-content:flex-end; }
+
+button.edit{
+  --c:var(--accent);
+  font-family:inherit; font-size:1.02rem; font-weight:600; color:#fff;
+  letter-spacing:.03em; cursor:pointer; width:100%; height:100%;
+  padding:.3rem .6rem; border:1px solid rgba(0,0,0,.22); border-radius:4px;
+  background:var(--accent);
+  background:linear-gradient(180deg,
+     color-mix(in srgb, var(--accent) 76%, #ffffff) 0%,
+     var(--accent) 55%,
+     color-mix(in srgb, var(--accent) 84%, #000000) 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.30), 0 1px 1.5px var(--sh);
+}
+button.edit:active{
+  background:linear-gradient(180deg,
+     color-mix(in srgb, var(--accent) 78%, #000000) 0%,
+     color-mix(in srgb, var(--accent) 92%, #000000) 42%,
+     color-mix(in srgb, var(--accent) 80%, #ffffff) 100%);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.42), inset 0 -1px 0 rgba(255,255,255,.22);
+}
+button.edit:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+button.edit.done{
+  background:linear-gradient(180deg, #8FBF62 0%, #6E9E46 55%, #5A8639 100%);
+  border-color:rgba(0,0,0,.28); color:#fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 1px 1.5px var(--sh);
+}
+</style>
+</head>
+<body>
+<section class="screen" id="s1">
+<div class="grid">
+<table>
+  <colgroup>
+    <col class="c-dim"><col class="c-l1"><col class="c-l2"><col class="c-l3"><col class="c-l4"><col class="c-l5"><col class="c-l6">
+  </colgroup>
+  <thead>
+    <tr>
+      <th class="h-dim">Вимір · питання до себе</th>
+      <th style="--lc:var(--l1)"><div class="lvl"><b>1</b><span>Ригідність</span></div></th>
+      <th style="--lc:var(--l2)"><div class="lvl"><b>2</b><span>Усе зовні</span></div></th>
+      <th style="--lc:var(--l3)"><div class="lvl"><b>3</b><span>Про себе в минулому</span></div></th>
+      <th style="--lc:var(--l4)"><div class="lvl"><b>4</b><span>Проривається зараз</span></div></th>
+      <th style="--lc:var(--l5)"><div class="lvl"><b>5</b><span>Живе в теперішньому</span></div></th>
+      <th style="--lc:var(--l6)"><div class="lvl"><b>6</b><span>Проживає повністю</span></div></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <tr>
+    <td class="dim">
+      <div class="name">Час і безпосередність переживання</div>
+      <div class="q">Коли живе те, про що людина говорить: тоді чи зараз?</div>
+    </td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Внутрішнього немає зовсім; теперішнє прочитується за схемою минулого.</p><p class="ex">«А про що тут узагалі говорити?»</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Мовлення про зовнішні події та інших людей; внутрішнього немає ні в минулому, ні тепер.</p><p class="ex">«Він сказав — я відповів. Далі вона знову почала…»</p><p class="ex">На питання про почуття відповідає описом ситуації.</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Внутрішнє з'являється, але тільки в минулому часі й на дистанції.</p><p class="ex">«Тоді мені було важко»</p><p class="ex">«Я такий з дитинства» — узагальнення замість епізоду.</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Теперішнє прорізається на кілька секунд і одразу відсувається назад у розповідь.</p><p class="ex">«Мені зараз… та ні, це неважливо, я про інше»</p><p class="ex">Пауза, зволікання — і повернення до сюжету.</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Переживання відбувається в кабінеті, а не переказується; мова сповільнюється.</p><p class="ex">«Ось зараз, коли я це кажу, стає тісно»</p><p class="ex">Замовкає й прислухається до себе, перш ніж відповісти.</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Проживання йде до кінця, без зупинки, синхронно зі словом.</p><p class="ex">Уривками: «воно… ось тут… ще не відпускає»</p><p class="ex">Не пояснює й не коментує — просто в цьому.</p></button></td>
+  </tr>
+
+  <tr>
+    <td class="dim">
+      <div class="name">Власність почуттів</div>
+      <div class="q">Чиї це почуття?</div>
+    </td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Почуття не розпізнаються й не виражаються; вважаються небезпечними.</p><p class="ex">«Говорити про почуття — марна трата часу»</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Почуття не названі або приписані обставинам чи людям узагалі.</p><p class="ex">«Ситуація нервова»</p><p class="ex">«Кого б це не вибісило?»</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Почуття визнані своїми, але як факт біографії, часто з осудом.</p><p class="ex">«Я тоді розлютився, і це було негідно»</p><p class="ex">«У мене є злість, з нею треба щось робити».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">«Я відчуваю зараз» звучить — і одразу гаситься самокритикою чи гумором.</p><p class="ex">«Мені образливо. Смішно, доросла людина»</p><p class="ex">Сміх одразу після сильної фрази.</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Почуття визнане своїм і потрібним; з'являється бажання бути таким.</p><p class="ex">«Так, я злюся — і не хочу більше вдавати, що ні»</p><p class="ex">«Це моє, я не збираюся це відкладати».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Почуття прийняте без застережень і без потреби пояснювати.</p><p class="ex">«Мені гірко. Так є»</p><p class="ex">Плаче й не вибачається за сльози.</p></button></td>
+  </tr>
+
+  <tr>
+    <td class="dim">
+      <div class="name">Точність називання</div>
+      <div class="q">Наскільки слово відповідає тому, що всередині?</div>
+    </td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Слів для внутрішнього немає взагалі; лише «нормально / ненормально».</p><p class="ex">«Все як у людей».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Глобальні ярлики; стан описується через побут або медичні терміни.</p><p class="ex">«Нормально», «Погано», «Стрес»</p><p class="ex">«Депресія в мене, мабуть».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Базові емоції в готовій формі, часто через узагальнення.</p><p class="ex">«Я нервувався»</p><p class="ex">«Мені завжди прикро в таких випадках».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">З'являється пошук і виправлення себе — слово вже не влаштовує.</p><p class="ex">«Роздратування… ні, не те. Радше образа»</p><p class="ex">«Не знаю, як це назвати».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Розрізняє відтінки й суміші, тримає кілька почуттів одночасно.</p><p class="ex">«Це полегшення — і водночас сором, що полегшення»</p><p class="ex">«Не страх, а щось на кшталт настороженості».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Слів мало, вони прості й точні; збігаються з переживанням.</p><p class="ex">«Порожньо»</p><p class="ex">«Ось це і є самотність. Не та, про яку я говорив».</p></button></td>
+  </tr>
+
+  <tr>
+    <td class="dim">
+      <div class="name">Локус оцінювання</div>
+      <div class="q">За чиїм критерієм людина вирішує, що правильно?</div>
+    </td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Критерій зовнішній і неусвідомлюваний; питання «чого хочу я» не існує.</p><p class="ex">«Є як є, так заведено».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Критерій цілком зовні: норми, очікування, «як має бути».</p><p class="ex">«Так же не роблять»</p><p class="ex">«А що люди скажуть?»</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Зовнішній критерій діє, але вперше звучить питання про власне бажання.</p><p class="ex">«Мама вважає, що треба… а я не знаю, чого хочу я»</p><p class="ex">«Мабуть, я маю бути вдячним».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Коливається; часто перевіряє себе через терапевта.</p><p class="ex">«А це нормально, що я так почуваюся?»</p><p class="ex">«Скажіть, я правильно роблю?»</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Спирається на власне відчуття і перевіряє його, а не шукає дозволу.</p><p class="ex">«Мені від цього погано — і цього досить, щоб відмовитись»</p><p class="ex">«Не знаю, чи це правильно, але це моє».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Власне відчуття — критерій, з готовністю нести наслідки.</p><p class="ex">«Я так вирішив. Знаю, чого це коштуватиме, і згоден»</p><p class="ex">Не питає підтвердження навіть у складному виборі.</p></button></td>
+  </tr>
+
+  <tr>
+    <td class="dim">
+      <div class="name">Відповідальність і суб'єктність</div>
+      <div class="q">Хто діяч у тому, що відбувається?</div>
+    </td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Проблем не існує, змінюватися немає потреби; біль приписаний зовнішньому.</p><p class="ex">«У мене все нормально, це вони».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Причина цілком зовні; людина — той, з ким це трапляється.</p><p class="ex">«Мене довели»</p><p class="ex">«Так склалося».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Причетність визнана, але через безпорадність або минуле.</p><p class="ex">«Я, звісно, теж винен, але що я міг зробити?»</p><p class="ex">«Це через те, як мене виховали».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Відповідальність з'являється і зникає в межах однієї розмови.</p><p class="ex">«Це я так зробив… хоча ні, вона перша почала»</p><p class="ex">«Мабуть, справа в мені. Або ні».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Стійко бачить власну частку і цікавиться саме нею.</p><p class="ex">«Чим я до цього доклався?»</p><p class="ex">«Я обрав мовчати — і ось результат».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">«Проблеми» як окремого об'єкта немає: людина живе своєю темою і розпоряджається собою.</p><p class="ex">«Це не проблема, це те, як я зараз живу»</p><p class="ex">«Я знаю, що робитиму, і знаю ціну».</p></button></td>
+  </tr>
+
+  <tr>
+    <td class="dim">
+      <div class="name">Гнучкість конструктів</div>
+      <div class="q">Переконання — це факт чи власне тлумачення?</div>
+    </td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Світ чорно-білий, твердження звучать як абсолюти; конструкти задані минулим.</p><p class="ex">«Життя таке, і крапка».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Переконання дорівнює факту про реальність; сумніву немає.</p><p class="ex">«Людям вірити не можна»</p><p class="ex">«Я просто така людина».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Впізнає як власну позицію, але не піддає її сумніву.</p><p class="ex">«Я так вважаю, мене так навчили»</p><p class="ex">«У мене такий принцип».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Помічає конструкт як конструкт і вперше на нього дивиться.</p><p class="ex">«Виходить, я вирішив це ще в дитинстві»</p><p class="ex">«А чого я вирішив, що маю бути сильним?»</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Активно перевіряє переконання досвідом і переформульовує їх.</p><p class="ex">«Я думав, що мене відкинуть — а вийшло інакше»</p><p class="ex">«Це радше моє тлумачення, ніж те, що сталося».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Конструкт розчиняється в моменті переживання; рамка не накладається.</p><p class="ex">«Не знаю, як це назвати, і не потрібно»</p><p class="ex">Проживає без пояснення й без готового висновку.</p></button></td>
+  </tr>
+
+  <tr>
+    <td class="dim">
+      <div class="name">Контакт тут-і-тепер</div>
+      <div class="q">Як людина ризикує в стосунку зі мною?</div>
+    </td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Близькість переживається як небезпека; про себе не повідомляє. Приходить під тиском, не сам.</p><p class="ex">«Мене сюди відправили».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Контакт формальний; терапевт — функція, стосунку немає.</p><p class="ex">«Ви ж фахівець, скажіть, що робити»</p><p class="ex">Уникає пауз, говорить не дивлячись.</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Розмова відвертіша, але про мене й про нас — нічого.</p><p class="ex">Говорить про себе, проте лише про життя поза кабінетом.</p><p class="ex">Ввічливий, «зручний» клієнт.</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Ризикує й перевіряє мене; іноді недовіра звучить прямо.</p><p class="ex">«Не знаю, чи можу вам це казати»</p><p class="ex">«Вам, мабуть, нудно мене слухати».</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Приносить те, що між нами, і витримує це.</p><p class="ex">«Мене зачепило, як ви сказали минулого разу»</p><p class="ex">Сердиться на мене вголос — і лишається в контакті.</p></button></td>
+    <td class="cell"><button class="opt" type="button" aria-pressed="false"><p class="def">Присутність без бар'єрів; мовчання витримується обома.</p><p class="ex">Мовчить разом зі мною, і це не незручно.</p><p class="ex">«Мені зараз важливо, що ви тут».</p></button></td>
+  </tr>
+
+  </tbody>
+</table>
+</div>
+
+<section class="strip s-cond">
+  <div class="band cond">
+    <div class="band-label">Шість<br>умов</div>
+    <button class="opt qq" type="button" aria-pressed="false" ><span class="no">1</span>Чи вдалося встановити й підтримувати психологічний контакт?</button>
+    <button class="opt qq" type="button" aria-pressed="false" ><span class="no">2</span>Чи потребував клієнт терапії і був здатний нею скористатися?</button>
+    <button class="opt qq" type="button" aria-pressed="false" ><span class="no">3</span>Чи був я конгруентним у стосунках із цим клієнтом?</button>
+    <button class="opt qq" type="button" aria-pressed="false" ><span class="no">4</span>Чи відчував безумовне позитивне ставлення до нього?</button>
+    <button class="opt qq" type="button" aria-pressed="false" ><span class="no">5</span>Чи міг я переживати емпатичне розуміння його внутрішньої системи відліку?</button>
+    <button class="opt qq" type="button" aria-pressed="false" ><span class="no">6</span>Чи сприймав клієнт, принаймні мінімально, мої прийняття і емпатію?</button>
+  </div>
+</section>
+
+<section class="strip s-exp">
+  <div class="band exp">
+    <div class="band-label">Шкала<br>EXP</div>
+    <button class="opt step" type="button" aria-pressed="false" style="--sc:var(--l1)"><div class="n">1</div><div class="t"><b>Зовнішній опис</b><i>події, факти, інші люди</i></div></button>
+    <button class="opt step" type="button" aria-pressed="false" style="--sc:var(--l2)"><div class="n">2</div><div class="t"><b>Готове пояснення</b><i>кліше, ярлики, «розповідь про»</i></div></button>
+    <button class="opt step" type="button" aria-pressed="false" style="--sc:var(--l2)"><div class="n">3</div><div class="t"><b>Назване почуття</b><i>емоція як уже готовий факт</i></div></button>
+    <button class="opt step" type="button" aria-pressed="false" style="--sc:var(--l3)"><div class="n">4</div><div class="t"><b>Звернення всередину</b><i>пауза, пошук, «щось у мені…»</i></div></button>
+    <button class="opt step" type="button" aria-pressed="false" style="--sc:var(--l4)"><div class="n">5</div><div class="t"><b>Активне дослідження</b><i>відтінки, «це не зовсім так…»</i></div></button>
+    <button class="opt step" type="button" aria-pressed="false" style="--sc:var(--l5)"><div class="n">6</div><div class="t"><b>Новий сенс</b><i>зсув, що народжується з переживання</i></div></button>
+    <button class="opt step" type="button" aria-pressed="false" style="--sc:var(--l6)"><div class="n">7</div><div class="t"><b>Плинний процес</b><i>тримається сам і поширюється далі</i></div></button>
+    <div class="btn-cell"><button class="edit" type="button">Згенерувати опис</button></div>
+  </div>
+</section>
+</section>
+
+<section class="screen" id="s2" hidden>
+  <div class="pane"><div id="note" contenteditable="true" spellcheck="false" role="textbox" aria-multiline="true" aria-label="Опис сесії"></div></div>
+  <div class="pane"></div>
+  <div class="acts">
+    <button class="edit act" type="button" id="btnImg">Зберегти як зображення</button>
+    <button class="edit act" type="button" id="btnCopyImg">Скопіювати зображення</button>
+    <button class="edit act" type="button" id="btnCopy">Скопіювати текст</button>
+  </div>
+  <div class="foot"><a href="https://t.me/shapoval_nikolay" target="_blank" rel="noopener">З питаннями та пропозиціями пишіть сюди</a>&nbsp;&nbsp;© Микола Шаповал, 2026</div>
+</section>
+
+<div class="modal" id="warn" hidden>
+  <div class="box">
+    <div>У полі опису є ваші зміни. Якщо згенерувати текст повторно, вони будуть втрачені. Згенерувати?</div>
+    <div class="row">
+      <button type="button" id="warnNo">Ні</button>
+      <button type="button" class="yes" id="warnYes">Так</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement, grid=document.querySelector('.grid'),
+      table=grid.querySelector('table');
+  function over(fs){
+    root.style.fontSize=fs.toFixed(2)+'px';
+    void table.offsetHeight;
+    return table.scrollHeight - grid.clientHeight;
+  }
+  function fit(){
+    var lo=6, hi=28, mid;
+    for(var i=0;i<14;i++){ mid=(lo+hi)/2; if(over(mid)<=0) lo=mid; else hi=mid; }
+    lo-=0.12;
+    for(var g=0; g<80 && over(lo)>0 && lo>6; g++) lo-=0.08;
+    root.style.fontSize=lo.toFixed(2)+'px';
+  }
+  document.addEventListener('click', function(e){
+    var b=e.target.closest('.opt'); if(!b) return;
+    var on=b.classList.toggle('is-on');
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+
+  /* ---------- другий екран: генерація опису ---------- */
+  var s2=document.getElementById('s2'), note=document.getElementById('note'),
+      warn=document.getElementById('warn'), lastGen=null;
+
+  function levels(tr){
+    var out=[];
+    tr.querySelectorAll('td.cell .opt').forEach(function(b,i){ if(b.classList.contains('is-on')) out.push(i+1); });
+    return out;
+  }
+  function esc(t){ return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function pad(n){ return (n<10?'0':'')+n; }
+  function stamp(){
+    var d=new Date();
+    return pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear()
+         + '  '+pad(d.getHours())+':'+pad(d.getMinutes());
+  }
+  function buildHTML(){
+    var h='<p class="meta"><b class="gen">'+stamp()+'</b>&nbsp;&nbsp;·&nbsp;&nbsp;Клієнт: </p>'
+        + '<p class="hd"><b class="gen">СТАДІЇ ЗА РОДЖЕРСОМ</b></p><table class="dt"><tbody>';
+    document.querySelectorAll('#s1 tbody tr').forEach(function(tr){
+      var name=tr.querySelector('.dim .name').textContent.trim(), lv=levels(tr);
+      var st = lv.length ? '- '+lv.join('-')+' ст.' : '-';
+      h += '<tr><td class="nm" style="white-space:nowrap">'+esc(name)+'</td>'
+         + '<td class="st" style="white-space:nowrap"><b class="gen">'+esc(st)+'</b></td>'
+         + '<td class="cm"><br></td></tr>';
+    });
+    h += '</tbody></table><p class="hd"><b class="gen">ШІСТЬ УМОВ</b></p><table class="ct"><tbody>';
+    document.querySelectorAll('.cond .qq').forEach(function(b){
+      var n=b.querySelector('.no').textContent.trim();
+      var q=b.textContent.trim().replace(/^\d+\s*/,'').trim();
+      h += '<tr><td class="q" style="white-space:nowrap"><b class="gen">'+esc(n)+':</b> '+esc(q)+'</td>'
+         + '<td class="a" style="white-space:nowrap">- <b class="gen">'+(b.classList.contains('is-on') ? 'так' : 'ні')+'</b></td></tr>';
+    });
+    h += '</tbody></table><p class="hd"><b class="gen">ШКАЛА ЕКСПІРІЄНСИНГУ</b></p>';
+    [].slice.call(document.querySelectorAll('.exp .step')).forEach(function(st){
+      if(!st.classList.contains('is-on')) return;
+      h += '<p><b class="gen">'+esc(st.querySelector('.n').textContent.trim())+': '
+         + esc(st.querySelector('.t b').textContent.trim())+'</b> — '
+         + esc(st.querySelector('.t i').textContent.trim())+'</p>';
+    });
+    h += '<p class="cmt"><b class="gen">ЗАПИТ/СКАРГА:</b> </p>'
+       + '<p class="cmt"><b class="gen">КОМЕНТАРІ:</b> </p>';
+    return h;
+  }
+  function fitNoteWidth(){
+    var ct = note.querySelector('.ct'); if(!ct) return;
+    note.style.width='';
+    var ans = ct.querySelectorAll('.a b'), prev=[];
+    ans.forEach(function(b,i){ prev[i]=b.textContent; b.textContent='так'; });
+    var cs = getComputedStyle(note);
+    var extra = parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)
+              + parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth);
+    var w = ct.getBoundingClientRect().width;
+    ans.forEach(function(b,i){ b.textContent=prev[i]; });
+    note.style.width = Math.ceil(w + extra + 2)+'px';
+  }
+  function generate(){
+    s2.hidden = false;
+    note.innerHTML = buildHTML();
+    fitNoteWidth();
+    lastGen = note.innerHTML;
+    requestAnimationFrame(function(){
+      s2.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
+
+  /* текст, який дописує користувач, — звичайної насиченості */
+  note.addEventListener('beforeinput', function(e){
+    if(e.inputType!=='insertText' && e.inputType!=='insertFromPaste') return;
+    var sel=window.getSelection(); if(!sel.rangeCount) return;
+    var r=sel.getRangeAt(0);
+    var el=r.startContainer.nodeType===1 ? r.startContainer : r.startContainer.parentNode;
+    if(!el.closest('.gen') || el.closest('.usr')) return;
+    var text = e.inputType==='insertText' ? e.data
+             : (e.dataTransfer ? e.dataTransfer.getData('text/plain') : null);
+    if(text==null) return;
+    e.preventDefault();
+    r.deleteContents();
+    var span=document.createElement('span'); span.className='usr'; span.textContent=text;
+    r.insertNode(span);
+    var nr=document.createRange();
+    nr.setStart(span.firstChild, span.firstChild.length); nr.collapse(true);
+    sel.removeAllRanges(); sel.addRange(nr);
+  });
+
+  document.querySelector('button.edit').addEventListener('click', function(){
+    if(!s2.hidden && note.innerHTML !== lastGen){ warn.hidden=false; return; }
+    generate();
+  });
+  var saysT;
+  function tell(btn, t){
+    if(!btn) return;
+    if(!btn.dataset.label){
+      btn.dataset.label=btn.textContent;
+      btn.style.width=Math.ceil(btn.getBoundingClientRect().width)+'px';
+    }
+    btn.textContent=t; btn.classList.add('done'); clearTimeout(saysT);
+    saysT=setTimeout(function(){ btn.textContent=btn.dataset.label; btn.classList.remove('done'); }, 2200);
+  }
+  function fileStamp(){
+    var d=new Date();
+    return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+'_'+pad(d.getHours())+'-'+pad(d.getMinutes());
+  }
+  function viaSVG(node){
+    var w=Math.ceil(node.offsetWidth), h=Math.ceil(node.offsetHeight);
+    var c2=node.cloneNode(true);
+    c2.setAttribute('xmlns','http://www.w3.org/1999/xhtml');
+    c2.style.position='static'; c2.style.left='auto'; c2.style.top='auto'; c2.style.zIndex='auto';
+    c2.style.width=w+'px'; c2.style.minHeight=h+'px';
+    var xml;
+    try{ xml=new XMLSerializer().serializeToString(c2); }catch(e){ return Promise.reject(e); }
+    var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+      +'<foreignObject width="100%" height="100%">'+xml+'</foreignObject></svg>';
+    return new Promise(function(res,rej){
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');
+        c.width=w*2; c.height=h*2;
+        var x=c.getContext('2d'); x.scale(2,2);
+        x.fillStyle='#ffffff'; x.fillRect(0,0,w,h);
+        x.drawImage(img,0,0,w,h); res(c);
+      };
+      img.onerror=rej;
+      img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+    });
+  }
+  function colWidths(tbl){
+    var tr=tbl && tbl.querySelector('tr'); if(!tr) return [];
+    return [].map.call(tr.children, function(td){ return Math.round(td.getBoundingClientRect().width); });
+  }
+  function flatten(o){
+    o=o||{};
+    var lh=o.lh||'1.25', gap=o.gap||'24px', metaGap=o.metaGap||'8px', pad=o.pad||'0 8px 1px 0';
+    var c=note.cloneNode(true);
+    var wDt=colWidths(note.querySelector('.dt')), wCt=colWidths(note.querySelector('.ct'));
+    [].forEach.call(c.querySelectorAll('p'), function(p){
+      var st='margin:0;line-height:'+lh+';';
+      if(p.classList.contains('hd')) st='margin:'+gap+' 0 2px 0;line-height:'+lh+';text-align:center;';
+      if(p.classList.contains('cmt')) st='margin:'+gap+' 0 0 0;line-height:'+lh+';';
+      if(p.classList.contains('meta')) st='margin:0 0 '+metaGap+' 0;line-height:'+lh+';font-style:italic;color:#5F6E6D;';
+      p.setAttribute('style', st);
+    });
+    function fixTable(t, w, mids){
+      if(!t) return;
+      t.setAttribute('cellspacing','0'); t.setAttribute('cellpadding','0');
+      t.setAttribute('style','border-collapse:collapse;table-layout:fixed;width:'
+        + w.reduce(function(a,b){return a+b;},0) + 'px;margin:0;');
+      var cg=document.createElement('colgroup');
+      w.forEach(function(px){ var col=document.createElement('col'); col.setAttribute('width', px); cg.appendChild(col); });
+      t.insertBefore(cg, t.firstChild);
+      [].forEach.call(t.querySelectorAll('tr'), function(tr){
+        [].forEach.call(tr.children, function(td,i){
+          var va = mids.indexOf(i)>=0 ? 'middle' : 'top';
+          td.setAttribute('style', (td.getAttribute('style')||'')
+            + ';padding:'+pad+';line-height:'+lh+';vertical-align:'+va+';');
+          if(!td.textContent.trim()) td.innerHTML='&nbsp;';
+        });
+      });
+    }
+    if(wCt.length) wCt[wCt.length-1]+=14;
+    fixTable(c.querySelector('.dt'), wDt, [0,1]);
+    fixTable(c.querySelector('.ct'), wCt, []);
+    [].forEach.call(c.querySelectorAll('b'), function(b){ b.setAttribute('style','font-weight:700;'); });
+    return c.innerHTML;
+  }
+  function clipHTML(){
+    var rule='<hr style="border:none;border-top:1px solid #171F21;height:0;" />';
+    return '<div style="font-family:Arial,Helvetica,sans-serif;font-size:11pt;color:#171F21;">'
+      + rule + flatten() + rule + '</div>';
+  }
+  function clipText(){
+    var line=new Array(60).join('─');
+    return line+'\n'+note.innerText.replace(/^\s+|\s+$/g,'')+'\n'+line;
+  }
+  function imageNode(){
+    var cs=getComputedStyle(note), r=note.getBoundingClientRect();
+    var box=document.createElement('div');
+    box.style.cssText='position:fixed;left:-10000px;top:0;z-index:-1;box-sizing:border-box;'
+      + 'width:'+Math.ceil(r.width)+'px;min-height:'+Math.ceil(note.clientHeight)+'px;'
+      + 'background-color:#ffffff;color:#171F21;padding:'+cs.padding+';'
+      + 'border:1px solid rgba(23,31,33,.24);border-radius:4px;'
+      + 'font-family:'+cs.fontFamily+';font-size:'+cs.fontSize+';line-height:'+cs.lineHeight+';';
+    box.innerHTML=flatten({lh:'1.45', gap:'2em', metaGap:'.5em', pad:'0 .7em .3em 0'});
+    document.body.appendChild(box);
+    return box;
+  }
+  function renderCanvas(){
+    var node=imageNode();
+    var clean=function(c){ node.remove(); return c; };
+    var svgTry=function(){ return viaSVG(node).then(clean); };
+    if(window.html2canvas){
+      return html2canvas(node, {scale:2, backgroundColor:'#ffffff', logging:false,
+                                width:node.offsetWidth, height:node.offsetHeight})
+        .then(clean).catch(svgTry);
+    }
+    return svgTry();
+  }
+  function toBlob(c){
+    return new Promise(function(res,rej){ c.toBlob(function(b){ b?res(b):rej(); }, 'image/png'); });
+  }
+  document.getElementById('btnImg').addEventListener('click', function(){
+    var btn=this;
+    renderCanvas().then(toBlob).then(function(blob){
+      var a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);
+      a.download='PCTh_'+fileStamp()+'.png';
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      tell(btn, 'Збережено ✓');
+    }).catch(function(){ tell(btn, 'Не вдалося'); });
+  });
+  document.getElementById('btnCopyImg').addEventListener('click', function(){
+    var btn=this;
+    if(!(navigator.clipboard && window.ClipboardItem)){ tell(btn, 'Браузер не вміє'); return; }
+    renderCanvas().then(toBlob).then(function(blob){
+      return navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+    }).then(function(){ tell(btn, 'Скопійовано ✓'); })
+      .catch(function(){ tell(btn, 'Не вдалося'); });
+  });
+  document.getElementById('btnCopy').addEventListener('click', function(){
+    var html=clipHTML(), text=clipText();
+    function fallback(){
+      var sel=window.getSelection(), r=document.createRange();
+      r.selectNodeContents(note); sel.removeAllRanges(); sel.addRange(r);
+      try{ document.execCommand('copy'); tell(document.getElementById('btnCopy'), 'Скопійовано ✓'); }
+      catch(e){ tell(document.getElementById('btnCopy'), 'Не вдалося'); }
+      sel.removeAllRanges();
+    }
+    if(navigator.clipboard && window.ClipboardItem){
+      navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([html], {type:'text/html'}),
+        'text/plain': new Blob([text], {type:'text/plain'})
+      })]).then(function(){ tell(document.getElementById('btnCopy'), 'Скопійовано ✓'); }, fallback);
+    } else if(navigator.clipboard){
+      navigator.clipboard.writeText(text).then(function(){ tell(document.getElementById('btnCopy'), 'Скопійовано ✓'); }, fallback);
+    } else fallback();
+  });
+
+  document.getElementById('warnYes').addEventListener('click', function(){ warn.hidden=true; generate(); });
+  document.getElementById('warnNo').addEventListener('click', function(){
+    warn.hidden=true;
+    s2.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  var t; function schedule(){ clearTimeout(t); t=setTimeout(function(){ fit(); if(!s2.hidden) fitNoteWidth(); },80); }
+  fit();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  addEventListener('resize', schedule);
+})();
+</script>
+</body>
+</html>
