@@ -193,10 +193,18 @@ thead th.h-dim{ position:relative; }
 .fsv{ font-size:.95rem; line-height:1; display:flex; align-items:center; justify-content:center;
   flex:1.15 1 0; min-width:0; padding:.22rem .2rem; border:1px solid var(--btn-bd); border-radius:3px;
   background:var(--hdrRow); color:var(--muted); font-variant-numeric:tabular-nums; }
-.hcap{ flex:1 1 auto; min-height:0; margin:.42rem 0 0; display:flex;
-  flex-direction:column; justify-content:center; text-align:right;
+.hmid{ flex:1 1 auto; min-height:0; display:flex; flex-direction:column;
+  justify-content:center; align-items:flex-end; gap:.34rem; overflow:hidden; }
+.hcap{ flex:0 0 auto; margin:0; width:100%; text-align:right;
   font-size:.88rem; line-height:1.18; font-weight:500; color:var(--muted);
   hyphens:auto; overflow-wrap:break-word; }
+.lang{ display:flex; gap:.25rem; flex:0 0 auto; }
+.lgb{ font-family:inherit; font-size:.78rem; line-height:1; cursor:pointer;
+  letter-spacing:.04em; font-weight:600; color:var(--muted);
+  background:var(--surface); border:1px solid var(--btn-bd2); border-radius:3px;
+  padding:.22rem .42rem; }
+.lgb:hover{ background:var(--hdrRow); }
+.lgb.is-on{ background:var(--bandLbl); border-color:var(--bandLbl); color:#fff; }
 
 .lvl-lbl span{ font-size:1.06rem; font-weight:600; color:#fff; letter-spacing:.05em; }
 
@@ -361,8 +369,10 @@ button.edit.done{
   .fsz{ flex-wrap:wrap; gap:.14rem; }
   .fsb{ padding:.14rem .28rem; font-size:.82rem; }
   .fsv{ min-width:1.7rem; padding:.14rem .2rem; font-size:.82rem; }
-  .hcap{ font-size:.76rem; line-height:1.12; margin-top:.28rem;
+  .hmid{ gap:.24rem; }
+  .hcap{ font-size:.76rem; line-height:1.12; margin-top:0;
          hyphens:auto; overflow-wrap:break-word; }
+  .lgb{ font-size:.7rem; padding:.16rem .3rem; }
   ul.lvl-note{ height:10.4rem; font-size:.94rem; line-height:1.24;
                padding:0 .4rem 0 1.2rem; }
   ul.lvl-note li{ margin:0 0 .34rem; }
@@ -416,14 +426,20 @@ button.edit.done{
         <button class="fsb" type="button" id="fsDn" title="Менший шрифт" aria-label="Менший шрифт">▼</button>
         <span class="fsv" id="fsVal">15</span>
       </div>
-      <div class="hcap">Точний опис за К. Роджерсом:</div>
+      <div class="hmid">
+        <div class="hcap">Точний опис за К. Роджерсом:</div>
+        <div class="lang">
+          <button class="lgb" type="button" data-lang="uk">УКР</button>
+          <button class="lgb is-on" type="button" data-lang="en">ENG</button>
+        </div>
+      </div>
     </div><div class="lvl lvl-lbl"><b class="ghost" aria-hidden="true">0</b><span>Стадії:</span></div></th>
       <th style="--lc:var(--l1)"><ul class="lvl-note"><li>Unwillingness to communicate self; communication is about externals only</li><li>Feelings and personal meanings are neither recognized nor owned</li><li>Personal constructs are extremely rigid</li><li>Close and communicative relationships are construed as dangerous</li><li>No problems are recognized or perceived</li><li>There is no desire to change</li></ul><div class="lvl"><b>1</b><span>Ригідність</span></div></th>
       <th style="--lc:var(--l2)"><ul class="lvl-note"><li>Expression begins to flow, but about non-self topics</li><li>Problems are perceived as external to self; no sense of personal responsibility in them</li><li>Feelings are described as unowned, or as past objects</li><li>Experiencing is bound by the structure of the past</li><li>Constructs are rigid and unrecognized as constructs</li><li>Contradictions may be expressed with little recognition of them as contradictions</li></ul><div class="lvl"><b>2</b><span>Усе зовні</span></div></th>
       <th style="--lc:var(--l3)"><ul class="lvl-note"><li>A freer flow of expression about the self as an object, and about self-related experiences as objects</li><li>Much description of feelings and personal meanings not now present — past, or remote from the self</li><li>Feelings are often exhibited as shameful, bad or unacceptable</li><li>Personal constructs are rigid, but may be recognized as constructs rather than external facts</li><li>Differentiation of feelings and meanings is slightly sharper</li><li>Contradictions in experience are recognized</li></ul><div class="lvl"><b>3</b><span>Про себе в минулому</span></div></th>
       <th style="--lc:var(--l4)"><ul class="lvl-note"><li>More intense feelings of the &laquo;not-now-present&raquo; variety are described</li><li>Feelings are occasionally expressed as in the present, sometimes breaking through almost against the client's wishes</li><li>A tendency toward experiencing feelings in the immediate present, with distrust and fear of this possibility</li><li>Some acceptance of feelings is exhibited</li><li>Personal constructs are discovered as constructs, and their validity begins to be questioned</li><li>Feelings of self-responsibility in problems appear, though they vacillate</li><li>The client begins to relate on a here-and-now basis, with a sense of risk</li></ul><div class="lvl"><b>4</b><span>Проривається зараз</span></div></th>
-      <th style="--lc:var(--l5)"><ul class="lvl-note"><li>Feelings are expressed freely as in the present and are very close to being fully experienced</li><li>They bubble through, with surprise and fright rather than pleasure</li><li>A beginning recognition that experiencing a feeling involves a direct referent</li><li>Increasing ownership of self-feelings, and a desire to be the &laquo;real me&raquo;</li><li>Experiencing is loosened, no longer remote, and often occurs with little postponement</li><li>Constructs are freshly discovered as constructs and critically examined</li><li>Contradictions are faced clearly; self-responsibility is increasingly accepted</li></ul><div class="lvl"><b>5</b><span>Живе в теперішньому</span></div></th>
-      <th style="--lc:var(--l6)"><ul class="lvl-note"><li>A feeling previously &laquo;stuck&raquo; is experienced with immediacy and flows to its full result</li><li>The feeling and the immediacy of experiencing are accepted — not denied, feared or struggled against</li><li>A quality of living subjectively in the experience, not feeling about it</li><li>The self as an object tends to disappear</li><li>Experiencing takes on a real process quality, with physiological loosening</li><li>The relevant personal construct is dissolved in this experiencing moment</li><li>Incongruence is vividly experienced as it disappears into congruence</li></ul><div class="lvl"><b>6</b><span>Проживає повністю</span></div></th>
+      <th style="--lc:var(--l5)"><ul class="lvl-note"><li>Feelings are expressed freely as in the present and are very close to being fully experienced</li><li>They bubble through, with surprise and fright rather than pleasure</li><li>A beginning recognition that experiencing a feeling involves a direct referent</li><li>Increasing ownership of self-feelings, and a desire to be the &laquo;real me&raquo;</li><li>Experiencing is loosened, no longer remote, and often occurs with little postponement</li><li>Differentiation of feelings and meanings is increasingly sharp and exact</li><li>Constructs are freshly discovered as constructs and critically examined</li><li>Contradictions are faced clearly; self-responsibility is increasingly accepted</li></ul><div class="lvl"><b>5</b><span>Живе в теперішньому</span></div></th>
+      <th style="--lc:var(--l6)"><ul class="lvl-note"><li>A feeling previously &laquo;stuck&raquo; is experienced with immediacy and flows to its full result</li><li>The feeling and the immediacy of experiencing are accepted — not denied, feared or struggled against</li><li>A quality of living subjectively in the experience, not feeling about it</li><li>The self as an object tends to disappear</li><li>Experiencing takes on a real process quality, with physiological loosening</li><li>The relevant personal construct is dissolved in this experiencing moment</li><li>There are no longer &laquo;problems&raquo;, external or internal; the client is living a phase of his problem subjectively, not as an object</li><li>Incongruence is vividly experienced as it disappears into congruence</li></ul><div class="lvl"><b>6</b><span>Проживає повністю</span></div></th>
     </tr>
   </thead>
 </table></div>
@@ -1087,6 +1103,68 @@ button.edit.done{
     thead.addEventListener('touchend', function(){ ty=null; }, {passive:true});
     thead.addEventListener('touchcancel', function(){ ty=null; }, {passive:true});
   }
+
+  /* англійський / український опис стадій */
+  var UK = [
+   ['Небажання говорити про себе; спілкування лише про зовнішнє',
+    'Почуття та особистісні смисли не розпізнаються і не визнаються своїми',
+    'Особистісні конструкти вкрай ригідні',
+    'Близькі стосунки, де треба відкриватися, сприймаються як небезпечні',
+    'Жодних проблем не визнається й не помічається',
+    'Бажання змінюватися відсутнє'],
+   ['Мовлення починає текти вільніше, але на теми, не пов’язані з собою',
+    'Проблеми сприймаються як зовнішні щодо себе; відчуття власної відповідальності за них немає',
+    'Почуття описуються як не свої або як об’єкти з минулого',
+    'Переживання скуте структурою минулого',
+    'Конструкти ригідні й не усвідомлюються як конструкти',
+    'Суперечності можуть звучати, але майже не впізнаються як суперечності'],
+   ['Вільніше мовлення про себе як про об’єкт і про пов’язані з собою переживання як про об’єкти',
+    'Багато описів почуттів і смислів, яких немає тут і тепер, — минулих або віддалених від себе',
+    'Почуття часто подаються як ганебні, погані чи неприйнятні',
+    'Особистісні конструкти ригідні, але вже можуть впізнаватися як конструкти, а не як зовнішні факти',
+    'Розрізнення почуттів і смислів стає дещо чіткішим',
+    'Суперечності у власному досвіді впізнаються'],
+   ['Описуються інтенсивніші почуття, але все ще такі, яких немає тут і тепер',
+    'Час від часу почуття виражаються як теперішні — іноді прориваються майже всупереч бажанню клієнта',
+    'З’являється тяжіння до переживання почуттів у безпосередньому теперішньому — з недовірою і страхом перед такою можливістю',
+    'З’являється певне прийняття власних почуттів',
+    'Особистісні конструкти відкриваються як конструкти, їхня слушність починає ставитися під сумнів',
+    'З’являється відчуття власної відповідальності за проблеми, хоч і нестійке',
+    'Клієнт починає будувати стосунки тут-і-тепер, відчуваючи це як ризик'],
+   ['Почуття вільно виражаються як теперішні й майже повністю переживаються',
+    'Вони пробиваються назовні — радше з подивом і переляком, ніж із приємністю',
+    'Починає впізнаватися, що переживання почуття має безпосередній внутрішній референт',
+    'Почуття дедалі більше визнаються своїми; з’являється бажання бути «справжнім собою»',
+    'Переживання розкріпачується, перестає бути віддаленим і часто відбувається майже без відтермінування',
+    'Розрізнення почуттів і смислів стає дедалі чіткішим і точнішим',
+    'Конструкти наново відкриваються як конструкти й критично перевіряються',
+    'Суперечності визнаються прямо; власна відповідальність приймається дедалі більше'],
+   ['Почуття, що раніше було «застряглим», переживається безпосередньо й доходить до свого повного завершення',
+    'Саме почуття і безпосередність переживання приймаються — не заперечуються, не лякають, з ними не борються',
+    'Клієнт живе всередині переживання, а не має почуттів з приводу нього',
+    'Я як об’єкт зникає',
+    'Переживання набуває справжньої процесуальності, з тілесним розслабленням',
+    'Відповідний особистісний конструкт розчиняється в цьому моменті переживання',
+    '«Проблем» — ані зовнішніх, ані внутрішніх — більше немає: клієнт суб’єктивно проживає фазу своєї проблеми, а не має її перед собою як об’єкт',
+    'Інконгруентність яскраво переживається в мить, коли вона переходить у конгруентність']
+  ];
+  var EN = notes.map(function(u){
+    return [].map.call(u.querySelectorAll('li'), function(li){ return li.innerHTML; });
+  });
+  var lgbs=[].slice.call(document.querySelectorAll('.lgb'));
+  function setLang(l){
+    var src = (l==='uk') ? UK : EN;
+    notes.forEach(function(u,i){
+      var items = src[i] || EN[i] || [];
+      u.innerHTML = items.map(function(t){ return '<li>'+t+'</li>'; }).join('');
+    });
+    lgbs.forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-lang')===l); });
+    hoff=0; hmaxCalc();
+  }
+  lgbs.forEach(function(b){
+    b.addEventListener('click', function(e){ e.stopPropagation(); setLang(b.getAttribute('data-lang')); });
+  });
+
   hmaxCalc();
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(hmaxCalc);
 
