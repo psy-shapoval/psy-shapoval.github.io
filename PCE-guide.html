@@ -381,12 +381,13 @@ button.edit.done{
 
   /* другий екран: половини стають верхом і низом */
   #s2.screen{ grid-template-columns:minmax(0,1fr); grid-template-rows:auto auto auto;
-       align-content:start; height:auto; min-height:0;
+       align-content:start; height:auto;
+       min-height:calc(100vh - 2.4rem); min-height:calc(100dvh - 2.4rem);
        padding:.6rem .5rem 1.2rem; }
   body{ background:var(--hdr); }
   #s2 .pane{ padding:.3rem 0 0; justify-content:center; }
   #s2 .pane + .pane{ display:none; }
-  #note{ width:100%; max-height:64vh; max-height:64dvh; font-size:max(13px, 1.12rem); }
+  #note{ width:100%; max-height:72vh; max-height:72dvh; font-size:max(13px, 1.12rem); }
   .acts{ padding-top:.7rem; flex-wrap:nowrap; gap:.7rem; }
   .acts button.act{ width:auto; flex:1 1 0; min-width:0; white-space:normal;
     font-size:max(12.5px, 1.02rem); padding:.55rem .35rem; }
@@ -871,6 +872,19 @@ button.edit.done{
     var lh=o.lh||'1.25', gap=o.gap||'24px', metaGap=o.metaGap||'8px';
     var c=note.cloneNode(true);
 
+    /* рядки однієї характеристики зливаємо в один абзац: Google Docs додає
+       власний інтервал між абзацами, а всередині абзацу його немає */
+    [].forEach.call(c.querySelectorAll('p.sg'), function(p){
+      var n=p.nextElementSibling;
+      while(n && n.classList && n.classList.contains('sgx')){
+        var nx=n.nextElementSibling;
+        p.appendChild(document.createElement('br'));
+        while(n.firstChild) p.appendChild(n.firstChild);
+        n.remove();
+        n=nx;
+      }
+    });
+
     [].forEach.call(c.querySelectorAll('p'), function(p){
       var st='margin:0;line-height:'+lh+';';
       if(p.classList.contains('hd')) st='margin:'+gap+' 0 2px 0;line-height:'+lh+';text-align:center;';
@@ -923,20 +937,17 @@ button.edit.done{
         }
       }
       var p1=document.createElement('p');
-      p1.setAttribute('style','margin:0;line-height:'+lh+';');
+      p1.setAttribute('style','margin:0 0 '+metaGap+' 0;line-height:'+lh+';');
       if(tdR) while(tdR.firstChild) p1.appendChild(tdR.firstChild);
-
-      var p2=document.createElement('p');
-      p2.setAttribute('style','margin:0 0 '+metaGap+' 0;line-height:'+lh+';');
-      if(tdL) while(tdL.firstChild) p2.appendChild(tdL.firstChild);
+      p1.appendChild(document.createElement('br'));
+      if(tdL) while(tdL.firstChild) p1.appendChild(tdL.firstChild);
       var gapSp=document.createElement('span');
       gapSp.setAttribute('style','font-weight:400;font-style:italic;');
       gapSp.innerHTML='&nbsp;';
-      p2.appendChild(gapSp);
-      if(tdQ) while(tdQ.firstChild) p2.appendChild(tdQ.firstChild);
+      p1.appendChild(gapSp);
+      if(tdQ) while(tdQ.firstChild) p1.appendChild(tdQ.firstChild);
 
       tp.parentNode.insertBefore(p1, tp);
-      tp.parentNode.insertBefore(p2, tp);
       tp.remove();
     }
     return c.innerHTML;
