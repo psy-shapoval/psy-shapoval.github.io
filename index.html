@@ -1739,9 +1739,32 @@ img {
   margin-top: 2px;
 }
 
+
+/* ---- невидимий вхід до PCE-guide (верхній лівий кут) ---- */
+.pce-gate{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 26px;          /* трохи більше за курсор */
+  height: 26px;
+  display: block;
+  background: transparent;
+  border: 0;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (max-width: 899px){
+  .pce-gate{ width: 54px; height: 54px; }   /* зручно поцілити пальцем */
+}
+
   </style>
 </head>
 <body>
+
+  <!-- Невидиме посилання на PCE-guide.
+       Якщо переназвеш сторінку в репозиторії — зміни адресу тут, у href. -->
+  <a class="pce-gate" href="PCE-guide" aria-label="PCE-guide"></a>
 
   <!-- HERO -->
   <section class="hero">
