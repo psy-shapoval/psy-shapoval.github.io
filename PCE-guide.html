@@ -338,8 +338,8 @@ button.edit.done{
   #s1{ display:block; padding:0; min-height:0; height:100vh; height:100dvh;
        overflow:auto; -webkit-overflow-scrolling:touch; }
   .grid{ width:max-content; }
-  table{ width:max(1926px, 100vw); }
-  col.c-dim{ width:78px; }
+  table{ width:max(1973px, 100vw); }
+  col.c-dim{ width:125px; }
   th, td{ padding:.28rem .34rem; }
   td.cell{ padding:1.5px; }
 
@@ -372,9 +372,9 @@ button.edit.done{
   .dim .q{ font-size:.88rem; line-height:1.18; hyphens:auto; overflow-wrap:break-word; }
 
   /* нижні смуги — той самий поділ, що й у таблиці */
-  .strip{ width:max(1926px, 100vw); }
-  .cond{ grid-template-columns:78px repeat(6, minmax(0,1fr)); }
-  .exp{ grid-template-columns:78px repeat(8, minmax(0,1fr)); }
+  .strip{ width:max(1973px, 100vw); }
+  .cond{ grid-template-columns:125px repeat(6, minmax(0,1fr)); }
+  .exp{ grid-template-columns:125px repeat(8, minmax(0,1fr)); }
   .band-label{ position:sticky; left:0; z-index:4; background-color:inherit;
                font-size:.92rem; padding:0 .35rem; }
   .btn-cell button.edit{ font-size:1.1rem; }
@@ -390,6 +390,7 @@ button.edit.done{
   .acts{ padding-top:.7rem; flex-wrap:nowrap; gap:.7rem; }
   .acts button.act{ width:auto; flex:1 1 0; min-width:0; white-space:normal;
     font-size:max(12.5px, 1.02rem); padding:.55rem .35rem; }
+  .acts .w{ display:block; }
   .foot{ padding-top:1.2rem; }
 }
 
@@ -559,8 +560,8 @@ button.edit.done{
   <div class="pane"><div id="note" contenteditable="true" spellcheck="false" role="textbox" aria-multiline="true" aria-label="Опис сесії"></div></div>
   <div class="pane"></div>
   <div class="acts">
-    <button class="edit act" type="button" id="btnCopyImg">Скопіювати зображення</button>
-    <button class="edit act" type="button" id="btnCopy">Скопіювати текст</button>
+    <button class="edit act" type="button" id="btnCopyImg"><span class="w">Скопіювати</span> <span class="w">зображення</span></button>
+    <button class="edit act" type="button" id="btnCopy"><span class="w">Скопіювати</span> <span class="w">текст</span></button>
   </div>
   <div class="foot">
     <div>© Психолог Микола Шаповал, 2026</div>
@@ -669,7 +670,7 @@ button.edit.done{
   }
   function buildHTML(){
     var h='<table class="tp"><tbody>'
-        + '<tr><td class="l"><b class="gen">ЗАПИТ / СКАРГА / КОМЕНТАР:</b></td>'
+        + '<tr><td class="l"><b class="gen">Запит / коментар:</b></td>'
         + '<td class="r" contenteditable="false">'
         + '<span class="cl" contenteditable="true" data-ph="ім\'я клієнта"></span>'
         + '<span class="sep">&nbsp;·&nbsp;</span>'
@@ -908,39 +909,35 @@ button.edit.done{
     var db=c.querySelector('b.dt');
     if(db) db.setAttribute('style','font-weight:700;font-style:italic;color:#5F6E6D;');
     var cl=c.querySelector('.cl');
-    if(cl){
-      if(!cl.textContent.replace(/\u00a0/g,' ').trim()) cl.innerHTML='&nbsp;';
-      cl.setAttribute('style','font-weight:400;font-style:italic;color:#171F21;');
-    }
+    if(cl) cl.setAttribute('style','font-weight:400;font-style:italic;color:#171F21;');
 
-    /* верхній блок: перший рядок лишається таблицею (мітка ліворуч, дата праворуч),
-       а поле вільного тексту виноситься окремим абзацом на всю ширину */
+    /* верхній блок в експорті: 1-й рядок — ім'я, дата й час;
+       2-й — «Запит / коментар:» і текст одразу за ним, без таблиці */
     var tp=c.querySelector('.tp');
     if(tp){
-      var tdQ=tp.querySelector('td.q2');
-      var pq=document.createElement('p');
-      pq.setAttribute('style','margin:0 0 '+metaGap+' 0;line-height:'+lh+';');
-      if(tdQ){
-        while(tdQ.firstChild) pq.appendChild(tdQ.firstChild);
-        var rowQ=tdQ.parentNode; if(rowQ) rowQ.remove();
+      var tdL=tp.querySelector('td.l'), tdR=tp.querySelector('td.r'), tdQ=tp.querySelector('td.q2');
+      if(tdR){
+        var nm=tdR.querySelector('.cl'), sp2=tdR.querySelector('.sep');
+        if(nm && !nm.textContent.replace(/\u00a0/g,' ').trim()){
+          nm.remove(); if(sp2) sp2.remove();
+        }
       }
-      if(!pq.textContent.replace(/\u00a0/g,' ').trim()) pq.innerHTML='&nbsp;';
+      var p1=document.createElement('p');
+      p1.setAttribute('style','margin:0;line-height:'+lh+';');
+      if(tdR) while(tdR.firstChild) p1.appendChild(tdR.firstChild);
 
-      tp.setAttribute('cellspacing','0'); tp.setAttribute('cellpadding','0');
-      tp.setAttribute('style','border-collapse:collapse;border:none;width:100%;margin:0;');
-      var old=tp.querySelector('colgroup'); if(old) old.remove();
-      var cg=document.createElement('colgroup');
-      [55,45].forEach(function(w){
-        var col=document.createElement('col');
-        col.setAttribute('style','width:'+w+'%');
-        cg.appendChild(col);
-      });
-      tp.insertBefore(cg, tp.firstChild);
-      var tdL=tp.querySelector('td.l'), tdR=tp.querySelector('td.r');
-      if(tdL) tdL.setAttribute('style','border:none;padding:0;line-height:'+lh+';vertical-align:bottom;');
-      if(tdR) tdR.setAttribute('style','border:none;padding:0;line-height:'+lh
-        +';vertical-align:bottom;text-align:right;');
-      tp.parentNode.insertBefore(pq, tp.nextSibling);
+      var p2=document.createElement('p');
+      p2.setAttribute('style','margin:0 0 '+metaGap+' 0;line-height:'+lh+';');
+      if(tdL) while(tdL.firstChild) p2.appendChild(tdL.firstChild);
+      var gapSp=document.createElement('span');
+      gapSp.setAttribute('style','font-weight:400;font-style:italic;');
+      gapSp.innerHTML='&nbsp;';
+      p2.appendChild(gapSp);
+      if(tdQ) while(tdQ.firstChild) p2.appendChild(tdQ.firstChild);
+
+      tp.parentNode.insertBefore(p1, tp);
+      tp.parentNode.insertBefore(p2, tp);
+      tp.remove();
     }
     return c.innerHTML;
   }
