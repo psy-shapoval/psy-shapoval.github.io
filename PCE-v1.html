@@ -773,7 +773,10 @@ tbody.rqb td.rqc{ padding:5px 6px 6px; background:var(--rowB); border-bottom:1px
       var t=cmOf(b); if(t) r.cm.push({lv:i+1, k:k, t:t});
     });
     var mn=function(a){ return Math.min.apply(null,a); }, mx=function(a){ return Math.max.apply(null,a); };
-    r.vMain  = r.main.length  ? mn(r.main)  : '';
+    /* кілька основних — середнє; кома, бо таблиця українською */
+    var avg=function(a){ var t=0; a.forEach(function(v){ t+=v; });
+      return String(Math.round(t/a.length*100)/100).replace('.',','); };
+    r.vMain  = r.main.length  ? (r.main.length>1 ? avg(r.main) : r.main[0]) : '';
     r.vPeak  = r.peak.length  ? mx(r.peak)  : r.vMain;
     r.vAlert = r.alert.length ? mn(r.alert) : r.vMain;
     r.wMain = r.main.length>1; r.wPeak = r.peak.length>1; r.wAlert = r.alert.length>1;
@@ -787,12 +790,12 @@ tbody.rqb td.rqc{ padding:5px 6px 6px; background:var(--rowB); border-bottom:1px
     return '<td'+(cls ? ' class="'+cls+'"' : '')+(ed ? ' contenteditable="true"' : '')
          + (extra||'')+'>'+esc(String(txt===undefined||txt===null ? '' : txt))+'</td>';
   }
-  function warnTitle(w, a){ return w ? ' title="Позначено кілька: '+a.join(', ')+'. Залишено одне значення — перевірте."' : ''; }
+  function warnTitle(w, a, how){ return w ? ' title="Позначено кілька: '+a.join(', ')+'. '+how+'"' : ''; }
   function levelRow(label, m){
     return '<tr>'+td(label,'lb')
-      + td(m.vMain,  'num'+(m.wMain ?' warn':''), true, warnTitle(m.wMain, m.main))
-      + td(m.vPeak,  'num'+(m.wPeak ?' warn':''), true, warnTitle(m.wPeak, m.peak))
-      + td(m.vAlert, 'num'+(m.wAlert?' warn':''), true, warnTitle(m.wAlert, m.alert))
+      + td(m.vMain,  'num'+(m.wMain ?' warn':''), true, warnTitle(m.wMain, m.main, 'Записано їхнє середнє.'))
+      + td(m.vPeak,  'num'+(m.wPeak ?' warn':''), true, warnTitle(m.wPeak, m.peak, 'Записано найвищу — перевірте.'))
+      + td(m.vAlert, 'num'+(m.wAlert?' warn':''), true, warnTitle(m.wAlert, m.alert, 'Записано найнижчу — перевірте.'))
       + td(m.comment,'', true)+'</tr>';
   }
   var ST_TXT={yes:'так', no:'ні', but:'так, але'};
