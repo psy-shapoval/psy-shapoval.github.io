@@ -356,11 +356,13 @@ tbody.rqb td.rqc{ padding:5px 6px 6px; background:var(--rowB); border-bottom:1px
 .exp .t .tag{ width:auto; min-width:3.6rem; padding:.02rem .3rem; }
 
 /* ---------- світлофор умов ---------- */
-.cond .qq .lights{ float:right; display:flex; gap:.24rem; margin:.12rem 0 .25rem .45rem; }
+.cond .qq{ position:relative; padding-right:2.1rem; }
+.cond .qq .lights{ position:absolute; top:.3rem; right:.3rem; display:flex; flex-direction:column; gap:.2rem;
+  padding:.22rem; border-radius:.6rem; background:rgba(23,31,33,.08); }
 .cond .qq .lights i{ display:block; width:.82rem; height:.82rem; border-radius:50%;
   opacity:.2; box-shadow:inset 0 0 0 1px rgba(0,0,0,.18); }
 .cond .qq .lights i.g{ background:#1F9E8F; }
-.cond .qq .lights i.r{ background:#B4553F; }
+.cond .qq .lights i.r{ background:#E3151E; }
 .cond .qq .lights i.y{ background:#FFD400; }
 .cond .qq[data-st="yes"] .lights i.g, .cond .qq[data-st="no"] .lights i.r,
 .cond .qq[data-st="but"] .lights i.y{ opacity:1;
@@ -677,13 +679,13 @@ tbody.rqb td.rqc{ padding:5px 6px 6px; background:var(--rowB); border-bottom:1px
   /* світлофор: зелений — так, червоний — ні, жовтий — так, але */
   [].forEach.call(document.querySelectorAll('.cond .qq'), function(b){
     var l=document.createElement('span'); l.className='lights'; l.setAttribute('aria-hidden','true');
-    l.innerHTML='<i class="g"></i><i class="r"></i><i class="y"></i>';
+    l.innerHTML='<i class="r"></i><i class="y"></i><i class="g"></i>';   /* як світлофор: червоний угорі */
     b.insertBefore(l, b.firstChild);
   });
 
   var KIND={main:'основна', peak:'пікова', alert:'алертна'};
   var KINDX={main:'основний', peak:'піковий', alert:'алертний'};
-  var ST_NEXT={yes:'no', no:'but', but:'yes'};
+  var ST_NEXT={yes:'but', but:'no', no:'yes'};   /* зелений → жовтий → червоний → зелений */
   function isCell(b){ return !!b.closest('td.cell') || b.classList.contains('step'); }
   function setTag(b){
     var t=b.querySelector('.tag'); if(!t) return;
@@ -816,10 +818,10 @@ tbody.rqb td.rqc{ padding:5px 6px 6px; background:var(--rowB); border-bottom:1px
     var steps=[].slice.call(document.querySelectorAll('.exp .step'));
     var me=marks(steps, KINDX, '');
     var lbl='';
-    if(me.vMain!==''){
-      var st=steps[me.vMain-1];
-      lbl=oneLine(st.querySelector('.t b').textContent)+' — '+oneLine(st.querySelector('.t i').textContent);
-    }
+    lbl=me.main.map(function(n){
+      var st=steps[n-1];
+      return oneLine(st.querySelector('.t b').textContent)+' — '+oneLine(st.querySelector('.t i').textContent);
+    }).join(' / ');
     h += '<tr class="h h2">'+td('Шкала експірієнсингу')+td('Рівень')+td('Пік')+td('Алертний')+td('Коментар')+'</tr>';
     h += levelRow(lbl, me);
     h += '<tr class="gap">'+td('')+td('')+td('')+td('')+td('')+'</tr>';
